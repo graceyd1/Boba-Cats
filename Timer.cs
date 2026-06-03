@@ -12,9 +12,4 @@ public partial class Timer : Godot.Timer
 	public override void _Process(double delta)
 	{
 	}
-	
-	private void OnStart(float secs) {
-		Start(secs);
-	}
-	
 }

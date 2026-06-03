@@ -12,16 +12,12 @@ public partial class TubeCoral : Node2D
 	[Signal]
 	public delegate void UnpullEventHandler();
 	
-	//signal for turning the tubes off and on
-	[Signal]
-	public delegate void TubesSwitchEventHandler(float secs);
-	
 	private static bool tubesOn = true;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		EmitSignal(SignalName.TubesSwitch, 2.0f);
+		GetNode<Godot.Timer>("TubeSwitchTimer").Start();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,15 +40,38 @@ public partial class TubeCoral : Node2D
 	private void OnAOEBodyExited(CharacterBody2D body)
 	{
 		//do we need to check if the body is the player? idk
-		if (tubesOn) {
-			EmitSignal(SignalName.Unpull);
-		}
+		EmitSignal(SignalName.Unpull);
 	}
 	
 	private void OnTimerEnd() {
 		//if on, switch to off, if off, switch to on
 		tubesOn = !tubesOn;
-		//should make timer start again with 2 seconds
-		EmitSignal(SignalName.TubesSwitch, 2.0f);
+
+		//temporary indicator
+		ColorRect rect = GetNode<ColorRect>("TempRect");
+		if (tubesOn)
+		{
+			rect.Color = new Color("RED");
+		}
+		else
+		{
+			rect.Color = new Color("WHITE");
+		}
+
+		Area2D area = GetNode<Area2D>("AOE");
+		var insideAOE = area.GetOverlappingBodies();
+
+		//if there is a player in the AOE when it turns on/off, trigger player entering/exiting
+		if (insideAOE.Count > 0)
+		{
+			if (tubesOn)
+			{
+				OnAOEBodyEntered((CharacterBody2D) insideAOE[0]);
+			}
+			else
+			{
+				OnAOEBodyExited((CharacterBody2D) insideAOE[0]);
+			}
+		}
 	}
 }
