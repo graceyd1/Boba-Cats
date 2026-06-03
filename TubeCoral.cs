@@ -16,11 +16,12 @@ public partial class TubeCoral : Node2D
 	[Signal]
 	public delegate void TubesSwitchEventHandler(float secs);
 	
-	private static bool tubesOn;
+	private static bool tubesOn = true;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		EmitSignal(SignalName.TubesSwitch, 2.0f);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +31,7 @@ public partial class TubeCoral : Node2D
 
 	//when a body (the player) enters the AOE, emit a signal
 	//with the velocity the player should be pulled in
-	private void OnAOEBodyEntered(Node2D body)
+	private void OnAOEBodyEntered(CharacterBody2D body)
 	{
 		//do we need to check if the body is the player? idk
 		//add later - multiple directions of corals
@@ -40,7 +41,7 @@ public partial class TubeCoral : Node2D
 		}
 	}
 
-	private void OnAOEBodyExited(Node2D body)
+	private void OnAOEBodyExited(CharacterBody2D body)
 	{
 		//do we need to check if the body is the player? idk
 		if (tubesOn) {
@@ -49,7 +50,9 @@ public partial class TubeCoral : Node2D
 	}
 	
 	private void OnTimerEnd() {
+		//if on, switch to off, if off, switch to on
 		tubesOn = !tubesOn;
+		//should make timer start again with 2 seconds
 		EmitSignal(SignalName.TubesSwitch, 2.0f);
 	}
 }
