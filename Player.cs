@@ -8,6 +8,15 @@ public partial class Player : CharacterBody2D
 	
 	public Vector2 ScreenSize;
 
+	//not sure if this should be private
+	public int hp;
+
+	//if true, player can't get hit
+	private Boolean invulnerable;
+
+	//player flashing animation (when hit)
+	private Boolean flash;
+
 	//stores velocity modifiers such as wind/tube coral pull
 	private Vector2 velocityModifier;
 
@@ -16,6 +25,9 @@ public partial class Player : CharacterBody2D
 	{
 		//ScreenSize = GetViewportRect().Size;
 		velocityModifier = Vector2.Zero;
+		hp = 2;
+		invulnerable = false;
+		flash = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,8 +74,71 @@ public partial class Player : CharacterBody2D
 			animatedSprite2D.Animation = "sit-helmet";
 		}
 
+		//flashing
+		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
+		if (flash)
+		{
+			var modulate = animatedSprite2D.Modulate;
+			if (hurtTimer.TimeLeft % 0.2 < 0.1)
+            {
+                animatedSprite2D.Modulate = new Color(modulate.R, modulate.G, modulate.B, (float) 0.5);
+			}
+			else
+			{
+                animatedSprite2D.Modulate = new Color(modulate.R, modulate.G, modulate.B, (float) 0);
+			}
+		}
+
 		//Position += velocity * (float)delta;
 		MoveAndCollide(velocity * (float)delta); //character2d movement
+	}
+
+	//player enteres hitbox
+	private void OnHurtboxAreaEntered(Node2D area)
+	{
+		if (!invulnerable)
+		{
+			GetHit();
+		}
+		//
+		else
+		{
+			GD.Print("oops");
+		}
+	}
+
+	//get hit
+	private void GetHit()
+	{
+		hp --;
+		GD.Print("HP: " + hp); //
+		if (hp <= 0)
+		{
+			//todo - add death code
+			GD.Print("You died! HP resetting to 2."); //
+			hp = 2;
+		}
+
+		//i-frames
+		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
+		invulnerable = true;
+		flash = true;
+		hurtTimer.Start();
+	}
+
+	//when invulnerablility ends
+	private void OnHurtTimerTimeout()
+	{
+		invulnerable = false;
+		flash = false;
+
+		var insideHurtbox =  GetNode<Area2D>("Hurtbox").GetOverlappingBodies();
+
+		//if player is in hitbox when invulnerability ends
+		if (insideHurtbox.Count > 0)
+		{
+			GetHit();
+		}
 	}
 
 	private void OnTubeCoralPull(Vector2 tubeVelocity)
