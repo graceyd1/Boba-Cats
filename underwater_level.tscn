@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://coy7ulbpfcrfe"]
+[gd_scene load_steps=5 format=3 uid="uid://coy7ulbpfcrfe"]
 
 [ext_resource type="Script" path="res://UnderwaterLevel.cs" id="1_kc0kg"]
-[ext_resource type="Script" path="res://Timer.cs" id="2_d4n7r"]
 [ext_resource type="Script" path="res://TubesArea.cs" id="2_dijet"]
 [ext_resource type="PackedScene" uid="uid://s6tarn08548o" path="res://tube_coral.tscn" id="3_wtt4d"]
 [ext_resource type="PackedScene" uid="uid://djy0cxmipcbm6" path="res://player.tscn" id="5_tor4d"]
@@ -11,9 +10,6 @@ script = ExtResource("1_kc0kg")
 
 [node name="TubesArea" type="Node2D" parent="."]
 script = ExtResource("2_dijet")
-
-[node name="TubeSwitchTimer" type="Timer" parent="TubesArea"]
-script = ExtResource("2_d4n7r")
 
 [node name="TubeCoral" parent="TubesArea" instance=ExtResource("3_wtt4d")]
 position = Vector2(206, 587)
@@ -27,7 +23,6 @@ position = Vector2(627, 588)
 [node name="Player" parent="TubesArea" instance=ExtResource("5_tor4d")]
 position = Vector2(63, 339)
 
-[connection signal="timeout" from="TubesArea/TubeSwitchTimer" to="TubesArea/TubeCoral" method="OnTimerEnd"]
 [connection signal="Pull" from="TubesArea/TubeCoral" to="TubesArea/Player" method="OnTubeCoralPull"]
 [connection signal="Unpull" from="TubesArea/TubeCoral" to="TubesArea/Player" method="OnTubeCoralUnpull"]
 [connection signal="Pull" from="TubesArea/TubeCoral2" to="TubesArea/Player" method="OnTubeCoralPull"]
