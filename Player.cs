@@ -4,7 +4,7 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	[Export]
-	public int Speed {get; set;} = 400;
+	public int Speed {get; set;} = 200;
 	
 	public Vector2 ScreenSize;
 
@@ -40,12 +40,26 @@ public partial class Player : CharacterBody2D
 
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		if (velocity.Length() > 0) {
-			 velocity = velocity * Speed;
+			velocity = velocity * Speed;
 			
 			animatedSprite2D.Play();
 		}
 		else {
 			animatedSprite2D.Stop();
+		}
+
+		//setting the animation
+		if (velocity.X < 0)
+		{
+			animatedSprite2D.Animation = "swim-left";
+		}
+		else if (velocity.X > 0)
+		{
+			animatedSprite2D.Animation = "swim-right";
+		}
+		else
+		{
+			animatedSprite2D.Animation = "sit-helmet";
 		}
 
 		//Position += velocity * (float)delta;

@@ -1,10 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://djy0cxmipcbm6"]
+[gd_scene format=3 uid="uid://djy0cxmipcbm6"]
 
-[ext_resource type="Script" path="res://Player.cs" id="1_vr4g2"]
+[ext_resource type="Script" uid="uid://cf8j8aoi3fxbf" path="res://Player.cs" id="1_vr4g2"]
+[ext_resource type="Texture2D" uid="uid://bgw8wor80bqch" path="res://assets/player-sprites/player_sit_helmet.png" id="2_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://btciu8boqqq2p" path="res://icon.svg" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://b6jyn37imgoa8" path="res://assets/player-sprites/player_swim_left1.png" id="3_dw050"]
+[ext_resource type="Texture2D" uid="uid://ce6rt5bjbyxej" path="res://assets/player-sprites/player_swim_left2.png" id="4_b26j0"]
+[ext_resource type="Texture2D" uid="uid://bpeok7pnapo65" path="res://assets/player-sprites/player_swim_right1.png" id="5_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://dr4xlluyikbwx" path="res://assets/player-sprites/player_swim_right2.png" id="6_nvl01"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_maa7k"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1jxqw")
+}],
+"loop": true,
+"name": &"sit-helmet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dw050")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b26j0")
+}],
+"loop": true,
+"name": &"swim-left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_n7ghd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nvl01")
+}],
+"loop": true,
+"name": &"swim-right",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_onrkg")
@@ -15,20 +50,21 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i86wa"]
-radius = 22.0
-height = 46.0
+radius = 6.0
+height = 14.0
 
-[node name="Player" type="CharacterBody2D"]
-position = Vector2(193, 128)
+[node name="Player" type="CharacterBody2D" unique_id=1983796530]
+position = Vector2(84, 36)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_vr4g2")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=737781544]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_maa7k")
-animation = &"temp-placeholder"
+animation = &"swim-right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=522087847]
+rotation = 4.712389
 shape = SubResource("CapsuleShape2D_i86wa")
