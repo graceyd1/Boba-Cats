@@ -11,13 +11,15 @@ public partial class TubeCoral : Node2D
 	//signal for when the player should stop getting pulled
 	[Signal]
 	public delegate void UnpullEventHandler();
-	
+   
 	private bool tubesOn = true;
-	
+   
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		GetNode<Godot.Timer>("TubeSwitchTimer").Start();
+		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		animatedSprite2D.Play();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,20 +44,20 @@ public partial class TubeCoral : Node2D
 		//do we need to check if the body is the player? idk
 		EmitSignal(SignalName.Unpull);
 	}
-	
+   
 	private void OnTimerEnd() {
 		//if on, switch to off, if off, switch to on
 		tubesOn = !tubesOn;
 
-		//temporary indicator
-		ColorRect rect = GetNode<ColorRect>("TempRect");
+		//animation
+		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		if (tubesOn)
 		{
-			rect.Color = new Color("RED");
+			animatedSprite2D.Animation = "on";
 		}
 		else
 		{
-			rect.Color = new Color("WHITE");
+		   animatedSprite2D.Animation = "off";
 		}
 
 		Area2D area = GetNode<Area2D>("AOE");

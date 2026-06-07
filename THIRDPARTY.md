@@ -154,24 +154,24 @@ of it, thus forming a work based on the Program, and copy and
 distribute such modifications or work under the terms of Section 1
 above, provided that you also meet all of these conditions:
 
-    a) You must cause the modified files to carry prominent notices
-    stating that you changed the files and the date of any change.
+	a) You must cause the modified files to carry prominent notices
+	stating that you changed the files and the date of any change.
 
-    b) You must cause any work that you distribute or publish, that in
-    whole or in part contains or is derived from the Program or any
-    part thereof, to be licensed as a whole at no charge to all third
-    parties under the terms of this License.
+	b) You must cause any work that you distribute or publish, that in
+	whole or in part contains or is derived from the Program or any
+	part thereof, to be licensed as a whole at no charge to all third
+	parties under the terms of this License.
 
-    c) If the modified program normally reads commands interactively
-    when run, you must cause it, when started running for such
-    interactive use in the most ordinary way, to print or display an
-    announcement including an appropriate copyright notice and a
-    notice that there is no warranty (or else, saying that you provide
-    a warranty) and that users may redistribute the program under
-    these conditions, and telling the user how to view a copy of this
-    License.  (Exception: if the Program itself is interactive but
-    does not normally print such an announcement, your work based on
-    the Program is not required to print an announcement.)
+	c) If the modified program normally reads commands interactively
+	when run, you must cause it, when started running for such
+	interactive use in the most ordinary way, to print or display an
+	announcement including an appropriate copyright notice and a
+	notice that there is no warranty (or else, saying that you provide
+	a warranty) and that users may redistribute the program under
+	these conditions, and telling the user how to view a copy of this
+	License.  (Exception: if the Program itself is interactive but
+	does not normally print such an announcement, your work based on
+	the Program is not required to print an announcement.)
 
 These requirements apply to the modified work as a whole.  If
 identifiable sections of that work are not derived from the Program,
@@ -197,22 +197,22 @@ the scope of this License.
 under Section 2) in object code or executable form under the terms of
 Sections 1 and 2 above provided that you also do one of the following:
 
-    a) Accompany it with the complete corresponding machine-readable
-    source code, which must be distributed under the terms of Sections
-    1 and 2 above on a medium customarily used for software interchange; or,
+	a) Accompany it with the complete corresponding machine-readable
+	source code, which must be distributed under the terms of Sections
+	1 and 2 above on a medium customarily used for software interchange; or,
 
-    b) Accompany it with a written offer, valid for at least three
-    years, to give any third party, for a charge no more than your
-    cost of physically performing source distribution, a complete
-    machine-readable copy of the corresponding source code, to be
-    distributed under the terms of Sections 1 and 2 above on a medium
-    customarily used for software interchange; or,
+	b) Accompany it with a written offer, valid for at least three
+	years, to give any third party, for a charge no more than your
+	cost of physically performing source distribution, a complete
+	machine-readable copy of the corresponding source code, to be
+	distributed under the terms of Sections 1 and 2 above on a medium
+	customarily used for software interchange; or,
 
-    c) Accompany it with the information you received as to the offer
-    to distribute corresponding source code.  (This alternative is
-    allowed only for noncommercial distribution and only if you
-    received the program in object code or executable form with such
-    an offer, in accord with Subsection b above.)
+	c) Accompany it with the information you received as to the offer
+	to distribute corresponding source code.  (This alternative is
+	allowed only for noncommercial distribution and only if you
+	received the program in object code or executable form with such
+	an offer, in accord with Subsection b above.)
 
 The source code for a work means the preferred form of the work for
 making modifications to it.  For an executable work, complete source
@@ -353,21 +353,21 @@ convey the exclusion of warranty; and each file should have at least
 the "copyright" line and a pointer to where the full notice is found.
 
 	<one line to give the program's name and a brief idea of what it does.>
-    Copyright (C) <year>  <name of author>
+	Copyright (C) <year>  <name of author>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
 Also add information on how to contact you by electronic and paper mail.
@@ -375,7 +375,7 @@ Also add information on how to contact you by electronic and paper mail.
 If the program is interactive, make it output a short notice like this
 when it starts in an interactive mode:
 
-    Gnomovision version 69, Copyright (C) year name of author
+	Gnomovision version 69, Copyright (C) year name of author
 	Gnomovision comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
 	This is free software, and you are welcome to redistribute it
 	under certain conditions; type `show c' for details.
@@ -608,7 +608,7 @@ modification follow.  Pay close attention to the difference between a
 former contains code derived from the library, whereas the latter must
 be combined with the library in order to run.
 
-                  GNU LESSER GENERAL PUBLIC LICENSE
+				  GNU LESSER GENERAL PUBLIC LICENSE
    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
 
   0. This License Agreement applies to any software library or other
@@ -779,20 +779,20 @@ copyright notice for the Library among them, as well as a reference
 directing the user to the copy of this License.  Also, you must do one
 of these things:
 
-    a) Accompany the work with the complete corresponding
-    machine-readable source code for the Library including whatever
-    changes were used in the work (which must be distributed under
-    Sections 1 and 2 above); and, if the work is an executable linked
-    with the Library, with the complete machine-readable "work that
-    uses the Library", as object code and/or source code, so that the
-    user can modify the Library and then relink to produce a modified
-    executable containing the modified Library.  (It is understood
-    that the user who changes the contents of definitions files in the
-    Library will not necessarily be able to recompile the application
-    to use the modified definitions.)
+	a) Accompany the work with the complete corresponding
+	machine-readable source code for the Library including whatever
+	changes were used in the work (which must be distributed under
+	Sections 1 and 2 above); and, if the work is an executable linked
+	with the Library, with the complete machine-readable "work that
+	uses the Library", as object code and/or source code, so that the
+	user can modify the Library and then relink to produce a modified
+	executable containing the modified Library.  (It is understood
+	that the user who changes the contents of definitions files in the
+	Library will not necessarily be able to recompile the application
+	to use the modified definitions.)
 
-    b) Use a suitable shared library mechanism for linking with the
-    Library.  A suitable mechanism is one that (1) uses at run time a
+	b) Use a suitable shared library mechanism for linking with the
+	Library.  A suitable mechanism is one that (1) uses at run time a
 	copy of the library already present on the user's computer system,
 	rather than copying library functions into the executable, and (2)
 	will operate properly with a modified version of the library, if
@@ -928,7 +928,7 @@ decision will be guided by the two goals of preserving the free status
 of all derivatives of our free software and of promoting the sharing
 and reuse of software generally.
 
-                            NO WARRANTY
+							NO WARRANTY
 
   15. BECAUSE THE LIBRARY IS LICENSED FREE OF CHARGE, THERE IS NO
 WARRANTY FOR THE LIBRARY, TO THE EXTENT PERMITTED BY APPLICABLE LAW.
@@ -951,9 +951,9 @@ FAILURE OF THE LIBRARY TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
 SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
-                     END OF TERMS AND CONDITIONS
+					 END OF TERMS AND CONDITIONS
 
-           How to Apply These Terms to Your New Libraries
+		   How to Apply These Terms to Your New Libraries
 
   If you develop a new library, and you want it to be of the greatest
 possible use to the public, we recommend making it free software that
@@ -1096,7 +1096,7 @@ are met:
 3. All advertising materials mentioning features or use of this software
    must display the following acknowledgement:
    "This product includes cryptographic software written by
-    Eric Young (eay@cryptsoft.com)"
+	Eric Young (eay@cryptsoft.com)"
    The word 'cryptographic' can be left out if the rouines from the library
    being used are not cryptographic related :-).
 4. If you include any Windows specific code (or a derivative thereof) from
