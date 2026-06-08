@@ -3,13 +3,15 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	[Export]
-	public int Speed {get; set;} = 200;
+	public int Speed{get; set;}
 	
 	public static int coins {get; set; } = 0;
+	
+	public float Gravity{get; set;}
 
 	//stores the vertical velocity modifier for underwater gravity
-	private static float underwaterGravityVelocity {get; set; } = 0.5F;
+	//private static float underwaterGravityVelocity {get; set; } = 0.5F;
+
 
 	//not sure if this should be private
 	public int hp;
@@ -27,13 +29,19 @@ public partial class Player : CharacterBody2D
 	private Vector2 velocityModifier;
 
 	//stores possible gravity options
-	enum Gravity
+	/*enum Gravity
 	{
 		Underwater, Air, None
-	}
+	}*/
+	
+	/*enum Speed {
+		Underwater, Surface, Air
+	}*/
 
 	//stores the current gravity type
-	Gravity gravity;
+	//Gravity gravity;
+	//stores current speed type
+	//Speed speed;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -43,7 +51,7 @@ public partial class Player : CharacterBody2D
 		hp = 2;
 		invulnerable = false;
 		flash = false;
-		gravity = Gravity.Underwater; //todo - change to update based on the player's room
+		//gravity = Gravity.Underwater; //todo - change to update based on the player's room
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,10 +72,8 @@ public partial class Player : CharacterBody2D
 		}
 
 		//gravity and velocity modifier
-		if (gravity == Gravity.Underwater)
-		{
-			velocity.Y += underwaterGravityVelocity;
-		}
+		velocity.Y += Gravity;
+	
 		velocity = velocity.Normalized() + velocityModifier;
 	
 
@@ -170,13 +176,13 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	private void OnTubeCoralPull(Vector2 tubeVelocity)
+	public void OnTubeCoralPull(Vector2 tubeVelocity)
 	{
 		velocityModifier = tubeVelocity;
 	}
 
 	//stop pulling the character when it leaves the AOE
-	private void OnTubeCoralUnpull()
+	public void OnTubeCoralUnpull()
 	{
 		velocityModifier = Vector2.Zero;
 	}
