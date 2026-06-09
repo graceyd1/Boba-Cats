@@ -12,8 +12,6 @@ public partial class Player : CharacterBody2D
 	
 	public float Gravity{get; set;}
 
-	//stores the vertical velocity modifier for underwater gravity
-	//private static float underwaterGravityVelocity {get; set; } = 0.5F;
 
 
 	//not sure if this should be private

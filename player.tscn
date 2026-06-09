@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://djy0cxmipcbm6"]
+[gd_scene load_steps=12 format=3 uid="uid://djy0cxmipcbm6"]
 
 [ext_resource type="Script" path="res://Player.cs" id="1_vr4g2"]
 [ext_resource type="Texture2D" uid="uid://bgw8wor80bqch" path="res://assets/player-sprites/player_sit_helmet.png" id="2_1jxqw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ce6rt5bjbyxej" path="res://assets/player-sprites/player_swim_left2.png" id="4_b26j0"]
 [ext_resource type="Texture2D" uid="uid://bpeok7pnapo65" path="res://assets/player-sprites/player_swim_right1.png" id="5_n7ghd"]
 [ext_resource type="Texture2D" uid="uid://dr4xlluyikbwx" path="res://assets/player-sprites/player_swim_right2.png" id="6_nvl01"]
+[ext_resource type="PackedScene" path="res://player_health.tscn" id="8_pkvse"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_maa7k"]
 animations = [{
@@ -57,7 +58,7 @@ height = 16.0
 size = Vector2(12, 13)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(84, 36)
+position = Vector2(42, 71)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_vr4g2")
@@ -93,6 +94,10 @@ drag_left_margin = 0.1
 drag_top_margin = 1.0
 drag_right_margin = 0.1
 drag_bottom_margin = 1.0
+
+[node name="Player_Health" parent="Camera2D" instance=ExtResource("8_pkvse")]
+position = Vector2(-140.5, -72.5)
+scale = Vector2(0.9375, 1.0625)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="OnHurtboxAreaEntered"]
 [connection signal="timeout" from="HurtTimer" to="." method="OnHurtTimerTimeout"]

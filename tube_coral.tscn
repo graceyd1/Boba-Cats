@@ -102,7 +102,7 @@ wait_time = 2.0
 texture_filter = 1
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_w5l88")
-animation = &"off"
+animation = &"on"
 
 [connection signal="body_entered" from="AOE" to="." method="OnAOEBodyEntered"]
 [connection signal="body_exited" from="AOE" to="." method="OnAOEBodyExited"]

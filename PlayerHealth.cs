@@ -7,11 +7,13 @@ public partial class PlayerHealth : AnimatedSprite2D
 	public override void _Ready()
 	{
 		ResetHP();
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		GlobalPosition = GetNode<Camera2D>("..").GetTargetPosition() + new Vector2(-130, -70);
 	}
 
 	private void OnPlayerHit(int hp)
