@@ -3,6 +3,9 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
+	[Signal]
+	public delegate void HitEventHandler(int hp);
+
 	public int Speed{get; set;}
 	
 	public static int coins {get; set; } = 0;
@@ -27,21 +30,6 @@ public partial class Player : CharacterBody2D
 
 	//stores velocity modifiers such as wind/tube coral pull
 	private Vector2 velocityModifier;
-
-	//stores possible gravity options
-	/*enum Gravity
-	{
-		Underwater, Air, None
-	}*/
-	
-	/*enum Speed {
-		Underwater, Surface, Air
-	}*/
-
-	//stores the current gravity type
-	//Gravity gravity;
-	//stores current speed type
-	//Speed speed;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -116,11 +104,11 @@ public partial class Player : CharacterBody2D
 			var modulate = animatedSprite2D.Modulate;
 			if (hurtTimer.TimeLeft % 0.2 < 0.1)
 			{
-				animatedSprite2D.Modulate = new Color(modulate.R, modulate.G, modulate.B, (float) 0.5);
+				animatedSprite2D.Modulate = new Color(modulate.R, modulate.G, modulate.B, (float) 1);
 			}
 			else
 			{
-				animatedSprite2D.Modulate = new Color(modulate.R, modulate.G, modulate.B, (float) 0);
+				animatedSprite2D.Modulate = new Color(modulate.R, modulate.G, modulate.B, (float) 0.5);
 			}
 		}
 
@@ -159,6 +147,8 @@ public partial class Player : CharacterBody2D
 		invulnerable = true;
 		flash = true;
 		hurtTimer.Start();
+
+		EmitSignal(SignalName.Hit, hp);
 	}
 
 	//when invulnerablility ends
@@ -176,14 +166,20 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	public void OnTubeCoralPull(Vector2 tubeVelocity)
+	public void setVelocityModifier(Vector2 vel)
 	{
-		velocityModifier = tubeVelocity;
+		velocityModifier = vel;
 	}
 
-	//stop pulling the character when it leaves the AOE
-	public void OnTubeCoralUnpull()
-	{
-		velocityModifier = Vector2.Zero;
-	}
+	//moved to UnderwaterPlayer:
+	// public void OnTubeCoralPull(Vector2 tubeVelocity)
+	// {
+	// 	velocityModifier = tubeVelocity;
+	// }
+
+	// //stop pulling the character when it leaves the AOE
+	// public void OnTubeCoralUnpull()
+	// {
+	// 	velocityModifier = Vector2.Zero;
+	// }
 }

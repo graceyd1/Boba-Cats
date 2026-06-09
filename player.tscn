@@ -14,7 +14,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_x8lap")
 }],
-"loop": true,
+"loop": false,
 "name": &"left_sit",
 "speed": 5.0
 }, {
@@ -22,7 +22,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_1jxqw")
 }],
-"loop": true,
+"loop": false,
 "name": &"sit-helmet",
 "speed": 5.0
 }, {
@@ -66,7 +66,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_maa7k")
-animation = &"left_sit"
+animation = &"sit-helmet"
 
 [node name="CollisionCapsule" type="CollisionShape2D" parent="."]
 rotation = 4.71239

@@ -10,11 +10,15 @@ public partial class UnderwaterPlayer : Player
 		base.Gravity = 0.001F;
 	}
 	
-	public void OnTubeCoralPull(Vector2 velocity) {
-		base.OnTubeCoralPull(velocity);
+	public void OnTubeCoralPull(Vector2 tubeVelocity)
+	{
+		setVelocityModifier(tubeVelocity);
 	}
-	public void OnTubeCoralUnpull() {
-		base.OnTubeCoralUnpull();
+
+	//stop pulling the character when it leaves the AOE
+	public void OnTubeCoralUnpull()
+	{
+		setVelocityModifier(Vector2.Zero);
 	}
 
 }
