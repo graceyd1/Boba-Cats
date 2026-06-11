@@ -34,4 +34,9 @@ public partial class GrowableVine : Area2D
 			}
 		}
 	}
+	public void OnBodyExited(Node2D player) {
+		if (player is GroundPlayer groundPlayer) {
+			groundPlayer.Climbing = false;
+		}
+	}
 }

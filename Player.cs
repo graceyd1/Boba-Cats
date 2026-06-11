@@ -129,7 +129,8 @@ public partial class Player : CharacterBody2D
 		hp --;
 		if (hp <= 0)
 		{
-			GD.Print("You died!"); //
+			GD.Print("You died!"); 
+			Respawn();
 			//Position = Vector2.Zero;
 			hp = 2;
 		}
@@ -141,6 +142,32 @@ public partial class Player : CharacterBody2D
 		hurtTimer.Start();
 
 		EmitSignal(SignalName.Hit, hp);
+	}
+	
+	private async void Respawn() {
+		var fader = GetNode<CanvasLayer>("/root/Fader");
+		if (fader == null) {
+			GD.Print("NUll");
+		}
+		if (fader is Fader transition) {
+			await transition.FadeIn(1.0f);
+			Vector2 respawnPoint = Vector2.Zero;
+			var room = GetParent().Name;
+			if (room == "EnterCaveRoom") {
+				//coorinates might change if room coordinates change
+				respawnPoint = new Vector2(156, 119);
+			}
+			else if (room == "TubesArea") {
+				respawnPoint = new Vector2(45, 123);
+			} 
+			else if (room == "FirstRoom") {
+				respawnPoint = new Vector2(84, 100);
+			}
+			GlobalPosition = respawnPoint;
+			await transition.FadeOut(1.0f);
+		}
+		
+		
 	}
 
 	//when invulnerablility ends

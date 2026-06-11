@@ -18,6 +18,10 @@ config/name="boba boat cat gato game thing title"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+Fader="*res://fader.tscn"
+
 [display]
 
 window/size/viewport_width=320

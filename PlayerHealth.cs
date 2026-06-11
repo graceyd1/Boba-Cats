@@ -28,6 +28,10 @@ public partial class PlayerHealth : AnimatedSprite2D
 		}
 
 		Play();
+		//Maybe a blackout effect??
+		if (hp == 2) {
+			ResetHP();
+		}
 	}
 
 	private void ResetHP()

@@ -56,11 +56,9 @@ public partial class GroundPlayer : Player
 			}
 			if (Input.IsActionPressed("move_right")) {
 				dir.X += 1;
-				Climbing = false;
 			}
 			if (Input.IsActionPressed("move_left")) {
 				dir.X -= 1;
-				Climbing = false;
 			}
 			var animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 			if (dir.Length() > 0) {
