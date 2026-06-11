@@ -16,7 +16,7 @@ public partial class PlayerHealth : AnimatedSprite2D
 		GlobalPosition = GetNode<Camera2D>("..").GetScreenCenterPosition() + new Vector2(-130, -70);
 	}
 
-	private void OnPlayerHit(int hp)
+	private async void OnPlayerHit(int hp)
 	{
 		if (hp == 1)
 		{
@@ -28,7 +28,7 @@ public partial class PlayerHealth : AnimatedSprite2D
 		}
 
 		Play();
-		//Maybe a blackout effect??
+		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
 		if (hp == 2) {
 			ResetHP();
 		}

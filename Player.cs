@@ -146,9 +146,6 @@ public partial class Player : CharacterBody2D
 	
 	private async void Respawn() {
 		var fader = GetNode<CanvasLayer>("/root/Fader");
-		if (fader == null) {
-			GD.Print("NUll");
-		}
 		if (fader is Fader transition) {
 			await transition.FadeIn(1.0f);
 			Vector2 respawnPoint = Vector2.Zero;
