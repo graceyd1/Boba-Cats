@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://dflvchrpqg7qo"]
+
+[ext_resource type="Texture2D" uid="uid://bu1s2q5m3aj17" path="res://assets/backgrounds/box_room/box_room0.png" id="1_qieuq"]
+[ext_resource type="Texture2D" uid="uid://qog2naajank2" path="res://assets/backgrounds/box_room/box_room1.png" id="2_brwye"]
+[ext_resource type="Texture2D" uid="uid://kv1s5jsmg3bm" path="res://assets/backgrounds/box_room/box_room2.png" id="3_vtj6r"]
+[ext_resource type="Texture2D" uid="uid://dqkf7nggx4syl" path="res://assets/backgrounds/box_room/box_room3.png" id="4_t31jp"]
+[ext_resource type="Texture2D" uid="uid://cbtg2oj0pxgj" path="res://assets/objects/big_jellyfish_bottom/big_jellyfish_bottom0.png" id="5_3i4l5"]
+[ext_resource type="Texture2D" uid="uid://c80tkm5epr51m" path="res://assets/objects/big_jellyfish_bottom/big_jellyfish_bottom1.png" id="6_pjn7v"]
+[ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="7_ecl8n"]
+[ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="8_pihmt"]
+[ext_resource type="Texture2D" uid="uid://c055oi0yraxg2" path="res://assets/backgrounds/box_room/box_room4.png" id="9_ch8qf"]
+[ext_resource type="Texture2D" uid="uid://40edb5bwdnk0" path="res://assets/backgrounds/box_room/box_room5.png" id="10_8kj8c"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="11_wj8lh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i07pw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3i4l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pjn7v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BoxRoom" type="Node2D"]
+
+[node name="Background0" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_qieuq")
+centered = false
+
+[node name="Background1" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_brwye")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_vtj6r")
+centered = false
+
+[node name="Background3" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_t31jp")
+centered = false
+
+[node name="BigJellyfishBottom" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_i07pw")
+centered = false
+
+[node name="Hitbox" parent="BigJellyfishBottom" instance=ExtResource("7_ecl8n")]
+position = Vector2(245, 45)
+scale = Vector2(3.5, 2.5)
+
+[node name="UnderwaterPlayer" parent="." instance=ExtResource("8_pihmt")]
+position = Vector2(84, 100)
+
+[node name="Background4" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("9_ch8qf")
+centered = false
+
+[node name="Background5" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("10_8kj8c")
+centered = false
+
+[node name="Floor" parent="." instance=ExtResource("11_wj8lh")]
+position = Vector2(0, 147)
+scale = Vector2(25, 1)
+
+[node name="CeilingLeft" parent="." instance=ExtResource("11_wj8lh")]
+position = Vector2(-11, 56)
+rotation = -0.349066
+scale = Vector2(11, 1)
+
+[node name="CeilingMiddle" parent="." instance=ExtResource("11_wj8lh")]
+position = Vector2(190, -15)
+scale = Vector2(7, 1)
+
+[node name="CeilingRight" parent="." instance=ExtResource("11_wj8lh")]
+position = Vector2(291, -25)
+rotation = 0.349066
+scale = Vector2(12, 1)
+
+[node name="LeftWall" parent="." instance=ExtResource("11_wj8lh")]
+position = Vector2(-15, 0)
+scale = Vector2(1, 10)
