@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dflvchrpqg7qo"]
+[gd_scene load_steps=22 format=3 uid="uid://dflvchrpqg7qo"]
 
 [ext_resource type="Texture2D" uid="uid://bu1s2q5m3aj17" path="res://assets/backgrounds/box_room/box_room0.png" id="1_qieuq"]
 [ext_resource type="Texture2D" uid="uid://qog2naajank2" path="res://assets/backgrounds/box_room/box_room1.png" id="2_brwye"]
@@ -9,8 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="7_ecl8n"]
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="8_pihmt"]
 [ext_resource type="Texture2D" uid="uid://c055oi0yraxg2" path="res://assets/backgrounds/box_room/box_room4.png" id="9_ch8qf"]
+[ext_resource type="Texture2D" uid="uid://dtyops8tvved6" path="res://assets/background_items/bg_bigbox.png" id="9_nef3q"]
 [ext_resource type="Texture2D" uid="uid://40edb5bwdnk0" path="res://assets/backgrounds/box_room/box_room5.png" id="10_8kj8c"]
+[ext_resource type="Texture2D" uid="uid://5txp0r25uqf7" path="res://assets/backgrounds/box_room/box_room6.png" id="10_cx3xf"]
+[ext_resource type="Texture2D" uid="uid://b8ytxur36hotg" path="res://assets/objects/bigbox.png" id="10_i0pin"]
+[ext_resource type="Texture2D" uid="uid://h71edpmrf1mi" path="res://assets/background_items/bg_medbox.png" id="10_uwxra"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="11_wj8lh"]
+[ext_resource type="Texture2D" uid="uid://6f02ja61limd" path="res://assets/objects/medbox.png" id="12_mx3pw"]
+[ext_resource type="Texture2D" uid="uid://feaaex1jlf6i" path="res://assets/objects/smallbox.png" id="13_3atr8"]
+[ext_resource type="Texture2D" uid="uid://vxeeag75b113" path="res://assets/background_items/bomb.png" id="14_5en38"]
+[ext_resource type="PackedScene" uid="uid://dreu42hj60gc6" path="res://lantern.tscn" id="16_3s04o"]
+[ext_resource type="Texture2D" uid="uid://bekphjfbgb21g" path="res://assets/background_items/pure_vine.png" id="17_15pkn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i07pw"]
 animations = [{
@@ -52,43 +61,172 @@ centered = false
 texture_filter = 1
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_i07pw")
+autoplay = "default"
 centered = false
 
 [node name="Hitbox" parent="BigJellyfishBottom" instance=ExtResource("7_ecl8n")]
 position = Vector2(245, 45)
 scale = Vector2(3.5, 2.5)
 
-[node name="UnderwaterPlayer" parent="." instance=ExtResource("8_pihmt")]
-position = Vector2(84, 100)
-
 [node name="Background4" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("9_ch8qf")
 centered = false
+
+[node name="FakeBoxesFolder" type="Node2D" parent="."]
+position = Vector2(174, 136)
+
+[node name="BigBox" type="Sprite2D" parent="FakeBoxesFolder"]
+texture_filter = 1
+position = Vector2(-21, 1)
+texture = ExtResource("9_nef3q")
+
+[node name="BigBox2" type="Sprite2D" parent="FakeBoxesFolder"]
+texture_filter = 1
+position = Vector2(131, -5)
+texture = ExtResource("9_nef3q")
+
+[node name="MedBox" type="Sprite2D" parent="FakeBoxesFolder"]
+texture_filter = 1
+position = Vector2(-70, 0)
+texture = ExtResource("10_uwxra")
+
+[node name="MedBox2" type="Sprite2D" parent="FakeBoxesFolder"]
+texture_filter = 1
+position = Vector2(229, -6)
+texture = ExtResource("10_uwxra")
+
+[node name="BoxesFolder" type="Node2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="BigBox" type="Sprite2D" parent="BoxesFolder"]
+texture_filter = 1
+position = Vector2(360, 124)
+texture = ExtResource("10_i0pin")
+metadata/_edit_group_ = true
+
+[node name="Walls" parent="BoxesFolder/BigBox" instance=ExtResource("11_wj8lh")]
+position = Vector2(-32, -32)
+scale = Vector2(3.2, 3.2)
+
+[node name="MedBox" type="Sprite2D" parent="BoxesFolder"]
+texture_filter = 1
+position = Vector2(312, 140)
+texture = ExtResource("12_mx3pw")
+metadata/_edit_group_ = true
+
+[node name="Walls" parent="BoxesFolder/MedBox" instance=ExtResource("11_wj8lh")]
+position = Vector2(-16, -16)
+scale = Vector2(1.6, 1.6)
+
+[node name="MedBox2" type="Sprite2D" parent="BoxesFolder"]
+texture_filter = 1
+position = Vector2(135, 134)
+texture = ExtResource("12_mx3pw")
+metadata/_edit_group_ = true
+
+[node name="Walls" parent="BoxesFolder/MedBox2" instance=ExtResource("11_wj8lh")]
+position = Vector2(-16, -16)
+scale = Vector2(1.6, 1.6)
+
+[node name="MedBox3" type="Sprite2D" parent="BoxesFolder"]
+texture_filter = 1
+position = Vector2(206, 146)
+texture = ExtResource("12_mx3pw")
+metadata/_edit_group_ = true
+
+[node name="Walls" parent="BoxesFolder/MedBox3" instance=ExtResource("11_wj8lh")]
+position = Vector2(-16, -16)
+scale = Vector2(1.6, 1.6)
+
+[node name="SmallBox" type="Sprite2D" parent="BoxesFolder"]
+texture_filter = 1
+position = Vector2(141, 110)
+texture = ExtResource("13_3atr8")
+metadata/_edit_group_ = true
+
+[node name="Walls" parent="BoxesFolder/SmallBox" instance=ExtResource("11_wj8lh")]
+position = Vector2(-8, -8)
+scale = Vector2(0.8, 0.8)
+
+[node name="SmallBox2" type="Sprite2D" parent="BoxesFolder"]
+texture_filter = 1
+position = Vector2(106, 143)
+texture = ExtResource("13_3atr8")
+metadata/_edit_group_ = true
+
+[node name="Walls" parent="BoxesFolder/SmallBox2" instance=ExtResource("11_wj8lh")]
+position = Vector2(-8, -8)
+scale = Vector2(0.8, 0.8)
+
+[node name="SmallBox3" type="Sprite2D" parent="BoxesFolder"]
+texture_filter = 1
+position = Vector2(417, 143)
+texture = ExtResource("13_3atr8")
+metadata/_edit_group_ = true
+
+[node name="Walls" parent="BoxesFolder/SmallBox3" instance=ExtResource("11_wj8lh")]
+position = Vector2(-8, -8)
+scale = Vector2(0.8, 0.8)
+
+[node name="Bomb" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(205, 119)
+texture = ExtResource("14_5en38")
+
+[node name="Lantern" parent="." instance=ExtResource("16_3s04o")]
+position = Vector2(341, 28)
+
+[node name="UnderwaterPlayer" parent="." instance=ExtResource("8_pihmt")]
+position = Vector2(84, 100)
+
+[node name="VinesFolder" type="Node2D" parent="."]
+
+[node name="Vine" type="Sprite2D" parent="VinesFolder"]
+texture_filter = 1
+position = Vector2(45, 88)
+texture = ExtResource("17_15pkn")
+
+[node name="Vine2" type="Sprite2D" parent="VinesFolder"]
+texture_filter = 1
+position = Vector2(68, 55)
+texture = ExtResource("17_15pkn")
+
+[node name="Vine3" type="Sprite2D" parent="VinesFolder"]
+texture_filter = 1
+position = Vector2(427, 53)
+texture = ExtResource("17_15pkn")
 
 [node name="Background5" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("10_8kj8c")
 centered = false
 
-[node name="Floor" parent="." instance=ExtResource("11_wj8lh")]
+[node name="Background6" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("10_cx3xf")
+centered = false
+
+[node name="WallsFolder" type="Node" parent="."]
+
+[node name="Floor" parent="WallsFolder" instance=ExtResource("11_wj8lh")]
 position = Vector2(0, 147)
 scale = Vector2(25, 1)
 
-[node name="CeilingLeft" parent="." instance=ExtResource("11_wj8lh")]
+[node name="CeilingLeft" parent="WallsFolder" instance=ExtResource("11_wj8lh")]
 position = Vector2(-11, 56)
 rotation = -0.349066
 scale = Vector2(11, 1)
 
-[node name="CeilingMiddle" parent="." instance=ExtResource("11_wj8lh")]
+[node name="CeilingMiddle" parent="WallsFolder" instance=ExtResource("11_wj8lh")]
 position = Vector2(190, -15)
 scale = Vector2(7, 1)
 
-[node name="CeilingRight" parent="." instance=ExtResource("11_wj8lh")]
+[node name="CeilingRight" parent="WallsFolder" instance=ExtResource("11_wj8lh")]
 position = Vector2(291, -25)
 rotation = 0.349066
 scale = Vector2(12, 1)
 
-[node name="LeftWall" parent="." instance=ExtResource("11_wj8lh")]
+[node name="LeftWall" parent="WallsFolder" instance=ExtResource("11_wj8lh")]
 position = Vector2(-15, 0)
 scale = Vector2(1, 10)

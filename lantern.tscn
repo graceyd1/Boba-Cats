@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dreu42hj60gc6"]
+
+[ext_resource type="Texture2D" uid="uid://cqch0hxn04p2f" path="res://assets/lights/player_glow.png" id="1_33pr6"]
+[ext_resource type="Texture2D" uid="uid://cymq8r6it4fru" path="res://assets/background_items/lantern.png" id="3_iut23"]
+
+[node name="Lantern" type="Node2D"]
+
+[node name="Light" type="PointLight2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 2)
+texture = ExtResource("1_33pr6")
+
+[node name="Lamp" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_iut23")
