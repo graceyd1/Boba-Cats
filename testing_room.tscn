@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cs8lm72sbi1k8"]
 
-[ext_resource type="Texture2D" uid="uid://c5aconv8x8617" path="res://assets/backgrounds/first_room_background.png" id="1_3xtj5"]
-[ext_resource type="Texture2D" uid="uid://b6qt7sngx5gkb" path="res://assets/backgrounds/first_room_rocks.png" id="3_jxtuf"]
+[ext_resource type="Texture2D" uid="uid://c5aconv8x8617" path="res://assets/backgrounds/first_room/first_room_background.png" id="1_3xtj5"]
+[ext_resource type="Texture2D" uid="uid://b6qt7sngx5gkb" path="res://assets/backgrounds/first_room/first_room_rocks.png" id="3_jxtuf"]
 [ext_resource type="PackedScene" uid="uid://dhctxpw3i8rpf" path="res://darkness.tscn" id="5_o7pc6"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="5_y4j0h"]
 [ext_resource type="PackedScene" uid="uid://bp4jat81a6c5d" path="res://tube_coral.tscn" id="6_3bk1b"]
