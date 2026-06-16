@@ -160,9 +160,10 @@ public partial class Player : CharacterBody2D
 			else if (room == "TubesArea") {
 				respawnPoint = new Vector2(45, 123);
 			} 
-			else if (room == "FirstRoom") {
+			else if (room == "FirstRoom" || room == "BoxRoom") {
 				respawnPoint = new Vector2(84, 100);
 			}
+
 			GlobalPosition = respawnPoint;
 			
 			await transition.FadeOut(2.0f);

@@ -74,10 +74,11 @@ public partial class GroundPlayer : Player
 		}
 		OOBCheck();
 	}
+	//can change the code to go to different room instead
 	private void OOBCheck() {
 		var pos = GlobalPosition;
 		if (GetParent().Name == "EnterCaveRoom" && pos.Y > 180) {
-			base.Respawn();
+			base.Respawn(); //change this
 		}
 	}
 }
