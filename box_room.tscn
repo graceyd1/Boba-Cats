@@ -37,143 +37,157 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twqg6"]
-radius = 8.0
+radius = 6.08276
 
 [node name="BoxRoom" type="Node2D"]
 
-[node name="Background0" type="Sprite2D" parent="."]
+[node name="BackgroundStuff" type="Node2D" parent="."]
+
+[node name="Background0" type="Sprite2D" parent="BackgroundStuff"]
 texture_filter = 1
 texture = ExtResource("1_qieuq")
 centered = false
 
-[node name="Background1" type="Sprite2D" parent="."]
+[node name="Parallax2D1" type="Parallax2D" parent="BackgroundStuff"]
+scroll_scale = Vector2(0.4, 1)
+
+[node name="Background1" type="Sprite2D" parent="BackgroundStuff/Parallax2D1"]
 texture_filter = 1
 texture = ExtResource("2_brwye")
 centered = false
 
-[node name="Background2" type="Sprite2D" parent="."]
+[node name="Parallax2D2" type="Parallax2D" parent="BackgroundStuff"]
+scroll_scale = Vector2(0.5, 1)
+
+[node name="Background2" type="Sprite2D" parent="BackgroundStuff/Parallax2D2"]
 texture_filter = 1
 texture = ExtResource("3_vtj6r")
 centered = false
 
-[node name="Background3" type="Sprite2D" parent="."]
+[node name="Parallax2D3" type="Parallax2D" parent="BackgroundStuff"]
+scroll_scale = Vector2(0.7, 1)
+
+[node name="Background3" type="Sprite2D" parent="BackgroundStuff/Parallax2D3"]
 texture_filter = 1
 texture = ExtResource("4_t31jp")
 centered = false
 
-[node name="BigJellyfishBottom" type="AnimatedSprite2D" parent="."]
+[node name="BigJellyfishBottom" type="AnimatedSprite2D" parent="BackgroundStuff"]
 texture_filter = 1
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_i07pw")
 autoplay = "default"
 centered = false
 
-[node name="Hitbox" parent="BigJellyfishBottom" instance=ExtResource("7_ecl8n")]
+[node name="Hitbox" parent="BackgroundStuff/BigJellyfishBottom" instance=ExtResource("7_ecl8n")]
 position = Vector2(245, 45)
 scale = Vector2(3.5, 2.5)
 
-[node name="Background4" type="Sprite2D" parent="."]
+[node name="Parallax2D4" type="Parallax2D" parent="BackgroundStuff"]
+scroll_scale = Vector2(0.8, 1)
+
+[node name="Background4" type="Sprite2D" parent="BackgroundStuff/Parallax2D4"]
 texture_filter = 1
 texture = ExtResource("9_ch8qf")
 centered = false
 
-[node name="FakeBoxesFolder" type="Node2D" parent="."]
+[node name="FakeBoxesFolder" type="Node2D" parent="BackgroundStuff"]
 position = Vector2(174, 136)
 
-[node name="BigBox" type="Sprite2D" parent="FakeBoxesFolder"]
+[node name="BigBox" type="Sprite2D" parent="BackgroundStuff/FakeBoxesFolder"]
 texture_filter = 1
 position = Vector2(-21, 1)
 texture = ExtResource("9_nef3q")
 
-[node name="BigBox2" type="Sprite2D" parent="FakeBoxesFolder"]
+[node name="BigBox2" type="Sprite2D" parent="BackgroundStuff/FakeBoxesFolder"]
 texture_filter = 1
 position = Vector2(131, -5)
 texture = ExtResource("9_nef3q")
 
-[node name="MedBox" type="Sprite2D" parent="FakeBoxesFolder"]
+[node name="MedBox" type="Sprite2D" parent="BackgroundStuff/FakeBoxesFolder"]
 texture_filter = 1
 position = Vector2(-70, 0)
 texture = ExtResource("10_uwxra")
 
-[node name="MedBox2" type="Sprite2D" parent="FakeBoxesFolder"]
+[node name="MedBox2" type="Sprite2D" parent="BackgroundStuff/FakeBoxesFolder"]
 texture_filter = 1
 position = Vector2(229, -6)
 texture = ExtResource("10_uwxra")
 
-[node name="BoxesFolder" type="Node2D" parent="."]
+[node name="BoxesFolder" type="Node2D" parent="BackgroundStuff"]
 position = Vector2(0, -3)
 
-[node name="BigBox" type="Sprite2D" parent="BoxesFolder"]
+[node name="BigBox" type="Sprite2D" parent="BackgroundStuff/BoxesFolder"]
 texture_filter = 1
 position = Vector2(360, 124)
 texture = ExtResource("10_i0pin")
 metadata/_edit_group_ = true
 
-[node name="Walls" parent="BoxesFolder/BigBox" instance=ExtResource("11_wj8lh")]
+[node name="Walls" parent="BackgroundStuff/BoxesFolder/BigBox" instance=ExtResource("11_wj8lh")]
 position = Vector2(-32, -32)
 scale = Vector2(3.2, 3.2)
 
-[node name="MedBox" type="Sprite2D" parent="BoxesFolder"]
+[node name="MedBox" type="Sprite2D" parent="BackgroundStuff/BoxesFolder"]
 texture_filter = 1
 position = Vector2(312, 140)
 texture = ExtResource("12_mx3pw")
 metadata/_edit_group_ = true
 
-[node name="Walls" parent="BoxesFolder/MedBox" instance=ExtResource("11_wj8lh")]
+[node name="Walls" parent="BackgroundStuff/BoxesFolder/MedBox" instance=ExtResource("11_wj8lh")]
 position = Vector2(-16, -16)
 scale = Vector2(1.6, 1.6)
 
-[node name="MedBox2" type="Sprite2D" parent="BoxesFolder"]
+[node name="MedBox2" type="Sprite2D" parent="BackgroundStuff/BoxesFolder"]
 texture_filter = 1
 position = Vector2(135, 134)
 texture = ExtResource("12_mx3pw")
 metadata/_edit_group_ = true
 
-[node name="Walls" parent="BoxesFolder/MedBox2" instance=ExtResource("11_wj8lh")]
+[node name="Walls" parent="BackgroundStuff/BoxesFolder/MedBox2" instance=ExtResource("11_wj8lh")]
 position = Vector2(-16, -16)
 scale = Vector2(1.6, 1.6)
 
-[node name="MedBox3" type="Sprite2D" parent="BoxesFolder"]
+[node name="MedBox3" type="Sprite2D" parent="BackgroundStuff/BoxesFolder"]
 texture_filter = 1
 position = Vector2(206, 146)
 texture = ExtResource("12_mx3pw")
 metadata/_edit_group_ = true
 
-[node name="Walls" parent="BoxesFolder/MedBox3" instance=ExtResource("11_wj8lh")]
+[node name="Walls" parent="BackgroundStuff/BoxesFolder/MedBox3" instance=ExtResource("11_wj8lh")]
 position = Vector2(-16, -16)
 scale = Vector2(1.6, 1.6)
 
-[node name="SmallBox" type="Sprite2D" parent="BoxesFolder"]
+[node name="SmallBox" type="Sprite2D" parent="BackgroundStuff/BoxesFolder"]
 texture_filter = 1
 position = Vector2(141, 110)
 texture = ExtResource("13_3atr8")
 metadata/_edit_group_ = true
 
-[node name="Walls" parent="BoxesFolder/SmallBox" instance=ExtResource("11_wj8lh")]
+[node name="Walls" parent="BackgroundStuff/BoxesFolder/SmallBox" instance=ExtResource("11_wj8lh")]
 position = Vector2(-8, -8)
 scale = Vector2(0.8, 0.8)
 
-[node name="SmallBox2" type="Sprite2D" parent="BoxesFolder"]
+[node name="SmallBox2" type="Sprite2D" parent="BackgroundStuff/BoxesFolder"]
 texture_filter = 1
 position = Vector2(106, 143)
 texture = ExtResource("13_3atr8")
 metadata/_edit_group_ = true
 
-[node name="Walls" parent="BoxesFolder/SmallBox2" instance=ExtResource("11_wj8lh")]
+[node name="Walls" parent="BackgroundStuff/BoxesFolder/SmallBox2" instance=ExtResource("11_wj8lh")]
 position = Vector2(-8, -8)
 scale = Vector2(0.8, 0.8)
 
-[node name="SmallBox3" type="Sprite2D" parent="BoxesFolder"]
+[node name="SmallBox3" type="Sprite2D" parent="BackgroundStuff/BoxesFolder"]
 texture_filter = 1
 position = Vector2(417, 143)
 texture = ExtResource("13_3atr8")
 metadata/_edit_group_ = true
 
-[node name="Walls" parent="BoxesFolder/SmallBox3" instance=ExtResource("11_wj8lh")]
+[node name="Walls" parent="BackgroundStuff/BoxesFolder/SmallBox3" instance=ExtResource("11_wj8lh")]
 position = Vector2(-8, -8)
 scale = Vector2(0.8, 0.8)
 
-[node name="Lantern" parent="." instance=ExtResource("16_3s04o")]
+[node name="Lantern" parent="BackgroundStuff" instance=ExtResource("16_3s04o")]
 position = Vector2(341, 28)
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("8_pihmt")]
@@ -239,5 +253,5 @@ position = Vector2(205, 119)
 texture = ExtResource("14_5en38")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RollingBomb"]
-position = Vector2(205, 119)
+position = Vector2(205, 121)
 shape = SubResource("CircleShape2D_twqg6")

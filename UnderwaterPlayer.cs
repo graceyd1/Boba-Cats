@@ -112,8 +112,10 @@ public partial class UnderwaterPlayer : Player
 				float massRatio = Mass / (Mass + bomb.bombMass);
 				//GetNormal returns Vector2 pointing where it was hit, - flips it to point the other way
 				Vector2 impulse = -collisionInfo.GetNormal() * Velocity.Length() * massRatio;
+
 				//Gets position of collision in global coordinates, convert to local coordinates
 				Vector2 positionHit = ToLocal(collisionInfo.GetPosition());
+				
 				//checks that player didn't hit from above (which makes it do wierd things)
 				//GetNormal returns normal vector of collision (points towards what hit it)
 				if (!(collisionInfo.GetNormal().Y < -0.6f)) {
