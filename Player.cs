@@ -57,6 +57,7 @@ public partial class Player : CharacterBody2D
 			velocity.Y -= 1;
 		}
 
+		var originalY = velocity.Y;
 		//gravity and velocity modifier
 		velocity.Y += Gravity;
 	
@@ -93,6 +94,14 @@ public partial class Player : CharacterBody2D
 				animatedSprite2D.Animation = "left_sit";
 			}
 			
+		}
+		if (originalY != 0) {
+			if (facingRight) {
+				animatedSprite2D.Animation = "swim-right";
+			}
+			else {
+				animatedSprite2D.Animation = "swim-left";
+			}
 		}
 		
 
