@@ -3,6 +3,12 @@ using System;
 
 public partial class UnderwaterPlayer : Player
 {
+	//Stores what type of coral player is stuck in
+	public enum InCoral {
+		VERTICAL, HORIZONTAL, NONE
+	}
+	
+	public InCoral CoralStatus = InCoral.NONE;
 	
 	public override void _Ready() {
 		base._Ready();
@@ -12,17 +18,21 @@ public partial class UnderwaterPlayer : Player
 	
 	public override void _PhysicsProcess(double delta) {
 		var velocity = Vector2.Zero; //(0, 0)
-		if (Input.IsActionPressed("move_right")) {
-			velocity.X += 1;
+		if (CoralStatus != InCoral.VERTICAL) {
+			if (Input.IsActionPressed("move_right")) {
+				velocity.X += 1;
+			}
+			if (Input.IsActionPressed("move_left")) {
+				velocity.X -= 1;
+			}
 		}
-		if (Input.IsActionPressed("move_left")) {
-			velocity.X -= 1;
-		}
-		if (Input.IsActionPressed("move_down")) {
-			velocity.Y += 1;
-		}
-		if (Input.IsActionPressed("move_up")) {
-			velocity.Y -= 1;
+		if (CoralStatus != InCoral.HORIZONTAL) {
+			if (Input.IsActionPressed("move_down")) {
+				velocity.Y += 1;
+			}
+			if (Input.IsActionPressed("move_up")) {
+				velocity.Y -= 1;
+			}
 		}
 
 		var originalY = velocity.Y;
@@ -116,12 +126,21 @@ public partial class UnderwaterPlayer : Player
 	public void OnTubeCoralPull(Vector2 tubeVelocity)
 	{
 		setVelocityModifier(tubeVelocity);
+		
+		if (tubeVelocity.X != 0) {
+			CoralStatus = InCoral.HORIZONTAL;
+		}
+		else {
+			CoralStatus = InCoral.VERTICAL;
+		}
+		
 	}
 
 	//stop pulling the character when it leaves the AOE
 	public void OnTubeCoralUnpull()
 	{
 		setVelocityModifier(Vector2.Zero);
+		CoralStatus = InCoral.NONE;
 	}
 
 }

@@ -120,15 +120,4 @@ public partial class Player : CharacterBody2D
 		velocityModifier = vel;
 	}
 
-	//moved to UnderwaterPlayer:
-	// public void OnTubeCoralPull(Vector2 tubeVelocity)
-	// {
-	// 	velocityModifier = tubeVelocity;
-	// }
-
-	// //stop pulling the character when it leaves the AOE
-	// public void OnTubeCoralUnpull()
-	// {
-	// 	velocityModifier = Vector2.Zero;
-	// }
 }
