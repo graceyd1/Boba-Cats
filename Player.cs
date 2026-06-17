@@ -11,6 +11,8 @@ public partial class Player : CharacterBody2D
 	public static int coins {get; set; } = 0;
 	
 	public float Gravity{get; set;}
+	
+	public float Mass = 4.54f; //in kg
 
 
 
@@ -121,7 +123,28 @@ public partial class Player : CharacterBody2D
 		}
 
 		//Position += velocity * (float)delta;
-		MoveAndCollide(velocity * (float)delta); //character2d movement
+		//MoveAndCollide(velocity * (float)delta); //character2d movement
+		
+		Velocity = velocity;
+		MoveAndSlide();
+		int collisionCount = GetSlideCollisionCount();
+		for (int i = 0; i < collisionCount; i++) {
+			//get info returned from MoveAndCollide about collisions
+			var collisionInfo = GetSlideCollision(i);
+			var collider = collisionInfo.GetCollider();
+			if (collider is RollingBomb bomb) {
+				float massRatio = Mass / (Mass + bomb.bombMass);
+				//GetNormal returns Vector2 pointing where it was hit, - flips it to point the other way
+				Vector2 impulse = -collisionInfo.GetNormal() * Mass * Velocity.Length() * massRatio;
+				//Gets position of collision in global coordinates, convert to local coordinates
+				Vector2 positionHit = ToLocal(collisionInfo.GetPosition());
+				//checks that player didn't hit from above (which makes it do wierd things)
+				//GetNormal returns normal vector of collision (points towards what hit it)
+				if (!(collisionInfo.GetNormal().Y < -0.5f)) {
+					bomb.ApplyImpulse(impulse, positionHit);
+				}
+			}
+		}
 	}
 
 	//player enteres hitbox

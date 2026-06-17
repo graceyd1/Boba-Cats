@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dflvchrpqg7qo"]
+[gd_scene load_steps=24 format=3 uid="uid://dflvchrpqg7qo"]
 
 [ext_resource type="Texture2D" uid="uid://bu1s2q5m3aj17" path="res://assets/backgrounds/box_room/box_room0.png" id="1_qieuq"]
 [ext_resource type="Texture2D" uid="uid://qog2naajank2" path="res://assets/backgrounds/box_room/box_room1.png" id="2_brwye"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://vxeeag75b113" path="res://assets/background_items/bomb.png" id="14_5en38"]
 [ext_resource type="PackedScene" uid="uid://dreu42hj60gc6" path="res://lantern.tscn" id="16_3s04o"]
 [ext_resource type="Texture2D" uid="uid://bekphjfbgb21g" path="res://assets/background_items/pure_vine.png" id="17_15pkn"]
+[ext_resource type="Script" path="res://RollingBomb.cs" id="20_p8tmg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i07pw"]
 animations = [{
@@ -34,6 +35,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_twqg6"]
+radius = 8.0
 
 [node name="BoxRoom" type="Node2D"]
 
@@ -169,11 +173,6 @@ metadata/_edit_group_ = true
 position = Vector2(-8, -8)
 scale = Vector2(0.8, 0.8)
 
-[node name="Bomb" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(205, 119)
-texture = ExtResource("14_5en38")
-
 [node name="Lantern" parent="." instance=ExtResource("16_3s04o")]
 position = Vector2(341, 28)
 
@@ -230,3 +229,15 @@ scale = Vector2(12, 1)
 [node name="LeftWall" parent="WallsFolder" instance=ExtResource("11_wj8lh")]
 position = Vector2(-15, 0)
 scale = Vector2(1, 10)
+
+[node name="RollingBomb" type="RigidBody2D" parent="."]
+script = ExtResource("20_p8tmg")
+
+[node name="Bomb" type="Sprite2D" parent="RollingBomb"]
+texture_filter = 1
+position = Vector2(205, 119)
+texture = ExtResource("14_5en38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RollingBomb"]
+position = Vector2(205, 119)
+shape = SubResource("CircleShape2D_twqg6")
