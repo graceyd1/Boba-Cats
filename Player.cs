@@ -23,13 +23,13 @@ public partial class Player : CharacterBody2D
 	private Boolean invulnerable;
 
 	//player flashing animation (when hit)
-	private Boolean flash;
+	public Boolean flash{get; set;}
 	
 	//determines player sitting position
-	private Boolean facingRight;
+	public Boolean facingRight{get; set;}
 
 	//stores velocity modifiers such as wind/tube coral pull
-	private Vector2 velocityModifier;
+	public Vector2 velocityModifier{get; set;}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -42,111 +42,7 @@ public partial class Player : CharacterBody2D
 		//gravity = Gravity.Underwater; //todo - change to update based on the player's room
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _PhysicsProcess(double delta)
-	{
-		var velocity = Vector2.Zero; //(0, 0)
-		if (Input.IsActionPressed("move_right")) {
-			velocity.X += 1;
-		}
-		if (Input.IsActionPressed("move_left")) {
-			velocity.X -= 1;
-		}
-		if (Input.IsActionPressed("move_down")) {
-			velocity.Y += 1;
-		}
-		if (Input.IsActionPressed("move_up")) {
-			velocity.Y -= 1;
-		}
-
-		var originalY = velocity.Y;
-		//gravity and velocity modifier
-		velocity.Y += Gravity;
 	
-		velocity = velocity.Normalized() + velocityModifier;
-	
-
-		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		if (velocity.Length() > 0) {
-			velocity = velocity * Speed;
-			
-			animatedSprite2D.Play();
-		}
-		else {
-			animatedSprite2D.Stop();
-		}
-
-		//setting the animation
-		if (velocity.X < 0)
-		{
-			animatedSprite2D.Animation = "swim-left";
-			facingRight = false;
-		}
-		else if (velocity.X > 0)
-		{
-			animatedSprite2D.Animation = "swim-right";
-			facingRight = true;
-		}
-		else
-		{
-			if (facingRight) {
-				animatedSprite2D.Animation = "sit-helmet";
-			}
-			else {
-				animatedSprite2D.Animation = "left_sit";
-			}
-			
-		}
-		if (originalY != 0) {
-			if (facingRight) {
-				animatedSprite2D.Animation = "swim-right";
-			}
-			else {
-				animatedSprite2D.Animation = "swim-left";
-			}
-		}
-		
-
-		//flashing
-		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
-		if (flash)
-		{
-			var modulate = animatedSprite2D.Modulate;
-			if (hurtTimer.TimeLeft % 0.2 < 0.1)
-			{
-				animatedSprite2D.Modulate = new Color(modulate.R, modulate.G, modulate.B, (float) 1);
-			}
-			else
-			{
-				animatedSprite2D.Modulate = new Color(modulate.R, modulate.G, modulate.B, (float) 0.5);
-			}
-		}
-
-		//Position += velocity * (float)delta;
-		//MoveAndCollide(velocity * (float)delta); //character2d movement
-		
-		Velocity = velocity;
-		MoveAndSlide();
-		int collisionCount = GetSlideCollisionCount();
-		for (int i = 0; i < collisionCount; i++) {
-			//get info returned from MoveAndCollide about collisions
-			var collisionInfo = GetSlideCollision(i);
-			var collider = collisionInfo.GetCollider();
-			if (collider is RollingBomb bomb) {
-				float massRatio = Mass / (Mass + bomb.bombMass);
-				//GetNormal returns Vector2 pointing where it was hit, - flips it to point the other way
-				Vector2 impulse = -collisionInfo.GetNormal() * Mass * Velocity.Length() * massRatio;
-				//Gets position of collision in global coordinates, convert to local coordinates
-				Vector2 positionHit = ToLocal(collisionInfo.GetPosition());
-				//checks that player didn't hit from above (which makes it do wierd things)
-				//GetNormal returns normal vector of collision (points towards what hit it)
-				if (!(collisionInfo.GetNormal().Y < -0.5f)) {
-					bomb.ApplyImpulse(impulse, positionHit);
-				}
-			}
-		}
-	}
-
 	//player enteres hitbox
 	private void OnHurtboxAreaEntered(Node2D area)
 	{
