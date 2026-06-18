@@ -1,55 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://djy0cxmipcbm6"]
+[gd_scene load_steps=9 format=3 uid="uid://djy0cxmipcbm6"]
 
 [ext_resource type="Script" path="res://Player.cs" id="1_vr4g2"]
-[ext_resource type="Texture2D" uid="uid://bgw8wor80bqch" path="res://assets/player-sprites/player_sit_helmet.png" id="2_1jxqw"]
-[ext_resource type="Texture2D" uid="uid://olhbc16xn3b0" path="res://assets/player-sprites/player_left_sit.png" id="2_x8lap"]
-[ext_resource type="Texture2D" uid="uid://b6jyn37imgoa8" path="res://assets/player-sprites/player_swim_left1.png" id="3_dw050"]
-[ext_resource type="Texture2D" uid="uid://ce6rt5bjbyxej" path="res://assets/player-sprites/player_swim_left2.png" id="4_b26j0"]
-[ext_resource type="Texture2D" uid="uid://bpeok7pnapo65" path="res://assets/player-sprites/player_swim_right1.png" id="5_n7ghd"]
-[ext_resource type="Texture2D" uid="uid://dr4xlluyikbwx" path="res://assets/player-sprites/player_swim_right2.png" id="6_nvl01"]
 [ext_resource type="Script" path="res://Camera2d.cs" id="8_6m7sy"]
-[ext_resource type="PackedScene" path="res://player_health.tscn" id="8_pkvse"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_maa7k"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_x8lap")
-}],
-"loop": false,
-"name": &"left_sit",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_1jxqw")
-}],
-"loop": false,
-"name": &"sit-helmet",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_dw050")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_b26j0")
-}],
-"loop": true,
-"name": &"swim-left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_n7ghd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_nvl01")
-}],
-"loop": true,
-"name": &"swim-right",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://7106o3opoex1" path="res://player_health.tscn" id="8_pkvse"]
+[ext_resource type="PackedScene" uid="uid://codqx6yrl1246" path="res://flashlight.tscn" id="10_48ern"]
+[ext_resource type="Texture2D" uid="uid://cqch0hxn04p2f" path="res://assets/lights/player_glow.png" id="11_56xbu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i86wa"]
 radius = 8.0
@@ -58,17 +13,15 @@ height = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jxqw"]
 size = Vector2(12, 13)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03md2"]
+size = Vector2(151, 64)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(42, 71)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_vr4g2")
 metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_maa7k")
-animation = &"sit-helmet"
 
 [node name="CollisionCapsule" type="CollisionShape2D" parent="."]
 rotation = 4.71239
@@ -102,6 +55,20 @@ z_index = 4096
 z_as_relative = false
 position = Vector2(-140.5, -72.5)
 scale = Vector2(0.9375, 1.0625)
+
+[node name="Flashlight" parent="." instance=ExtResource("10_48ern")]
+
+[node name="Area2D" type="Area2D" parent="Flashlight"]
+z_index = 4000
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flashlight/Area2D"]
+position = Vector2(65.5, 1)
+shape = SubResource("RectangleShape2D_03md2")
+
+[node name="PlayerGlow" type="PointLight2D" parent="."]
+texture_filter = 1
+texture = ExtResource("11_56xbu")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="OnHurtboxAreaEntered"]
 [connection signal="timeout" from="HurtTimer" to="." method="OnHurtTimerTimeout"]

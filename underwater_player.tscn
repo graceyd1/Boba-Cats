@@ -1,13 +1,62 @@
-[gd_scene load_steps=3 format=3 uid="uid://qj5ya1dmxy7r"]
+[gd_scene load_steps=10 format=3 uid="uid://qj5ya1dmxy7r"]
 
 [ext_resource type="PackedScene" uid="uid://djy0cxmipcbm6" path="res://player.tscn" id="1_sdm31"]
 [ext_resource type="Script" path="res://UnderwaterPlayer.cs" id="2_psf2j"]
+[ext_resource type="Texture2D" uid="uid://olhbc16xn3b0" path="res://assets/player/player_left_sit.png" id="3_y4lbc"]
+[ext_resource type="Texture2D" uid="uid://bgw8wor80bqch" path="res://assets/player/player_sit_helmet.png" id="4_af4ko"]
+[ext_resource type="Texture2D" uid="uid://b6jyn37imgoa8" path="res://assets/player/player_swim_left1.png" id="5_j8mtl"]
+[ext_resource type="Texture2D" uid="uid://ce6rt5bjbyxej" path="res://assets/player/player_swim_left2.png" id="6_bqj2j"]
+[ext_resource type="Texture2D" uid="uid://bpeok7pnapo65" path="res://assets/player/player_swim_right1.png" id="7_1vhyf"]
+[ext_resource type="Texture2D" uid="uid://dr4xlluyikbwx" path="res://assets/player/player_swim_right2.png" id="8_j7sbp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8vcf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y4lbc")
+}],
+"loop": false,
+"name": &"left_sit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_af4ko")
+}],
+"loop": false,
+"name": &"sit-helmet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_j8mtl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bqj2j")
+}],
+"loop": true,
+"name": &"swim-left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1vhyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j7sbp")
+}],
+"loop": true,
+"name": &"swim-right",
+"speed": 5.0
+}]
 
 [node name="UnderwaterPlayer" instance=ExtResource("1_sdm31")]
 position = Vector2(84, 36)
 script = ExtResource("2_psf2j")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_i8vcf")
 animation = &"swim-left"
 
 [connection signal="Hit" from="." to="Camera2D/Player_Health" method="OnPlayerHit"]
