@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://baxl8qapcb5l2"]
+
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="1_h0ebt"]
+[ext_resource type="PackedScene" uid="uid://dx7hhstl21um6" path="res://seabunny.tscn" id="2_wjhj5"]
+[ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_g0oqo"]
+
+[node name="SeabunnyBossRoom" type="Node2D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_h0ebt")]
+position = Vector2(2, 159)
+scale = Vector2(20, 1)
+
+[node name="RightWall" parent="." instance=ExtResource("1_h0ebt")]
+position = Vector2(319, -22)
+scale = Vector2(1, 10)
+
+[node name="LeftWall" parent="." instance=ExtResource("1_h0ebt")]
+position = Vector2(1, -21)
+scale = Vector2(1, 10)
+
+[node name="Seabunny" parent="." instance=ExtResource("2_wjhj5")]
+position = Vector2(222, 129)
+
+[node name="GroundPlayer" parent="." instance=ExtResource("3_g0oqo")]
+position = Vector2(100, 144)

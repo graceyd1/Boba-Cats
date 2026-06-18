@@ -46,6 +46,7 @@ public partial class Player : CharacterBody2D
 	//player enteres hitbox
 	private void OnHurtboxAreaEntered(Node2D area)
 	{
+		GD.Print("hitbox entered");
 		if (!invulnerable)
 		{
 			GetHit();

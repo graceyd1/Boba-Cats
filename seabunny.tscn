@@ -1,0 +1,217 @@
+[gd_scene load_steps=39 format=3 uid="uid://dx7hhstl21um6"]
+
+[ext_resource type="Script" path="res://Seabunny.cs" id="1_lxr8e"]
+[ext_resource type="Texture2D" uid="uid://c5h71oineskh6" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_climb4.png" id="1_rdlt2"]
+[ext_resource type="Texture2D" uid="uid://dtgkmeppijx0o" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_climb5.png" id="2_r3b44"]
+[ext_resource type="Texture2D" uid="uid://dvp3l68jpdwfq" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash4.png" id="3_mg2mv"]
+[ext_resource type="Texture2D" uid="uid://dto6lnurvd168" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash5.png" id="4_gvtnk"]
+[ext_resource type="Texture2D" uid="uid://ctelh3plhqju1" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_climb8.png" id="5_rxo4q"]
+[ext_resource type="Texture2D" uid="uid://hstmu0ig42tr" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_climb9.png" id="6_l5ebh"]
+[ext_resource type="Texture2D" uid="uid://djs3ggdxjckxa" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_climb10.png" id="7_d7dm5"]
+[ext_resource type="Texture2D" uid="uid://blont7ymwsvk6" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_climb11.png" id="8_xrbqb"]
+[ext_resource type="Texture2D" uid="uid://27m0fhiartpg" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash8.png" id="9_uvms7"]
+[ext_resource type="Texture2D" uid="uid://bntxqphc48wws" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash9.png" id="10_63jvc"]
+[ext_resource type="Texture2D" uid="uid://g0hga2d1t7s0" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash10.png" id="11_75otb"]
+[ext_resource type="Texture2D" uid="uid://caf03j6fqofpb" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash11.png" id="12_siog1"]
+[ext_resource type="Texture2D" uid="uid://6nws2y7qli5o" path="res://assets/enemy_sprites/seabunny/seabunny_idle0.png" id="13_lfxq7"]
+[ext_resource type="Texture2D" uid="uid://c2rcglv4nr5qm" path="res://assets/enemy_sprites/seabunny/seabunny_idle1.png" id="14_7to8p"]
+[ext_resource type="Texture2D" uid="uid://dlv3iiwrhvxxs" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin0.png" id="15_58x4e"]
+[ext_resource type="Texture2D" uid="uid://cbty8yk6i2att" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin1.png" id="16_fex5d"]
+[ext_resource type="Texture2D" uid="uid://b85cxwocy86qy" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin2.png" id="17_q3bqj"]
+[ext_resource type="Texture2D" uid="uid://bi00ibvmip861" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin3.png" id="18_12bvw"]
+[ext_resource type="Texture2D" uid="uid://ch36cwcb8dnbp" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin4.png" id="19_1qo5v"]
+[ext_resource type="Texture2D" uid="uid://qvp3ms37cpto" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin5.png" id="20_anj6g"]
+[ext_resource type="Texture2D" uid="uid://dtlh5sqncfhmn" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin6.png" id="21_jq138"]
+[ext_resource type="Texture2D" uid="uid://ctvlw6w4u7fwn" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin7.png" id="22_n5tc0"]
+[ext_resource type="Texture2D" uid="uid://c4bqfrw8b46nh" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin8.png" id="23_hamhh"]
+[ext_resource type="Texture2D" uid="uid://qql5mjmtdc4a" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin9.png" id="24_h7pgf"]
+[ext_resource type="Texture2D" uid="uid://b2j3v7wdkjcc8" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin10.png" id="25_fvdec"]
+[ext_resource type="Texture2D" uid="uid://bajmr1yncc2h" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin11.png" id="26_jdtip"]
+[ext_resource type="Texture2D" uid="uid://db0vg3wuf7s7s" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_go0.png" id="27_paeum"]
+[ext_resource type="Texture2D" uid="uid://c1hjlu1a6lag6" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_go1.png" id="28_o00xl"]
+[ext_resource type="Texture2D" uid="uid://c6t6oadvm1x6f" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_go2.png" id="29_dfpb5"]
+[ext_resource type="Texture2D" uid="uid://diurjimmpxpba" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_go3.png" id="30_de2q5"]
+[ext_resource type="Texture2D" uid="uid://85pf6sh7s73k" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash0.png" id="31_wj7fe"]
+[ext_resource type="Texture2D" uid="uid://dbvf7pcodf3lv" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash1.png" id="32_ji2id"]
+[ext_resource type="Texture2D" uid="uid://ddr4gyig053ha" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash2.png" id="33_bmy4k"]
+[ext_resource type="Texture2D" uid="uid://kc2qf2s1m2vm" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash3.png" id="34_o8xnw"]
+[ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="36_pik4a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8usnm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rdlt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r3b44")
+}],
+"loop": true,
+"name": &"climbing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mg2mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gvtnk")
+}],
+"loop": true,
+"name": &"dashing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rxo4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l5ebh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d7dm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xrbqb")
+}],
+"loop": false,
+"name": &"end_climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_uvms7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_63jvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_75otb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_siog1")
+}],
+"loop": false,
+"name": &"end_dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_lfxq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7to8p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_58x4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fex5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_q3bqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_12bvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1qo5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_anj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jq138")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_n5tc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_hamhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_h7pgf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_fvdec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_jdtip")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_paeum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_o00xl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_dfpb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_de2q5")
+}],
+"loop": true,
+"name": &"start_climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_wj7fe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_ji2id")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_bmy4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_o8xnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mg2mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gvtnk")
+}],
+"loop": false,
+"name": &"start_dash",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tsjyq"]
+radius = 24.0
+height = 88.0
+
+[node name="Seabunny" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_lxr8e")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_8usnm")
+animation = &"dashing"
+
+[node name="Hitbox" parent="." instance=ExtResource("36_pik4a")]
+position = Vector2(3, 3)
+scale = Vector2(4.7, 2.7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tsjyq")
+
+[node name="IdleTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="IdleTimer" to="." method="OnIdleTimerTimeout"]
