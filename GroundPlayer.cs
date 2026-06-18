@@ -34,13 +34,38 @@ public partial class GroundPlayer : Player
 			// Get the input direction and handle the movement/deceleration.
 			// As good practice, you should replace UI actions with custom gameplay actions.
 			Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+			var animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D2");
 			if (direction != Vector2.Zero)
 			{
 				velocity.X = direction.X * Speed;
+				if (direction.X < 0) {
+					animatedSprite.Animation = "walk_left";
+					facingRight = false;
+				}
+				else if (direction.X > 0) {
+					animatedSprite.Animation = "walk_right";
+					facingRight = true;
+				}
+				if (direction.Y != 0) {
+					if (facingRight) {
+						animatedSprite.Animation = "jump_right";
+					}
+					else {
+						animatedSprite.Animation ="jump_left";
+					}
+				}
+				animatedSprite.Play();
 			}
 			else
 			{
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+				if (facingRight) {
+					animatedSprite.Animation = "sit_right";
+				}
+				else {
+					animatedSprite.Animation = "sit_left";
+				}
+				animatedSprite.Stop();
 			}
 
 			Velocity = velocity;

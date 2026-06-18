@@ -54,7 +54,7 @@ animations = [{
 position = Vector2(84, 36)
 script = ExtResource("2_psf2j")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="5"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i8vcf")
 animation = &"swim-left"
