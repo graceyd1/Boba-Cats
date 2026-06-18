@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://djy0cxmipcbm6"]
+[gd_scene load_steps=7 format=3 uid="uid://djy0cxmipcbm6"]
 
 [ext_resource type="Script" path="res://Player.cs" id="1_vr4g2"]
+[ext_resource type="PackedScene" uid="uid://qgqaega0h2io" path="res://flashlight.tscn" id="4_u4d4c"]
 [ext_resource type="Script" path="res://Camera2d.cs" id="8_6m7sy"]
 [ext_resource type="PackedScene" path="res://player_health.tscn" id="8_pkvse"]
 
@@ -50,6 +51,8 @@ z_index = 4096
 z_as_relative = false
 position = Vector2(-140.5, -72.5)
 scale = Vector2(0.9375, 1.0625)
+
+[node name="Flashlight" parent="." instance=ExtResource("4_u4d4c")]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="OnHurtboxAreaEntered"]
 [connection signal="timeout" from="HurtTimer" to="." method="OnHurtTimerTimeout"]

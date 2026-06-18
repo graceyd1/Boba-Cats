@@ -85,7 +85,7 @@ public partial class GroundPlayer : Player
 			if (Input.IsActionPressed("move_left")) {
 				dir.X -= 1;
 			}
-			var animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+			var animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D2");
 			if (dir.Length() > 0) {
 				dir = dir.Normalized() * Speed;
 				
