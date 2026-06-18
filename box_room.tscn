@@ -245,6 +245,7 @@ position = Vector2(-15, 0)
 scale = Vector2(1, 10)
 
 [node name="RollingBomb" type="RigidBody2D" parent="."]
+collision_mask = 3
 script = ExtResource("20_p8tmg")
 
 [node name="Bomb" type="Sprite2D" parent="RollingBomb"]

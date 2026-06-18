@@ -114,12 +114,12 @@ public partial class UnderwaterPlayer : Player
 				Vector2 impulse = -collisionInfo.GetNormal() * Velocity.Length() * massRatio;
 
 				//Gets position of collision in global coordinates, convert to local coordinates
-				Vector2 positionHit = ToLocal(collisionInfo.GetPosition());
+				//Vector2 positionHit = ToLocal(collisionInfo.GetPosition());
 				
 				//checks that player didn't hit from above (which makes it do wierd things)
 				//GetNormal returns normal vector of collision (points towards what hit it)
-				if (!(collisionInfo.GetNormal().Y < -0.6f)) {
-					bomb.ApplyImpulse(impulse, positionHit);
+				if (!(collisionInfo.GetNormal().Y < -0.7f)) {
+					bomb.ApplyCentralImpulse(impulse);
 				}
 			}
 		}
