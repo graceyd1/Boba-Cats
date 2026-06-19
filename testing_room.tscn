@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cs8lm72sbi1k8"]
+[gd_scene load_steps=8 format=3 uid="uid://cs8lm72sbi1k8"]
 
 [ext_resource type="Texture2D" uid="uid://c5aconv8x8617" path="res://assets/backgrounds/first_room/first_room_background.png" id="1_3xtj5"]
 [ext_resource type="Texture2D" uid="uid://b6qt7sngx5gkb" path="res://assets/backgrounds/first_room/first_room_rocks.png" id="3_jxtuf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="5_y4j0h"]
 [ext_resource type="PackedScene" uid="uid://bp4jat81a6c5d" path="res://tube_coral.tscn" id="6_3bk1b"]
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="7_glu6j"]
+[ext_resource type="PackedScene" uid="uid://c2paeopskk52q" path="res://big_jellyfish.tscn" id="7_y6awn"]
 
 [node name="TestingRoom" type="Node2D"]
 
@@ -13,6 +14,9 @@
 texture_filter = 1
 position = Vector2(300, 90)
 texture = ExtResource("1_3xtj5")
+
+[node name="UnderwaterPlayer" parent="." instance=ExtResource("7_glu6j")]
+position = Vector2(128, 115)
 
 [node name="Rocks" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -47,8 +51,8 @@ PullDirection = 3
 [node name="TubeCoral2" parent="." instance=ExtResource("6_3bk1b")]
 position = Vector2(217, 142)
 
-[node name="UnderwaterPlayer" parent="." instance=ExtResource("7_glu6j")]
-position = Vector2(128, 115)
+[node name="BigJellyfish" parent="." instance=ExtResource("7_y6awn")]
+position = Vector2(46, 122)
 
 [connection signal="Pull" from="TubeCoral" to="UnderwaterPlayer" method="OnTubeCoralPull"]
 [connection signal="Unpull" from="TubeCoral" to="UnderwaterPlayer" method="OnTubeCoralUnpull"]
