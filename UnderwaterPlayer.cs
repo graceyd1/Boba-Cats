@@ -9,11 +9,14 @@ public partial class UnderwaterPlayer : Player
 	}
 	
 	public InCoral CoralStatus = InCoral.NONE;
+	AnimatedSprite2D animatedSprite;
 	
 	public override void _Ready() {
 		base._Ready();
 		base.Speed = 100;
 		base.Gravity = 0.001F;
+
+		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	}
 	
 	public override void _PhysicsProcess(double delta) {
@@ -41,60 +44,59 @@ public partial class UnderwaterPlayer : Player
 	
 		velocity = velocity.Normalized() + velocityModifier;
 	
-
-		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		if (velocity.Length() > 0) {
 			velocity = velocity * Speed;
 			
-			animatedSprite2D.Play();
+			animatedSprite.Play();
 		}
 		else {
-			animatedSprite2D.Stop();
+			animatedSprite.Stop();
 		}
 
 		//setting the animation
 		if (velocity.X < 0)
 		{
-			animatedSprite2D.Animation = "swim-left";
+			animatedSprite.Animation = "swim-left";
 			facingRight = false;
 		}
 		else if (velocity.X > 0)
 		{
-			animatedSprite2D.Animation = "swim-right";
+			animatedSprite.Animation = "swim-right";
 			facingRight = true;
 		}
 		else
 		{
 			if (facingRight) {
-				animatedSprite2D.Animation = "sit-helmet";
+				animatedSprite.Animation = "sit-helmet";
 			}
 			else {
-				animatedSprite2D.Animation = "left_sit";
+				animatedSprite.Animation = "left_sit";
 			}
 			
 		}
 		if (originalY != 0) {
 			if (facingRight) {
-				animatedSprite2D.Animation = "swim-right";
+				animatedSprite.Animation = "swim-right";
 			}
 			else {
-				animatedSprite2D.Animation = "swim-left";
+				animatedSprite.Animation = "swim-left";
 			}
 		}
 		
 
-		//flashing
+		//flashing when hurt
 		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
 		if (flash)
 		{
-			var modulate = animatedSprite2D.Modulate;
+			var modulate = animatedSprite.Modulate;
+			var originalR = modulate.R;
 			if (hurtTimer.TimeLeft % 0.2 < 0.1)
 			{
-				animatedSprite2D.Modulate = new Color(modulate.R, modulate.G, modulate.B, (float) 1);
+				animatedSprite.Modulate = new Color(originalR, modulate.G, modulate.B, (float) 1);
 			}
 			else
 			{
-				animatedSprite2D.Modulate = new Color(modulate.R, modulate.G, modulate.B, (float) 0.5);
+				animatedSprite.Modulate = new Color(100, modulate.G, modulate.B, (float) 0.5);
 			}
 		}
 
