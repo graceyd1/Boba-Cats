@@ -9,12 +9,15 @@ public partial class Seabunny : CharacterBody2D
 	private AnimatedSprite2D animatedSprite;
 	private Godot.Timer idleTimer;
 	private Boolean facingLeft;
+	private PackedScene bullet;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		facingLeft = true;
 		Velocity = Vector2.Zero;
+		bullet = GD.Load<PackedScene>("res://seabunnybullet.tscn");
+		GD.Randomize();
 		
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animatedSprite.Animation = "idle";
@@ -41,7 +44,7 @@ public partial class Seabunny : CharacterBody2D
 
 	private async Task doAttack()
 	{
-		int attack = GD.RandRange(0, 2);
+		int attack = GD.RandRange(0, 3);
 		if (attack == 0)
 		{
 			await dash(1);
@@ -109,5 +112,43 @@ public partial class Seabunny : CharacterBody2D
 	private async Task spin()
 	{
 		GD.Print("spin"); //
+		animatedSprite.Animation = "spin";
+		animatedSprite.Play();
+		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+		
+		GD.Print("facing left: " + facingLeft);
+		//clone bullets
+		if (facingLeft) {
+			AddBullet(new Vector2(-70, 2), 0);
+			AddBullet(new Vector2(-100, -17), 0);
+			AddBullet(new Vector2(-132, 4), 0);
+			AddBullet(new Vector2(-119, 31), 0);
+			AddBullet(new Vector2(-78, 31), 0);
+		}
+		else {
+			AddBullet(new Vector2(70, -2), 90);
+			AddBullet(new Vector2(100, 17), 90);
+			AddBullet(new Vector2(132, -4), 90);
+			AddBullet(new Vector2(119, -31), 90);
+			AddBullet(new Vector2(78, -31), 90);
+		}
+		
+		GD.Print("Done");
+		
+		
+	}
+	
+	//position: relative to origin of sea bunny (parent)
+	private void AddBullet(Vector2 position, int rot) {
+		Seabunnybullet inst = bullet.Instantiate<Seabunnybullet>();
+		inst.Position = position;
+		inst.Rotation = rot;
+		if (rot == 0) {
+			inst.Left = true;
+		}
+		else {
+			inst.Left = false;
+		}
+		AddChild(inst);
 	}
 }

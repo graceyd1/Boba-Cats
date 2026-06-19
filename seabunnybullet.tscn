@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw82jyijscqsh"]
+
+[ext_resource type="Script" path="res://Seabunnybullet.cs" id="1_3ftx2"]
+[ext_resource type="Texture2D" uid="uid://bv0iqkfnsmyje" path="res://assets/enemy_sprites/seabunny/bullet.png" id="1_gapyq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktm60"]
+size = Vector2(6, 6)
+
+[node name="SeabunnyBullet" type="Area2D"]
+rotation = 3.14159
+script = ExtResource("1_3ftx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(12.8317, 8.79723)
+scale = Vector2(2.08415, 2.10138)
+texture = ExtResource("1_gapyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, 10)
+shape = SubResource("RectangleShape2D_ktm60")

@@ -92,6 +92,9 @@ public partial class Player : CharacterBody2D
 			else if (room == "FirstRoom" || room == "BoxRoom") {
 				respawnPoint = new Vector2(84, 100);
 			}
+			else if (room == "SeabunnyBossRoom") {
+				respawnPoint = new Vector2(100, 144);
+			}
 
 			GlobalPosition = respawnPoint;
 			
