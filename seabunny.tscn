@@ -189,26 +189,28 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tsjyq"]
-radius = 24.0
-height = 88.0
+radius = 19.0
+height = 70.0
 
 [node name="Seabunny" type="CharacterBody2D"]
-position = Vector2(4, 0)
+position = Vector2(15, 7)
 motion_mode = 1
 script = ExtResource("1_lxr8e")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(18.5, 11)
+scale = Vector2(0.691667, 0.725)
 sprite_frames = SubResource("SpriteFrames_8usnm")
 animation = &"spin"
 
 [node name="Hitbox" parent="." instance=ExtResource("36_pik4a")]
-position = Vector2(3, 3)
-scale = Vector2(4.7, 2.7)
+position = Vector2(20, 15)
+scale = Vector2(3, 1.725)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 4)
+position = Vector2(20, 13)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tsjyq")
 

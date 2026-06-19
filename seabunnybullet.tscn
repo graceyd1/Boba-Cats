@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw82jyijscqsh"]
+[gd_scene load_steps=4 format=3 uid="uid://dw82jyijscqsh"]
 
 [ext_resource type="Script" path="res://Seabunnybullet.cs" id="1_3ftx2"]
 [ext_resource type="Texture2D" uid="uid://bv0iqkfnsmyje" path="res://assets/enemy_sprites/seabunny/bullet.png" id="1_gapyq"]
-[ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="3_diu32"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktm60"]
-size = Vector2(29, 26)
+size = Vector2(7.00002, 6.99998)
 
 [node name="SeabunnyBullet" type="Area2D"]
 rotation = 3.14159
@@ -15,13 +14,12 @@ script = ExtResource("1_3ftx2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-3.18124, -4.46185)
-scale = Vector2(9.59062, 8.73093)
+position = Vector2(11.06, 8.4465)
+scale = Vector2(2.47002, 2.27676)
 texture = ExtResource("1_gapyq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 3.45703e-07)
+position = Vector2(12.5, 9.50001)
 shape = SubResource("RectangleShape2D_ktm60")
 
-[node name="Hitbox" parent="." instance=ExtResource("3_diu32")]
-position = Vector2(2, 5.05447e-06)
+[connection signal="body_entered" from="." to="." method="HitPlayer"]

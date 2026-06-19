@@ -116,17 +116,23 @@ public partial class Seabunny : CharacterBody2D
 		animatedSprite.Play();
 		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
 		
-		//clone bullets
-		AddBullet(new Vector2(-31, 12), new Vector2(-1, 0));
-		AddBullet(new Vector2(-18, -8), new Vector2(-1, -1));
-		AddBullet(new Vector2(16, -17), new Vector2(0, -1));
-		AddBullet(new Vector2(51, -10), new Vector2(1, -1));
-		AddBullet(new Vector2(63, 11), new Vector2(1, 0));
+		//clone bullets, positioned left to right
+		AddBullet(new Vector2(0, rand(12, 32)), new Vector2(-1, 0));
+		AddBullet(new Vector2(0, rand(-8, 8)), new Vector2(-1, -1));
+		AddBullet(new Vector2(rand(0, 16), 0), new Vector2(0, -1));
+		AddBullet(new Vector2(rand(51, 60), rand(0, 10)), new Vector2(1, -1));
+		AddBullet(new Vector2(63, rand(20, 33)), new Vector2(1, 0));
 		
 		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
 		GD.Print("Done");
 		
 		
+	}
+	
+	private int rand(int low, int high) {
+		var randomizer = new RandomNumberGenerator();
+		randomizer.Randomize();
+		return randomizer.RandiRange(low, high);
 	}
 	
 	//position: relative to origin of sea bunny (parent)

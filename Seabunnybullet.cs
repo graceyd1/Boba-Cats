@@ -15,4 +15,10 @@ public partial class Seabunnybullet : Area2D
 	{
 		Position += Velocity.Normalized() * Speed * (float)delta;
 	}
+	
+	public void HitPlayer(Node2D obj) {
+		if (obj is Player player) {
+			Hide();
+		}
+	}
 }
