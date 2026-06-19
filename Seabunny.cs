@@ -114,41 +114,26 @@ public partial class Seabunny : CharacterBody2D
 		GD.Print("spin"); //
 		animatedSprite.Animation = "spin";
 		animatedSprite.Play();
-		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
 		
-		GD.Print("facing left: " + facingLeft);
 		//clone bullets
-		if (facingLeft) {
-			AddBullet(new Vector2(-70, 2), 0);
-			AddBullet(new Vector2(-100, -17), 0);
-			AddBullet(new Vector2(-132, 4), 0);
-			AddBullet(new Vector2(-119, 31), 0);
-			AddBullet(new Vector2(-78, 31), 0);
-		}
-		else {
-			AddBullet(new Vector2(70, -2), 90);
-			AddBullet(new Vector2(100, 17), 90);
-			AddBullet(new Vector2(132, -4), 90);
-			AddBullet(new Vector2(119, -31), 90);
-			AddBullet(new Vector2(78, -31), 90);
-		}
+		AddBullet(new Vector2(-31, 12), new Vector2(-1, 0));
+		AddBullet(new Vector2(-18, -8), new Vector2(-1, -1));
+		AddBullet(new Vector2(16, -17), new Vector2(0, -1));
+		AddBullet(new Vector2(51, -10), new Vector2(1, -1));
+		AddBullet(new Vector2(63, 11), new Vector2(1, 0));
 		
+		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
 		GD.Print("Done");
 		
 		
 	}
 	
 	//position: relative to origin of sea bunny (parent)
-	private void AddBullet(Vector2 position, int rot) {
+	private void AddBullet(Vector2 position, Vector2 velocity) {
 		Seabunnybullet inst = bullet.Instantiate<Seabunnybullet>();
 		inst.Position = position;
-		inst.Rotation = rot;
-		if (rot == 0) {
-			inst.Left = true;
-		}
-		else {
-			inst.Left = false;
-		}
+		inst.Velocity = velocity;
 		AddChild(inst);
 	}
 }

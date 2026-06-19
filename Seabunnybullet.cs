@@ -3,7 +3,8 @@ using System;
 
 public partial class Seabunnybullet : Area2D
 {
-	public bool Left{get; set;}
+	public Vector2 Velocity{get; set;}
+	public float Speed = 200;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -12,15 +13,6 @@ public partial class Seabunnybullet : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Left) {
-			var pos = Position;
-			pos.X -= 200 * (float)delta;
-			Position = pos;
-		}
-		else {
-			var pos = Position;
-			pos.X += 200 * (float)delta;
-			Position = pos;
-		}
+		Position += Velocity.Normalized() * Speed * (float)delta;
 	}
 }

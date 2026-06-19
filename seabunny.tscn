@@ -193,6 +193,7 @@ radius = 24.0
 height = 88.0
 
 [node name="Seabunny" type="CharacterBody2D"]
+position = Vector2(4, 0)
 motion_mode = 1
 script = ExtResource("1_lxr8e")
 metadata/_edit_group_ = true
