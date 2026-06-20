@@ -24,8 +24,8 @@ position = Vector2(84, 100)
 
 [node name="Rocks" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(300, 90)
 texture = ExtResource("3_f3kxf")
+centered = false
 
 [node name="OrangeFishEnemy" parent="." instance=ExtResource("5_50yi7")]
 position = Vector2(251, 68)

@@ -118,6 +118,13 @@ public partial class GroundPlayer : Player
 
 		OOBCheck();
 	}
+
+	//change player back to normal after flashing animation
+	public void OnHurtTimerTimeout()
+	{
+		animatedSprite.Modulate = new Color(1, 1, 1, 1);
+	}
+
 	//can change the code to go to different room instead
 	private void OOBCheck() {
 		var pos = GlobalPosition;

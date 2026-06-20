@@ -92,11 +92,11 @@ public partial class UnderwaterPlayer : Player
 			var originalR = modulate.R;
 			if (hurtTimer.TimeLeft % 0.2 < 0.1)
 			{
-				animatedSprite.Modulate = new Color(originalR, modulate.G, modulate.B, (float) 1);
+				animatedSprite.Modulate = new Color(1, 1, 1, 1);
 			}
 			else
 			{
-				animatedSprite.Modulate = new Color(100, modulate.G, modulate.B, (float) 0.5);
+				animatedSprite.Modulate = new Color(100, 1, 1, (float) 0.5);
 			}
 		}
 
@@ -125,6 +125,13 @@ public partial class UnderwaterPlayer : Player
 				}
 			}
 		}
+	}
+
+	//change player back to normal after flashing animation
+	public void OnHurtTimerTimeout()
+	{
+		animatedSprite.Modulate = new Color(1, 1, 1, 1);
+
 	}
 	
 	public void OnTubeCoralPull(Vector2 tubeVelocity)

@@ -1,26 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://b28lwwf0dhiu6"]
+[gd_scene load_steps=4 format=3 uid="uid://b28lwwf0dhiu6"]
 
-[ext_resource type="Script" path="res://Label.cs" id="1_jwqfn"]
+[ext_resource type="Script" path="res://TextBox.cs" id="1_l67vn"]
+[ext_resource type="FontFile" uid="uid://cpdnqe1jl0cys" path="res://assets/Geo_Font/Geo-Regular.ttf" id="2_rm8r5"]
+[ext_resource type="FontFile" uid="uid://bfuw1mrldnem1" path="res://assets/Geo_Font/Geo-Italic.ttf" id="3_1qdry"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4iof"]
-bg_color = Color(0, 0.00392157, 0.00392157, 0.47451)
+[node name="TextBox" type="Node2D"]
+z_index = 4000
+script = ExtResource("1_l67vn")
 
-[node name="text_box" type="PanelContainer"]
-offset_left = 14.0
-offset_top = 25.0
-offset_right = 203.0
-offset_bottom = 115.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_u4iof")
+[node name="PanelContainer" type="PanelContainer" parent="."]
+texture_filter = 1
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = -10.0
+metadata/_edit_group_ = true
 
-[node name="Label" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_rm8r5")
+theme_override_fonts/italics_font = ExtResource("3_1qdry")
 bbcode_enabled = true
-text = "This is a text box"
-script = ExtResource("1_jwqfn")
+text = " [font_size=8]This is a text box.[/font_size] "
+fit_content = true
+scroll_active = false
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

@@ -1,0 +1,158 @@
+[gd_scene load_steps=26 format=3 uid="uid://cs8lm72sbi1k8"]
+
+[ext_resource type="Texture2D" uid="uid://c5aconv8x8617" path="res://assets/backgrounds/first_room/first_room_background.png" id="1_3xtj5"]
+[ext_resource type="Script" path="res://UnusedDialogueTest.cs" id="1_wl4xn"]
+[ext_resource type="Texture2D" uid="uid://b6qt7sngx5gkb" path="res://assets/backgrounds/first_room/first_room_rocks.png" id="3_jxtuf"]
+[ext_resource type="PackedScene" uid="uid://dhctxpw3i8rpf" path="res://darkness.tscn" id="5_o7pc6"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="5_y4j0h"]
+[ext_resource type="PackedScene" uid="uid://bp4jat81a6c5d" path="res://tube_coral.tscn" id="6_3bk1b"]
+[ext_resource type="Texture2D" uid="uid://dqnpmyax7glde" path="res://assets/npcs/blue.png" id="6_y3mtk"]
+[ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="7_glu6j"]
+[ext_resource type="Texture2D" uid="uid://bsaeo1x6edvmm" path="res://assets/npcs/blue_red_eyes.png" id="7_t5w6m"]
+[ext_resource type="PackedScene" uid="uid://c2paeopskk52q" path="res://big_jellyfish.tscn" id="7_y6awn"]
+[ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="8_t6dhv"]
+[ext_resource type="Texture2D" uid="uid://dlv3iiwrhvxxs" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin0.png" id="9_k7vu8"]
+[ext_resource type="Texture2D" uid="uid://cbty8yk6i2att" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin1.png" id="10_x2u2a"]
+[ext_resource type="Texture2D" uid="uid://b85cxwocy86qy" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin2.png" id="11_03erj"]
+[ext_resource type="Texture2D" uid="uid://bi00ibvmip861" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin3.png" id="12_irrfj"]
+[ext_resource type="Texture2D" uid="uid://ch36cwcb8dnbp" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin4.png" id="13_ltvwe"]
+[ext_resource type="Texture2D" uid="uid://qvp3ms37cpto" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin5.png" id="14_66wp5"]
+[ext_resource type="Texture2D" uid="uid://dtlh5sqncfhmn" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin6.png" id="15_x81wl"]
+[ext_resource type="Texture2D" uid="uid://ctvlw6w4u7fwn" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin7.png" id="16_snpy2"]
+[ext_resource type="Texture2D" uid="uid://c4bqfrw8b46nh" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin8.png" id="17_pqwmg"]
+[ext_resource type="Texture2D" uid="uid://qql5mjmtdc4a" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin9.png" id="18_llp6h"]
+[ext_resource type="Texture2D" uid="uid://b2j3v7wdkjcc8" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin10.png" id="19_65rke"]
+[ext_resource type="Texture2D" uid="uid://bajmr1yncc2h" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin11.png" id="20_qwjqk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tc7ap"]
+animations = [{
+"frames": [{
+"duration": 20.0,
+"texture": ExtResource("6_y3mtk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 20.0,
+"texture": ExtResource("7_t5w6m")
+}],
+"loop": false,
+"name": &"red_eyes",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p5e3t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_k7vu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_x2u2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_03erj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_irrfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ltvwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_66wp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_x81wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_snpy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pqwmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_llp6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_65rke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_qwjqk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="TestingRoom" type="Node2D"]
+script = ExtResource("1_wl4xn")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(300, 90)
+texture = ExtResource("1_3xtj5")
+
+[node name="UnderwaterPlayer" parent="." instance=ExtResource("7_glu6j")]
+position = Vector2(149, 125)
+
+[node name="TextBox" parent="UnderwaterPlayer" instance=ExtResource("8_t6dhv")]
+
+[node name="Blue" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(258, 138)
+sprite_frames = SubResource("SpriteFrames_tc7ap")
+autoplay = "default"
+
+[node name="TextBox" parent="Blue" instance=ExtResource("8_t6dhv")]
+
+[node name="Rocks" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(300, 90)
+texture = ExtResource("3_jxtuf")
+
+[node name="TubeCoral" parent="." instance=ExtResource("6_3bk1b")]
+position = Vector2(371, 115)
+rotation = 4.71239
+PullDirection = 3
+
+[node name="TubeCoral2" parent="." instance=ExtResource("6_3bk1b")]
+position = Vector2(217, 142)
+
+[node name="BigJellyfish" parent="." instance=ExtResource("7_y6awn")]
+position = Vector2(46, 122)
+
+[node name="SPIN" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(211, 40)
+sprite_frames = SubResource("SpriteFrames_p5e3t")
+autoplay = "default"
+
+[node name="WallsFolder" type="Node" parent="."]
+
+[node name="Floor" parent="WallsFolder" instance=ExtResource("5_y4j0h")]
+position = Vector2(0, 147)
+scale = Vector2(25, 1)
+
+[node name="FloorThatOneRock" parent="WallsFolder" instance=ExtResource("5_y4j0h")]
+position = Vector2(98, 133)
+scale = Vector2(3, 1)
+
+[node name="Ceiling" parent="WallsFolder" instance=ExtResource("5_y4j0h")]
+position = Vector2(0, 11)
+scale = Vector2(25, 1)
+
+[node name="LeftWall" parent="WallsFolder" instance=ExtResource("5_y4j0h")]
+position = Vector2(-15, 0)
+scale = Vector2(1, 10)
+
+[node name="Darkness" parent="." instance=ExtResource("5_o7pc6")]
+visible = false
+z_as_relative = false
+
+[connection signal="Pull" from="TubeCoral" to="UnderwaterPlayer" method="OnTubeCoralPull"]
+[connection signal="Unpull" from="TubeCoral" to="UnderwaterPlayer" method="OnTubeCoralUnpull"]
+[connection signal="Pull" from="TubeCoral2" to="UnderwaterPlayer" method="OnTubeCoralPull"]
+[connection signal="Unpull" from="TubeCoral2" to="UnderwaterPlayer" method="OnTubeCoralUnpull"]
