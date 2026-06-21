@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player.cs" id="1_vr4g2"]
 [ext_resource type="PackedScene" uid="uid://qgqaega0h2io" path="res://flashlight.tscn" id="4_u4d4c"]
 [ext_resource type="Script" path="res://Camera2d.cs" id="8_6m7sy"]
-[ext_resource type="PackedScene" path="res://player_health.tscn" id="8_pkvse"]
+[ext_resource type="PackedScene" uid="uid://7106o3opoex1" path="res://player_health.tscn" id="8_pkvse"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i86wa"]
 radius = 8.0
@@ -40,10 +40,10 @@ one_shot = true
 position_smoothing_speed = 0.1
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 1.0
-drag_right_margin = 0.1
-drag_bottom_margin = 1.0
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
 script = ExtResource("8_6m7sy")
 
 [node name="Player_Health" parent="Camera2D" instance=ExtResource("8_pkvse")]

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjyxcw0n1v78c" path="res://assets/objects/big_jellyfish/big_jellyfish3.png" id="4_t6byj"]
 [ext_resource type="Texture2D" uid="uid://c3w7763jqjmct" path="res://assets/objects/big_jellyfish/big_jellyfish4.png" id="5_2yhfo"]
 [ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="6_6lmg7"]
-[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="7_w2p4i"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://wall.tscn" id="7_w2p4i"]
 
 [sub_resource type="Animation" id="Animation_8wlb4"]
 length = 0.001

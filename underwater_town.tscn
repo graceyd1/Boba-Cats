@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=3 uid="uid://fi6a1be4vmo5"]
+
+[ext_resource type="Texture2D" uid="uid://bb3cxky1vqp5r" path="res://assets/backgrounds/underwater_town/underwater_town0.png" id="1_0clrj"]
+[ext_resource type="Texture2D" uid="uid://da5epgeeq6swo" path="res://assets/backgrounds/underwater_town/underwater_town1.png" id="1_1neqj"]
+[ext_resource type="Texture2D" uid="uid://p2weyhqwjmed" path="res://assets/backgrounds/underwater_town/underwater_town9.png" id="3_mwr5y"]
+[ext_resource type="Texture2D" uid="uid://mob2pl5glpwj" path="res://assets/backgrounds/underwater_town/underwater_town2.png" id="3_vrvpg"]
+[ext_resource type="Texture2D" uid="uid://bufmhkknt8k8f" path="res://assets/backgrounds/underwater_town/underwater_town3.png" id="4_7clim"]
+[ext_resource type="Texture2D" uid="uid://dwi5gc2t1vydw" path="res://assets/backgrounds/underwater_town/underwater_town4.png" id="5_7jlk8"]
+[ext_resource type="Texture2D" uid="uid://dva6vgnb3kslu" path="res://assets/backgrounds/underwater_town/underwater_town5.png" id="7_6t1cc"]
+[ext_resource type="Texture2D" uid="uid://cub3ng5mqgjma" path="res://assets/backgrounds/underwater_town/underwater_town6.png" id="8_ha7v3"]
+[ext_resource type="Texture2D" uid="uid://durewm8t8gmwc" path="res://assets/backgrounds/underwater_town/underwater_town8.png" id="8_wu3mq"]
+[ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="9_1c834"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://wall.tscn" id="11_y5y2r"]
+[ext_resource type="PackedScene" uid="uid://bnpd4i7iptaot" path="res://up_wall.tscn" id="12_f8bqc"]
+
+[node name="UnderwaterTown" type="Node2D"]
+
+[node name="Backgrounds" type="Node2D" parent="."]
+
+[node name="Background0" type="Sprite2D" parent="Backgrounds"]
+texture_filter = 1
+texture = ExtResource("1_0clrj")
+centered = false
+
+[node name="Parallax2D1" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.3, 1)
+
+[node name="Background1" type="Sprite2D" parent="Backgrounds/Parallax2D1"]
+texture_filter = 1
+texture = ExtResource("1_1neqj")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.4, 1)
+
+[node name="Background2" type="Sprite2D" parent="Backgrounds/Parallax2D2"]
+texture_filter = 1
+texture = ExtResource("3_vrvpg")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.5, 1)
+
+[node name="Background3" type="Sprite2D" parent="Backgrounds/Parallax2D3"]
+texture_filter = 1
+texture = ExtResource("4_7clim")
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.7, 1)
+
+[node name="Rocks1" type="Sprite2D" parent="Backgrounds/Parallax2D4"]
+texture_filter = 1
+texture = ExtResource("5_7jlk8")
+centered = false
+
+[node name="Parallax2D5" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.8, 1)
+
+[node name="Rocks2" type="Sprite2D" parent="Backgrounds/Parallax2D5"]
+texture_filter = 1
+texture = ExtResource("7_6t1cc")
+centered = false
+
+[node name="Parallax2D" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.9, 1)
+
+[node name="Rocks3AndShopsBack" type="Sprite2D" parent="Backgrounds/Parallax2D"]
+texture_filter = 1
+texture = ExtResource("8_ha7v3")
+centered = false
+
+[node name="ShopsSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("8_wu3mq")
+centered = false
+
+[node name="UnderwaterPlayer" parent="." instance=ExtResource("9_1c834")]
+position = Vector2(126, 500)
+
+[node name="GroundSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_mwr5y")
+centered = false
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Ground" parent="Walls" instance=ExtResource("11_y5y2r")]
+position = Vector2(0, 525)
+scale = Vector2(25, 1)
+
+[node name="Left" parent="Walls" instance=ExtResource("11_y5y2r")]
+position = Vector2(-10, 0)
+scale = Vector2(1, 27)
+
+[node name="Right" parent="Walls" instance=ExtResource("11_y5y2r")]
+position = Vector2(495, 0)
+scale = Vector2(1, 27)
+
+[node name="Top" parent="Walls" instance=ExtResource("11_y5y2r")]
+position = Vector2(0, -20)
+scale = Vector2(25, 1)
+
+[node name="LeftRockUpWall" parent="Walls" instance=ExtResource("12_f8bqc")]
+position = Vector2(-3, 329)
+scale = Vector2(10, 1)
+
+[node name="RightRockUpWall" parent="Walls" instance=ExtResource("12_f8bqc")]
+position = Vector2(324, 181)
+scale = Vector2(9, 1)
