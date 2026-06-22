@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bxqhx7psdxcfe" path="res://assets/backgrounds/enter_cave_room/enter_cave_water2.png" id="3_ydmdq"]
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="4_recxf"]
 [ext_resource type="Texture2D" uid="uid://b1y6i4bvlfvbv" path="res://assets/backgrounds/enter_cave_room/enter_cave_ground.png" id="5_363r7"]
-[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://wall.tscn" id="6_urne7"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="6_urne7"]
 [ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://growable_vine.tscn" id="7_pcuo8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlgra"]

@@ -26,8 +26,8 @@ public partial class TextBox : Node2D
 	}
 
 	public override void _Input(InputEvent @event)
-    {
-        if (showingText && Input.IsActionPressed("enter") && timer.IsStopped())
+	{
+		if (showingText && Input.IsActionPressed("enter") && timer.IsStopped())
 		{
 			showingText = false;
 			Hide();
@@ -44,4 +44,5 @@ public partial class TextBox : Node2D
 		Show();
 		timer.Start();
 	}
+	
 }
