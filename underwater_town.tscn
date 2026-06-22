@@ -93,7 +93,7 @@ scale = Vector2(25, 1)
 
 [node name="Left" parent="Walls" instance=ExtResource("11_y5y2r")]
 position = Vector2(-10, 0)
-scale = Vector2(1, 27)
+scale = Vector2(0.889, 24)
 
 [node name="Right" parent="Walls" instance=ExtResource("11_y5y2r")]
 position = Vector2(495, 0)
