@@ -193,7 +193,7 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(341, 28)
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("8_pihmt")]
-position = Vector2(84, 100)
+position = Vector2(10, 140)
 
 [node name="VinesFolder" type="Node2D" parent="."]
 

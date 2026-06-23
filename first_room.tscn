@@ -22,7 +22,7 @@ texture = ExtResource("2_v8dv8")
 centered = false
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("2_toxl5")]
-position = Vector2(84, 100)
+position = Vector2(10, 140)
 
 [node name="Rocks" type="Sprite2D" parent="."]
 texture_filter = 1

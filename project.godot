@@ -21,6 +21,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Fader="*res://fader.tscn"
+GlobalSceneChange="*res://global_scene_change.tscn"
 
 [display]
 

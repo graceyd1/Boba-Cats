@@ -15,6 +15,7 @@ public partial class GroundPlayer : Player
 		base.Gravity = 0.002F;
 
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		animatedSprite.Animation = "sit_right";
 
 	}
 

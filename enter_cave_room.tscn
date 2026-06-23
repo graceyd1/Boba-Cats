@@ -38,7 +38,7 @@ frame_progress = 0.0783265
 centered = false
 
 [node name="GroundPlayer" parent="." instance=ExtResource("4_recxf")]
-position = Vector2(156, 119)
+position = Vector2(113, 122)
 
 [node name="Ground" type="Sprite2D" parent="."]
 texture_filter = 1

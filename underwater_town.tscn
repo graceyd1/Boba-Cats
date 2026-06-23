@@ -78,7 +78,7 @@ texture = ExtResource("8_wu3mq")
 centered = false
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("9_1c834")]
-position = Vector2(126, 500)
+position = Vector2(10, 518)
 
 [node name="GroundSprite" type="Sprite2D" parent="."]
 texture_filter = 1

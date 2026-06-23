@@ -17,6 +17,7 @@ public partial class UnderwaterPlayer : Player
 		base.Gravity = 0.001F;
 
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		animatedSprite.Animation = "sit-helmet";
 	}
 	
 	public override void _PhysicsProcess(double delta) {

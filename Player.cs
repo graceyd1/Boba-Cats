@@ -84,16 +84,19 @@ public partial class Player : CharacterBody2D
 			var room = GetParent().Name;
 			if (room == "EnterCaveRoom") {
 				//coorinates might change if room coordinates change
-				respawnPoint = new Vector2(156, 119);
+				respawnPoint = new Vector2(113, 122);
 			}
 			else if (room == "TubesArea") {
 				respawnPoint = new Vector2(45, 123);
 			} 
 			else if (room == "FirstRoom" || room == "BoxRoom") {
-				respawnPoint = new Vector2(84, 100);
+				respawnPoint = new Vector2(10, 140);
 			}
 			else if (room == "SeabunnyBossRoom") {
 				respawnPoint = new Vector2(100, 144);
+			}
+			else if (room == "UnderwaterTown") {
+				respawnPoint = new Vector2(10, 518);
 			}
 
 			GlobalPosition = respawnPoint;

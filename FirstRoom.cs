@@ -18,14 +18,12 @@ public partial class FirstRoom : Node2D
 	private async Task nextRoomCheck() {
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		Vector2 pos = GetNode<CharacterBody2D>("UnderwaterPlayer").Position;
+		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		if (pos.X > 500) {
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(1.5f);
 			}
-			GetTree().ChangeSceneToFile("res://underwater_town.tscn");
-			if (FaderNode is Fader fade) {
-				await fade.FadeOut(1.5f);
-			}
+			GlobalScript.ChangeRoom(new Vector2(10, 518), "underwater_town", true);
 		}
 	}
 }
