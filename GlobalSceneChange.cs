@@ -17,6 +17,10 @@ public partial class GlobalSceneChange : Node2D
 		"BoxRoom"
 	};
 	
+	public static List<string> GroundRooms = new List<string> {
+		"EnterCaveRoom"
+	};
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -33,23 +37,24 @@ public partial class GlobalSceneChange : Node2D
 			GD.Print("root found");
 			//EmitSignal(SignalName.SceneReady);
 		}
-		else if (n.Name == "UnderwaterPlayer" || n.Name == "GroundPlayer") {
-			GD.Print("Player entered");
+		else if (n is Player) {
 			EmitSignal(SignalName.SceneReady);
 		}
 	}
 
 	
-	public async void ChangeRoom(Vector2 pos, String room, bool right) {
+	public async Task ChangeRoom(Vector2 pos, String room, bool right) {
 		GetTree().ChangeSceneToFile("res://" + room + ".tscn");
 		await ToSignal(this, GlobalSceneChange.SignalName.SceneReady);
 		string roomName = GetTree().CurrentScene.Name;
-		GD.Print(roomName);
 		if (UnderwaterRooms.Contains(roomName)) {
 			currPlayer = GetTree().CurrentScene.GetNode<Player>("UnderwaterPlayer");
 		}
-		else {
+		else if (GroundRooms.Contains(roomName)) {
 			currPlayer = GetTree().CurrentScene.GetNode<Player>("GroundPlayer");
+		}
+		else {
+			GD.Print("Room not found in list");
 		}
 		if (currPlayer == null) {
 			GD.Print("ERROR getting player at GlobalSceneChange");

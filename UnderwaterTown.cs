@@ -28,14 +28,14 @@ public partial class UnderwaterTown : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(1.5f);
 			}
-			GlobalScript.ChangeRoom(new Vector2(10, 140), "box_room", true);
+			await GlobalScript.ChangeRoom(new Vector2(10, 140), "box_room", true);
 		}
 		if (pos.X < 0) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(1.5f);
 			}
-			GlobalScript.ChangeRoom(new Vector2(490, 138), "first_room", false);
+			await GlobalScript.ChangeRoom(new Vector2(490, 138), "first_room", false);
 		
 		}
 	}

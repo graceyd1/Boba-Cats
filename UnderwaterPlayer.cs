@@ -41,7 +41,9 @@ public partial class UnderwaterPlayer : Player
 
 		var originalY = velocity.Y;
 		//gravity and velocity modifier
-		velocity.Y += Gravity;
+		if (CoralStatus != InCoral.HORIZONTAL) {
+			velocity.Y += Gravity;
+		}
 	
 		velocity = velocity.Normalized() + velocityModifier;
 	
