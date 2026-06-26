@@ -1,9 +1,19 @@
 using Godot;
 using System;
+using System.Linq;
 
 
 public partial class Camera2d : Camera2D
 {
+	//all rooms that are 320x180 (full screen, no scrolling)
+	private String[] FullScreen =
+	{
+		"SubmarineShop",
+		"EnterCaveRoom",
+		"ParvaHouse"
+	};
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -14,7 +24,7 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 180);
 		}
 
-		//temporary
+		///unused
 		if (GetParent()?.GetParent().Name == "TestingRoom") {
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 500);
@@ -22,7 +32,7 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 180);
 		}
 
-		if (GetParent()?.GetParent().Name == "EnterCaveRoom")
+		if (FullScreen.Contains<String>(GetParent()?.GetParent().Name))
 		{
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 320);
@@ -42,6 +52,14 @@ public partial class Camera2d : Camera2D
 		{
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 500);
+			SetLimit(Side.Top, 0);
+			SetLimit(Side.Bottom, 180);
+		}
+
+		if (GetParent()?.GetParent().Name == "FishRoom")
+		{
+			SetLimit(Side.Left, 0);
+			SetLimit(Side.Right, 640);
 			SetLimit(Side.Top, 0);
 			SetLimit(Side.Bottom, 180);
 		}
