@@ -100,6 +100,4 @@ script = ExtResource("2_dj4o3")
 light_mask = 0
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_opiss")
-animation = &"walk_right"
-frame = 2
-frame_progress = 0.215276
+animation = &"sit_left"

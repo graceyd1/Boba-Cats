@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://ki4seq4eyq51"]
+
+[ext_resource type="Texture2D" uid="uid://dax86qevqwj5h" path="res://assets/backgrounds/cave_room/cave_room0.png" id="1_o30sq"]
+[ext_resource type="Script" path="res://CaveRoom.cs" id="1_tuhh4"]
+[ext_resource type="Texture2D" uid="uid://pxiunulaqoxq" path="res://assets/backgrounds/cave_room/cave_room1.png" id="2_yo4ww"]
+[ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_ds2fq"]
+[ext_resource type="Texture2D" uid="uid://cynkkn5rytlvy" path="res://assets/backgrounds/cave_room/cave_room2.png" id="3_jiwer"]
+[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="5_ui5lu"]
+[ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="6_1sl3n"]
+[ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://growable_vine.tscn" id="6_itp7c"]
+[ext_resource type="PackedScene" uid="uid://dhctxpw3i8rpf" path="res://darkness.tscn" id="7_jnidm"]
+[ext_resource type="Script" path="res://CaveRoomSpikes.cs" id="9_ujmbn"]
+
+[node name="CaveRoom" type="Node2D"]
+script = ExtResource("1_tuhh4")
+
+[node name="Background0" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_o30sq")
+centered = false
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.7, 1)
+
+[node name="Background1" type="Sprite2D" parent="Parallax2D"]
+texture_filter = 1
+texture = ExtResource("2_yo4ww")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_jiwer")
+centered = false
+
+[node name="GroundPlayer" parent="." instance=ExtResource("3_ds2fq")]
+position = Vector2(25, 90)
+
+[node name="WallsFolder" type="Node2D" parent="."]
+position = Vector2(200, 290)
+scale = Vector2(20, 1)
+
+[node name="LeftFloor" parent="WallsFolder" instance=ExtResource("5_ui5lu")]
+position = Vector2(-13.1, -192)
+scale = Vector2(0.4, 1)
+
+[node name="LeftCliff" parent="WallsFolder" instance=ExtResource("5_ui5lu")]
+position = Vector2(-9.4, -172)
+scale = Vector2(0.15, 9)
+
+[node name="Left" parent="WallsFolder" instance=ExtResource("5_ui5lu")]
+position = Vector2(-12.45, -301)
+scale = Vector2(0.05, 6)
+
+[node name="RightFloor" parent="WallsFolder" instance=ExtResource("5_ui5lu")]
+position = Vector2(8.4, -85)
+scale = Vector2(0.35, 5)
+
+[node name="SpikeFloor" parent="WallsFolder" instance=ExtResource("5_ui5lu")]
+position = Vector2(-10, -11)
+scale = Vector2(1.25, 1)
+
+[node name="Ceiling" parent="WallsFolder" instance=ExtResource("5_ui5lu")]
+position = Vector2(-9.9, -298)
+scale = Vector2(1.25, 1)
+
+[node name="GrowableVine" parent="." instance=ExtResource("6_itp7c")]
+position = Vector2(160, 52)
+
+[node name="GrowableVine2" parent="." instance=ExtResource("6_itp7c")]
+position = Vector2(220, 52)
+
+[node name="GrowableVine3" parent="." instance=ExtResource("6_itp7c")]
+position = Vector2(280, 52)
+
+[node name="GrowableVine4" parent="." instance=ExtResource("6_itp7c")]
+position = Vector2(340, 52)
+
+[node name="Spikes" parent="." instance=ExtResource("6_1sl3n")]
+position = Vector2(200, 259)
+scale = Vector2(20, 2)
+script = ExtResource("9_ujmbn")
+
+[node name="Darkness" parent="." instance=ExtResource("7_jnidm")]
+visible = false
+position = Vector2(0, 27)
+
+[connection signal="area_entered" from="GrowableVine" to="GrowableVine" method="OnAreaEntered"]
+[connection signal="body_entered" from="GrowableVine" to="GrowableVine" method="OnBodyEntered"]
+[connection signal="body_exited" from="GrowableVine" to="GrowableVine" method="OnBodyExited"]
+[connection signal="area_entered" from="GrowableVine2" to="GrowableVine2" method="OnAreaEntered"]
+[connection signal="body_entered" from="GrowableVine2" to="GrowableVine2" method="OnBodyEntered"]
+[connection signal="body_exited" from="GrowableVine2" to="GrowableVine2" method="OnBodyExited"]
+[connection signal="area_entered" from="GrowableVine3" to="GrowableVine3" method="OnAreaEntered"]
+[connection signal="body_entered" from="GrowableVine3" to="GrowableVine3" method="OnBodyEntered"]
+[connection signal="body_exited" from="GrowableVine3" to="GrowableVine3" method="OnBodyExited"]
+[connection signal="area_entered" from="GrowableVine4" to="GrowableVine4" method="OnAreaEntered"]
+[connection signal="body_entered" from="GrowableVine4" to="GrowableVine4" method="OnBodyEntered"]
+[connection signal="body_exited" from="GrowableVine4" to="GrowableVine4" method="OnBodyExited"]

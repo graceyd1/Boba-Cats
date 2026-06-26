@@ -51,17 +51,21 @@ public partial class Player : CharacterBody2D
 		{
 			GetHit();
 		}
+		else
+		{
+			GD.Print("invulnerable");
+			GD.Print(GetNode<Godot.Timer>("HurtTimer").TimeLeft);
+		}
 	}
 
 	//get hit
 	private void GetHit()
 	{
 		hp --;
-		if (hp <= 0)
+		if (hp <= 0 || GetParent().Name == "CaveRoom") // making you respawn after hit in cave room)
 		{
-			GD.Print("You died!"); 
+			// GD.Print("You died!"); 
 			Respawn();
-			//Position = Vector2.Zero;
 			hp = 2;
 		}
 
@@ -72,6 +76,9 @@ public partial class Player : CharacterBody2D
 		hurtTimer.Start();
 
 		EmitSignal(SignalName.Hit, hp);
+		GD.Print("Timer started");
+		GD.Print(GetNode<Godot.Timer>("HurtTimer").TimeLeft);
+
 	}
 	
 	public async void Respawn() {
@@ -98,18 +105,23 @@ public partial class Player : CharacterBody2D
 			else if (room == "UnderwaterTown") {
 				respawnPoint = new Vector2(10, 518);
 			}
+			else if (room == "CaveRoom")
+			{
+				respawnPoint = new Vector2(10, 90);
+			}
 
 			GlobalPosition = respawnPoint;
 			
-			await transition.FadeOut(2.0f);
+			await transition.FadeOut(1.5f);
 		}
-		
+		invulnerable = false;
 		
 	}
 
 	//when invulnerablility ends
 	private void OnHurtTimerTimeout()
 	{
+		GD.Print("Times up"); ///
 		invulnerable = false;
 		flash = false;
 
@@ -119,6 +131,10 @@ public partial class Player : CharacterBody2D
 		if (insideHurtbox.Count > 0)
 		{
 			GetHit();
+		}
+		else
+		{
+			GD.Print("safe now");///
 		}
 	}
 

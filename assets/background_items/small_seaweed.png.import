@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vxeeag75b113"
-path="res://.godot/imported/bomb.png-6435cf731d4a0682426b06847e3b769e.ctex"
+uid="uid://d2h1h6vgtclbk"
+path="res://.godot/imported/small_seaweed.png-6c0d13307a5748aa28edfa2816d4cd32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background_items/bomb.png"
-dest_files=["res://.godot/imported/bomb.png-6435cf731d4a0682426b06847e3b769e.ctex"]
+source_file="res://assets/background_items/small_seaweed.png"
+dest_files=["res://.godot/imported/small_seaweed.png-6c0d13307a5748aa28edfa2816d4cd32.ctex"]
 
 [params]
 

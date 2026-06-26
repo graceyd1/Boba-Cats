@@ -14,26 +14,26 @@ public partial class UnderwaterTown : Node2D
 	public override async void _Process(double delta)
 	{
 		if (!transitioning) {
-			await nextRoomCheck();
+			await NextRoomCheck();
 		}
 	}
 	
-	private async Task nextRoomCheck() {
+	private async Task NextRoomCheck() {
 		var player = GetNode<CharacterBody2D>("UnderwaterPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		Vector2 pos = player.Position;
-		if (pos.X > 500) {
+		if (pos.X > 495) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
-				await fader.FadeIn(1.5f);
+				await fader.FadeIn(.7f);
 			}
 			await GlobalScript.ChangeRoom(new Vector2(10, 140), "box_room", true);
 		}
-		if (pos.X < 0) {
+		if (pos.X < 5) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
-				await fader.FadeIn(1.5f);
+				await fader.FadeIn(.7f);
 			}
 			await GlobalScript.ChangeRoom(new Vector2(490, 138), "first_room", false);
 		

@@ -2,9 +2,10 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class FirstRoom : Node2D
+public partial class CaveRoom : Node2D
 {
 	private bool transitioning = false;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -13,21 +14,25 @@ public partial class FirstRoom : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override async void _Process(double delta)
 	{
-		if (!transitioning) {
+		if (!transitioning)
+		{
 			await NextRoomCheck();
 		}
 	}
-	
+
 	private async Task NextRoomCheck() {
+		var player = GetNode<CharacterBody2D>("GroundPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
-		Vector2 pos = GetNode<CharacterBody2D>("UnderwaterPlayer").Position;
 		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
-		if (pos.X > 495) {
+		Vector2 pos = player.Position;
+		if (pos.X < 5) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(50, 518), "underwater_town", true);
+			await GlobalScript.ChangeRoom(new Vector2(270, 51), "enter_cave_room", true);
 		}
+
+		//to-do todo: enter that cat's house
 	}
 }

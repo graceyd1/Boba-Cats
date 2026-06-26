@@ -7,6 +7,7 @@ public partial class Flashlight : PointLight2D
 	public override void _Ready()
 	{
 		Enabled = false;
+		toggleCollision();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,6 +16,7 @@ public partial class Flashlight : PointLight2D
 		if (Input.IsActionJustPressed("toggle_flashlight"))
 		{
 			Enabled = !Enabled;
+			toggleCollision();
 		}
 
 		if (Enabled)
@@ -27,5 +29,11 @@ public partial class Flashlight : PointLight2D
 
 			Rotation = (float) angle;
 		}
+	}
+
+	private void toggleCollision()
+	{
+		var collisionShape = GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
+		collisionShape.Disabled = !collisionShape.Disabled; 
 	}
 }

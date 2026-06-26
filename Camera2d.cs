@@ -43,7 +43,15 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 500);
 			SetLimit(Side.Top, 0);
-			SetLimit(Side.Bottom, 550);
+			SetLimit(Side.Bottom, 180);
+		}
+
+		if (GetParent()?.GetParent().Name == "CaveRoom")
+		{
+			SetLimit(Side.Left, 0);
+			SetLimit(Side.Right, 500);
+			SetLimit(Side.Top, 0);
+			SetLimit(Side.Bottom, 300);
 		}
 	}
 

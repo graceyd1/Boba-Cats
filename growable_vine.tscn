@@ -153,14 +153,12 @@ script = ExtResource("1_kw4dj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i804w")
-animation = &"growing"
-frame = 27
-frame_progress = 1.0
+animation = &"ungrown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -37)
 shape = SubResource("CapsuleShape2D_7sfdp")
 
 [node name="GrownCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_ufvff")

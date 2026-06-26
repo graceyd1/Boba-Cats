@@ -18,7 +18,8 @@ public partial class GlobalSceneChange : Node2D
 	};
 	
 	public static List<string> GroundRooms = new List<string> {
-		"EnterCaveRoom"
+		"EnterCaveRoom",
+		"CaveRoom"
 	};
 	
 	// Called when the node enters the scene tree for the first time.
