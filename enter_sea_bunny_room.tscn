@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5itvjlmd4ah7"]
+
+[ext_resource type="Script" path="res://EnterSeaBunnyRoom.cs" id="1_38abd"]
+[ext_resource type="Texture2D" uid="uid://sw2nk35811vf" path="res://assets/backgrounds/enter_sea_bunny_room/enter_sea_bunny_room0.png" id="1_uv7qk"]
+[ext_resource type="Texture2D" uid="uid://fie4tcspr55k" path="res://assets/backgrounds/enter_sea_bunny_room/enter_sea_bunny_room1.png" id="2_8vugk"]
+[ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_7qjwg"]
+[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="3_lcupw"]
+
+[node name="EnterSeaBunnyRoom" type="Node2D"]
+script = ExtResource("1_38abd")
+
+[node name="Background0" type="Sprite2D" parent="."]
+texture = ExtResource("1_uv7qk")
+centered = false
+
+[node name="GroundPlayer" parent="." instance=ExtResource("3_7qjwg")]
+position = Vector2(149, 77)
+
+[node name="Frontground" type="Sprite2D" parent="."]
+texture = ExtResource("2_8vugk")
+centered = false
+
+[node name="Left" parent="." instance=ExtResource("3_lcupw")]
+scale = Vector2(5.8, 7)
+
+[node name="Ground" parent="." instance=ExtResource("3_lcupw")]
+position = Vector2(0, 133)
+scale = Vector2(16, 2)
+
+[node name="RightCeiling" parent="." instance=ExtResource("3_lcupw")]
+position = Vector2(157, 0)
+scale = Vector2(9, 4)

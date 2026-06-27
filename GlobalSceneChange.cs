@@ -22,7 +22,10 @@ public partial class GlobalSceneChange : Node2D
 		"EnterCaveRoom",
 		"CaveRoom",
 		"SubmarineShop",
-		"ParvaHouse"
+		"ParvaHouse",
+		"EnterSeaBunnyRoom",
+		"SeaBunnyRoom",
+		"TreasureRoom"
 	};
 	
 	// Called when the node enters the scene tree for the first time.

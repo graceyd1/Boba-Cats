@@ -10,14 +10,18 @@ public partial class Camera2d : Camera2D
 	{
 		"SubmarineShop",
 		"EnterCaveRoom",
-		"ParvaHouse"
+		"ParvaHouse",
+		"EnterSeaBunnyRoom",
+		"TreasureRoom"
 	};
 
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		if (GetParent()?.GetParent().Name == "FirstRoom") {
+		Node2D player = (Node2D) GetParent();
+
+		if (player.GetParent().Name == "FirstRoom") {
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 500);
 			SetLimit(Side.Top, 0);
@@ -25,14 +29,14 @@ public partial class Camera2d : Camera2D
 		}
 
 		///unused
-		if (GetParent()?.GetParent().Name == "TestingRoom") {
+		if (player.GetParent().Name == "TestingRoom") {
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 500);
 			SetLimit(Side.Top, 0);
 			SetLimit(Side.Bottom, 180);
 		}
 
-		if (FullScreen.Contains<String>(GetParent()?.GetParent().Name))
+		if (FullScreen.Contains<String>(player.GetParent().Name))
 		{
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 320);
@@ -40,7 +44,7 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 180);
 		}
 		
-		if (GetParent()?.GetParent().Name == "BoxRoom")
+		if (player.GetParent().Name == "BoxRoom")
 		{
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 500);
@@ -48,7 +52,7 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 180);
 		}
 
-		if (GetParent()?.GetParent().Name == "UnderwaterTown")
+		else if (player.GetParent().Name == "UnderwaterTown")
 		{
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 500);
@@ -56,7 +60,7 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 550);
 		}
 
-		if (GetParent()?.GetParent().Name == "FishRoom")
+		else if (player.GetParent().Name == "FishRoom")
 		{
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 640);
@@ -64,12 +68,29 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 180);
 		}
 
-		if (GetParent()?.GetParent().Name == "CaveRoom")
+		else if (player.GetParent().Name == "CaveRoom")
 		{
 			SetLimit(Side.Left, 0);
 			SetLimit(Side.Right, 500);
 			SetLimit(Side.Top, 0);
 			SetLimit(Side.Bottom, 300);
+		}
+
+		else if (player.GetParent().Name == "SeaBunnyRoom")
+		{
+			SetLimit(Side.Right, 640);
+			SetLimit(Side.Top, 0);
+			SetLimit(Side.Bottom, 300);
+
+			if (player.Position.X >= 320)
+			{
+				//camera stays still when in boss arena
+				SetLimit(Side.Left, 320);
+			}
+			else
+			{
+				SetLimit(Side.Left, 0);
+			}
 		}
 	}
 

@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://borfu7yhfxp0e"]
+
+[ext_resource type="Texture2D" uid="uid://duf4gduuo5rs5" path="res://assets/backgrounds/treasure_room/treasure_room0.png" id="1_q40f7"]
+[ext_resource type="Script" path="res://TreasureRoom.cs" id="1_r76jw"]
+[ext_resource type="Texture2D" uid="uid://todgqw1v8vut" path="res://assets/background_items/pile_of_boba.png" id="2_vmi6y"]
+[ext_resource type="Texture2D" uid="uid://cn0jhctgqwb45" path="res://assets/backgrounds/treasure_room/treasure_room1.png" id="3_2065w"]
+[ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_jieat"]
+[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="4_mthqj"]
+
+[node name="TreasureRoom" type="Node2D"]
+script = ExtResource("1_r76jw")
+
+[node name="Background0" type="Sprite2D" parent="."]
+texture = ExtResource("1_q40f7")
+centered = false
+
+[node name="BOBA" type="Sprite2D" parent="."]
+texture = ExtResource("2_vmi6y")
+centered = false
+
+[node name="GroundPlayer" parent="." instance=ExtResource("3_jieat")]
+position = Vector2(41, 142)
+
+[node name="Frontground" type="Sprite2D" parent="."]
+texture = ExtResource("3_2065w")
+centered = false
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Ceiling" parent="Walls" instance=ExtResource("4_mthqj")]
+scale = Vector2(16, 1.1)
+
+[node name="LeftTop" parent="Walls" instance=ExtResource("4_mthqj")]
+position = Vector2(28, 79)
+rotation = -0.785398
+scale = Vector2(6, 1.1)
+
+[node name="LeftTop2" parent="Walls" instance=ExtResource("4_mthqj")]
+position = Vector2(0, 78)
+scale = Vector2(2.5, 1.1)
+
+[node name="Right" parent="Walls" instance=ExtResource("4_mthqj")]
+position = Vector2(282, -2)
+scale = Vector2(1, 7.6)
+
+[node name="Ground" parent="Walls" instance=ExtResource("4_mthqj")]
+position = Vector2(0, 150)
+scale = Vector2(16, 1)

@@ -30,7 +30,15 @@ public partial class ParvaHouse : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(467, 197), "cave_room", true);
+			await GlobalScript.ChangeRoom(new Vector2(467, 197), "cave_room", false);
+		}
+		else if (pos.Y > 175)
+		{
+			transitioning = true;
+			if (FaderNode is Fader fader) {
+				await fader.FadeIn(.7f);
+			}
+			await GlobalScript.ChangeRoom(new Vector2(138, 125), "enter_sea_bunny_room", true);
 		}
 
 	}
