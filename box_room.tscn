@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://5txp0r25uqf7" path="res://assets/backgrounds/box_room/box_room6.png" id="10_cx3xf"]
 [ext_resource type="Texture2D" uid="uid://b8ytxur36hotg" path="res://assets/objects/bigbox.png" id="10_i0pin"]
 [ext_resource type="Texture2D" uid="uid://h71edpmrf1mi" path="res://assets/background_items/bg_medbox.png" id="10_uwxra"]
-[ext_resource type="PackedScene" path="res://walls.tscn" id="11_wj8lh"]
+[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="11_wj8lh"]
 [ext_resource type="Texture2D" uid="uid://6f02ja61limd" path="res://assets/objects/medbox.png" id="12_mx3pw"]
 [ext_resource type="Texture2D" uid="uid://feaaex1jlf6i" path="res://assets/objects/smallbox.png" id="13_3atr8"]
 [ext_resource type="Texture2D" uid="uid://vxeeag75b113" path="res://assets/objects/bomb.png" id="14_5en38"]

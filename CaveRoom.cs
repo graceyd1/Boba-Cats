@@ -33,6 +33,19 @@ public partial class CaveRoom : Node2D
 			await GlobalScript.ChangeRoom(new Vector2(270, 51), "enter_cave_room", true);
 		}
 
-		//to-do todo: enter that cat's house
+	}
+
+	//enter parva's house
+	private async void OnEnterRoom(String roomName)
+	{
+		var player = GetNode<CharacterBody2D>("GroundPlayer");
+		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
+		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		transitioning = true;
+		if (FaderNode is Fader fader) {
+			await fader.FadeIn(.7f);
+		}
+
+		await GlobalScript.ChangeRoom(new Vector2(20, 140), "parva_house", true);
 	}
 }

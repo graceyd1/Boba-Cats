@@ -100,4 +100,4 @@ script = ExtResource("2_dj4o3")
 light_mask = 0
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_opiss")
-animation = &"sit_left"
+animation = &"sit_right"

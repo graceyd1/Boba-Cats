@@ -15,7 +15,7 @@ public partial class TextBox : Node2D
 	public override void _Ready()
 	{
 		showingText = false;
-		label = GetNode<PanelContainer>("PanelContainer").GetChild<RichTextLabel>(0);
+		label = GetNode<RichTextLabel>("PanelContainer/MarginContainer/RichTextLabel");
 		timer = GetNode<Godot.Timer>("Timer");
 		Hide();
 	}

@@ -121,7 +121,6 @@ public partial class Player : CharacterBody2D
 	//when invulnerablility ends
 	private void OnHurtTimerTimeout()
 	{
-		GD.Print("Times up"); ///
 		invulnerable = false;
 		flash = false;
 
@@ -131,10 +130,6 @@ public partial class Player : CharacterBody2D
 		if (insideHurtbox.Count > 0)
 		{
 			GetHit();
-		}
-		else
-		{
-			GD.Print("safe now");///
 		}
 	}
 

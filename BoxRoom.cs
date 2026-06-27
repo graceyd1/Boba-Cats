@@ -28,5 +28,13 @@ public partial class BoxRoom : Node2D
 			}
 			await GlobalScript.ChangeRoom(new Vector2(478, 499), "underwater_town", false);
 		}
+		if (pos.X > 495)
+		{
+			transitioning = true;
+			if (FaderNode is Fader fader) {
+				await fader.FadeIn(1.5f);
+			}
+			await GlobalScript.ChangeRoom(new Vector2(20, 127), "fish_room", false);
+		}
 	}
 }

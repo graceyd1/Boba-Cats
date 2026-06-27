@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqw5pv6ifi7f0"]
+[gd_scene load_steps=7 format=3 uid="uid://cqw5pv6ifi7f0"]
 
+[ext_resource type="Script" path="res://SubmarineShop.cs" id="1_26v74"]
 [ext_resource type="Texture2D" uid="uid://d18mq7cjuo7pq" path="res://assets/backgrounds/interior/sub_workshop.png" id="1_uhx58"]
 [ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="2_avnv1"]
-[ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="3_is6x0"]
+[ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_lavss"]
 [ext_resource type="Texture2D" uid="uid://c6sjgcysf8i6y" path="res://assets/npcs/azucat.png" id="4_ud6u5"]
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="5_chh4g"]
 
 [node name="SubmarineShop" type="Node2D"]
+script = ExtResource("1_26v74")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -14,12 +16,11 @@ texture = ExtResource("1_uhx58")
 centered = false
 
 [node name="Wall" parent="." instance=ExtResource("2_avnv1")]
-position = Vector2(0, 140)
-scale = Vector2(16, 1)
+position = Vector2(-60, 140)
+scale = Vector2(22, 1)
 
-[node name="UnderwaterPlayer" parent="." instance=ExtResource("3_is6x0")]
-texture_filter = 1
-position = Vector2(25, 132)
+[node name="GroundPlayer" parent="." instance=ExtResource("3_lavss")]
+position = Vector2(35, 132)
 
 [node name="Azucat" type="Sprite2D" parent="."]
 texture_filter = 1

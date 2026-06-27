@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://pqierol8hgv6"]
+[gd_scene load_steps=12 format=3 uid="uid://pqierol8hgv6"]
 
-[ext_resource type="Texture2D" uid="uid://bk2g0c2u7xqch" path="res://assets/backgrounds/fish_room/fish_room0.png" id="1_g8guc"]
+[ext_resource type="Texture2D" uid="uid://nck8mm6r3ac2" path="res://assets/backgrounds/fish_room/fish_room0.png" id="1_g8guc"]
+[ext_resource type="Script" path="res://FishRoom.cs" id="1_wpdrc"]
 [ext_resource type="Texture2D" uid="uid://dxpjfw2i36bwi" path="res://assets/backgrounds/fish_room/fish_room1.png" id="2_dbuyh"]
 [ext_resource type="Texture2D" uid="uid://b1itb3n2e3a34" path="res://assets/backgrounds/fish_room/fish_room2.png" id="3_v0c04"]
 [ext_resource type="Texture2D" uid="uid://be6ds2edpmttm" path="res://assets/backgrounds/fish_room/fish_room_3.1.png" id="4_r66pw"]
 [ext_resource type="Texture2D" uid="uid://dotoarb5btxvp" path="res://assets/backgrounds/fish_room/fish_room_3.2.png" id="5_wbxys"]
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="6_rhgjf"]
-[ext_resource type="Texture2D" uid="uid://cbrerfcpxoxcc" path="res://assets/backgrounds/fish_room/fish_room4.png" id="7_stmwa"]
-[ext_resource type="Texture2D" uid="uid://bqmclf4u5p1kd" path="res://assets/backgrounds/fish_room/fish_room5.png" id="8_i00v6"]
+[ext_resource type="Texture2D" uid="uid://cwrrfwa67yvkk" path="res://assets/backgrounds/fish_room/fish_room4.png" id="7_stmwa"]
+[ext_resource type="Texture2D" uid="uid://c24b6mn04sgh6" path="res://assets/backgrounds/fish_room/fish_room5.png" id="8_i00v6"]
 [ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="9_fslp5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yuaek"]
@@ -25,6 +26,7 @@ animations = [{
 }]
 
 [node name="FishRoom" type="Node2D"]
+script = ExtResource("1_wpdrc")
 
 [node name="Backgrounds" type="Node2D" parent="."]
 
@@ -53,17 +55,19 @@ centered = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_yuaek")
 autoplay = "default"
-frame_progress = 0.149939
+frame_progress = 0.436158
 centered = false
 
-[node name="UnderwaterPlayer" parent="." instance=ExtResource("6_rhgjf")]
-
-[node name="GroundSprite" type="Sprite2D" parent="."]
+[node name="IceCreamAreaSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("7_stmwa")
 centered = false
 
-[node name="CeilingSprite" type="Sprite2D" parent="."]
+[node name="UnderwaterPlayer" parent="." instance=ExtResource("6_rhgjf")]
+position = Vector2(20, 127)
+collision_mask = 5
+
+[node name="RocksSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("8_i00v6")
 centered = false
@@ -71,8 +75,13 @@ centered = false
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="Ceiling" parent="Walls" instance=ExtResource("9_fslp5")]
-position = Vector2(0, -20)
-scale = Vector2(32, 1)
+position = Vector2(0, -10)
+scale = Vector2(28, 1)
+
+[node name="Ceiling3" parent="Walls" instance=ExtResource("9_fslp5")]
+position = Vector2(-17, 45)
+rotation = -0.567232
+scale = Vector2(6, 1.5)
 
 [node name="LeftGround" parent="Walls" instance=ExtResource("9_fslp5")]
 position = Vector2(0, 135)
@@ -81,6 +90,10 @@ scale = Vector2(24.7, 3)
 [node name="RightTopGround" parent="Walls" instance=ExtResource("9_fslp5")]
 position = Vector2(476, 63)
 scale = Vector2(9, 1)
+
+[node name="RightTopWall" parent="Walls" instance=ExtResource("9_fslp5")]
+position = Vector2(626, -37)
+scale = Vector2(1, 5)
 
 [node name="CaveCeiling" parent="Walls" instance=ExtResource("9_fslp5")]
 position = Vector2(500, 83)
@@ -91,9 +104,21 @@ position = Vector2(494, 180)
 scale = Vector2(8, 1)
 
 [node name="LeftRock" parent="Walls" instance=ExtResource("9_fslp5")]
-position = Vector2(123, 67)
-scale = Vector2(3.7, 4)
+position = Vector2(123, 85)
+scale = Vector2(3.6, 2.5)
 
 [node name="LeftRock2" parent="Walls" instance=ExtResource("9_fslp5")]
 position = Vector2(110, 110)
-scale = Vector2(1, 2)
+scale = Vector2(0.7, 2)
+
+[node name="LeftRock3" parent="Walls" instance=ExtResource("9_fslp5")]
+position = Vector2(130, 69)
+scale = Vector2(2.7, 1)
+
+[node name="RightRock" parent="Walls" instance=ExtResource("9_fslp5")]
+position = Vector2(296, 76)
+scale = Vector2(4, 3)
+
+[node name="RightRock2" parent="Walls" instance=ExtResource("9_fslp5")]
+position = Vector2(374, 110)
+scale = Vector2(1.2, 1.3)

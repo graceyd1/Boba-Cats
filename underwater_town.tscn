@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bnxy61ndssuqj"]
+[gd_scene load_steps=15 format=3 uid="uid://bnxy61ndssuqj"]
 
 [ext_resource type="Texture2D" uid="uid://bb3cxky1vqp5r" path="res://assets/backgrounds/underwater_town/underwater_town0.png" id="1_0clrj"]
 [ext_resource type="Script" path="res://UnderwaterTown.cs" id="1_0v88i"]
@@ -13,9 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="9_1c834"]
 [ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="11_y5y2r"]
 [ext_resource type="PackedScene" uid="uid://bnpd4i7iptaot" path="res://up_wall.tscn" id="12_f8bqc"]
+[ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://door.tscn" id="14_48yht"]
 
 [node name="UnderwaterTown" type="Node2D"]
-position = Vector2(10, 2)
 script = ExtResource("1_0v88i")
 
 [node name="Backgrounds" type="Node2D" parent="."]
@@ -79,7 +79,8 @@ texture = ExtResource("8_wu3mq")
 centered = false
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("9_1c834")]
-position = Vector2(10, 518)
+position = Vector2(100, 500)
+collision_mask = 5
 
 [node name="GroundSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -89,8 +90,8 @@ centered = false
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="Ground" parent="Walls" instance=ExtResource("11_y5y2r")]
-position = Vector2(0, 525)
-scale = Vector2(25, 1)
+position = Vector2(-50, 525)
+scale = Vector2(30, 1)
 
 [node name="Left" parent="Walls" instance=ExtResource("11_y5y2r")]
 position = Vector2(-10, 0)
@@ -111,3 +112,20 @@ scale = Vector2(10, 1)
 [node name="RightRockUpWall" parent="Walls" instance=ExtResource("12_f8bqc")]
 position = Vector2(324, 181)
 scale = Vector2(9, 1)
+
+[node name="SubShopDoor" parent="." instance=ExtResource("14_48yht")]
+position = Vector2(325, 525)
+
+[node name="SubShopDoor2" parent="." instance=ExtResource("14_48yht")]
+position = Vector2(402, 525)
+
+[node name="GreenroomDoor" parent="." instance=ExtResource("14_48yht")]
+position = Vector2(41, 329)
+
+[node name="BobaShopDoor" parent="." instance=ExtResource("14_48yht")]
+position = Vector2(456, 181)
+
+[connection signal="EnterRoom" from="SubShopDoor" to="." method="OnEnterRoom"]
+[connection signal="EnterRoom" from="SubShopDoor2" to="." method="OnEnterRoom"]
+[connection signal="EnterRoom" from="GreenroomDoor" to="." method="OnEnterRoom"]
+[connection signal="EnterRoom" from="BobaShopDoor" to="." method="OnEnterRoom"]
