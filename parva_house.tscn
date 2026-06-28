@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://s1bee1shdfl2"]
+[gd_scene load_steps=14 format=3 uid="uid://s1bee1shdfl2"]
 
 [ext_resource type="Script" path="res://ParvaHouse.cs" id="1_8ffew"]
 [ext_resource type="Texture2D" uid="uid://d2yeum0e887wi" path="res://assets/backgrounds/interior/parva_house.png" id="1_xd8vd"]
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="2_rt8xu"]
-[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="3_nw7ai"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="3_nw7ai"]
 [ext_resource type="Texture2D" uid="uid://c5wyai0miq2my" path="res://assets/objects/parva_trapdoor.png" id="4_2lp8j"]
+[ext_resource type="Texture2D" uid="uid://bonv74n3d6s3y" path="res://assets/npcs/parva.png" id="6_6j6vd"]
+[ext_resource type="Texture2D" uid="uid://bujj7eiir4aio" path="res://assets/npcs/parva_mad.png" id="7_wd4c4"]
+[ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="8_ou3kr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_daklm"]
 atlas = ExtResource("4_2lp8j")
@@ -40,6 +43,25 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_pg3t3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6j6vd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wd4c4")
+}],
+"loop": true,
+"name": &"mad",
+"speed": 5.0
+}]
+
 [node name="ParvaHouse" type="Node2D"]
 script = ExtResource("1_8ffew")
 
@@ -50,6 +72,8 @@ centered = false
 
 [node name="GroundPlayer" parent="." instance=ExtResource("2_rt8xu")]
 position = Vector2(29, 132)
+
+[node name="TextBox" parent="GroundPlayer" instance=ExtResource("8_ou3kr")]
 
 [node name="Right" parent="." instance=ExtResource("3_nw7ai")]
 position = Vector2(342, 0)
@@ -73,3 +97,9 @@ centered = false
 
 [node name="Door" parent="Trapdoor" instance=ExtResource("3_nw7ai")]
 position = Vector2(20, 18)
+
+[node name="Parva" type="AnimatedSprite2D" parent="."]
+position = Vector2(200, 129)
+sprite_frames = SubResource("SpriteFrames_pg3t3")
+
+[node name="TextBox" parent="Parva" instance=ExtResource("8_ou3kr")]
