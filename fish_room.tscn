@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="6_rhgjf"]
 [ext_resource type="Texture2D" uid="uid://cwrrfwa67yvkk" path="res://assets/backgrounds/fish_room/fish_room4.png" id="7_stmwa"]
 [ext_resource type="Texture2D" uid="uid://c24b6mn04sgh6" path="res://assets/backgrounds/fish_room/fish_room5.png" id="8_i00v6"]
-[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="9_fslp5"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="9_fslp5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yuaek"]
 animations = [{

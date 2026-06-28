@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ParvaHouse.cs" id="1_8ffew"]
 [ext_resource type="Texture2D" uid="uid://d2yeum0e887wi" path="res://assets/backgrounds/interior/parva_house.png" id="1_xd8vd"]
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="2_rt8xu"]
-[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="3_nw7ai"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="3_nw7ai"]
 [ext_resource type="Texture2D" uid="uid://c5wyai0miq2my" path="res://assets/objects/parva_trapdoor.png" id="4_2lp8j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_daklm"]

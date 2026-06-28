@@ -5,9 +5,15 @@ using System.Threading.Tasks;
 public partial class SubmarineShop : Node2D
 {
 	private bool transitioning = false;
+	Node2D playerTextNode;
+	Node2D azucatTextNode;
+	public bool metAzucat = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		playerTextNode = GetNode<Node2D>("GroundPlayer/TextBox");
+		azucatTextNode = GetNode<Node2D>("Azucat/TextBox");
+		startDialogue();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,6 +22,35 @@ public partial class SubmarineShop : Node2D
 		if (!transitioning) {
 			
 			await NextRoomCheck();
+		}
+	}
+	
+	public async Task startDialogue() {
+		if (playerTextNode is TextBox pText && azucatTextNode is TextBox aText) {
+			if (!metAzucat) {
+				metAzucat = true;
+				await pText.showText("What is my ship doing on top of your roof??");
+				await aText.showText("Oh sorry. I thought it looked cool there, didn't know it was yours.");
+				await aText.showText("How ‘bout let’s make a deal. You get some tapioca boba milk tea for me, and I’ll see what I can do ‘bout getting you a new boat.");
+				await aText.showText("Don’t worry, it’s pretty easy to get. Best deal you’ll get ‘round here.");
+				await pText.ask("Accept deal? y/n");
+				//Variant stores any data type
+				var result = await ToSignal(pText, TextBox.SignalName.ChoiceMade);
+				if (result is [Variant choice]) {
+					if ((string)choice == "no") {
+						await pText.showText("I don't know if I can trust you.");
+						await aText.showText("I’m the only one who can make boats around here, so it’s not like you have a choice.");
+						await pText.showText("...Fine.");
+					}
+					else {
+						await pText.showText("Call it a deal!");
+						await aText.showText("Pleasure doing business with you.");
+					}
+				}
+			}
+			else {
+				await aText.showText("I trust that you're working on getting that boba for me?");
+			}
 		}
 	}
 

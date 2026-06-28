@@ -13,7 +13,7 @@ texture_filter = 1
 offset_left = -50.0
 offset_top = -50.0
 offset_right = 50.0
-offset_bottom = -10.0
+offset_bottom = -29.0
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
@@ -26,11 +26,12 @@ theme_override_constants/margin_bottom = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
 texture_filter = 1
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_xfw4f")
 theme_override_fonts/italics_font = ExtResource("3_pf6uk")
 bbcode_enabled = true
-text = " [font_size=8]This is a text box.[/font_size] "
+text = " [font_size=10]This is a text box.[/font_size] "
 fit_content = true
 scroll_active = false
 

@@ -6,10 +6,14 @@ public partial class TextBox : Node2D
 {
 	[Signal]
 	public delegate void ContinueDialogueEventHandler();
+	
+	[Signal]
+	public delegate void ChoiceMadeEventHandler(String choice);
 
 	private Boolean showingText;
 	private RichTextLabel label;
 	private Godot.Timer timer;
+	private Boolean asking;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -33,6 +37,16 @@ public partial class TextBox : Node2D
 			Hide();
 			EmitSignal(SignalName.ContinueDialogue);
 		}
+		else if (asking && Input.IsActionPressed("yes") && timer.IsStopped()) {
+			asking = false;
+			Hide();
+			EmitSignal(SignalName.ChoiceMade, "yes");
+		}
+		else if (asking && Input.IsActionPressed("no") && timer.IsStopped()) {
+			asking = false;
+			Hide();
+			EmitSignal(SignalName.ChoiceMade, "no");
+		}
 	}
 
 	//show text
@@ -40,7 +54,28 @@ public partial class TextBox : Node2D
 	{
 		label.Clear();
 		label.AppendText("[font_size=10]" + text + "[/font_size]");
+		var panel = GetNode<PanelContainer>("PanelContainer");
+		GD.Print(label.GetContentHeight());
+		var pos = panel.Position;
+		pos.Y = -10 - Math.Abs(panel.Size.Y);
+		GD.Print(Math.Abs(panel.Size.Y));
+		panel.Position = pos;
 		showingText = true;
+		GD.Print(Position);
+		Show();
+		
+		timer.Start();
+		await ToSignal(this, TextBox.SignalName.ContinueDialogue);
+	}
+	
+	public async Task ask(String text) {
+		label.Clear();
+		label.AppendText("[font_size=10]" + text + "[/font_size]");
+		var panel = GetNode<PanelContainer>("PanelContainer");
+		var pos = Position;
+		pos.Y = -10 - Math.Abs(panel.Size.Y);
+		Position = pos;
+		asking = true;
 		Show();
 		timer.Start();
 	}
