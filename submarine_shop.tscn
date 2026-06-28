@@ -1,13 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqw5pv6ifi7f0"]
+[gd_scene load_steps=10 format=3 uid="uid://cqw5pv6ifi7f0"]
 
 [ext_resource type="Script" path="res://SubmarineShop.cs" id="1_26v74"]
 [ext_resource type="Texture2D" uid="uid://d18mq7cjuo7pq" path="res://assets/backgrounds/interior/sub_workshop.png" id="1_uhx58"]
-[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="2_avnv1"]
+[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="2_avnv1"]
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_lavss"]
 [ext_resource type="Texture2D" uid="uid://c6sjgcysf8i6y" path="res://assets/npcs/azucat.png" id="4_ud6u5"]
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="5_chh4g"]
-[ext_resource type="PackedScene" uid="uid://bmlobwxb1vvug" path="res://door.tscn" id="7_u403n"]
+[ext_resource type="PackedScene" path="res://door.tscn" id="7_u403n"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="8_oqvgm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdolb"]
+size = Vector2(20, 146)
 
 [node name="SubmarineShop" type="Node2D"]
 script = ExtResource("1_26v74")
@@ -45,3 +48,13 @@ offset_bottom = 140.0
 [node name="InteractArea" parent="Door" instance=ExtResource("8_oqvgm")]
 position = Vector2(10, 23)
 scale = Vector2(0.5, 0.5)
+
+[node name="TriggerDialogue" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerDialogue"]
+position = Vector2(92, 67)
+shape = SubResource("RectangleShape2D_rdolb")
+
+[connection signal="body_entered" from="TriggerDialogue" to="." method="startDialogue"]

@@ -13,7 +13,7 @@ public partial class SubmarineShop : Node2D
 	{
 		playerTextNode = GetNode<Node2D>("GroundPlayer/TextBox");
 		azucatTextNode = GetNode<Node2D>("Azucat/TextBox");
-		await startDialogue();
+		// startDialogue();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +25,7 @@ public partial class SubmarineShop : Node2D
 		}
 	}
 	
-	public async Task startDialogue() {
+	public async void startDialogue(Node2D player) {
 		if (playerTextNode is TextBox pText && azucatTextNode is TextBox aText) {
 			if (!metAzucat) {
 				await pText.showText("What is my ship doing on top of your roof??"); //fumi misty edit this stuff pls if you want

@@ -12,13 +12,14 @@ public partial class Player : CharacterBody2D
 	
 	public float Mass = 4.54f; //in kg
 
-
-
 	//not sure if this should be private
 	public int hp;
 
 	//if true, player can't get hit
 	private Boolean invulnerable;
+
+	//used in cutscenes (implemented in the GroundPlayer and UnderwaterPlayer classes)
+	private Boolean disableMovement;
 
 	//player flashing animation (when hit)
 	public Boolean flash{get; set;}
@@ -78,7 +79,7 @@ public partial class Player : CharacterBody2D
 		var fader = GetNode<CanvasLayer>("/root/Fader");
 		if (fader is Fader transition) {
 			await ToSignal(GetTree().CreateTimer(1.0f), SceneTreeTimer.SignalName.Timeout);
-			await transition.FadeIn(2.0f);
+			await transition.FadeIn(1.0f);
 			
 			Vector2 respawnPoint = Vector2.Zero;
 			var room = GetParent().Name;
@@ -151,6 +152,15 @@ public partial class Player : CharacterBody2D
 	public void setVelocityModifier(Vector2 vel)
 	{
 		velocityModifier = vel;
+	}
+
+	public void setDisableMovement(Boolean disable)
+	{
+		disableMovement = disable;
+	}
+	public Boolean movementIsDisabled()
+	{
+		return disableMovement;
 	}
 
 }

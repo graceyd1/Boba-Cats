@@ -22,71 +22,79 @@ public partial class UnderwaterPlayer : Player
 	
 	public override void _PhysicsProcess(double delta) {
 		var velocity = Vector2.Zero; //(0, 0)
-		if (CoralStatus != InCoral.VERTICAL) {
-			if (Input.IsActionPressed("move_right")) {
-				velocity.X += 1;
-			}
-			if (Input.IsActionPressed("move_left")) {
-				velocity.X -= 1;
-			}
-		}
-		if (CoralStatus != InCoral.HORIZONTAL) {
-			if (Input.IsActionPressed("move_down")) {
-				velocity.Y += 1;
-			}
-			if (Input.IsActionPressed("move_up")) {
-				velocity.Y -= 1;
-			}
-		}
 
-		var originalY = velocity.Y;
-		//gravity and velocity modifier
-		if (CoralStatus != InCoral.HORIZONTAL) {
-			velocity.Y += Gravity;
-		}
-	
-		velocity = velocity.Normalized() + velocityModifier;
-	
-		if (velocity.Length() > 0) {
-			velocity = velocity * Speed;
-			
-			animatedSprite.Play();
-		}
-		else {
-			animatedSprite.Stop();
-		}
+		if (!movementIsDisabled())
+		{
+			if (CoralStatus != InCoral.VERTICAL) {
+				if (Input.IsActionPressed("move_right")) {
+					velocity.X += 1;
+				}
+				if (Input.IsActionPressed("move_left")) {
+					velocity.X -= 1;
+				}
+			}
+			if (CoralStatus != InCoral.HORIZONTAL) {
+				if (Input.IsActionPressed("move_down")) {
+					velocity.Y += 1;
+				}
+				if (Input.IsActionPressed("move_up")) {
+					velocity.Y -= 1;
+				}
+			}
 
-		//setting the animation
-		if (velocity.X < 0)
-		{
-			animatedSprite.Animation = "swim-left";
-			facingRight = false;
-		}
-		else if (velocity.X > 0)
-		{
-			animatedSprite.Animation = "swim-right";
-			facingRight = true;
-		}
-		else
-		{
-			if (facingRight) {
-				animatedSprite.Animation = "sit-helmet";
+			var originalY = velocity.Y;
+			//gravity and velocity modifier
+			if (CoralStatus != InCoral.HORIZONTAL) {
+				velocity.Y += Gravity;
 			}
-			else {
-				animatedSprite.Animation = "left_sit";
-			}
-			
-		}
-		if (originalY != 0) {
-			if (facingRight) {
-				animatedSprite.Animation = "swim-right";
-			}
-			else {
-				animatedSprite.Animation = "swim-left";
-			}
-		}
 		
+			velocity = velocity.Normalized() + velocityModifier;
+		
+			if (velocity.Length() > 0) {
+				velocity = velocity * Speed;
+				
+				animatedSprite.Play();
+			}
+			else {
+				animatedSprite.Stop();
+			}
 
+			//setting the animation
+			if (velocity.X < 0)
+			{
+				animatedSprite.Animation = "swim-left";
+				facingRight = false;
+			}
+			else if (velocity.X > 0)
+			{
+				animatedSprite.Animation = "swim-right";
+				facingRight = true;
+			}
+			else
+			{
+				if (facingRight) {
+					animatedSprite.Animation = "sit-helmet";
+				}
+				else {
+					animatedSprite.Animation = "left_sit";
+				}
+				
+			}
+			if (originalY != 0) {
+				if (facingRight) {
+					animatedSprite.Animation = "swim-right";
+				}
+				else {
+					animatedSprite.Animation = "swim-left";
+				}
+			}
+			//Position += velocity * (float)delta;
+			//MoveAndCollide(velocity * (float)delta); //character2d movement
+			
+			Velocity = velocity;
+			MoveAndSlide();
+		} //end of if (movement not disabled)
+		
 		//flashing when hurt
 		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
 		if (flash)
@@ -103,11 +111,6 @@ public partial class UnderwaterPlayer : Player
 			}
 		}
 
-		//Position += velocity * (float)delta;
-		//MoveAndCollide(velocity * (float)delta); //character2d movement
-		
-		Velocity = velocity;
-		MoveAndSlide();
 		int collisionCount = GetSlideCollisionCount();
 		for (int i = 0; i < collisionCount; i++) {
 			//get info returned from MoveAndCollide about collisions

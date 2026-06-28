@@ -21,99 +21,102 @@ public partial class GroundPlayer : Player
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (!Climbing) {
-			Vector2 velocity = Velocity;
+		if (!movementIsDisabled())
+		{
+			if (!Climbing) {
+				Vector2 velocity = Velocity;
 
-			// Add the gravity.
-			if (!IsOnFloor())
-			{
-				velocity += GetGravity() * (float)delta;
-			}
-
-			// Handle Jump.
-			if (Input.IsActionJustPressed("move_up") && IsOnFloor())
-			{
-				velocity.Y = JumpVelocity;
-			}
-
-			// Get the input direction and handle the movement/deceleration.
-			// As good practice, you should replace UI actions with custom gameplay actions.
-			Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-			if (direction != Vector2.Zero)
-			{
-				velocity.X = direction.X * Speed;
-				if (direction.X < 0) {
-					animatedSprite.Animation = "walk_left";
-					facingRight = false;
+				// Add the gravity.
+				if (!IsOnFloor())
+				{
+					velocity += GetGravity() * (float)delta;
 				}
-				else if (direction.X > 0) {
-					animatedSprite.Animation = "walk_right";
-					facingRight = true;
+
+				// Handle Jump.
+				if (Input.IsActionJustPressed("move_up") && IsOnFloor())
+				{
+					velocity.Y = JumpVelocity;
 				}
-				if (direction.Y != 0) {
+
+				// Get the input direction and handle the movement/deceleration.
+				// As good practice, you should replace UI actions with custom gameplay actions.
+				Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+				if (direction != Vector2.Zero)
+				{
+					velocity.X = direction.X * Speed;
+					if (direction.X < 0) {
+						animatedSprite.Animation = "walk_left";
+						facingRight = false;
+					}
+					else if (direction.X > 0) {
+						animatedSprite.Animation = "walk_right";
+						facingRight = true;
+					}
+					if (direction.Y != 0) {
+						if (facingRight) {
+							animatedSprite.Animation = "jump_right";
+						}
+						else {
+							animatedSprite.Animation ="jump_left";
+						}
+					}
+					animatedSprite.Play();
+				}
+				else
+				{
+					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 					if (facingRight) {
-						animatedSprite.Animation = "jump_right";
+						animatedSprite.Animation = "sit_right";
 					}
 					else {
-						animatedSprite.Animation ="jump_left";
+						animatedSprite.Animation = "sit_left";
 					}
+					animatedSprite.Stop();
 				}
-				animatedSprite.Play();
-			}
-			else
-			{
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-				if (facingRight) {
-					animatedSprite.Animation = "sit_right";
-				}
-				else {
-					animatedSprite.Animation = "sit_left";
-				}
-				animatedSprite.Stop();
-			}
 
-			Velocity = velocity;
-			MoveAndSlide();
-		}
-		else {
-			var dir = Vector2.Zero;
-			if (Input.IsActionPressed("move_up")) {
-				dir.Y -= 1;
-			}
-			if (Input.IsActionPressed("move_down")) {
-				dir.Y += 1;
-			}
-			if (Input.IsActionPressed("move_right")) {
-				dir.X += 1;
-			}
-			if (Input.IsActionPressed("move_left")) {
-				dir.X -= 1;
-			}
-			
-			if (dir.Length() > 0) {
-				dir = dir.Normalized() * Speed;
-				
-				animatedSprite.Play();
+				Velocity = velocity;
+				MoveAndSlide();
 			}
 			else {
-				animatedSprite.Stop();
+				var dir = Vector2.Zero;
+				if (Input.IsActionPressed("move_up")) {
+					dir.Y -= 1;
+				}
+				if (Input.IsActionPressed("move_down")) {
+					dir.Y += 1;
+				}
+				if (Input.IsActionPressed("move_right")) {
+					dir.X += 1;
+				}
+				if (Input.IsActionPressed("move_left")) {
+					dir.X -= 1;
+				}
+				
+				if (dir.Length() > 0) {
+					dir = dir.Normalized() * Speed;
+					
+					animatedSprite.Play();
+				}
+				else {
+					animatedSprite.Stop();
+				}
+				Velocity = dir;
+				MoveAndSlide();
 			}
-			Velocity = dir;
-			MoveAndSlide();
-		}
-		//flashing when hurt
-		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
-		if (flash)
-		{
-			var modulate = animatedSprite.Modulate;
+			//flashing when hurt
+			var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
+			if (flash)
+			{
+				var modulate = animatedSprite.Modulate;
 
-			if (hurtTimer.TimeLeft % 0.2 < 0.1)
-			{
-				animatedSprite.Modulate = new Color(1, 1, 1, 1);
-			}
-			else
-			{
-				animatedSprite.Modulate = new Color(100, 1, 1, (float) 0.5);
+				if (hurtTimer.TimeLeft % 0.2 < 0.1)
+				{
+					animatedSprite.Modulate = new Color(1, 1, 1, 1);
+				}
+				else
+				{
+					animatedSprite.Modulate = new Color(100, 1, 1, (float) 0.5);
+				}
 			}
 		}
 
