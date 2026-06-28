@@ -29,8 +29,10 @@ public partial class SubmarineShop : Node2D
 		if (playerTextNode is TextBox pText && azucatTextNode is TextBox aText) {
 			if (!metAzucat) {
 				metAzucat = true;
-				await pText.showText("What is my ship doing on top of your roof??");
-				await aText.showText("Oh sorry. I thought it looked cool there, didn't know it was yours.");
+				await pText.showText("What is my ship doing on top of your roof??"); //fumi misty edit this stuff pls if you want
+				await aText.showText("Oh sorry. I thought it looked cool, so I patched it up and put it there."); 
+				await aText.showText("Didn't know it was yours."); 
+				await pText.showText("How did you-- My ship just crashed! I need it to go back to the surface...");
 				await aText.showText("How ‘bout let’s make a deal. You get some tapioca boba milk tea for me, and I’ll see what I can do ‘bout getting you a new boat.");
 				await aText.showText("Don’t worry, it’s pretty easy to get. Best deal you’ll get ‘round here.");
 				await pText.ask("Accept deal? y/n");

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="6_rhgjf"]
 [ext_resource type="Texture2D" uid="uid://cwrrfwa67yvkk" path="res://assets/backgrounds/fish_room/fish_room4.png" id="7_stmwa"]
 [ext_resource type="Texture2D" uid="uid://c24b6mn04sgh6" path="res://assets/backgrounds/fish_room/fish_room5.png" id="8_i00v6"]
-[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="9_fslp5"]
+[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="9_fslp5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yuaek"]
 animations = [{
@@ -64,6 +64,7 @@ texture = ExtResource("7_stmwa")
 centered = false
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("6_rhgjf")]
+material = null
 position = Vector2(20, 127)
 collision_mask = 5
 
@@ -88,7 +89,7 @@ position = Vector2(0, 135)
 scale = Vector2(24.7, 3)
 
 [node name="RightTopGround" parent="Walls" instance=ExtResource("9_fslp5")]
-position = Vector2(476, 63)
+position = Vector2(477, 58)
 scale = Vector2(9, 1)
 
 [node name="RightTopWall" parent="Walls" instance=ExtResource("9_fslp5")]
@@ -96,8 +97,8 @@ position = Vector2(626, -37)
 scale = Vector2(1, 5)
 
 [node name="CaveCeiling" parent="Walls" instance=ExtResource("9_fslp5")]
-position = Vector2(500, 83)
-scale = Vector2(8, 1)
+position = Vector2(495, 78)
+scale = Vector2(8, 1.1)
 
 [node name="CaveGround" parent="Walls" instance=ExtResource("9_fslp5")]
 position = Vector2(494, 180)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx12bef1m2n45"]
+[gd_scene load_steps=10 format=3 uid="uid://e2dllb7ogko6"]
 
 [ext_resource type="Script" path="res://SeaBunnyRoom.cs" id="1_blskm"]
 [ext_resource type="Texture2D" uid="uid://dxsfcqpbs5qpv" path="res://assets/backgrounds/sea_bunny_room/sea_bunny_room0.png" id="1_f8pvm"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="4_ahs72"]
 [ext_resource type="Texture2D" uid="uid://dv5w6aq7bsisg" path="res://assets/backgrounds/sea_bunny_room/sea_bunny_room3.png" id="4_erb2g"]
 [ext_resource type="PackedScene" uid="uid://dx7hhstl21um6" path="res://seabunny.tscn" id="5_e2gnw"]
-[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="7_26f6x"]
+[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="7_26f6x"]
 [ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://growable_vine.tscn" id="9_ilcv2"]
 
 [node name="SeaBunnyRoom" type="Node2D"]

@@ -19,6 +19,7 @@ texture = ExtResource("2_vmi6y")
 centered = false
 
 [node name="GroundPlayer" parent="." instance=ExtResource("3_jieat")]
+material = null
 position = Vector2(41, 142)
 
 [node name="Frontground" type="Sprite2D" parent="."]

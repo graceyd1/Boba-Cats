@@ -6,14 +6,17 @@
 
 [node name="TextBox" type="Node2D"]
 z_index = 4000
+position = Vector2(0, -10)
 script = ExtResource("1_l67vn")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 texture_filter = 1
-offset_left = -50.0
+anchors_preset = -1
+offset_left = -60.0
 offset_top = -50.0
-offset_right = 50.0
-offset_bottom = -29.0
+offset_right = 60.0
+grow_vertical = 0
+size_flags_vertical = 8
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]

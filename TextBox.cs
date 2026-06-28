@@ -54,14 +54,9 @@ public partial class TextBox : Node2D
 	{
 		label.Clear();
 		label.AppendText("[font_size=10]" + text + "[/font_size]");
-		var panel = GetNode<PanelContainer>("PanelContainer");
-		GD.Print(label.GetContentHeight());
-		var pos = panel.Position;
-		pos.Y = -10 - Math.Abs(panel.Size.Y);
-		GD.Print(Math.Abs(panel.Size.Y));
-		panel.Position = pos;
+	
 		showingText = true;
-		GD.Print(Position);
+		//GD.Print(Position); ///
 		Show();
 		
 		timer.Start();
@@ -71,10 +66,6 @@ public partial class TextBox : Node2D
 	public async Task ask(String text) {
 		label.Clear();
 		label.AppendText("[font_size=10]" + text + "[/font_size]");
-		var panel = GetNode<PanelContainer>("PanelContainer");
-		var pos = Position;
-		pos.Y = -10 - Math.Abs(panel.Size.Y);
-		Position = pos;
 		asking = true;
 		Show();
 		timer.Start();

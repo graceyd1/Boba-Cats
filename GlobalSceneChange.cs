@@ -15,7 +15,8 @@ public partial class GlobalSceneChange : Node2D
 		"FirstRoom",
 		"UnderwaterTown",
 		"BoxRoom",
-		"FishRoom"
+		"FishRoom",
+		"LongTubeCoralRoom"
 	};
 	
 	public static List<string> GroundRooms = new List<string> {
@@ -25,7 +26,7 @@ public partial class GlobalSceneChange : Node2D
 		"ParvaHouse",
 		"EnterSeaBunnyRoom",
 		"SeaBunnyRoom",
-		"TreasureRoom"
+		"TreasureRoom",
 	};
 	
 	// Called when the node enters the scene tree for the first time.
