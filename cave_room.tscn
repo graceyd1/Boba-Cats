@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://growable_vine.tscn" id="6_itp7c"]
 [ext_resource type="PackedScene" uid="uid://dhctxpw3i8rpf" path="res://darkness.tscn" id="7_jnidm"]
 [ext_resource type="Script" path="res://CaveRoomSpikes.cs" id="9_ujmbn"]
-[ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://door.tscn" id="10_wdpay"]
+[ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="10_wdpay"]
 
 [node name="CaveRoom" type="Node2D"]
 script = ExtResource("1_tuhh4")

@@ -71,4 +71,22 @@ public partial class TextBox : Node2D
 		timer.Start();
 	}
 	
+	//so that pressing enter doesn't restart the conversation
+	public void DisableInteractArea()
+	{
+		var parent = GetParent();
+		if (parent is InteractArea area)
+		{
+			area.Interactable(false);
+		}
+	}
+
+	public void EnableInteractArea()
+	{
+		var parent = GetParent();
+		if (parent is InteractArea area)
+		{
+			area.Interactable(true);
+		}
+	}
 }

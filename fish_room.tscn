@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pqierol8hgv6"]
+[gd_scene load_steps=17 format=3 uid="uid://pqierol8hgv6"]
 
 [ext_resource type="Texture2D" uid="uid://nck8mm6r3ac2" path="res://assets/backgrounds/fish_room/fish_room0.png" id="1_g8guc"]
 [ext_resource type="Script" path="res://FishRoom.cs" id="1_wpdrc"]
@@ -9,7 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="6_rhgjf"]
 [ext_resource type="Texture2D" uid="uid://cwrrfwa67yvkk" path="res://assets/backgrounds/fish_room/fish_room4.png" id="7_stmwa"]
 [ext_resource type="Texture2D" uid="uid://c24b6mn04sgh6" path="res://assets/backgrounds/fish_room/fish_room5.png" id="8_i00v6"]
+[ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="8_xnsu6"]
 [ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="9_fslp5"]
+[ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="9_gclb7"]
+[ext_resource type="Script" path="res://MinigameTime.cs" id="11_hplhg"]
+[ext_resource type="FontFile" uid="uid://cpdnqe1jl0cys" path="res://assets/Geo_Font/Geo-Regular.ttf" id="11_y2cam"]
+[ext_resource type="PackedScene" uid="uid://b6tcj5pauo27d" path="res://fish_enemy.tscn" id="12_on3ij"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yuaek"]
 animations = [{
@@ -27,6 +32,7 @@ animations = [{
 
 [node name="FishRoom" type="Node2D"]
 script = ExtResource("1_wpdrc")
+numCollectableFish = 11
 
 [node name="Backgrounds" type="Node2D" parent="."]
 
@@ -58,22 +64,7 @@ autoplay = "default"
 frame_progress = 0.436158
 centered = false
 
-[node name="IceCreamAreaSprite" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("7_stmwa")
-centered = false
-
-[node name="UnderwaterPlayer" parent="." instance=ExtResource("6_rhgjf")]
-material = null
-position = Vector2(20, 127)
-collision_mask = 5
-
-[node name="RocksSprite" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("8_i00v6")
-centered = false
-
-[node name="Walls" type="Node2D" parent="."]
+[node name="Walls" type="Node" parent="."]
 
 [node name="Ceiling" parent="Walls" instance=ExtResource("9_fslp5")]
 position = Vector2(0, -10)
@@ -123,3 +114,162 @@ scale = Vector2(4, 3)
 [node name="RightRock2" parent="Walls" instance=ExtResource("9_fslp5")]
 position = Vector2(374, 110)
 scale = Vector2(1.2, 1.3)
+
+[node name="IceCreamAreaSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("7_stmwa")
+centered = false
+
+[node name="InteractArea" parent="IceCreamAreaSprite" instance=ExtResource("8_xnsu6")]
+position = Vector2(602, 180)
+scale = Vector2(1.5, 1)
+
+[node name="TextBox" parent="IceCreamAreaSprite/InteractArea" instance=ExtResource("9_gclb7")]
+position = Vector2(-14.6667, -60)
+scale = Vector2(0.666667, 1)
+
+[node name="UnderwaterPlayer" parent="." instance=ExtResource("6_rhgjf")]
+material = null
+position = Vector2(524, 172)
+collision_mask = 5
+
+[node name="MinigameTime" type="Label" parent="UnderwaterPlayer"]
+offset_left = -52.0
+offset_top = -32.0
+offset_right = 52.0
+offset_bottom = -9.66666
+theme_override_fonts/font = ExtResource("11_y2cam")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+script = ExtResource("11_hplhg")
+
+[node name="TextBox" parent="UnderwaterPlayer" instance=ExtResource("9_gclb7")]
+
+[node name="RocksSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("8_i00v6")
+centered = false
+
+[node name="RegularFish" type="Node2D" parent="."]
+
+[node name="FishEnemy" parent="RegularFish" instance=ExtResource("12_on3ij")]
+position = Vector2(44, 87)
+
+[node name="FishEnemy2" parent="RegularFish" instance=ExtResource("12_on3ij")]
+position = Vector2(215, 112)
+
+[node name="CollectableFish" type="Node2D" parent="."]
+
+[node name="CollectableFish1" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(445, 117)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish1" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[node name="CollectableFish2" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(408, 56)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish2" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[node name="CollectableFish3" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(538, 40)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish3" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[node name="CollectableFish4" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(332, 53)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish4" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[node name="CollectableFish5" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(380, 17)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish5" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[node name="CollectableFish6" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(245, 81)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish6" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[node name="CollectableFish7" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(245, 117)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish7" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[node name="CollectableFish8" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(245, 45)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish8" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[node name="CollectableFish9" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(130, 48)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish9" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[node name="CollectableFish10" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(61, 118)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish10" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[node name="CollectableFish11" parent="CollectableFish" instance=ExtResource("12_on3ij")]
+position = Vector2(46, 84)
+isOrange = false
+
+[node name="InteractArea" parent="CollectableFish/CollectableFish11" instance=ExtResource("8_xnsu6")]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.6)
+
+[connection signal="Interact" from="IceCreamAreaSprite/InteractArea" to="." method="StartDialogue"]
+[connection signal="Hit" from="UnderwaterPlayer" to="." method="OnPlayerHit"]
+[connection signal="TimesUp" from="UnderwaterPlayer/MinigameTime" to="." method="OnTimesUp"]
+[connection signal="Interact" from="CollectableFish/CollectableFish1/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish1/InteractArea" to="CollectableFish/CollectableFish1" method="Disable"]
+[connection signal="Interact" from="CollectableFish/CollectableFish2/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish2/InteractArea" to="CollectableFish/CollectableFish2" method="Disable"]
+[connection signal="Interact" from="CollectableFish/CollectableFish3/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish3/InteractArea" to="CollectableFish/CollectableFish3" method="Disable"]
+[connection signal="Interact" from="CollectableFish/CollectableFish4/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish4/InteractArea" to="CollectableFish/CollectableFish4" method="Disable"]
+[connection signal="Interact" from="CollectableFish/CollectableFish5/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish5/InteractArea" to="CollectableFish/CollectableFish5" method="Disable"]
+[connection signal="Interact" from="CollectableFish/CollectableFish6/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish6/InteractArea" to="CollectableFish/CollectableFish6" method="Disable"]
+[connection signal="Interact" from="CollectableFish/CollectableFish7/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish7/InteractArea" to="CollectableFish/CollectableFish7" method="Disable"]
+[connection signal="Interact" from="CollectableFish/CollectableFish8/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish8/InteractArea" to="CollectableFish/CollectableFish8" method="Disable"]
+[connection signal="Interact" from="CollectableFish/CollectableFish9/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish9/InteractArea" to="CollectableFish/CollectableFish9" method="Disable"]
+[connection signal="Interact" from="CollectableFish/CollectableFish10/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish10/InteractArea" to="CollectableFish/CollectableFish10" method="Disable"]
+[connection signal="Interact" from="CollectableFish/CollectableFish11/InteractArea" to="." method="OnFishInteract"]
+[connection signal="Interact" from="CollectableFish/CollectableFish11/InteractArea" to="CollectableFish/CollectableFish11" method="Disable"]

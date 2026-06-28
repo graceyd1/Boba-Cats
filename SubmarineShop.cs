@@ -9,11 +9,11 @@ public partial class SubmarineShop : Node2D
 	Node2D azucatTextNode;
 	public bool metAzucat = false;
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public override async void _Ready()
 	{
 		playerTextNode = GetNode<Node2D>("GroundPlayer/TextBox");
 		azucatTextNode = GetNode<Node2D>("Azucat/TextBox");
-		startDialogue();
+		await startDialogue();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

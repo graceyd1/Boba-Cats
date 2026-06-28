@@ -39,20 +39,17 @@ public partial class Player : CharacterBody2D
 		flash = false;
 		//gravity = Gravity.Underwater; //todo - change to update based on the player's room
 	}
-
 	
 	//player enteres hitbox
 	private void OnHurtboxAreaEntered(Node2D area)
 	{
-		GD.Print("hitbox entered");
+		if (GetNode<Godot.Timer>("HurtTimer").TimeLeft == 0) //bc OnTimerTimeout isn't working
+		{
+			invulnerable = false;
+		}
 		if (!invulnerable)
 		{
 			GetHit();
-		}
-		else
-		{
-			GD.Print("invulnerable");
-			GD.Print(GetNode<Godot.Timer>("HurtTimer").TimeLeft);
 		}
 	}
 
@@ -60,7 +57,7 @@ public partial class Player : CharacterBody2D
 	private void GetHit()
 	{
 		hp --;
-		if (hp <= 0 || GetParent().Name == "CaveRoom") // making you respawn after hit in cave room)
+		if (hp <= 0 || GetParent().Name == "CaveRoom") // making you respawn after hit in cave room
 		{
 			// GD.Print("You died!"); 
 			Respawn();
@@ -74,8 +71,6 @@ public partial class Player : CharacterBody2D
 		hurtTimer.Start();
 
 		EmitSignal(SignalName.Hit, hp);
-		GD.Print("Timer started");
-		GD.Print(GetNode<Godot.Timer>("HurtTimer").TimeLeft);
 
 	}
 	
@@ -103,20 +98,42 @@ public partial class Player : CharacterBody2D
 			else if (room == "UnderwaterTown") {
 				respawnPoint = new Vector2(10, 518);
 			}
+			else if (room == "BoxRoom")
+			{
+				respawnPoint = new Vector2(10, 140);
+			}
+			else if (room == "FishRoom")
+			{
+				respawnPoint = new Vector2(522, 122);
+			}
+			else if (room == "LongTubeCoralRoom")
+			{
+				respawnPoint = new Vector2(290, 135);
+			}
 			else if (room == "CaveRoom")
 			{
 				respawnPoint = new Vector2(10, 90);
 			}
+			else if (room == "SeaBunnyRoom")
+			{
+				respawnPoint = new Vector2(83, 232);
+			}
+			else
+			{
+				respawnPoint = new Vector2(20, 90);//default
+			}
 
 			GlobalPosition = respawnPoint;
 			
-			await transition.FadeOut(1.5f);
+			await transition.FadeOut(1.0f);
 		}
 		invulnerable = false;
 		
 	}
 
 	//when invulnerablility ends
+	//I don't know why but this method doesn't ever run for me
+
 	private void OnHurtTimerTimeout()
 	{
 		invulnerable = false;

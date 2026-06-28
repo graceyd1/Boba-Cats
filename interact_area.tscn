@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://cajcbse43dl4y"]
 
-[ext_resource type="Script" path="res://Door.cs" id="1_wjuff"]
+[ext_resource type="Script" path="res://InteractArea.cs" id="1_qbo8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ri4u2"]
 
-[node name="Door" type="Area2D"]
+[node name="InteractArea" type="Area2D"]
 collision_layer = 8
 collision_mask = 2
-script = ExtResource("1_wjuff")
+script = ExtResource("1_qbo8n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -30)

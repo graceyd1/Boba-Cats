@@ -36,10 +36,10 @@ public partial class Seabunny : CharacterBody2D
 	}
 
 	//every time it is done waiting, do another attack
-	private void OnIdleTimerTimeout()
+	private async void OnIdleTimerTimeout()
 	{
 		GD.Print("Timer ended"); //
-		doAttack();
+		await doAttack();
 	}
 
 	private async Task doAttack()
