@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://djy0cxmipcbm6"]
+[gd_scene load_steps=9 format=3 uid="uid://djy0cxmipcbm6"]
 
 [ext_resource type="Script" path="res://Player.cs" id="1_vr4g2"]
+[ext_resource type="PackedScene" uid="uid://b0luigimkjjh" path="res://controls.tscn" id="4_o0s2x"]
 [ext_resource type="PackedScene" uid="uid://qgqaega0h2io" path="res://flashlight.tscn" id="4_u4d4c"]
 [ext_resource type="Script" path="res://Camera2d.cs" id="8_6m7sy"]
-[ext_resource type="PackedScene" uid="uid://7106o3opoex1" path="res://player_health.tscn" id="8_pkvse"]
+[ext_resource type="PackedScene" path="res://player_health.tscn" id="8_pkvse"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_peka7"]
 light_mode = 1
@@ -17,7 +18,7 @@ size = Vector2(12, 13)
 
 [node name="Player" type="CharacterBody2D"]
 material = SubResource("CanvasItemMaterial_peka7")
-position = Vector2(42, 71)
+position = Vector2(63, 72)
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_vr4g2")
@@ -55,6 +56,10 @@ z_index = 4096
 z_as_relative = false
 position = Vector2(-140.5, -72.5)
 scale = Vector2(0.9375, 1.0625)
+
+[node name="Controls" parent="Camera2D" instance=ExtResource("4_o0s2x")]
+z_index = 4096
+position = Vector2(120, -80)
 
 [node name="Flashlight" parent="." instance=ExtResource("4_u4d4c")]
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl4v7mwrpyv1x"]
+
+[ext_resource type="Script" path="res://Button.cs" id="1_38pj3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eerbs"]
+bg_color = Color(0.0588235, 0.0588235, 0.0588235, 0.705882)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="Button" type="PanelContainer"]
+offset_right = 29.0
+offset_bottom = 29.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eerbs")
+script = ExtResource("1_38pj3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "c"
+horizontal_alignment = 1

@@ -8,8 +8,6 @@ public partial class Player : CharacterBody2D
 
 	public int Speed{get; set;}
 	
-	public static int coins {get; set; } = 0;
-	
 	public float Gravity{get; set;}
 	
 	public float Mass = 4.54f; //in kg

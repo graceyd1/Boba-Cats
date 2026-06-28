@@ -37,15 +37,15 @@ public partial class TextBox : Node2D
 			Hide();
 			EmitSignal(SignalName.ContinueDialogue);
 		}
-		else if (asking && Input.IsActionPressed("yes") && timer.IsStopped()) {
+		else if (asking && Input.IsActionPressed("option_1") && timer.IsStopped()) {
 			asking = false;
 			Hide();
-			EmitSignal(SignalName.ChoiceMade, "yes");
+			EmitSignal(SignalName.ChoiceMade, "1");
 		}
-		else if (asking && Input.IsActionPressed("no") && timer.IsStopped()) {
+		else if (asking && Input.IsActionPressed("option_2") && timer.IsStopped()) {
 			asking = false;
 			Hide();
-			EmitSignal(SignalName.ChoiceMade, "no");
+			EmitSignal(SignalName.ChoiceMade, "2");
 		}
 	}
 
