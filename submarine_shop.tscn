@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://SubmarineShop.cs" id="1_26v74"]
 [ext_resource type="Texture2D" uid="uid://d18mq7cjuo7pq" path="res://assets/backgrounds/interior/sub_workshop.png" id="1_uhx58"]
-[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="2_avnv1"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="2_avnv1"]
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_lavss"]
 [ext_resource type="Texture2D" uid="uid://c6sjgcysf8i6y" path="res://assets/npcs/azucat.png" id="4_ud6u5"]
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="5_chh4g"]
-[ext_resource type="PackedScene" path="res://door.tscn" id="7_u403n"]
+[ext_resource type="PackedScene" uid="uid://bmlobwxb1vvug" path="res://door.tscn" id="7_u403n"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="8_oqvgm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdolb"]

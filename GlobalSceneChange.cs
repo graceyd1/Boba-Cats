@@ -27,6 +27,7 @@ public partial class GlobalSceneChange : Node2D
 		"EnterSeaBunnyRoom",
 		"SeaBunnyRoom",
 		"TreasureRoom",
+		"BobaShop"
 	};
 	
 	// Called when the node enters the scene tree for the first time.

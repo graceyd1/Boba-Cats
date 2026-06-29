@@ -35,7 +35,7 @@ public partial class InteractArea : Area2D
 			panel.Show();
 			if (Input.IsActionJustPressed("enter") && allowInteraction)
 			{
-				EmitSignal(SignalName.Interact);
+				//EmitSignal(SignalName.Interact);
 				EmitSignal(SignalName.EnterRoom, Name);
 			}
 		}

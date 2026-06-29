@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgojov8puglt6"]
+
+[ext_resource type="Texture2D" uid="uid://bnycy4bv6va2v" path="res://assets/backgrounds/interior/boba_room.png" id="1_0haum"]
+[ext_resource type="Script" path="res://BobaShop.cs" id="1_euq4v"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="2_j6akr"]
+[ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_rwi30"]
+[ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="4_yaba5"]
+[ext_resource type="Texture2D" uid="uid://bonybpyufqd0y" path="res://assets/npcs/catssava_cry.png" id="5_2yvht"]
+[ext_resource type="Texture2D" uid="uid://bgfgvqg5j4fed" path="res://assets/npcs/catssava_sit.png" id="6_n2t4t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ccxq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2yvht")
+}],
+"loop": true,
+"name": &"cry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_n2t4t")
+}],
+"loop": true,
+"name": &"sit",
+"speed": 5.0
+}]
+
+[node name="BobaShop" type="Node2D"]
+script = ExtResource("1_euq4v")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("1_0haum")
+
+[node name="LeftWall" parent="." instance=ExtResource("2_j6akr")]
+position = Vector2(-18, 0)
+scale = Vector2(1, 9)
+
+[node name="RightWall" parent="." instance=ExtResource("2_j6akr")]
+position = Vector2(320, 0)
+scale = Vector2(1, 9)
+
+[node name="Floor" parent="." instance=ExtResource("2_j6akr")]
+position = Vector2(0, 140)
+scale = Vector2(17, 1)
+
+[node name="GroundPlayer" parent="." instance=ExtResource("3_rwi30")]
+position = Vector2(21, 133)
+
+[node name="TextBox" parent="GroundPlayer" instance=ExtResource("4_yaba5")]
+
+[node name="Catssava" type="AnimatedSprite2D" parent="."]
+position = Vector2(209, 132)
+sprite_frames = SubResource("SpriteFrames_5ccxq")
+animation = &"sit"
+
+[node name="TextBox" parent="Catssava" instance=ExtResource("4_yaba5")]

@@ -1,10 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5itvjlmd4ah7"]
+[gd_scene load_steps=10 format=3 uid="uid://nhjfauiekh88"]
 
 [ext_resource type="Script" path="res://EnterSeaBunnyRoom.cs" id="1_38abd"]
 [ext_resource type="Texture2D" uid="uid://sw2nk35811vf" path="res://assets/backgrounds/enter_sea_bunny_room/enter_sea_bunny_room0.png" id="1_uv7qk"]
 [ext_resource type="Texture2D" uid="uid://fie4tcspr55k" path="res://assets/backgrounds/enter_sea_bunny_room/enter_sea_bunny_room1.png" id="2_8vugk"]
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_7qjwg"]
-[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="3_lcupw"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="3_lcupw"]
+[ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="4_1i7dd"]
+[ext_resource type="Texture2D" uid="uid://bonv74n3d6s3y" path="res://assets/npcs/parva.png" id="7_8w28a"]
+[ext_resource type="Texture2D" uid="uid://bujj7eiir4aio" path="res://assets/npcs/parva_mad.png" id="8_s54gp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3jvr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8w28a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_s54gp")
+}],
+"loop": true,
+"name": &"mad",
+"speed": 5.0
+}]
 
 [node name="EnterSeaBunnyRoom" type="Node2D"]
 script = ExtResource("1_38abd")
@@ -15,6 +37,8 @@ centered = false
 
 [node name="GroundPlayer" parent="." instance=ExtResource("3_7qjwg")]
 position = Vector2(149, 77)
+
+[node name="TextBox" parent="GroundPlayer" instance=ExtResource("4_1i7dd")]
 
 [node name="Frontground" type="Sprite2D" parent="."]
 texture = ExtResource("2_8vugk")
@@ -30,3 +54,10 @@ scale = Vector2(16, 2)
 [node name="RightCeiling" parent="." instance=ExtResource("3_lcupw")]
 position = Vector2(157, 0)
 scale = Vector2(9, 4)
+
+[node name="Parva" type="AnimatedSprite2D" parent="."]
+position = Vector2(206, 125)
+sprite_frames = SubResource("SpriteFrames_n3jvr")
+animation = &"mad"
+
+[node name="TextBox" parent="Parva" instance=ExtResource("4_1i7dd")]

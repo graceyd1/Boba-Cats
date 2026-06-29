@@ -13,6 +13,7 @@ public partial class GroundPlayer : Player
 		base._Ready();
 		base.Speed = 150;
 		base.Gravity = 0.002F;
+		inputEnabled = true;
 
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animatedSprite.Animation = "sit_right";
@@ -33,45 +34,47 @@ public partial class GroundPlayer : Player
 				}
 
 				// Handle Jump.
-				if (Input.IsActionJustPressed("move_up") && IsOnFloor())
-				{
-					velocity.Y = JumpVelocity;
-				}
+				if (inputEnabled) {
+					if (Input.IsActionJustPressed("move_up") && IsOnFloor())
+					{
+						velocity.Y = JumpVelocity;
+					}
 
-				// Get the input direction and handle the movement/deceleration.
-				// As good practice, you should replace UI actions with custom gameplay actions.
-				Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-				if (direction != Vector2.Zero)
-				{
-					velocity.X = direction.X * Speed;
-					if (direction.X < 0) {
-						animatedSprite.Animation = "walk_left";
-						facingRight = false;
+					// Get the input direction and handle the movement/deceleration.
+					// As good practice, you should replace UI actions with custom gameplay actions.
+					Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+					if (direction != Vector2.Zero)
+					{
+						velocity.X = direction.X * Speed;
+						if (direction.X < 0) {
+							animatedSprite.Animation = "walk_left";
+							facingRight = false;
+						}
+						else if (direction.X > 0) {
+							animatedSprite.Animation = "walk_right";
+							facingRight = true;
+						}
+						if (direction.Y != 0) {
+							if (facingRight) {
+								animatedSprite.Animation = "jump_right";
+							}
+							else {
+								animatedSprite.Animation ="jump_left";
+							}
+						}
+						animatedSprite.Play();
 					}
-					else if (direction.X > 0) {
-						animatedSprite.Animation = "walk_right";
-						facingRight = true;
-					}
-					if (direction.Y != 0) {
+					else
+					{
+						velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 						if (facingRight) {
-							animatedSprite.Animation = "jump_right";
+							animatedSprite.Animation = "sit_right";
 						}
 						else {
-							animatedSprite.Animation ="jump_left";
+							animatedSprite.Animation = "sit_left";
 						}
+						animatedSprite.Stop();
 					}
-					animatedSprite.Play();
-				}
-				else
-				{
-					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-					if (facingRight) {
-						animatedSprite.Animation = "sit_right";
-					}
-					else {
-						animatedSprite.Animation = "sit_left";
-					}
-					animatedSprite.Stop();
 				}
 
 				Velocity = velocity;
@@ -79,19 +82,20 @@ public partial class GroundPlayer : Player
 			}
 			else {
 				var dir = Vector2.Zero;
-				if (Input.IsActionPressed("move_up")) {
-					dir.Y -= 1;
+				if (inputEnabled) {
+					if (Input.IsActionPressed("move_up")) {
+						dir.Y -= 1;
+					}
+					if (Input.IsActionPressed("move_down")) {
+						dir.Y += 1;
+					}
+					if (Input.IsActionPressed("move_right")) {
+						dir.X += 1;
+					}
+					if (Input.IsActionPressed("move_left")) {
+						dir.X -= 1;
+					}
 				}
-				if (Input.IsActionPressed("move_down")) {
-					dir.Y += 1;
-				}
-				if (Input.IsActionPressed("move_right")) {
-					dir.X += 1;
-				}
-				if (Input.IsActionPressed("move_left")) {
-					dir.X -= 1;
-				}
-				
 				if (dir.Length() > 0) {
 					dir = dir.Normalized() * Speed;
 					
