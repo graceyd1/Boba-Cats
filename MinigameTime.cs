@@ -43,6 +43,5 @@ public partial class MinigameTime : Label
 	{
 		timing = false;
 		Visible = false;
-		EmitSignal(SignalName.TimesUp);
 	}
 }

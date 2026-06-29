@@ -9,22 +9,22 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class SaveResourceScript : Resource
 {
-    [Export]
-    public int numCoins = 0;
+    // [Export]
+    // public int numCoins = 0;
 
-    [Export]
-    public List<String> Inventory {get; set;} = new List<String>(); 
+    // [Export]
+    // //public List<String> Inventory {get; set;} = new List<String>(); 
 
-    [Export]
-    public Boolean recievedAzucatOffer;
+    // [Export]
+    // public Boolean recievedAzucatOffer;
 
-    [Export]
-    public Boolean metParva;
     // [Export]
-    // [Export]
-    // [Export]
-    // [Export]
-    // [Export]
-    // [Export]
-    // [Export]
+    // public Boolean metParva;
+    // // [Export]
+    // // [Export]
+    // // [Export]
+    // // [Export]
+    // // [Export]
+    // // [Export]
+    // // [Export]
 }

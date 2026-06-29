@@ -99,16 +99,16 @@ public partial class FishRoom : Node2D
 		}
 	}
 
-	//end minigame
-	private async void OnTimesUp()
+	private async void EndMinigame()
 	{
-		GetNode<CharacterBody2D>("UnderwaterPlayer").Position = new Vector2(522, 122);
 		if (playerTextNode is TextBox pText && iceCreamTextNode is TextBox iText)
 		{
 			await iText.showText("game over!");
 			await iText.showText("you got : " + fishCollected + " fish");
 			await iText.showText("you get: " + fishCollected + " coins");
-			//todo to-do get coins
+			
+			GlobalScript.coins = GlobalScript.coins + fishCollected;
+
 			iText.EnableInteractArea();
 		}
 		
@@ -134,6 +134,12 @@ public partial class FishRoom : Node2D
 			}
 		}
 	}
+	//ways to end minigame
+	private async void OnTimesUp()
+	{
+		GetNode<CharacterBody2D>("UnderwaterPlayer").Position = new Vector2(522, 122);
+		EndMinigame();
+	}
 
 	//collect fish
 	private void OnFishInteract()
@@ -147,6 +153,8 @@ public partial class FishRoom : Node2D
 			if (timer is MinigameTime mTimer)
 			{
 				mTimer.EndGame();
+				GetNode<CharacterBody2D>("UnderwaterPlayer").Position = new Vector2(522, 122);
+				EndMinigame();
 			}
 		}
 	}
@@ -156,10 +164,16 @@ public partial class FishRoom : Node2D
 	{
 		if ((hp < 1 || hp == 2) && playingMinigame)
 		{
+			var FaderNode = GetNode<CanvasLayer>("/root/Fader");
+			if (FaderNode is Fader fader) {
+				fader.Hide();
+			}
+
 			var timer = GetNode<Label>("UnderwaterPlayer/MinigameTime");
 			if (timer is MinigameTime mTimer)
 			{
 				mTimer.EndGame();
+				EndMinigame();
 			}
 		}
 	}
