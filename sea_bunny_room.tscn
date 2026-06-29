@@ -29,10 +29,7 @@ scroll_scale = Vector2(0.7, 1)
 texture = ExtResource("2_jyux7")
 centered = false
 
-[node name="Parallax2D2" type="Parallax2D" parent="Backgrounds"]
-scroll_scale = Vector2(0.9, 1)
-
-[node name="Vines" type="Sprite2D" parent="Backgrounds/Parallax2D2"]
+[node name="Vines" type="Sprite2D" parent="Backgrounds"]
 texture = ExtResource("3_ckx5g")
 centered = false
 
@@ -46,26 +43,34 @@ position = Vector2(484, 208)
 texture = ExtResource("4_erb2g")
 centered = false
 
-[node name="Ground" parent="." instance=ExtResource("7_26f6x")]
+[node name="WallsFolder" type="Node" parent="."]
+
+[node name="Ground" parent="WallsFolder" instance=ExtResource("7_26f6x")]
 position = Vector2(0, 240)
 scale = Vector2(35, 3)
 
-[node name="LeftCeiling" parent="." instance=ExtResource("7_26f6x")]
+[node name="LeftCeiling" parent="WallsFolder" instance=ExtResource("7_26f6x")]
 scale = Vector2(21.5, 4)
 
-[node name="LeftCeiling2" parent="." instance=ExtResource("7_26f6x")]
+[node name="LeftCeiling2" parent="WallsFolder" instance=ExtResource("7_26f6x")]
 position = Vector2(0, 80)
 scale = Vector2(16, 5.2)
 
-[node name="RightCeiling" parent="." instance=ExtResource("7_26f6x")]
-position = Vector2(535, 0)
-scale = Vector2(6, 3.5)
+[node name="RightCeiling" parent="WallsFolder" instance=ExtResource("7_26f6x")]
+position = Vector2(525, 1)
+scale = Vector2(6, 4)
 
-[node name="RightCeiling2" parent="." instance=ExtResource("7_26f6x")]
-position = Vector2(610, 70)
-scale = Vector2(2, 6)
+[node name="RightCeiling2" parent="WallsFolder" instance=ExtResource("7_26f6x")]
+position = Vector2(556, 71)
+scale = Vector2(5, 2.9)
 
-[node name="WallsFolder" type="Node" parent="."]
+[node name="RightLedge" parent="WallsFolder" instance=ExtResource("7_26f6x")]
+position = Vector2(601, 182)
+scale = Vector2(2, 2.9)
+
+[node name="RightLedge2" parent="WallsFolder" instance=ExtResource("7_26f6x")]
+position = Vector2(588, 182)
+scale = Vector2(3, 0.5)
 
 [node name="GrowableVine" parent="." instance=ExtResource("9_ilcv2")]
-position = Vector2(509, 40)
+position = Vector2(572, 169)

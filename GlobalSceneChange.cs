@@ -16,7 +16,8 @@ public partial class GlobalSceneChange : Node2D
 		"UnderwaterTown",
 		"BoxRoom",
 		"FishRoom",
-		"LongTubeCoralRoom"
+		"LongTubeCoralRoom",
+		"TallTubeCoralRoom"
 	};
 	
 	public static List<string> GroundRooms = new List<string> {

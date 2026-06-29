@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class EnterCaveRoom : Node2D
+public partial class TallTubeCoralRoom : Node2D
 {
 	private bool transitioning = false;
 
@@ -21,23 +21,24 @@ public partial class EnterCaveRoom : Node2D
 	}
 
 	private async Task NextRoomCheck() {
-		var player = GetNode<CharacterBody2D>("GroundPlayer");
+		var player = GetNode<CharacterBody2D>("UnderwaterPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		Vector2 pos = player.Position;
-		if (pos.X > 315) {
+		if (pos.Y < 5) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(10, 90), "cave_room", true);
+			await GlobalScript.ChangeRoom(new Vector2(124, 115), "enter_cave_room", true);
 		}
-		else if (pos.Y > 175) {
-			transitioning = true;
-			if (FaderNode is Fader fader) {
-				await fader.FadeIn(.7f);
-			}
-			await GlobalScript.ChangeRoom(new Vector2(160, 20), "tall_tube_coral_room", false);
-		}
+		// else if (pos.X > 315) {
+		// 	transitioning = true;
+		// 	if (FaderNode is Fader fader) {
+		// 		await fader.FadeIn(.7f);
+		// 	}
+		// 	await GlobalScript.ChangeRoom(new Vector2(idk, idk), "geyser room", false);
+		
+		// }
 	}
 }

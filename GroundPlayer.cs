@@ -4,8 +4,8 @@ using System;
 
 public partial class GroundPlayer : Player
 {
-	public new float Speed = 150.0f;
-	public const float JumpVelocity = -330.0f;
+	public new float Speed = 80.0f;
+	public const float JumpVelocity = -200; //-330.0f;
 	public bool Climbing{get; set;} = false;
 
 	private AnimatedSprite2D animatedSprite;

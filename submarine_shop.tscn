@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="5_chh4g"]
 [ext_resource type="PackedScene" uid="uid://bmlobwxb1vvug" path="res://door.tscn" id="7_u403n"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="8_oqvgm"]
-[ext_resource type="PackedScene" uid="uid://c7vy6svhjtlef" path="res://interact_label.tscn" id="9_rvp5p"]
+[ext_resource type="PackedScene" uid="uid://cof0du2kqkcqt" path="res://text_enter_label.tscn" id="9_rvp5p"]
 
 [node name="SubmarineShop" type="Node2D"]
 script = ExtResource("1_26v74")
@@ -27,6 +27,7 @@ scale = Vector2(22, 1)
 
 [node name="GroundPlayer" parent="." instance=ExtResource("3_lavss")]
 position = Vector2(66, 131)
+metadata/_edit_group_ = true
 
 [node name="TextBox" parent="GroundPlayer" instance=ExtResource("5_chh4g")]
 
@@ -59,6 +60,4 @@ offset_bottom = 170.0
 position = Vector2(-20, 0)
 scale = Vector2(1, 10)
 
-[connection signal="PromptUser" from="GroundPlayer/TextBox" to="InteractLabel" method="FadeIn"]
-[connection signal="PromptUser" from="Azucat/TextBox" to="InteractLabel" method="FadeIn"]
 [connection signal="EnterRoom" from="Door/ShopExit" to="." method="onExitRoom"]

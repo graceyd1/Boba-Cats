@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctoxq66h45lol"
-path="res://.godot/imported/underwater_town8.png-55824f830cc999b0115fb20b988d4025.ctex"
+uid="uid://ctf104x1u28yl"
+path="res://.godot/imported/tall_tube_coral_room1.png-f0896ccdf91936706b346949a0806d52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/underwater_town/underwater_town8.png"
-dest_files=["res://.godot/imported/underwater_town8.png-55824f830cc999b0115fb20b988d4025.ctex"]
+source_file="res://assets/backgrounds/tall_tube_coral_room/tall_tube_coral_room1.png"
+dest_files=["res://.godot/imported/tall_tube_coral_room1.png-f0896ccdf91936706b346949a0806d52.ctex"]
 
 [params]
 

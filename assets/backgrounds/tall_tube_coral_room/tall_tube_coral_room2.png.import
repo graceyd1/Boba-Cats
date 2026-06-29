@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk4567u3ruqdm"
-path="res://.godot/imported/lantern.png-dea71e7da9444ebf657583d980dbb917.ctex"
+uid="uid://ckrox36nphpqx"
+path="res://.godot/imported/tall_tube_coral_room2.png-0eaf52a247c5fa99c30ca800af83fc22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/lantern.png"
-dest_files=["res://.godot/imported/lantern.png-dea71e7da9444ebf657583d980dbb917.ctex"]
+source_file="res://assets/backgrounds/tall_tube_coral_room/tall_tube_coral_room2.png"
+dest_files=["res://.godot/imported/tall_tube_coral_room2.png-0eaf52a247c5fa99c30ca800af83fc22.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bp4jat81a6c5d"]
+[gd_scene load_steps=31 format=3 uid="uid://bp4jat81a6c5d"]
 
 [ext_resource type="Script" path="res://TubeCoral.cs" id="1_r1ba7"]
 [ext_resource type="Texture2D" uid="uid://d4h8shgq2n71a" path="res://assets/objects/tube_coral_sprites/tube_coral.png" id="2_rirma"]
@@ -14,12 +14,61 @@
 [ext_resource type="Texture2D" uid="uid://dhg2accy2r5hx" path="res://assets/objects/tube_coral_sprites/tube_coral09.png" id="12_1ii81"]
 [ext_resource type="Texture2D" uid="uid://chwmpja0ugkn4" path="res://assets/objects/tube_coral_sprites/tube_coral10.png" id="13_0kkkk"]
 [ext_resource type="Texture2D" uid="uid://c7ebovcuwin1q" path="res://assets/objects/tube_coral_sprites/tube_coral11.png" id="14_h47hw"]
+[ext_resource type="Texture2D" uid="uid://c72fvykbilbkx" path="res://assets/objects/tube_coral.png" id="15_cy3vi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsuqx"]
 size = Vector2(14, 93.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1ba7"]
 size = Vector2(14, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkuwq"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(0, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwiaj"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(16, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c368k"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(32, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8v0u"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(48, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s30qb"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(64, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_566ia"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(80, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqdxo"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(96, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77735"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(112, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqmfi"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(128, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqafy"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(144, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx1pb"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(160, 0, 16, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vovt2"]
+atlas = ExtResource("15_cy3vi")
+region = Rect2(176, 0, 16, 280)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w5l88"]
 animations = [{
@@ -71,6 +120,47 @@ animations = [{
 "loop": true,
 "name": &"on",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkuwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwiaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c368k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8v0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s30qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_566ia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqdxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77735")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqmfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqafy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sx1pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vovt2")
+}],
+"loop": true,
+"name": &"on_long_ver",
+"speed": 5.0
 }]
 
 [node name="TubeCoral" type="Node2D"]
@@ -102,7 +192,8 @@ wait_time = 2.0
 texture_filter = 1
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_w5l88")
-animation = &"off"
+animation = &"on_long_ver"
+frame_progress = 0.835513
 
 [connection signal="body_entered" from="AOE" to="." method="OnAOEBodyEntered"]
 [connection signal="body_exited" from="AOE" to="." method="OnAOEBodyExited"]

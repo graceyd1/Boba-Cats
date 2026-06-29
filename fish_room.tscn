@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://MinigameTime.cs" id="11_hplhg"]
 [ext_resource type="FontFile" uid="uid://cpdnqe1jl0cys" path="res://assets/Geo_Font/Geo-Regular.ttf" id="11_y2cam"]
 [ext_resource type="PackedScene" uid="uid://b6tcj5pauo27d" path="res://fish_enemy.tscn" id="12_on3ij"]
-[ext_resource type="PackedScene" uid="uid://cof0du2kqkcqt" path="res://interact_label.tscn" id="16_c1s60"]
+[ext_resource type="PackedScene" uid="uid://ygrr56bstc00" path="res://interact_label.tscn" id="16_c1s60"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yuaek"]
 animations = [{
@@ -134,6 +134,7 @@ scale = Vector2(0.666667, 1)
 material = null
 position = Vector2(524, 172)
 collision_mask = 5
+metadata/_edit_group_ = true
 
 [node name="MinigameTime" type="Label" parent="UnderwaterPlayer"]
 offset_left = -52.0
@@ -251,10 +252,6 @@ position = Vector2(0, 18)
 scale = Vector2(1, 0.6)
 
 [node name="InteractLabel" parent="." instance=ExtResource("16_c1s60")]
-offset_left = 719.0
-offset_top = 48.0
-offset_right = 719.0
-offset_bottom = 48.0
 
 [connection signal="Interact" from="IceCreamAreaSprite/InteractArea" to="." method="StartDialogue"]
 [connection signal="Hit" from="UnderwaterPlayer" to="." method="OnPlayerHit"]

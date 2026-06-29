@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctoxq66h45lol"
-path="res://.godot/imported/underwater_town8.png-55824f830cc999b0115fb20b988d4025.ctex"
+uid="uid://tyn50xkgv5cd"
+path="res://.godot/imported/bouncy_jellyfish.png-8ad56d5d34538c29a36232faaeecf05a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/underwater_town/underwater_town8.png"
-dest_files=["res://.godot/imported/underwater_town8.png-55824f830cc999b0115fb20b988d4025.ctex"]
+source_file="res://assets/objects/bouncy_jellyfish.png"
+dest_files=["res://.godot/imported/bouncy_jellyfish.png-8ad56d5d34538c29a36232faaeecf05a.ctex"]
 
 [params]
 

@@ -1,20 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0luigimkjjh"]
+[gd_scene load_steps=3 format=3 uid="uid://dif3m6ljwdlny"]
 
-[ext_resource type="PackedScene" uid="uid://dl4v7mwrpyv1x" path="res://button.tscn" id="1_snx8g"]
 [ext_resource type="Script" path="res://Controls.cs" id="1_weoqj"]
+[ext_resource type="Texture2D" uid="uid://csyir0wlb3anh" path="res://assets/player/menu_icon.png" id="3_l32e4"]
 
 [node name="Controls" type="Node2D"]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_weoqj")
 
-[node name="Button" parent="." instance=ExtResource("1_snx8g")]
-buttonName = "c"
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, 13.3333)
+texture = ExtResource("3_l32e4")
 
 [node name="Expanded" type="PanelContainer" parent="."]
-offset_left = -53.0
-offset_top = 42.0
-offset_right = 100.0
-offset_bottom = 231.0
+offset_left = -87.0
+offset_top = 30.0
+offset_right = 7.0
+offset_bottom = 113.0
+metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Expanded"]
 layout_mode = 2
@@ -26,7 +28,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Label" type="Label" parent="Expanded/MarginContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "WASD & arrows - movement
 
 Enter & space - continue dialogue, enter room/house"

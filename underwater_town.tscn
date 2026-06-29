@@ -1,19 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnxy61ndssuqj"]
+[gd_scene load_steps=16 format=3 uid="uid://bnxy61ndssuqj"]
 
 [ext_resource type="Texture2D" uid="uid://bb3cxky1vqp5r" path="res://assets/backgrounds/underwater_town/underwater_town0.png" id="1_0clrj"]
 [ext_resource type="Script" path="res://UnderwaterTown.cs" id="1_0v88i"]
 [ext_resource type="Texture2D" uid="uid://da5epgeeq6swo" path="res://assets/backgrounds/underwater_town/underwater_town1.png" id="1_1neqj"]
-[ext_resource type="Texture2D" uid="uid://p2weyhqwjmed" path="res://assets/backgrounds/underwater_town/underwater_town9.png" id="3_mwr5y"]
+[ext_resource type="Texture2D" uid="uid://b87hsmpc7kwkg" path="res://assets/backgrounds/underwater_town/underwater_town9.png" id="3_mwr5y"]
 [ext_resource type="Texture2D" uid="uid://mob2pl5glpwj" path="res://assets/backgrounds/underwater_town/underwater_town2.png" id="3_vrvpg"]
 [ext_resource type="Texture2D" uid="uid://bufmhkknt8k8f" path="res://assets/backgrounds/underwater_town/underwater_town3.png" id="4_7clim"]
 [ext_resource type="Texture2D" uid="uid://dwi5gc2t1vydw" path="res://assets/backgrounds/underwater_town/underwater_town4.png" id="5_7jlk8"]
 [ext_resource type="Texture2D" uid="uid://dva6vgnb3kslu" path="res://assets/backgrounds/underwater_town/underwater_town5.png" id="7_6t1cc"]
 [ext_resource type="Texture2D" uid="uid://cub3ng5mqgjma" path="res://assets/backgrounds/underwater_town/underwater_town6.png" id="8_ha7v3"]
-[ext_resource type="Texture2D" uid="uid://durewm8t8gmwc" path="res://assets/backgrounds/underwater_town/underwater_town8.png" id="8_wu3mq"]
+[ext_resource type="Texture2D" uid="uid://ctoxq66h45lol" path="res://assets/backgrounds/underwater_town/underwater_town8.png" id="8_wu3mq"]
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="9_1c834"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="11_y5y2r"]
-[ext_resource type="PackedScene" path="res://up_wall.tscn" id="12_f8bqc"]
+[ext_resource type="PackedScene" uid="uid://bnpd4i7iptaot" path="res://up_wall.tscn" id="12_f8bqc"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="14_48yht"]
+[ext_resource type="PackedScene" uid="uid://ygrr56bstc00" path="res://interact_label.tscn" id="15_hl72r"]
 
 [node name="UnderwaterTown" type="Node2D"]
 script = ExtResource("1_0v88i")
@@ -81,6 +82,7 @@ centered = false
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("9_1c834")]
 position = Vector2(100, 500)
 collision_mask = 5
+metadata/_edit_group_ = true
 
 [node name="GroundSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -115,15 +117,21 @@ scale = Vector2(9, 1)
 
 [node name="SubShopDoor" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(325, 525)
+labelHeight = 30
 
 [node name="SubShopDoor2" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(402, 525)
+labelHeight = 30
 
 [node name="GreenroomDoor" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(41, 329)
+labelHeight = 30
 
 [node name="BobaShopDoor" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(456, 181)
+labelHeight = 30
+
+[node name="InteractLabel" parent="." instance=ExtResource("15_hl72r")]
 
 [connection signal="EnterRoom" from="SubShopDoor" to="." method="OnEnterRoom"]
 [connection signal="EnterRoom" from="SubShopDoor2" to="." method="OnEnterRoom"]

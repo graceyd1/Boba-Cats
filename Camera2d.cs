@@ -9,6 +9,7 @@ public partial class Camera2d : Camera2D
 	private String[] FullScreen =
 	{
 		"SubmarineShop",
+		"BobaShop",
 		"EnterCaveRoom",
 		"ParvaHouse",
 		"EnterSeaBunnyRoom",
@@ -76,6 +77,14 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 180);
 		}
 
+		else if (player.GetParent().Name == "TallTubeCoralRoom")
+		{
+			SetLimit(Side.Left, 0);
+			SetLimit(Side.Right, 320);
+			SetLimit(Side.Top, 0);
+			SetLimit(Side.Bottom, 600);
+		}
+
 		else if (player.GetParent().Name == "CaveRoom")
 		{
 			SetLimit(Side.Left, 0);
@@ -84,13 +93,6 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 300);
 		}
 		
-		else if (player.GetParent().Name == "BobaShop") {
-			SetLimit(Side.Left, 0);
-			SetLimit(Side.Right, 320);
-			SetLimit(Side.Top, 0);
-			SetLimit(Side.Bottom, 180);
-		}
-
 		else if (player.GetParent().Name == "SeaBunnyRoom")
 		{
 			SetLimit(Side.Right, 640);

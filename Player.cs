@@ -115,7 +115,7 @@ public partial class Player : CharacterBody2D
 			}
 			else if (room == "CaveRoom")
 			{
-				respawnPoint = new Vector2(10, 90);
+				respawnPoint = new Vector2(25, 90);
 			}
 			else if (room == "SeaBunnyRoom")
 			{
