@@ -29,7 +29,6 @@ public partial class InteractArea : Area2D
 			{
 				//EmitSignal(SignalName.Interact);
 				EmitSignal(SignalName.EnterRoom, Name);
-				GD.Print(Name);
 			}
 		}
 	}

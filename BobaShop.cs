@@ -37,6 +37,7 @@ public partial class BobaShop : Node2D
 			await catssavaT.showText("I usually have to venture out into the open ocean to find ingredients, but they just keep disappearing!");
 			await catssavaT.showText("Oh, if only I could find more tapioca...");
 			await dashT.showText("Catssava, let me help you find the tapioca.");
+			csAnimation.Animation = "sit";
 			await catssavaT.showText("Really? You'd do that for me? I'd be soo grateful- what's you're name?");
 			await dashT.ask("1. Do it for Catssava\n2. Do it to get your boat fixed");
 			var ans = await ToSignal(dashT, TextBox.SignalName.ChoiceMade);

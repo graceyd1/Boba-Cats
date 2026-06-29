@@ -125,7 +125,7 @@ position = Vector2(41, 329)
 [node name="BobaShopDoor" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(456, 181)
 
-[connection signal="Interact" from="SubShopDoor" to="." method="OnEnterRoom"]
-[connection signal="Interact" from="SubShopDoor2" to="." method="OnEnterRoom"]
-[connection signal="Interact" from="GreenroomDoor" to="." method="OnEnterRoom"]
+[connection signal="EnterRoom" from="SubShopDoor" to="." method="OnEnterRoom"]
+[connection signal="EnterRoom" from="SubShopDoor2" to="." method="OnEnterRoom"]
+[connection signal="EnterRoom" from="GreenroomDoor" to="." method="OnEnterRoom"]
 [connection signal="EnterRoom" from="BobaShopDoor" to="." method="OnEnterRoom"]
