@@ -74,7 +74,7 @@ public partial class TextBox : Node2D
 	private async void InactiveCountdown() {
 		/*var timer2 = GetNode<Godot.Timer>("../../Timer2");
 		timer2.Start(4.0f);*/
-		await ToSignal(GetTree().CreateTimer(4.0f), SceneTreeTimer.SignalName.Timeout);
+		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
 		EmitSignal(SignalName.PromptUser, this);
 	}
 	

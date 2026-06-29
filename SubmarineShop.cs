@@ -12,7 +12,9 @@ public partial class SubmarineShop : Node2D
 	{
 		playerTextNode = GetNode<Node2D>("GroundPlayer/TextBox");
 		azucatTextNode = GetNode<Node2D>("Azucat/TextBox");
-		// startDialogue();
+		var player = GetNode<GroundPlayer>("GroundPlayer");
+		player.Position = new Vector2(66, 131);
+		startDialogue(player);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
