@@ -26,7 +26,28 @@ public partial class InteractArea : Area2D
 	{
 		allowInteraction = true;
 
-		interactLabel =  GetTree().Root.GetNodeOrNull("FishRoom").GetNodeOrNull<Control>("InteractLabel");	
+		//interactLabel =  GetTree().Root.GetNode<Node2D>("*").GetNodeOrNull<Control>("InteractLabel");	
+
+		//looks up to 3 parent levels up to find interact label
+		//there's probably a better way to do this
+		Node2D level = (Node2D) this;
+		for (int i = 0; i < 3; i ++)
+		{
+			interactLabel = this.GetParent().GetNodeOrNull<Control>("InteractLabel");
+			if (interactLabel != null)
+			{
+				break;
+			}
+			try
+			{
+				level = (Node2D) level.GetParent();
+			}
+			catch (Exception e)
+			{
+				break;
+			}
+		}
+
 		if (interactLabel != null)
 		{
 			interactLabel.Hide();

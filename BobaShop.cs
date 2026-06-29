@@ -39,16 +39,16 @@ public partial class BobaShop : Node2D
 			await dashT.ShowText("Catssava, let me help you find the tapioca.");
 			csAnimation.Animation = "sit";
 			await catssavaT.ShowText("Really? You'd do that for me? I'd be soo grateful- what's you're name?");
-			await dashT.Ask("1. Do it for Catssava\n2. Do it to get your boat fixed");
-			var ans = await ToSignal(dashT, TextBox.SignalName.ChoiceMade);
-			if (ans is [Variant choice]) {
-				if ((string)choice == "1") {
-					await dashT.ShowText("My name is Dash. And I'd be happy to help; I can tell you love this shop and it certainly needs some boba!");
-				}
-				else {
-					await dashT.ShowText("My name is Dash. Azucat won't give me a new boat until I get him tapioca, so it's only right for me to do this.");
-				}
+			
+			var choice = await dashT.Ask("1. Do it for Catssava\n2. Do it to get your boat fixed");
+
+			if (choice == "1") {
+				await dashT.ShowText("My name is Dash. And I'd be happy to help; I can tell you love this shop and it certainly needs some boba!");
 			}
+			else {
+				await dashT.ShowText("My name is Dash. Azucat won't give me a new boat until I get him tapioca, so it's only right for me to do this.");
+			}
+
 		}
 	}
 }

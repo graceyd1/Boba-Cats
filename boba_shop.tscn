@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgojov8puglt6"]
+[gd_scene load_steps=9 format=3 uid="uid://bo6n5dubhn4cc"]
 
 [ext_resource type="Texture2D" uid="uid://bnycy4bv6va2v" path="res://assets/backgrounds/interior/boba_room.png" id="1_0haum"]
 [ext_resource type="Script" path="res://BobaShop.cs" id="1_euq4v"]

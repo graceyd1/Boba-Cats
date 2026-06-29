@@ -35,27 +35,26 @@ public partial class EnterSeaBunnyRoom : Node2D
 		await parvaT.ShowText("Ah, just stole them from the town's boba shop.");
 		await dashT.ShowText("...");
 		await parvaT.ShowText("No need to stare like that, it wasn't that hard. They keep their doors open at night, pfft.");
-		await dashT.Ask("1. Stop Parva because stealing is wrong.\n2. Stop Parva so the town cats can get you a new boat");
-		var ans = await ToSignal(dashT, TextBox.SignalName.ChoiceMade);
-		if (ans is [Variant choice]) {
-			if ((string)choice == "1") {
-				await dashT.ShowText("I'm not staring because I'm [i]impressed[/i]! I'm staring because it's [i]wrong[/i] to steal like that!");
-			}
-			else {
-				await dashT.ShowText("I may not be a 'town cat', but I've already made deals with them to fix my boat.");
-			}
+		
+		var choice = await dashT.Ask("1. Stop Parva because stealing is wrong.\n2. Stop Parva so the town cats can get you a new boat");
+		if (choice == "1") {
+			await dashT.ShowText("I'm not staring because I'm [i]impressed[/i]! I'm staring because it's [i]wrong[/i] to steal like that!");
 		}
+		else {
+			await dashT.ShowText("I may not be a 'town cat', but I've already made deals with them to fix my boat.");
+			}
+
 		await dashT.ShowText("Sorry, Parva, but I'm going to have to stop you.");
 		parvaAni.Animation = "mad";
 		await parvaT.ShowText("[i]HA![/i] Getting across the vines was one thing, but you [i]seriously[/i] think you can stop me?");
-		if (ans is [Variant choice2]) {
-			if ((string)choice2 == "1") {
-				await parvaT.ShowText("Think again, goody-two-shoes! Let's see if your bite's up to your talk!");
-			}
-			else {
-				await parvaT.ShowText("Think again, town-smoocher! You're going to regret this!");
-			}
+
+		if (choice == "1") {
+			await parvaT.ShowText("Think again, goody-two-shoes! Let's see if your bite's up to your talk!");
 		}
+		else {
+			await parvaT.ShowText("Think again, town-smoocher! You're going to regret this!");
+		}
+
 		var parva = GetNode<AnimatedSprite2D>("Parva");
 		parva.Hide();
 		await dashT.ShowText("...where did he go?");

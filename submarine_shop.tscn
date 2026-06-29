@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqw5pv6ifi7f0"]
+[gd_scene load_steps=11 format=3 uid="uid://cqw5pv6ifi7f0"]
 
 [ext_resource type="Script" path="res://SubmarineShop.cs" id="1_26v74"]
 [ext_resource type="Texture2D" uid="uid://d18mq7cjuo7pq" path="res://assets/backgrounds/interior/sub_workshop.png" id="1_uhx58"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="5_chh4g"]
 [ext_resource type="PackedScene" uid="uid://bmlobwxb1vvug" path="res://door.tscn" id="7_u403n"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="8_oqvgm"]
+[ext_resource type="PackedScene" uid="uid://cof0du2kqkcqt" path="res://interact_label.tscn" id="9_rvp5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdolb"]
 size = Vector2(20, 146)
@@ -56,5 +57,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerDialogue"]
 position = Vector2(92, 67)
 shape = SubResource("RectangleShape2D_rdolb")
+
+[node name="InteractLabel" parent="." instance=ExtResource("9_rvp5p")]
 
 [connection signal="body_entered" from="TriggerDialogue" to="." method="startDialogue"]
