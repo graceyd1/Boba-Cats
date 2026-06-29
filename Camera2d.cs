@@ -83,6 +83,13 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Top, 0);
 			SetLimit(Side.Bottom, 300);
 		}
+		
+		else if (player.GetParent().Name == "BobaShop") {
+			SetLimit(Side.Left, 0);
+			SetLimit(Side.Right, 320);
+			SetLimit(Side.Top, 0);
+			SetLimit(Side.Bottom, 180);
+		}
 
 		else if (player.GetParent().Name == "SeaBunnyRoom")
 		{

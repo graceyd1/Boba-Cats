@@ -7,7 +7,6 @@ public partial class SubmarineShop : Node2D
 	private bool transitioning = false;
 	Node2D playerTextNode;
 	Node2D azucatTextNode;
-	public bool metAzucat = false;
 	// Called when the node enters the scene tree for the first time.
 	public override async void _Ready()
 	{
@@ -27,7 +26,7 @@ public partial class SubmarineShop : Node2D
 	
 	public async void startDialogue(Node2D player) {
 		if (playerTextNode is TextBox pText && azucatTextNode is TextBox aText) {
-			if (!metAzucat) {
+			if (!GlobalScript.metAzucat) {
 				await pText.showText("What is my ship doing on top of your roof??"); //fumi misty edit this stuff pls if you want
 				await aText.showText("Oh sorry. I thought it looked cool, so I patched it up and put it there."); 
 				await aText.showText("Didn't know it was yours."); 
@@ -49,7 +48,7 @@ public partial class SubmarineShop : Node2D
 					}
 				}
 				//make player go through entire dialogue if they exited the shop in the middle of it
-				metAzucat = true;
+				GlobalScript.metAzucat = true;
 			}
 			else {
 				await aText.showText("I trust that you're working on getting that boba for me?");

@@ -31,11 +31,11 @@ public partial class EnterSeaBunnyRoom : Node2D
 		var player = GetNode<GroundPlayer>("GroundPlayer");
 		//this way still affected by gravity
 		player.inputEnabled = false;
-		await dashT.showText("Woah. Where'd you get all this boba from?");
+		await dashT.showText("How'd you get an entire stash of boba?");
 		await parvaT.showText("Ah, just stole them from the town's boba shop.");
 		await dashT.showText("...");
 		await parvaT.showText("No need to stare like that, it wasn't that hard. They keep their doors open at night, pfft.");
-		await dashT.ask("1. Stop Parva because stealing is wrong.\n2. Stop Parva so the town cats can fix your boat");
+		await dashT.ask("1. Stop Parva because stealing is wrong.\n2. Stop Parva so the town cats can get you a new boat");
 		var ans = await ToSignal(dashT, TextBox.SignalName.ChoiceMade);
 		if (ans is [Variant choice]) {
 			if ((string)choice == "1") {

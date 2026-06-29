@@ -27,8 +27,9 @@ public partial class InteractArea : Area2D
 		{
 			if (Input.IsActionJustPressed("enter"))
 			{
-				EmitSignal(SignalName.Interact);
+				//EmitSignal(SignalName.Interact);
 				EmitSignal(SignalName.EnterRoom, Name);
+				GD.Print(Name);
 			}
 		}
 	}

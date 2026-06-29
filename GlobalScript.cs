@@ -6,6 +6,7 @@ public partial class GlobalScript : Node2D
 {
 	public static int coins {get; set;} = 0;
 	public static List<string> Inventory {get; set;} = new List<string>();
+	public static bool metAzucat{get; set;} = false;
 
 	public static String savePath = "user://save_data.tres"; //not implemented yet (see GlobalSaveResource.cs)
 

@@ -128,4 +128,4 @@ position = Vector2(456, 181)
 [connection signal="Interact" from="SubShopDoor" to="." method="OnEnterRoom"]
 [connection signal="Interact" from="SubShopDoor2" to="." method="OnEnterRoom"]
 [connection signal="Interact" from="GreenroomDoor" to="." method="OnEnterRoom"]
-[connection signal="Interact" from="BobaShopDoor" to="." method="OnEnterRoom"]
+[connection signal="EnterRoom" from="BobaShopDoor" to="." method="OnEnterRoom"]
