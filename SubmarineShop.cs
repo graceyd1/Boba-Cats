@@ -89,4 +89,18 @@ public partial class SubmarineShop : Node2D
 			await GlobalScript.ChangeRoom(new Vector2(402, 525), "underwater_town", true);
 		}
 	}
+	
+	public async void onExitRoom(string doorName) {
+		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
+		var GlobalScene = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		transitioning = true;
+		if (FaderNode is Fader fader) {
+			await fader.FadeIn(.7f);
+		}
+		
+		if (doorName == "ShopExit")
+		{
+			await GlobalScene.ChangeRoom(new Vector2(326, 517), "underwater_town", true);
+		}
+	}
 }

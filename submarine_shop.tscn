@@ -8,13 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="5_chh4g"]
 [ext_resource type="PackedScene" uid="uid://bmlobwxb1vvug" path="res://door.tscn" id="7_u403n"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="8_oqvgm"]
-[ext_resource type="PackedScene" uid="uid://cof0du2kqkcqt" path="res://interact_label.tscn" id="9_rvp5p"]
+[ext_resource type="PackedScene" uid="uid://c7vy6svhjtlef" path="res://interact_label.tscn" id="9_rvp5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdolb"]
 size = Vector2(20, 146)
 
 [node name="SubmarineShop" type="Node2D"]
 script = ExtResource("1_26v74")
+
+[node name="Timer2" type="Timer" parent="."]
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -50
@@ -46,7 +48,7 @@ offset_top = 119.0
 offset_right = 31.0
 offset_bottom = 140.0
 
-[node name="InteractArea" parent="Door" instance=ExtResource("8_oqvgm")]
+[node name="ShopExit" parent="Door" instance=ExtResource("8_oqvgm")]
 position = Vector2(10, 23)
 scale = Vector2(0.5, 0.5)
 
@@ -59,5 +61,16 @@ position = Vector2(92, 67)
 shape = SubResource("RectangleShape2D_rdolb")
 
 [node name="InteractLabel" parent="." instance=ExtResource("9_rvp5p")]
+offset_left = 145.0
+offset_top = 170.0
+offset_right = 145.0
+offset_bottom = 170.0
 
+[node name="LeftWall" parent="." instance=ExtResource("2_avnv1")]
+position = Vector2(-20, 0)
+scale = Vector2(1, 10)
+
+[connection signal="PromptUser" from="GroundPlayer/TextBox" to="InteractLabel" method="FadeIn"]
+[connection signal="PromptUser" from="Azucat/TextBox" to="InteractLabel" method="FadeIn"]
+[connection signal="EnterRoom" from="Door/ShopExit" to="." method="onExitRoom"]
 [connection signal="body_entered" from="TriggerDialogue" to="." method="startDialogue"]

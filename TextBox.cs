@@ -9,11 +9,15 @@ public partial class TextBox : Node2D
 	
 	[Signal]
 	public delegate void ChoiceMadeEventHandler(String choice);
+	
+	[Signal]
+	public delegate void PromptUserEventHandler(TextBox box);
 
 	private Boolean showingText;
 	private RichTextLabel label;
 	private Godot.Timer timer;
 	private Boolean asking;
+	private bool inactive;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -34,6 +38,7 @@ public partial class TextBox : Node2D
 		if (showingText && Input.IsActionPressed("enter") && timer.IsStopped())
 		{
 			showingText = false;
+			inactive = false;
 			Hide();
 			EmitSignal(SignalName.ContinueDialogue);
 		}
@@ -59,8 +64,18 @@ public partial class TextBox : Node2D
 		//GD.Print(Position); ///
 		Show();
 		
+		inactive = true;
+		InactiveCountdown();
 		timer.Start();
 		await ToSignal(this, TextBox.SignalName.ContinueDialogue);
+	}
+	
+	//it's broken because idk how to get it to stop if player continues before timeout
+	private async void InactiveCountdown() {
+		/*var timer2 = GetNode<Godot.Timer>("../../Timer2");
+		timer2.Start(4.0f);*/
+		await ToSignal(GetTree().CreateTimer(4.0f), SceneTreeTimer.SignalName.Timeout);
+		EmitSignal(SignalName.PromptUser, this);
 	}
 	
 	public async Task<string> Ask(String text) {

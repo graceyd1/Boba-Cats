@@ -105,7 +105,7 @@ public partial class GroundPlayer : Player
 					animatedSprite.Stop();
 				}
 				Velocity = dir;
-				MoveAndSlide();
+				//MoveAndSlide();
 			}
 			//flashing when hurt
 			var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
@@ -123,8 +123,28 @@ public partial class GroundPlayer : Player
 				}
 			}
 		}
+		MoveAndSlide();
+		//Sea bunny bounce
+		int count = GetSlideCollisionCount();
+		for (int i = 0; i < count; i++) {
+			var info = GetSlideCollision(i);
+			var collider = info.GetCollider();
+			if (collider is Seabunny boss) {
+				//direction it bounces and how fast
+				Velocity = new Vector2(0, -400);
+				//how high up it can go
+				//Position += new Vector2(0, -70);
+				setDisableMovement(true);
+				TimeBounce();
+			}
+		}
 
 		OOBCheck();
+	}
+	
+	private async void TimeBounce() {
+		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+		setDisableMovement(false);
 	}
 
 	//change player back to normal after flashing animation
