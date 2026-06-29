@@ -50,7 +50,7 @@ public partial class TextBox : Node2D
 	}
 
 	//show text
-	public async Task showText(String text)
+	public async Task ShowText(String text)
 	{
 		label.Clear();
 		label.AppendText("[font_size=10]" + text + "[/font_size]");
@@ -63,12 +63,17 @@ public partial class TextBox : Node2D
 		await ToSignal(this, TextBox.SignalName.ContinueDialogue);
 	}
 	
-	public async Task ask(String text) {
+	public async Task<string> Ask(String text) {
 		label.Clear();
 		label.AppendText("[font_size=10]" + text + "[/font_size]");
 		asking = true;
 		Show();
 		timer.Start();
+		var result =  await ToSignal(this, TextBox.SignalName.ChoiceMade);
+		if (result is [Variant choice]) {
+			return (string) choice;
+		}
+		return null;
 	}
 	
 	//so that pressing enter doesn't restart the conversation

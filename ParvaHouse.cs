@@ -26,6 +26,7 @@ public partial class ParvaHouse : Node2D
 	}
 	
 	public async void startDialogue(Node2D player) {
+		GD.Print(player.Name); ///
 		if (dashTextN is TextBox dT && parvaTextN is TextBox pT) {
 
 
@@ -38,8 +39,8 @@ public partial class ParvaHouse : Node2D
 			}	
 			player.Position = new Vector2(78, 132);
 
-			await pT.showText("A [i]visitor[/i]. Well, I must say I'm surprised you got past the vines.");
-			await pT.showText("You don't seem like one of those...[i]town cats[/i]. Why don't you come have a seat?");
+			await pT.ShowText("A [i]visitor[/i]. Well, I must say I'm surprised you got past the vines.");
+			await pT.ShowText("You don't seem like one of those...[i]town cats[/i]. Why don't you come have a seat?");
 
 			//move to seat:
 			var animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -55,18 +56,18 @@ public partial class ParvaHouse : Node2D
 				sprite.Animation = "sit_right";
 			}
 
-			await pT.showText("That's more like it. My name is Parva. Now, what have you come all this way for, brown cat?");
+			await pT.ShowText("That's more like it. My name is Parva. Now, what have you come all this way for, brown cat?");
 
-			await dT.showText("I'm Dash. I've been on a quest to find the fabled brown sugar boba.");
-			await dT.showText("Unfortunately, my ship crashed and I ended up underwater.");
+			await dT.ShowText("I'm Dash. I've been on a quest to find the fabled brown sugar boba.");
+			await dT.ShowText("Unfortunately, my ship crashed and I ended up underwater.");
 			//await dT.showText("It seems like this place has every kind of boba except for that. I've looked everywhere.");
 			//no they don't have every kind of boba because someone stole it all... lol
 
 			//my idea:
 			//parva says something along the lines of "I can help with that"
-			await pT.showText("Hmm...I might be able to help you with that.");
-			await pT.showText("You see, I have my own stash. It's top secret though; I trust you wouldn't tell anyone-");
-			await pT.showText("Not that they would be able to get to it anyways, heh.");
+			await pT.ShowText("Hmm...I might be able to help you with that.");
+			await pT.ShowText("You see, I have my own stash. It's top secret though; I trust you wouldn't tell anyone-");
+			await pT.ShowText("Not that they would be able to get to it anyways, heh.");
 			//trapdoor is revealed
 			//opens the trapdoor:
 			animationPlayer.Play("open_trapdoor");

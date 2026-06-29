@@ -31,35 +31,35 @@ public partial class EnterSeaBunnyRoom : Node2D
 		var player = GetNode<GroundPlayer>("GroundPlayer");
 		//this way still affected by gravity
 		player.inputEnabled = false;
-		await dashT.showText("How'd you get an entire stash of boba?");
-		await parvaT.showText("Ah, just stole them from the town's boba shop.");
-		await dashT.showText("...");
-		await parvaT.showText("No need to stare like that, it wasn't that hard. They keep their doors open at night, pfft.");
-		await dashT.ask("1. Stop Parva because stealing is wrong.\n2. Stop Parva so the town cats can get you a new boat");
+		await dashT.ShowText("How'd you get an entire stash of boba?");
+		await parvaT.ShowText("Ah, just stole them from the town's boba shop.");
+		await dashT.ShowText("...");
+		await parvaT.ShowText("No need to stare like that, it wasn't that hard. They keep their doors open at night, pfft.");
+		await dashT.Ask("1. Stop Parva because stealing is wrong.\n2. Stop Parva so the town cats can get you a new boat");
 		var ans = await ToSignal(dashT, TextBox.SignalName.ChoiceMade);
 		if (ans is [Variant choice]) {
 			if ((string)choice == "1") {
-				await dashT.showText("I'm not staring because I'm [i]impressed[/i]! I'm staring because it's [i]wrong[/i] to steal like that!");
+				await dashT.ShowText("I'm not staring because I'm [i]impressed[/i]! I'm staring because it's [i]wrong[/i] to steal like that!");
 			}
 			else {
-				await dashT.showText("I may not be a 'town cat', but I've already made deals with them to fix my boat.");
+				await dashT.ShowText("I may not be a 'town cat', but I've already made deals with them to fix my boat.");
 			}
 		}
-		await dashT.showText("Sorry, Parva, but I'm going to have to stop you.");
+		await dashT.ShowText("Sorry, Parva, but I'm going to have to stop you.");
 		parvaAni.Animation = "mad";
-		await parvaT.showText("[i]HA![/i] Getting across the vines was one thing, but you [i]seriously[/i] think you can stop me?");
+		await parvaT.ShowText("[i]HA![/i] Getting across the vines was one thing, but you [i]seriously[/i] think you can stop me?");
 		if (ans is [Variant choice2]) {
 			if ((string)choice2 == "1") {
-				await parvaT.showText("Think again, goody-two-shoes! Let's see if your bite's up to your talk!");
+				await parvaT.ShowText("Think again, goody-two-shoes! Let's see if your bite's up to your talk!");
 			}
 			else {
-				await parvaT.showText("Think again, town-smoocher! You're going to regret this!");
+				await parvaT.ShowText("Think again, town-smoocher! You're going to regret this!");
 			}
 		}
 		var parva = GetNode<AnimatedSprite2D>("Parva");
 		parva.Hide();
-		await dashT.showText("...where did he go?");
-		await dashT.showText("Seems like I'm stuck here. Maybe the boba here somewhere?");
+		await dashT.ShowText("...where did he go?");
+		await dashT.ShowText("Seems like I'm stuck here. Maybe the boba here somewhere?");
 		player.inputEnabled = true;
 	}
 
@@ -75,7 +75,7 @@ public partial class EnterSeaBunnyRoom : Node2D
 			}
 			await GlobalScript.ChangeRoom(new Vector2(201, 140), "parva_house", false);*/
 			var dashT = GetNode<TextBox>("GroundPlayer/TextBox");
-			await dashT.showText("It's too high up! I can't escape!");
+			await dashT.ShowText("It's too high up! I can't escape!");
 		}
 		else if (pos.X > 315)
 		{

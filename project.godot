@@ -47,6 +47,8 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [gui]
 
+theme/custom_font="res://assets/VT323_Font/VT323-Regular.ttf"
+theme/default_font_antialiasing=0
 theme/default_font_multichannel_signed_distance_field=true
 
 [input]

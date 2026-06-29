@@ -3,6 +3,8 @@ using System;
 
 public partial class MinigameTime : Label
 {
+	[Export]
+	public int seconds {get; set;} = 20;
 	[Signal]
 	public delegate void TimesUpEventHandler();
 
@@ -34,7 +36,7 @@ public partial class MinigameTime : Label
 
 	public void StartTime()
 	{
-		time = 30;
+		time = seconds;
 		timing = true;
 		Visible = true;
 	}

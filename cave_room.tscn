@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://pxiunulaqoxq" path="res://assets/backgrounds/cave_room/cave_room1.png" id="2_yo4ww"]
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_ds2fq"]
 [ext_resource type="Texture2D" uid="uid://cynkkn5rytlvy" path="res://assets/backgrounds/cave_room/cave_room2.png" id="3_jiwer"]
-[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="5_ui5lu"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="5_ui5lu"]
 [ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="6_1sl3n"]
 [ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://growable_vine.tscn" id="6_itp7c"]
 [ext_resource type="PackedScene" uid="uid://dhctxpw3i8rpf" path="res://darkness.tscn" id="7_jnidm"]
@@ -35,7 +35,7 @@ centered = false
 
 [node name="GroundPlayer" parent="." instance=ExtResource("3_ds2fq")]
 material = null
-position = Vector2(25, 90)
+position = Vector2(400, 100)
 
 [node name="WallsFolder" type="Node2D" parent="."]
 position = Vector2(200, 290)

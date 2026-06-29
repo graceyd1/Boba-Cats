@@ -47,21 +47,19 @@ public partial class FishRoom : Node2D
 		if (playerTextNode is TextBox pText && iceCreamTextNode is TextBox iText)
 		{
 			iText.DisableInteractArea();
-			await iText.showText("yo! do you want to play a minigame for coins?");
-			await pText.ask("1. Yes \n2. No");
-			var result = await ToSignal(pText, TextBox.SignalName.ChoiceMade);
-			if (result is [Variant choice]) {
-				if ((string)choice == "2") {
-					await pText.showText("Maybe later.");
-					iText.EnableInteractArea();
-				}
-				else {
-					await pText.showText("Sure!");
-					await iText.showText("the goal of the game is to collect as many fish as you can in the time limit.");
-					await iText.showText("press enter/space near a fish to collect it.");
-					await iText.showText("the fish hurt you if you get too close, so be careful!");
-					StartMinigame();
-				}
+			await iText.ShowText("yo! do you want to play a minigame for coins?");
+			
+			var choice = await pText.Ask("1. Yes \n2. No");
+			if ((string)choice == "2") {
+				await pText.ShowText("Maybe later.");
+				iText.EnableInteractArea();
+			}
+			else {
+				await pText.ShowText("Sure!");
+				await iText.ShowText("the goal of the game is to collect as many fish as you can in the time limit.");
+				await iText.ShowText("press enter/space near a fish to collect it.");
+				await iText.ShowText("the fish hurt you if you get too close, so be careful!");
+				StartMinigame();
 			}
 		}
 	}
@@ -103,9 +101,10 @@ public partial class FishRoom : Node2D
 	{
 		if (playerTextNode is TextBox pText && iceCreamTextNode is TextBox iText)
 		{
-			await iText.showText("game over!");
-			await iText.showText("you got : " + fishCollected + " fish");
-			await iText.showText("you get: " + fishCollected + " coins");
+			await iText.ShowText("game over!");
+			await iText.ShowText("you got : " + fishCollected + " fish");
+			await iText.ShowText("you get: " + fishCollected + " coins");
+			GetNode<Label>("UnderwaterPlayer/MinigameTime").Hide();
 			
 			GlobalScript.coins = GlobalScript.coins + fishCollected;
 

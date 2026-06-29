@@ -13,8 +13,10 @@ offset = Vector2(70, 0)
 script = ExtResource("2_bnjar")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(74.5, 0)
 shape = SubResource("RectangleShape2D_f1hrt")
+debug_color = Color(0.579823, 0.546776, 0.218768, 0.42)
