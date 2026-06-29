@@ -29,6 +29,8 @@ public partial class Player : CharacterBody2D
 
 	//stores velocity modifiers such as wind/tube coral pull
 	public Vector2 velocityModifier{get; set;}
+	
+	public bool inputEnabled{get;set;} = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
