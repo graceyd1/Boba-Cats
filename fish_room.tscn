@@ -134,7 +134,6 @@ scale = Vector2(0.666667, 1)
 material = null
 position = Vector2(524, 172)
 collision_mask = 5
-metadata/_edit_group_ = true
 
 [node name="MinigameTime" type="Label" parent="UnderwaterPlayer"]
 offset_left = -52.0

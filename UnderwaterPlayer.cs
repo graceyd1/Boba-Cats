@@ -92,9 +92,9 @@ public partial class UnderwaterPlayer : Player
 			//MoveAndCollide(velocity * (float)delta); //character2d movement
 			
 			Velocity = velocity;
-			MoveAndSlide();
 		} //end of if (movement not disabled)
 		
+		MoveAndSlide();
 		//flashing when hurt
 		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
 		if (flash)
@@ -130,7 +130,27 @@ public partial class UnderwaterPlayer : Player
 					bomb.ApplyCentralImpulse(impulse);
 				}
 			}
+			else if (collider is RigidBody2D jellyfish) {
+				Velocity = collisionInfo.GetNormal() * new Vector2(300, 300);
+				
+				//glances off and goes right if x of normal vector >= 0
+				if (collisionInfo.GetNormal().X >= 0) {
+					animatedSprite.Animation = "swim-right";
+				}
+				else {
+					animatedSprite.Animation = "swim-left";
+				}
+				animatedSprite.Play();
+				setDisableMovement(true);
+				StunTimer();
+				GD.Print(Velocity);
+			}
 		}
+	}
+	
+	private async void StunTimer() {
+		await ToSignal(GetTree().CreateTimer(1.0f), SceneTreeTimer.SignalName.Timeout);
+		setDisableMovement(false);
 	}
 
 	//change player back to normal after flashing animation

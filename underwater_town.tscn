@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ctoxq66h45lol" path="res://assets/backgrounds/underwater_town/underwater_town8.png" id="8_wu3mq"]
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="9_1c834"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="11_y5y2r"]
-[ext_resource type="PackedScene" uid="uid://bnpd4i7iptaot" path="res://up_wall.tscn" id="12_f8bqc"]
+[ext_resource type="PackedScene" path="res://up_wall.tscn" id="12_f8bqc"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="14_48yht"]
 [ext_resource type="PackedScene" uid="uid://ygrr56bstc00" path="res://interact_label.tscn" id="15_hl72r"]
 
@@ -82,7 +82,6 @@ centered = false
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("9_1c834")]
 position = Vector2(100, 500)
 collision_mask = 5
-metadata/_edit_group_ = true
 
 [node name="GroundSprite" type="Sprite2D" parent="."]
 texture_filter = 1
