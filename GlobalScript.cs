@@ -4,9 +4,11 @@ using System.Collections.Generic;
 
 public partial class GlobalScript : Node2D
 {
+	//Eventually initialize to save file data
 	public static int coins {get; set;} = 0;
 	public static List<string> Inventory {get; set;} = new List<string>();
 	public static bool metAzucat{get; set;} = false;
+	public static bool metCatssava{get; set;} = false;
 
 	public static String savePath = "user://save_data.tres"; //not implemented yet (see GlobalSaveResource.cs)
 

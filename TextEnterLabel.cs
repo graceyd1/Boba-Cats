@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class InteractLabel : Control
+public partial class TextEnterLabel : Control
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

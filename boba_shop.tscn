@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo6n5dubhn4cc"]
+[gd_scene load_steps=12 format=3 uid="uid://bo6n5dubhn4cc"]
 
 [ext_resource type="Texture2D" uid="uid://bnycy4bv6va2v" path="res://assets/backgrounds/interior/boba_room.png" id="1_0haum"]
 [ext_resource type="Script" path="res://BobaShop.cs" id="1_euq4v"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bgfgvqg5j4fed" path="res://assets/npcs/catssava_sit.png" id="6_n2t4t"]
 [ext_resource type="PackedScene" uid="uid://bmlobwxb1vvug" path="res://door.tscn" id="8_pqxkn"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="9_8ubu4"]
+[ext_resource type="PackedScene" uid="uid://dacucl1yyxuex" path="res://text_enter_label.tscn" id="10_rtf1i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5ccxq"]
 animations = [{
@@ -50,7 +51,7 @@ position = Vector2(0, 140)
 scale = Vector2(17, 1)
 
 [node name="GroundPlayer" parent="." instance=ExtResource("3_rwi30")]
-position = Vector2(21, 133)
+position = Vector2(60, 133)
 
 [node name="TextBox" parent="GroundPlayer" instance=ExtResource("4_yaba5")]
 
@@ -72,4 +73,12 @@ offset_bottom = 140.0
 position = Vector2(12, 26)
 scale = Vector2(0.5, 0.5)
 
+[node name="TextEnterLabel" parent="." instance=ExtResource("10_rtf1i")]
+offset_left = 158.0
+offset_top = 179.0
+offset_right = 158.0
+offset_bottom = 179.0
+
+[connection signal="PromptUser" from="GroundPlayer/TextBox" to="TextEnterLabel" method="FadeIn"]
+[connection signal="PromptUser" from="Catssava/TextBox" to="TextEnterLabel" method="FadeIn"]
 [connection signal="EnterRoom" from="BobaExit/InteractArea" to="." method="onExitRoom"]

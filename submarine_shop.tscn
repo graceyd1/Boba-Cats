@@ -59,4 +59,6 @@ offset_bottom = 170.0
 position = Vector2(-20, 0)
 scale = Vector2(1, 10)
 
+[connection signal="PromptUser" from="GroundPlayer/TextBox" to="InteractLabel" method="FadeIn"]
+[connection signal="PromptUser" from="Azucat/TextBox" to="InteractLabel" method="FadeIn"]
 [connection signal="EnterRoom" from="Door/ShopExit" to="." method="onExitRoom"]
