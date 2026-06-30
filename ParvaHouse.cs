@@ -35,7 +35,7 @@ public partial class ParvaHouse : Node2D
 			var dash = dashTextN.GetParent();
 			if (dash is Player p)
 			{
-				p.setDisableMovement(true);
+				p.SetDisableMovement(true);
 			}	
 			player.Position = new Vector2(78, 132);
 
@@ -81,8 +81,8 @@ public partial class ParvaHouse : Node2D
 
 			if (dash is Player playerr)
 			{
-				playerr.setDisableMovement(false);
-				playerr.inputEnabled = true;
+				playerr.SetDisableMovement(false);
+				playerr.InputEnabled = true;
 			}
 		}
 	}

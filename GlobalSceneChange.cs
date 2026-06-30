@@ -73,10 +73,10 @@ public partial class GlobalSceneChange : Node2D
 		
 		currPlayer.Position = pos;
 		if (right) {
-			currPlayer.facingRight = true;
+			currPlayer.FacingRight = true;
 		}
 		else {
-			currPlayer.facingRight = false;
+			currPlayer.FacingRight = false;
 		}
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		if (FaderNode is Fader fade) {

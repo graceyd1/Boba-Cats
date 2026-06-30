@@ -10,6 +10,11 @@ public partial class GlobalScript : Node2D
 	public static bool metAzucat{get; set;} = false;
 	public static bool metCatssava{get; set;} = false;
 
+	public static bool FinishedSeaBunny{get; set;} = false;
+
+	public static bool GotSeaBoba{get; set;} = false;
+
+
 	public static String savePath = "user://save_data.tres"; //not implemented yet (see GlobalSaveResource.cs)
 
 	// Called when the node enters the scene tree for the first time.

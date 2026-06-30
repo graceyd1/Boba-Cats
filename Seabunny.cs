@@ -6,6 +6,12 @@ public partial class Seabunny : CharacterBody2D
 {
 	[Export]
 	public int dashSpeed {get; set;} = 200;
+
+	// [Export]
+	// public String animationOverride {get; set;} = null;
+
+	private bool InFight;
+
 	private AnimatedSprite2D animatedSprite;
 	private Godot.Timer idleTimer;
 	private Boolean facingLeft;
@@ -24,38 +30,86 @@ public partial class Seabunny : CharacterBody2D
 		animatedSprite.Play();
 
 		idleTimer = GetNode<Godot.Timer>("IdleTimer");
-		idleTimer.Start(); 
-		
-		GD.Print("Ready"); //
+		InFight = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
 		MoveAndSlide();
+
+		//prevent it from leaving the arena
+		Position = new Vector2(
+    		x: Mathf.Clamp(Position.X, 333, 600),
+			y: Position.Y
+		);
+
+		// //animation override for cutscenes
+		// if (animationOverride != null)
+		// {
+		// 	GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = animationOverride;
+		// }
+	}
+
+	private async void StartFight()
+	{
+		Position = new Vector2(485, 208);
+		InFight = true;
+		idleTimer.Start(); 
+		await ToSignal(idleTimer, Godot.Timer.SignalName.Timeout);
+	}
+
+	public async Task EndFight()
+	{
+		InFight = false;
+		var anim = GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
+
+		Velocity = Vector2.Zero;
+		facingLeft = false;
+		await Dash(3);
+		Position = new Vector2(550, 208);
+
+		animatedSprite.Animation = "start_climb";
+		animatedSprite.Play();
+		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+
+		animatedSprite.Animation = "climbing";
+		animatedSprite.Play();
+		anim.Play("climb_vine");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+
+		animatedSprite.Animation = "end_climb";
+		animatedSprite.Play();
+		anim.Play("fall");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+
+		animatedSprite.Animation = "sleep";
+		animatedSprite.Play();
 	}
 
 	//every time it is done waiting, do another attack
 	private async void OnIdleTimerTimeout()
 	{
-		GD.Print("Timer ended"); //
-		await doAttack();
+		if (InFight)
+		{
+			await DoAttack();
+		}
 	}
 
-	private async Task doAttack()
+	private async Task DoAttack()
 	{
 		int attack = GD.RandRange(0, 3);
 		if (attack == 0)
 		{
-			await dash(1);
+			await Dash(1);
 		}
 		else if (attack == 1)
 		{
-			await dash(3);
+			await Dash(3);
 		}
 		else
 		{
-			await spin();
+			await Spin();
 		}
 
 		animatedSprite.Animation = "idle";
@@ -63,9 +117,8 @@ public partial class Seabunny : CharacterBody2D
 	}
 
 	//loops: how many times to loop the dashing animation
-	private async Task dash(int loops)
+	private async Task Dash(int loops)
 	{
-		GD.Print("small dash"); //
 		animatedSprite.Animation = "start_dash";
 		animatedSprite.Play(); //idk if we need to call Play() every time
 		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
@@ -85,7 +138,6 @@ public partial class Seabunny : CharacterBody2D
 		//wait for dashing animation to loop a certain number of times
 		for (int i = 0; i < loops; i ++)
 		{
-			GD.Print("Loop " + i); //
 			await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationLooped);
 		}
 
@@ -109,27 +161,23 @@ public partial class Seabunny : CharacterBody2D
 		}
 	}
 
-	private async Task spin()
+	private async Task Spin()
 	{
-		GD.Print("spin"); //
 		animatedSprite.Animation = "spin";
 		animatedSprite.Play();
 		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
 		
 		//clone bullets, positioned left to right
-		AddBullet(new Vector2(0, rand(12, 32)), new Vector2(-1, 0));
-		AddBullet(new Vector2(0, rand(-8, 8)), new Vector2(-1, -1));
-		AddBullet(new Vector2(rand(0, 16), 0), new Vector2(0, -1));
-		AddBullet(new Vector2(rand(51, 60), rand(0, 10)), new Vector2(1, -1));
-		AddBullet(new Vector2(63, rand(20, 33)), new Vector2(1, 0));
+		AddBullet(new Vector2(0, Rand(12, 32)), new Vector2(-1, 0));
+		AddBullet(new Vector2(0, Rand(-8, 8)), new Vector2(-1, -1));
+		AddBullet(new Vector2(Rand(0, 16), 0), new Vector2(0, -1));
+		AddBullet(new Vector2(Rand(51, 60), Rand(0, 10)), new Vector2(1, -1));
+		AddBullet(new Vector2(63, Rand(20, 33)), new Vector2(1, 0));
 		
 		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
-		GD.Print("Done");
-		
-		
 	}
 	
-	private int rand(int low, int high) {
+	private static int Rand(int low, int high) {
 		var randomizer = new RandomNumberGenerator();
 		randomizer.Randomize();
 		return randomizer.RandiRange(low, high);

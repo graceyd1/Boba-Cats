@@ -4,25 +4,24 @@ using System;
 
 public partial class GroundPlayer : Player
 {
-	public new float Speed = 80.0f;
-	public const float JumpVelocity = -200; //-330.0f;
+	public new float Speed = 70.0f;
+	public const float JumpVelocity = -230; //-330.0f;
 	public bool Climbing{get; set;} = false;
 
 	private AnimatedSprite2D animatedSprite;
 	public override void _Ready() {
 		base._Ready();
 		base.Speed = 150;
-		base.Gravity = 0.002F;
-		inputEnabled = true;
+		base.Gravity = 0.001F;
+		InputEnabled = true;
 
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animatedSprite.Animation = "sit_right";
-
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (!movementIsDisabled())
+		if (!MovementIsDisabled())
 		{
 			if (!Climbing) {
 				Vector2 velocity = Velocity;
@@ -34,7 +33,7 @@ public partial class GroundPlayer : Player
 				}
 
 				// Handle Jump.
-				if (inputEnabled) {
+				if (InputEnabled) {
 					if (Input.IsActionJustPressed("move_up") && IsOnFloor())
 					{
 						velocity.Y = JumpVelocity;
@@ -48,14 +47,14 @@ public partial class GroundPlayer : Player
 						velocity.X = direction.X * Speed;
 						if (direction.X < 0) {
 							animatedSprite.Animation = "walk_left";
-							facingRight = false;
+							FacingRight = false;
 						}
 						else if (direction.X > 0) {
 							animatedSprite.Animation = "walk_right";
-							facingRight = true;
+							FacingRight = true;
 						}
 						if (direction.Y != 0) {
-							if (facingRight) {
+							if (FacingRight) {
 								animatedSprite.Animation = "jump_right";
 							}
 							else {
@@ -67,7 +66,7 @@ public partial class GroundPlayer : Player
 					else
 					{
 						velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-						if (facingRight) {
+						if (FacingRight) {
 							animatedSprite.Animation = "sit_right";
 						}
 						else {
@@ -82,7 +81,7 @@ public partial class GroundPlayer : Player
 			}
 			else {
 				var dir = Vector2.Zero;
-				if (inputEnabled) {
+				if (InputEnabled) {
 					if (Input.IsActionPressed("move_up")) {
 						dir.Y -= 1;
 					}
@@ -109,7 +108,7 @@ public partial class GroundPlayer : Player
 			}
 			//flashing when hurt
 			var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
-			if (flash)
+			if (Flash)
 			{
 				var modulate = animatedSprite.Modulate;
 
@@ -125,17 +124,20 @@ public partial class GroundPlayer : Player
 		}
 		MoveAndSlide();
 		//Sea bunny bounce
-		int count = GetSlideCollisionCount();
-		for (int i = 0; i < count; i++) {
-			var info = GetSlideCollision(i);
-			var collider = info.GetCollider();
-			if (collider is Seabunny boss) {
-				//direction it bounces and how fast
-				Velocity = new Vector2(0, -400);
-				//how high up it can go
-				//Position += new Vector2(0, -70);
-				setDisableMovement(true);
-				TimeBounce();
+		if (GlobalScript.FinishedSeaBunny)
+		{
+			int count = GetSlideCollisionCount();
+			for (int i = 0; i < count; i++) {
+				var info = GetSlideCollision(i);
+				var collider = info.GetCollider();
+				if (collider is Seabunny boss) {
+					//direction it bounces and how fast
+					Velocity = new Vector2(0, -400);
+					//how high up it can go
+					//Position += new Vector2(0, -70);
+					SetDisableMovement(true);
+					TimeBounce();
+				}
 			}
 		}
 
@@ -144,7 +146,7 @@ public partial class GroundPlayer : Player
 	
 	private async void TimeBounce() {
 		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
-		setDisableMovement(false);
+		SetDisableMovement(false);
 	}
 
 	//change player back to normal after flashing animation

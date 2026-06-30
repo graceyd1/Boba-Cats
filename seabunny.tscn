@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dx7hhstl21um6"]
+[gd_scene load_steps=42 format=3 uid="uid://dx7hhstl21um6"]
 
 [ext_resource type="Script" path="res://Seabunny.cs" id="1_lxr8e"]
 [ext_resource type="Texture2D" uid="uid://c5h71oineskh6" path="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_climb4.png" id="1_rdlt2"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c2rcglv4nr5qm" path="res://assets/enemy_sprites/seabunny/seabunny_idle1.png" id="14_7to8p"]
 [ext_resource type="Texture2D" uid="uid://dlv3iiwrhvxxs" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin0.png" id="15_58x4e"]
 [ext_resource type="Texture2D" uid="uid://cbty8yk6i2att" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin1.png" id="16_fex5d"]
+[ext_resource type="Texture2D" uid="uid://7llb7nqqo6lr" path="res://assets/enemy_sprites/seabunny/seabunny_sleep.png" id="16_ww3nj"]
 [ext_resource type="Texture2D" uid="uid://b85cxwocy86qy" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin2.png" id="17_q3bqj"]
 [ext_resource type="Texture2D" uid="uid://bi00ibvmip861" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin3.png" id="18_12bvw"]
 [ext_resource type="Texture2D" uid="uid://ch36cwcb8dnbp" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin4.png" id="19_1qo5v"]
@@ -36,6 +37,14 @@
 [ext_resource type="Texture2D" uid="uid://ddr4gyig053ha" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash2.png" id="33_bmy4k"]
 [ext_resource type="Texture2D" uid="uid://kc2qf2s1m2vm" path="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash3.png" id="34_o8xnw"]
 [ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="36_pik4a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1mh5"]
+atlas = ExtResource("16_ww3nj")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e0m3"]
+atlas = ExtResource("16_ww3nj")
+region = Rect2(120, 0, 120, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8usnm"]
 animations = [{
@@ -108,6 +117,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_o1mh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e0m3")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("15_58x4e")
 }, {
 "duration": 1.0,
@@ -160,7 +180,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("30_de2q5")
 }],
-"loop": true,
+"loop": false,
 "name": &"start_climb",
 "speed": 5.0
 }, {
@@ -202,7 +222,8 @@ texture_filter = 1
 position = Vector2(18.5, 11)
 scale = Vector2(0.691667, 0.725)
 sprite_frames = SubResource("SpriteFrames_8usnm")
-animation = &"spin"
+animation = &"sleep"
+frame_progress = 0.656199
 
 [node name="Hitbox" parent="." instance=ExtResource("36_pik4a")]
 position = Vector2(20, 15)

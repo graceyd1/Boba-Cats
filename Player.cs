@@ -1,10 +1,14 @@
 using Godot;
 using System;
+using System.Data.SqlTypes;
 
 public partial class Player : CharacterBody2D
 {
 	[Signal]
 	public delegate void HitEventHandler(int hp);
+
+	[Signal]
+	public delegate void DiedEventHandler();
 
 	public int Speed{get; set;}
 	
@@ -12,8 +16,7 @@ public partial class Player : CharacterBody2D
 	
 	public float Mass = 4.54f; //in kg
 
-	//not sure if this should be private
-	public int hp;
+	private int hp;
 
 	//if true, player can't get hit
 	private Boolean invulnerable;
@@ -22,24 +25,24 @@ public partial class Player : CharacterBody2D
 	private Boolean disableMovement;
 
 	//player flashing animation (when hit)
-	public Boolean flash{get; set;}
+	public Boolean Flash{get; set;}
 	
 	//determines player sitting position
-	public Boolean facingRight{get; set;}
+	public Boolean FacingRight{get; set;}
 
 	//stores velocity modifiers such as wind/tube coral pull
-	public Vector2 velocityModifier{get; set;}
+	public Vector2 VelocityModifier{get; set;}
 	
-	public bool inputEnabled{get;set;} = false;
+	public bool InputEnabled{get;set;} = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		//ScreenSize = GetViewportRect().Size;
-		velocityModifier = Vector2.Zero;
-		hp = 2;
+		VelocityModifier = Vector2.Zero;
+		hp = 100; //2;
 		invulnerable = false;
-		flash = false;
+		Flash = false;
 		//gravity = Gravity.Underwater; //todo - change to update based on the player's room
 	}
 	
@@ -64,13 +67,14 @@ public partial class Player : CharacterBody2D
 		{
 			// GD.Print("You died!"); 
 			Respawn();
+			EmitSignal(SignalName.Died);
 			hp = 2;
 		}
 
 		//i-frames
 		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
 		invulnerable = true;
-		flash = true;
+		Flash = true;
 		hurtTimer.Start();
 
 		EmitSignal(SignalName.Hit, hp);
@@ -141,7 +145,7 @@ public partial class Player : CharacterBody2D
 	private void OnHurtTimerTimeout()
 	{
 		invulnerable = false;
-		flash = false;
+		Flash = false;
 
 		var insideHurtbox =  GetNode<Area2D>("Hurtbox").GetOverlappingBodies();
 
@@ -152,16 +156,21 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	public void setVelocityModifier(Vector2 vel)
+	public void SetVelocityModifier(Vector2 vel)
 	{
-		velocityModifier = vel;
+		VelocityModifier = vel;
 	}
 
-	public void setDisableMovement(Boolean disable)
+	public void SetDisableMovement(Boolean disable)
 	{
 		disableMovement = disable;
+		if (disable)
+		{
+			Velocity = Vector2.Zero;
+
+		}
 	}
-	public Boolean movementIsDisabled()
+	public bool MovementIsDisabled()
 	{
 		return disableMovement;
 	}

@@ -58,7 +58,7 @@ scale = Vector2(0.9375, 1.0625)
 
 [node name="Controls" parent="Camera2D" instance=ExtResource("4_o0s2x")]
 z_index = 4096
-position = Vector2(137, -86)
+position = Vector2(141, -86)
 scale = Vector2(1, 1)
 
 [node name="Flashlight" parent="." instance=ExtResource("4_u4d4c")]

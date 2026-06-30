@@ -23,7 +23,7 @@ public partial class UnderwaterPlayer : Player
 	public override void _PhysicsProcess(double delta) {
 		var velocity = Vector2.Zero; //(0, 0)
 
-		if (!movementIsDisabled())
+		if (!MovementIsDisabled())
 		{
 			if (CoralStatus != InCoral.VERTICAL) {
 				if (Input.IsActionPressed("move_right")) {
@@ -48,7 +48,7 @@ public partial class UnderwaterPlayer : Player
 				velocity.Y += Gravity;
 			}
 		
-			velocity = velocity.Normalized() + velocityModifier;
+			velocity = velocity.Normalized() + VelocityModifier;
 		
 			if (velocity.Length() > 0) {
 				velocity = velocity * Speed;
@@ -63,16 +63,16 @@ public partial class UnderwaterPlayer : Player
 			if (velocity.X < 0)
 			{
 				animatedSprite.Animation = "swim-left";
-				facingRight = false;
+				FacingRight = false;
 			}
 			else if (velocity.X > 0)
 			{
 				animatedSprite.Animation = "swim-right";
-				facingRight = true;
+				FacingRight = true;
 			}
 			else
 			{
-				if (facingRight) {
+				if (FacingRight) {
 					animatedSprite.Animation = "sit-helmet";
 				}
 				else {
@@ -81,7 +81,7 @@ public partial class UnderwaterPlayer : Player
 				
 			}
 			if (originalY != 0) {
-				if (facingRight) {
+				if (FacingRight) {
 					animatedSprite.Animation = "swim-right";
 				}
 				else {
@@ -97,7 +97,7 @@ public partial class UnderwaterPlayer : Player
 		MoveAndSlide();
 		//flashing when hurt
 		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
-		if (flash)
+		if (Flash)
 		{
 			var modulate = animatedSprite.Modulate;
 			var originalR = modulate.R;
@@ -141,7 +141,7 @@ public partial class UnderwaterPlayer : Player
 					animatedSprite.Animation = "swim-left";
 				}
 				animatedSprite.Play();
-				setDisableMovement(true);
+				SetDisableMovement(true);
 				StunTimer();
 			}
 		}
@@ -149,7 +149,7 @@ public partial class UnderwaterPlayer : Player
 	
 	private async void StunTimer() {
 		await ToSignal(GetTree().CreateTimer(1.0f), SceneTreeTimer.SignalName.Timeout);
-		setDisableMovement(false);
+		SetDisableMovement(false);
 	}
 
 	//change player back to normal after flashing animation
@@ -161,7 +161,7 @@ public partial class UnderwaterPlayer : Player
 	
 	public void OnTubeCoralPull(Vector2 tubeVelocity)
 	{
-		setVelocityModifier(tubeVelocity);
+		SetVelocityModifier(tubeVelocity);
 		
 		if (tubeVelocity.X != 0) {
 			CoralStatus = InCoral.HORIZONTAL;
@@ -175,7 +175,7 @@ public partial class UnderwaterPlayer : Player
 	//stop pulling the character when it leaves the AOE
 	public void OnTubeCoralUnpull()
 	{
-		setVelocityModifier(Vector2.Zero);
+		SetVelocityModifier(Vector2.Zero);
 		CoralStatus = InCoral.NONE;
 	}
 

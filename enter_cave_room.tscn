@@ -70,7 +70,3 @@ scale = Vector2(1, 10)
 [node name="GrowableVine" parent="." instance=ExtResource("7_pcuo8")]
 z_index = 4000
 position = Vector2(194, 52)
-
-[connection signal="area_entered" from="GrowableVine" to="GrowableVine" method="OnAreaEntered"]
-[connection signal="body_entered" from="GrowableVine" to="GrowableVine" method="OnBodyEntered"]
-[connection signal="body_exited" from="GrowableVine" to="GrowableVine" method="OnBodyExited"]

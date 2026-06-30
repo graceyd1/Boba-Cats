@@ -20,6 +20,32 @@ public partial class TreasureRoom : Node2D
 		}
 	}
 
+	public async void GetBobaCutscene()
+	{
+		var azucat = GetNode<Sprite2D>("Azucat");
+		var catssava = GetNode<Sprite2D>("Catssava");
+		azucat.FlipH = true;
+		var anim = GetNode<AnimationPlayer>("AnimationPlayer");
+
+		anim.Play("cats_enter");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+		azucat.FlipH = false;
+
+		//animations: click on the AnimationPlayer in the editor and open the animation tab on the bottom
+
+		//todo: dialogue with catssava and azucat
+		//wowee you found the boba blah blah blah azucat has a new ship for dash
+		//azucat picks up the entire boba!!!!!!!
+		anim.Play("azucat_takes_the_boba");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+
+		//more dialogue if we want
+
+		//both cats leave
+		anim.Play("cats_leave");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+	}
+
 	private async Task NextRoomCheck() {
 		var player = GetNode<CharacterBody2D>("GroundPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
@@ -30,7 +56,7 @@ public partial class TreasureRoom : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(620, 231), "sea_bunny_room", false);
+			await GlobalScript.ChangeRoom(new Vector2(620, 170), "sea_bunny_room", false);
 		}
 
 	}

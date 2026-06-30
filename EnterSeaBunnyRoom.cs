@@ -37,7 +37,7 @@ public partial class EnterSeaBunnyRoom : Node2D
 		parvaAni.Animation = "default";
 		var player = GetNode<GroundPlayer>("GroundPlayer");
 		//this way still affected by gravity
-		player.inputEnabled = false;
+		player.InputEnabled = false;
 		await dashT.ShowText("How'd you get an entire stash of boba?");
 		await parvaT.ShowText("Ah, just stole them from the town's boba shop.");
 		await dashT.ShowText("...");
@@ -66,7 +66,7 @@ public partial class EnterSeaBunnyRoom : Node2D
 		parva.Hide();
 		await dashT.ShowText("...where did he go?");
 		await dashT.ShowText("Seems like I'm stuck here. Maybe the boba here somewhere?");
-		player.inputEnabled = true;
+		player.InputEnabled = true;
 		fedToBunny = true;
 	}
 

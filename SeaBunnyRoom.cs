@@ -20,6 +20,22 @@ public partial class SeaBunnyRoom : Node2D
 		}
 	}
 
+	public async void EndFight(Node2D player)
+	{
+		player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Stop();
+		if (player is Player p)
+		{
+			p.SetDisableMovement(true);
+			var seabunny = GetNode<CharacterBody2D>("Seabunny");
+			if (seabunny is Seabunny sb)
+			{
+				await sb.EndFight();
+			}
+
+			p.SetDisableMovement(false);
+		}
+	}
+
 	private async Task NextRoomCheck() {
 		var player = GetNode<CharacterBody2D>("GroundPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");

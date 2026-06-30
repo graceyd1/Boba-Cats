@@ -41,7 +41,7 @@ public partial class SubmarineShop : Node2D
 			if (!GlobalScript.metAzucat) {
 				if (player is Player p)
 				{
-					p.setDisableMovement(true);
+					p.SetDisableMovement(true);
 					/*var sprite = GetNode<AnimatedSprite2D>("GroundPlayer/AnimatedSprite2D");
 					sprite.Animation = "sit_right";*/
 				}
@@ -70,7 +70,7 @@ public partial class SubmarineShop : Node2D
 
 				if (player is Player p2)
 				{
-					p2.setDisableMovement(false);
+					p2.SetDisableMovement(false);
 				}
 			}
 			else {
