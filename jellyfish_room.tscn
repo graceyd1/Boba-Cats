@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=3 uid="uid://cc3aglk6j3bag"]
+
+[ext_resource type="Texture2D" uid="uid://cysadwqvf1xw3" path="res://assets/backgrounds/jellyfish_room/jellyfish_room0.png" id="1_7lnxs"]
+[ext_resource type="Script" path="res://JellyfishRoom.cs" id="1_ycq3r"]
+[ext_resource type="Texture2D" uid="uid://dxoik5vb5ive3" path="res://assets/backgrounds/jellyfish_room/jellyfish_room1.png" id="2_jq32d"]
+[ext_resource type="Texture2D" uid="uid://cjjrwo4fwt4hp" path="res://assets/backgrounds/jellyfish_room/jellyfish_room2.png" id="3_jts5g"]
+[ext_resource type="Texture2D" uid="uid://v1adb3yc3dot" path="res://assets/backgrounds/jellyfish_room/jellyfish_room3.png" id="4_8kxbq"]
+[ext_resource type="Texture2D" uid="uid://deehqiktfevun" path="res://assets/backgrounds/jellyfish_room/jellyfish_room4.png" id="5_we6vc"]
+[ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="6_bhlom"]
+[ext_resource type="Texture2D" uid="uid://banst1obngkel" path="res://assets/backgrounds/jellyfish_room/jellyfish_room_breakable_rock.png" id="7_4i0kr"]
+[ext_resource type="Texture2D" uid="uid://dqnpmyax7glde" path="res://assets/npcs/blue.png" id="8_d1sey"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="8_f4wyu"]
+[ext_resource type="PackedScene" uid="uid://dewawah7lpsl6" path="res://bouncy_jellyfish.tscn" id="10_qfpiu"]
+
+[node name="JellyfishRoom" type="Node2D"]
+script = ExtResource("1_ycq3r")
+
+[node name="BackgroundFolder" type="Node2D" parent="."]
+
+[node name="Background0" type="Sprite2D" parent="BackgroundFolder"]
+texture_filter = 1
+texture = ExtResource("1_7lnxs")
+centered = false
+
+[node name="Parallax2D1" type="Parallax2D" parent="BackgroundFolder"]
+scroll_scale = Vector2(0.3, 1)
+
+[node name="Background1" type="Sprite2D" parent="BackgroundFolder/Parallax2D1"]
+texture_filter = 1
+texture = ExtResource("2_jq32d")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="BackgroundFolder"]
+scroll_scale = Vector2(0.4, 1)
+
+[node name="Background2" type="Sprite2D" parent="BackgroundFolder/Parallax2D2"]
+texture_filter = 1
+texture = ExtResource("3_jts5g")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="BackgroundFolder"]
+scroll_scale = Vector2(0.5, 1)
+
+[node name="Background3" type="Sprite2D" parent="BackgroundFolder/Parallax2D3"]
+texture_filter = 1
+texture = ExtResource("4_8kxbq")
+centered = false
+
+[node name="BlueCat" type="Sprite2D" parent="."]
+position = Vector2(536, 201)
+texture = ExtResource("8_d1sey")
+
+[node name="UnderwaterPlayer" parent="." instance=ExtResource("6_bhlom")]
+position = Vector2(187, 138)
+
+[node name="Ground" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("5_we6vc")
+centered = false
+
+[node name="BreakableRock" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("7_4i0kr")
+centered = false
+
+[node name="Wall" parent="BreakableRock" instance=ExtResource("8_f4wyu")]
+position = Vector2(63, -7)
+scale = Vector2(3.2, 1)
+
+[node name="BouncyJellyfish" parent="." instance=ExtResource("10_qfpiu")]
+position = Vector2(94, 156)
+gravity_scale = 0.0
+
+[node name="WallsFolder" type="Node" parent="."]
+
+[node name="RightCeiling" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(125, -7)
+scale = Vector2(35, 1)
+
+[node name="LeftCeiling" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(0, -7)
+scale = Vector2(3.2, 1)
+
+[node name="PillarCeiling" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(166, 13)
+scale = Vector2(5, 1)
+
+[node name="Left" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(-20, -7)
+scale = Vector2(1, 10)
+
+[node name="LeftGround" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(0, 146)
+scale = Vector2(1.8, 4)
+
+[node name="JellyfishPlatform" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(36, 191)
+scale = Vector2(6, 2)
+
+[node name="MiddleGround" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(154, 146)
+scale = Vector2(10.6, 4)
+
+[node name="MiddleGround2" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(365, 213)
+scale = Vector2(9.1, 1)
+
+[node name="MiddleGround3" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(364, 144)
+scale = Vector2(1.4, 2.1)
+
+[node name="MiddleRock" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(355, 87)
+scale = Vector2(0.9, 3)
+
+[node name="MiddleRock3" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(344, 116)
+scale = Vector2(0.6, 1.5)
+
+[node name="MiddleRock2" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(362, 83)
+scale = Vector2(8, 0.8)
+
+[node name="RightGround" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(410, 147)
+scale = Vector2(17, 2.1)
+
+[node name="RightGround2" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
+position = Vector2(546, 189)
+scale = Vector2(10, 2.1)

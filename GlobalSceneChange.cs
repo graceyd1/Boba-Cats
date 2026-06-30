@@ -17,6 +17,7 @@ public partial class GlobalSceneChange : Node2D
 		"BoxRoom",
 		"FishRoom",
 		"LongTubeCoralRoom",
+		"JellyfishRoom",
 		"TallTubeCoralRoom"
 	};
 	

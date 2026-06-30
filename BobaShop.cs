@@ -63,8 +63,7 @@ public partial class BobaShop : Node2D
 		}
 		else if (GlobalScript.metCatssava) {
 			//maybe we can have a list of dialogue and pick a random one
-			await catssavaT.S
-			howText("Oh, thank you so very much for helping me, Dash!");
+			await catssavaT.ShowText("Oh, thank you so very much for helping me, Dash!");
 		}
 	}
 }
