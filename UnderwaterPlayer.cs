@@ -143,7 +143,6 @@ public partial class UnderwaterPlayer : Player
 				animatedSprite.Play();
 				setDisableMovement(true);
 				StunTimer();
-				GD.Print(Velocity);
 			}
 		}
 	}

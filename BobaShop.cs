@@ -12,12 +12,23 @@ public partial class BobaShop : Node2D
 		dashT = GetNode<TextBox>("GroundPlayer/TextBox");
 		catssavaT = GetNode<TextBox>("Catssava/TextBox");
 		csAnimation = GetNode<AnimatedSprite2D>("Catssava");
+		csAnimation.FlipH = true;
 		StartDialogue();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+	
+	public async void onExitRoom(string doorName) {
+		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
+		var GlobalScene = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		if (FaderNode is Fader fader) {
+			await fader.FadeIn(.7f);
+		}
+		
+		await GlobalScene.ChangeRoom(new Vector2(460, 170), "underwater_town", true);
 	}
 	
 	public async void StartDialogue() {

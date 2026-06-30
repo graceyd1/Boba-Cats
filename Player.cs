@@ -77,6 +77,7 @@ public partial class Player : CharacterBody2D
 
 	}
 	
+	//we need to make a list
 	public async void Respawn() {
 		var fader = GetNode<CanvasLayer>("/root/Fader");
 		if (fader is Fader transition) {
@@ -164,5 +165,6 @@ public partial class Player : CharacterBody2D
 	{
 		return disableMovement;
 	}
+	
 
 }

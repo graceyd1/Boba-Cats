@@ -13,7 +13,17 @@ public partial class SubmarineShop : Node2D
 		playerTextNode = GetNode<Node2D>("GroundPlayer/TextBox");
 		azucatTextNode = GetNode<Node2D>("Azucat/TextBox");
 		var player = GetNode<GroundPlayer>("GroundPlayer");
-		player.Position = new Vector2(66, 131);
+		var azucat = GetNode<Sprite2D>("Azucat");
+		var sprite = GetNode<AnimatedSprite2D>("GroundPlayer/AnimatedSprite2D");
+
+		if (player.Position.X > azucat.Position.X) {
+			azucat.FlipH = true;
+			sprite.Animation = "sit_left";
+		}
+		else {
+			azucat.FlipH = false;
+			sprite.Animation = "sit_right";
+		}
 		startDialogue(player);
 	}
 
@@ -32,8 +42,8 @@ public partial class SubmarineShop : Node2D
 				if (player is Player p)
 				{
 					p.setDisableMovement(true);
-					var sprite = GetNode<AnimatedSprite2D>("GroundPlayer/AnimatedSprite2D");
-					sprite.Animation = "sit_right";
+					/*var sprite = GetNode<AnimatedSprite2D>("GroundPlayer/AnimatedSprite2D");
+					sprite.Animation = "sit_right";*/
 				}
 
 				await pText.ShowText("What is my ship doing on top of your roof??"); //fumi misty edit this stuff pls if you want
