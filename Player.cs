@@ -43,7 +43,17 @@ public partial class Player : CharacterBody2D
 		hp = 2; //2;
 		invulnerable = false;
 		Flash = false;
+		
+		var devMode = GetNode<DevMode>("/root/DevMode");
+		//connect signal
+		devMode.ChangeHP += DevChangeHP;
 		//gravity = Gravity.Underwater; //todo - change to update based on the player's room
+	}
+	
+	private void DevChangeHP(int newHP) {
+		hp = newHP;
+		GD.Print(hp);
+		GD.Print(newHP);
 	}
 	
 	//player enteres hitbox

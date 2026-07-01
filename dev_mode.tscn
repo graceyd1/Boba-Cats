@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4n48ysxl12j0"]
+
+[ext_resource type="Script" path="res://DevMode.cs" id="1_4gh8d"]
+
+[node name="DevMode" type="CanvasLayer"]
+script = ExtResource("1_4gh8d")
+
+[node name="Popup" type="ConfirmationDialog" parent="."]
+visible = true
+
+[node name="CommandBox" type="LineEdit" parent="Popup"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 57.0
+
+[connection signal="confirmed" from="Popup" to="." method="OnConfirmed"]

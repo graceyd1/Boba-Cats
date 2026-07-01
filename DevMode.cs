@@ -1,0 +1,77 @@
+using Godot;
+using System;
+using System.Collections.Generic;
+
+public partial class DevMode : CanvasLayer
+{
+	[Signal]
+	public delegate void ChangeHPEventHandler(int hp);
+	
+	private Dictionary<string, Action<string>> commands;
+	private int state = 0;
+	private Action<string> command;
+	private ConfirmationDialog window;
+	
+	
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		window = GetNode<ConfirmationDialog>("Popup");
+		window.Hide();
+		commands = new Dictionary<string, Action<string>> {
+			{"cngrm", ChangeRoom},
+			{"add", AddToInventory},
+			{"sethp", SetHP}
+		};
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		if (Input.IsActionPressed("dev_mode")) {
+			if (window.Visible == false) {
+				window.PopupCentered();
+				GetNode<LineEdit>("Popup/CommandBox").Clear();
+				window.Show();
+			}
+		}
+	}
+	
+	
+	public void OnConfirmed() {
+		string cm = GetNode<LineEdit>("Popup/CommandBox").Text;
+		if (state == 0) {
+			//if TryGetValue returns true, it will return the associated method from dictionary
+			if (commands.TryGetValue(cm, out Action<string> Method)) {
+				GetNode<LineEdit>("Popup/CommandBox").Clear();
+				window.Show();
+				state = 1;
+				command = Method;
+			}
+			else {
+				GD.Print("Command not found");
+			}
+		}
+		else {
+			command.Invoke(cm);
+			state = 0;
+		}
+		
+	}
+	
+	private void ChangeRoom(string input) {
+		GetTree().ChangeSceneToFile("res://" + input + ".tscn");
+	}
+	
+	private void AddToInventory(string input) {
+		GlobalScript.Inventory.Add(input);
+	}
+	
+	private void SetHP(string input) {
+		if (int.TryParse(input, out int result)) {
+			EmitSignal(SignalName.ChangeHP, result);
+		}
+	}
+	
+	
+}
