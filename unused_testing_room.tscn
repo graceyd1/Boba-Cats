@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://qql5mjmtdc4a" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin9.png" id="18_llp6h"]
 [ext_resource type="Texture2D" uid="uid://b2j3v7wdkjcc8" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin10.png" id="19_65rke"]
 [ext_resource type="Texture2D" uid="uid://bajmr1yncc2h" path="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin11.png" id="20_qwjqk"]
-[ext_resource type="PackedScene" uid="uid://diq5ip7ufm4wx" path="res://bouncy_jellyfish.tscn" id="24_a8way"]
+[ext_resource type="PackedScene" uid="uid://dewawah7lpsl6" path="res://bouncy_jellyfish.tscn" id="24_a8way"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tc7ap"]
 animations = [{

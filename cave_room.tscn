@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="5_ui5lu"]
 [ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="6_1sl3n"]
 [ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://growable_vine.tscn" id="6_itp7c"]
-[ext_resource type="PackedScene" uid="uid://dhctxpw3i8rpf" path="res://darkness.tscn" id="7_jnidm"]
+[ext_resource type="PackedScene" path="res://darkness.tscn" id="7_jnidm"]
 [ext_resource type="Script" path="res://CaveRoomSpikes.cs" id="9_ujmbn"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="10_wdpay"]
 
@@ -89,16 +89,4 @@ scale = Vector2(1, 0.9)
 [node name="Darkness" parent="." instance=ExtResource("7_jnidm")]
 position = Vector2(0, 27)
 
-[connection signal="area_entered" from="GrowableVine" to="GrowableVine" method="OnAreaEntered"]
-[connection signal="body_entered" from="GrowableVine" to="GrowableVine" method="OnBodyEntered"]
-[connection signal="body_exited" from="GrowableVine" to="GrowableVine" method="OnBodyExited"]
-[connection signal="area_entered" from="GrowableVine2" to="GrowableVine2" method="OnAreaEntered"]
-[connection signal="body_entered" from="GrowableVine2" to="GrowableVine2" method="OnBodyEntered"]
-[connection signal="body_exited" from="GrowableVine2" to="GrowableVine2" method="OnBodyExited"]
-[connection signal="area_entered" from="GrowableVine3" to="GrowableVine3" method="OnAreaEntered"]
-[connection signal="body_entered" from="GrowableVine3" to="GrowableVine3" method="OnBodyEntered"]
-[connection signal="body_exited" from="GrowableVine3" to="GrowableVine3" method="OnBodyExited"]
-[connection signal="area_entered" from="GrowableVine4" to="GrowableVine4" method="OnAreaEntered"]
-[connection signal="body_entered" from="GrowableVine4" to="GrowableVine4" method="OnBodyEntered"]
-[connection signal="body_exited" from="GrowableVine4" to="GrowableVine4" method="OnBodyExited"]
 [connection signal="EnterRoom" from="ParvaDoor" to="." method="OnEnterRoom"]
