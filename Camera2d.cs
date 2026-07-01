@@ -88,7 +88,7 @@ public partial class Camera2d : Camera2D
 		else if (player.GetParent().Name == "SeaBunnyRoom")
 		{
 			SetLimit(Side.Right, 640);
-			SetLimit(Side.Bottom, 300);
+			SetLimit(Side.Bottom, 270);
 
 			if (player.Position.X >= 320)
 			{

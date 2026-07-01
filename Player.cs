@@ -19,7 +19,7 @@ public partial class Player : CharacterBody2D
 	private int hp;
 
 	//if true, player can't get hit
-	private Boolean invulnerable;
+	public Boolean invulnerable;
 
 	//used in cutscenes (implemented in the GroundPlayer and UnderwaterPlayer classes)
 	private Boolean disableMovement;

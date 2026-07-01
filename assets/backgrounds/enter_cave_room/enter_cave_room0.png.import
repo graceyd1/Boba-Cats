@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqifmai727qw"
-path="res://.godot/imported/sea_bunny_room2.png-acfac23234d174cf12064373760eb053.ctex"
+uid="uid://cw710txr01bqh"
+path="res://.godot/imported/enter_cave_room0.png-af813f377cef1fe4d78b70d2bf165a16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/sea_bunny_room/sea_bunny_room2.png"
-dest_files=["res://.godot/imported/sea_bunny_room2.png-acfac23234d174cf12064373760eb053.ctex"]
+source_file="res://assets/backgrounds/enter_cave_room/enter_cave_room0.png"
+dest_files=["res://.godot/imported/enter_cave_room0.png-af813f377cef1fe4d78b70d2bf165a16.ctex"]
 
 [params]
 

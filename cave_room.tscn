@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="5_ui5lu"]
 [ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="6_1sl3n"]
 [ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://growable_vine.tscn" id="6_itp7c"]
-[ext_resource type="PackedScene" path="res://darkness.tscn" id="7_jnidm"]
+[ext_resource type="PackedScene" uid="uid://dhctxpw3i8rpf" path="res://darkness.tscn" id="7_jnidm"]
 [ext_resource type="Script" path="res://CaveRoomSpikes.cs" id="9_ujmbn"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="10_wdpay"]
 

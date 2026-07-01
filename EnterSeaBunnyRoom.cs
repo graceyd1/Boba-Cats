@@ -7,14 +7,14 @@ public partial class EnterSeaBunnyRoom : Node2D
 	private bool transitioning = false;
 	private TextBox dashT;
 	private TextBox parvaT;
-	private static bool fedToBunny = false;
+	//private static bool fedToBunny = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		dashT = GetNode<TextBox>("GroundPlayer/TextBox");
 		parvaT = GetNode<TextBox>("Parva/TextBox");
-		if (!fedToBunny) {
+		if (!GlobalScript.FedToBunny) {
 			GetNode<AnimatedSprite2D>("Parva").Show();
 			StartDialogue();
 		}
@@ -67,7 +67,7 @@ public partial class EnterSeaBunnyRoom : Node2D
 		await dashT.ShowText("...where did he go?");
 		await dashT.ShowText("Seems like I'm stuck here. Maybe the boba here somewhere?");
 		player.InputEnabled = true;
-		fedToBunny = true;
+		GlobalScript.FedToBunny = true;
 	}
 
 	private async Task NextRoomCheck() {

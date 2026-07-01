@@ -38,7 +38,7 @@ public partial class SubmarineShop : Node2D
 	
 	public async void startDialogue(Node2D player) {
 		if (playerTextNode is TextBox pText && azucatTextNode is TextBox aText) {
-			if (!GlobalScript.metAzucat) {
+			if (!GlobalScript.MetAzucat) {
 				if (player is Player p)
 				{
 					p.SetDisableMovement(true);
@@ -66,7 +66,7 @@ public partial class SubmarineShop : Node2D
 				}
 
 				//make player go through entire dialogue if they exited the shop in the middle of it
-				GlobalScript.metAzucat = true;
+				GlobalScript.MetAzucat = true;
 
 				if (player is Player p2)
 				{

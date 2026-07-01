@@ -148,7 +148,7 @@ height = 80.0
 
 [node name="GrowableVine" type="Area2D"]
 collision_layer = 0
-collision_mask = 16
+collision_mask = 18
 script = ExtResource("1_kw4dj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

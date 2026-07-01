@@ -10,7 +10,7 @@ public partial class Seabunny : CharacterBody2D
 	// [Export]
 	// public String animationOverride {get; set;} = null;
 
-	private bool InFight;
+	public bool InFight;
 
 	private AnimatedSprite2D animatedSprite;
 	private Godot.Timer idleTimer;
@@ -51,7 +51,7 @@ public partial class Seabunny : CharacterBody2D
 		// }
 	}
 
-	private async void StartFight()
+	public async void StartFight()
 	{
 		Position = new Vector2(485, 208);
 		InFight = true;
@@ -62,11 +62,15 @@ public partial class Seabunny : CharacterBody2D
 	public async Task EndFight()
 	{
 		InFight = false;
+		GD.Print("Ending2");///
+
+		GetNode<CollisionShape2D>("Hitbox/CollisionShape2D").Disabled = true;
+		
 		var anim = GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
 
 		Velocity = Vector2.Zero;
 		facingLeft = false;
-		await Dash(3);
+		await Dash(1);
 		Position = new Vector2(550, 208);
 
 		animatedSprite.Animation = "start_climb";
@@ -90,6 +94,7 @@ public partial class Seabunny : CharacterBody2D
 	//every time it is done waiting, do another attack
 	private async void OnIdleTimerTimeout()
 	{
+		GD.Print("Timeout " + InFight);///
 		if (InFight)
 		{
 			await DoAttack();
@@ -98,6 +103,7 @@ public partial class Seabunny : CharacterBody2D
 
 	private async Task DoAttack()
 	{
+		GD.Print("Do attack");///
 		int attack = GD.RandRange(0, 3);
 		if (attack == 0)
 		{

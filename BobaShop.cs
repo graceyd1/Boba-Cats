@@ -33,7 +33,7 @@ public partial class BobaShop : Node2D
 	
 	public async void StartDialogue() {
 		csAnimation.Animation = "sit";
-		if (GlobalScript.metAzucat && !GlobalScript.metCatssava) {
+		if (GlobalScript.MetAzucat && !GlobalScript.MetCatssava) {
 			await catssavaT.ShowText("Oh hi there, I’m Catssava, the shopkeeper here. What can I help you with?");
 			await dashT.ShowText("I need some tapioca boba, that’s all!");
 			await catssavaT.ShowText("Oh dear, t-tapioca boba?!");
@@ -59,9 +59,9 @@ public partial class BobaShop : Node2D
 			else {
 				await dashT.ShowText("My name is Dash. Azucat won't give me a new boat until I get him tapioca, so it's only right for me to do this.");
 			}
-			GlobalScript.metCatssava = true;
+			GlobalScript.MetCatssava = true;
 		}
-		else if (GlobalScript.metCatssava) {
+		else if (GlobalScript.MetCatssava) {
 			//maybe we can have a list of dialogue and pick a random one
 			await catssavaT.ShowText("Oh, thank you so very much for helping me, Dash!");
 		}

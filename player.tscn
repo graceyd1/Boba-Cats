@@ -64,6 +64,7 @@ position = Vector2(-140.5, -72.5)
 scale = Vector2(0.9375, 1.0625)
 
 [node name="Controls" parent="Camera2D" instance=ExtResource("4_o0s2x")]
+visible = false
 z_index = 4096
 position = Vector2(141, -86)
 scale = Vector2(1, 1)

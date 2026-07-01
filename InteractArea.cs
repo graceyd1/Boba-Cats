@@ -42,7 +42,7 @@ public partial class InteractArea : Area2D
 			{
 				level = (Node2D) level.GetParent();
 			}
-			catch (Exception e)
+			catch
 			{
 				break;
 			}

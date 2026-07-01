@@ -7,9 +7,10 @@ public partial class GlobalScript : Node2D
 	//Eventually initialize to save file data
 	public static int coins {get; set;} = 0;
 	public static List<string> Inventory {get; set;} = new List<string>();
-	public static bool metAzucat{get; set;} = false;
-	public static bool metCatssava{get; set;} = false;
+	public static bool MetAzucat{get; set;} = false;
+	public static bool MetCatssava{get; set;} = false;
 
+	public static bool FedToBunny {get; set;} = false;
 	public static bool FinishedSeaBunny{get; set;} = false;
 
 	public static bool GotSeaBoba{get; set;} = false;
