@@ -40,7 +40,7 @@ public partial class Player : CharacterBody2D
 	{
 		//ScreenSize = GetViewportRect().Size;
 		VelocityModifier = Vector2.Zero;
-		hp = 100; //2;
+		hp = 2; //2;
 		invulnerable = false;
 		Flash = false;
 		//gravity = Gravity.Underwater; //todo - change to update based on the player's room
