@@ -7,7 +7,7 @@ public partial class Controls : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		var expanded = GetNode<PanelContainer>("Expanded");
+		var expanded = GetNode<Panel>("Expanded");
 		expanded.Hide();
 		cT = GetNode<ControlsTab>("ControlsTab");
 		cT.Hide();
@@ -22,7 +22,7 @@ public partial class Controls : Node2D
 	
 	public override void _Input(InputEvent @event) {
 		if (Input.IsActionPressed("toggle_controls_menu")) {
-			var expanded = GetNode<PanelContainer>("Expanded");
+			var expanded = GetNode<Panel>("Expanded");
 			if (expanded.Visible) {
 				expanded.Hide();
 				cT.Hide();
