@@ -19,7 +19,7 @@ public partial class DevMode : CanvasLayer
 		window = GetNode<ConfirmationDialog>("Popup");
 		window.Hide();
 		commands = new Dictionary<string, Action<string>> {
-			{"cngrm", ChangeRoom},
+			{"room", ChangeRoom},
 			{"add", AddToInventory},
 			{"sethp", SetHP}
 		};
