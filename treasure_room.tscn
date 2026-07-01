@@ -204,7 +204,6 @@ texture = ExtResource("2_vmi6y")
 centered = false
 
 [node name="GroundPlayer" parent="." instance=ExtResource("3_jieat")]
-visible = false
 material = null
 position = Vector2(131, 141)
 
@@ -241,14 +240,12 @@ position = Vector2(-10, 141)
 texture = ExtResource("7_th2h6")
 
 [node name="TextBox" parent="Azucat" instance=ExtResource("8_ue6gb")]
-visible = false
 
 [node name="Catssava" type="Sprite2D" parent="."]
 position = Vector2(-36, 141)
 texture = ExtResource("8_64te3")
 
 [node name="TextBox" parent="Catssava" instance=ExtResource("8_ue6gb")]
-visible = false
 
 [node name="CutsceneTrigger" type="Area2D" parent="."]
 position = Vector2(100, 0)
@@ -264,3 +261,5 @@ shape = SubResource("RectangleShape2D_yaxyy")
 libraries = {
 "": SubResource("AnimationLibrary_d08xj")
 }
+
+[connection signal="body_entered" from="CutsceneTrigger" to="." method="GetBobaCutscene"]

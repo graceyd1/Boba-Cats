@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq3lnutic6oh"
-path="res://.godot/imported/growable_vine1.png-7668a464df2c77df366872976faedca4.ctex"
+uid="uid://dku6gj6x7106"
+path="res://.godot/imported/geyser.png-8739fc9b3074d2b6b2c7085cdfad9985.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/growable_vine_sprites/growable_vine1.png"
-dest_files=["res://.godot/imported/growable_vine1.png-7668a464df2c77df366872976faedca4.ctex"]
+source_file="res://assets/objects/geyser.png"
+dest_files=["res://.godot/imported/geyser.png-8739fc9b3074d2b6b2c7085cdfad9985.ctex"]
 
 [params]
 

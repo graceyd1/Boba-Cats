@@ -20,6 +20,9 @@ public partial class GrowableVine : Area2D
 		if (animatedSprite2D.Animation == "ungrown") {
 			animatedSprite2D.Animation = "growing";
 			animatedSprite2D.Play();
+
+			GetNode<AnimationPlayer>("AnimationPlayer").Play("grow");
+
 			await ToSignal(animatedSprite2D, AnimatedSprite2D.SignalName.AnimationFinished);
 			animatedSprite2D.Animation = "grown";
 			GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);

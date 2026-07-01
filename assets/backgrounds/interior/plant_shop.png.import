@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhx2s6busshm8"
-path="res://.godot/imported/growable_vine27.png-33d1a08014af4af35cf7c4af32f61da2.ctex"
+uid="uid://ckrmqkpolrh6f"
+path="res://.godot/imported/plant_shop.png-b28ffca01b3f23b7779f28a9a7ca4ae5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/growable_vine_sprites/growable_vine27.png"
-dest_files=["res://.godot/imported/growable_vine27.png-33d1a08014af4af35cf7c4af32f61da2.ctex"]
+source_file="res://assets/backgrounds/interior/plant_shop.png"
+dest_files=["res://.godot/imported/plant_shop.png-b28ffca01b3f23b7779f28a9a7ca4ae5.ctex"]
 
 [params]
 

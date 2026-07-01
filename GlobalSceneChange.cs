@@ -18,7 +18,8 @@ public partial class GlobalSceneChange : Node2D
 		"FishRoom",
 		"LongTubeCoralRoom",
 		"JellyfishRoom",
-		"TallTubeCoralRoom"
+		"TallTubeCoralRoom",
+		"GeyserRoom"
 	};
 	
 	public static List<string> GroundRooms = new List<string> {
@@ -29,7 +30,8 @@ public partial class GlobalSceneChange : Node2D
 		"EnterSeaBunnyRoom",
 		"SeaBunnyRoom",
 		"TreasureRoom",
-		"BobaShop"
+		"BobaShop",
+		"PlantShop"
 	};
 	
 	// Called when the node enters the scene tree for the first time.

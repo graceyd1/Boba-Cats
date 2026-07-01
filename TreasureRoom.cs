@@ -20,7 +20,7 @@ public partial class TreasureRoom : Node2D
 		}
 	}
 
-	public async void GetBobaCutscene()
+	public async void GetBobaCutscene(Node2D player)
 	{
 		var azucat = GetNode<Sprite2D>("Azucat");
 		var catssava = GetNode<Sprite2D>("Catssava");

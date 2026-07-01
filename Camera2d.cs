@@ -79,6 +79,12 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 600);
 		}
 
+		else if (player.GetParent().Name == "GeyserRoom")
+		{
+			SetLimit(Side.Right, 320);
+			SetLimit(Side.Bottom, 900);
+		}
+
 		else if (player.GetParent().Name == "CaveRoom")
 		{
 			SetLimit(Side.Right, 500);
