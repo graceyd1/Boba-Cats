@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2eu1rt08rowb"]
+[gd_scene load_steps=19 format=3 uid="uid://b2eu1rt08rowb"]
 
 [ext_resource type="PackedScene" uid="uid://djy0cxmipcbm6" path="res://player.tscn" id="1_sasn5"]
 [ext_resource type="Script" path="res://GroundPlayer.cs" id="2_dj4o3"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://dka8cnenaad5i" path="res://assets/player/ground player/player_walk_right1.png" id="14_espa0"]
 [ext_resource type="Texture2D" uid="uid://cyyui3mhqlkov" path="res://assets/player/ground player/player_walk_right2.png" id="15_sjukv"]
 [ext_resource type="Texture2D" uid="uid://dj3wb8jpdumba" path="res://assets/player/ground player/player_walk_right3.png" id="16_5qopw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8k2q2"]
+light_mode = 1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_opiss"]
 animations = [{
@@ -98,5 +101,6 @@ script = ExtResource("2_dj4o3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_8k2q2")
 sprite_frames = SubResource("SpriteFrames_opiss")
 animation = &"sit_right"

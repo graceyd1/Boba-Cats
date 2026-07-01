@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://djy0cxmipcbm6"]
+[gd_scene load_steps=11 format=3 uid="uid://djy0cxmipcbm6"]
 
 [ext_resource type="Script" path="res://Player.cs" id="1_vr4g2"]
 [ext_resource type="PackedScene" uid="uid://dif3m6ljwdlny" path="res://controls.tscn" id="4_o0s2x"]
@@ -15,6 +15,11 @@ height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jxqw"]
 size = Vector2(12, 13)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1tsuk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_riri1"]
+light_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 material = SubResource("CanvasItemMaterial_peka7")
@@ -41,6 +46,7 @@ wait_time = 0.6
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+material = SubResource("CanvasItemMaterial_1tsuk")
 position_smoothing_speed = 0.1
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -53,6 +59,7 @@ script = ExtResource("8_6m7sy")
 [node name="Player_Health" parent="Camera2D" instance=ExtResource("8_pkvse")]
 z_index = 4096
 z_as_relative = false
+material = SubResource("CanvasItemMaterial_riri1")
 position = Vector2(-140.5, -72.5)
 scale = Vector2(0.9375, 1.0625)
 
