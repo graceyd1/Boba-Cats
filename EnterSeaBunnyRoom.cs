@@ -14,7 +14,9 @@ public partial class EnterSeaBunnyRoom : Node2D
 	{
 		dashT = GetNode<TextBox>("GroundPlayer/TextBox");
 		parvaT = GetNode<TextBox>("Parva/TextBox");
-		if (!GlobalScript.FedToBunny) {
+		//Quest before escape from the sea bunny
+		//note: alternatively could do GlobalScript.MainQuests[QuestNum] == quest name
+		if (GlobalScript.QuestNum < 3) {
 			GetNode<AnimatedSprite2D>("Parva").Show();
 			StartDialogue();
 		}
@@ -67,7 +69,8 @@ public partial class EnterSeaBunnyRoom : Node2D
 		await dashT.ShowText("...where did he go?");
 		await dashT.ShowText("Seems like I'm stuck here. Maybe the boba here somewhere?");
 		player.InputEnabled = true;
-		GlobalScript.FedToBunny = true;
+		//Next quest: defeat the sea bunny
+		GlobalScript.QuestNum = 3;
 	}
 
 	private async Task NextRoomCheck() {

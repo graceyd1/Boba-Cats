@@ -21,7 +21,9 @@ public partial class DevMode : CanvasLayer
 		commands = new Dictionary<string, Action<string>> {
 			{"room", ChangeRoom},
 			{"add", AddToInventory},
-			{"sethp", SetHP}
+			{"sethp", SetHP},
+			{"setquest", SetQuest},
+			{"print", DebugPrint}
 		};
 	}
 
@@ -73,5 +75,28 @@ public partial class DevMode : CanvasLayer
 		}
 	}
 	
+	private void SetQuest(string input) {
+		if (int.TryParse(input, out int result)) {
+			GlobalScript.QuestNum = result;
+		}
+	}
 	
+	private void DebugPrint(string input) {
+		if (input == "questnum") {
+			GD.Print(GlobalScript.QuestNum);
+		}
+		//if input contains "quest", parse the number after it, print the associated quest
+		if (input.Contains("quest") && input.Length == 6) {
+			//start index, length
+			string numStr = input.Substring(5, 1);
+			if (int.TryParse(numStr, out int num)) {
+				if (GlobalScript.MainQuests.Count > num) {
+					GD.Print(GlobalScript.MainQuests[num]);
+				}
+				else {
+					GD.Print("Quest " + num + " does not exist.");
+				}
+			}
+		}
+	}
 }

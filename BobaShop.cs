@@ -33,7 +33,8 @@ public partial class BobaShop : Node2D
 	
 	public async void StartDialogue() {
 		csAnimation.Animation = "sit";
-		if (GlobalScript.MetAzucat && !GlobalScript.MetCatssava) {
+		//Quest == Visit the boba shop and ask for brown sugar boba
+		if (GlobalScript.QuestNum == 1) {
 			await catssavaT.ShowText("Oh hi there, I’m Catssava, the shopkeeper here. What can I help you with?");
 			await dashT.ShowText("I need some tapioca boba, that’s all!");
 			await catssavaT.ShowText("Oh dear, t-tapioca boba?!");
@@ -59,9 +60,10 @@ public partial class BobaShop : Node2D
 			else {
 				await dashT.ShowText("My name is Dash. Azucat won't give me a new boat until I get him tapioca, so it's only right for me to do this.");
 			}
-			GlobalScript.MetCatssava = true;
+			GlobalScript.QuestNum = 2;
 		}
-		else if (GlobalScript.MetCatssava) {
+		//already finished quest 1: Visit the boba shop and ask for brown sugar boba
+		else if (GlobalScript.QuestNum > 1) {
 			//maybe we can have a list of dialogue and pick a random one
 			await catssavaT.ShowText("Oh, thank you so very much for helping me, Dash!");
 		}

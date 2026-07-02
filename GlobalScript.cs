@@ -7,13 +7,17 @@ public partial class GlobalScript : Node2D
 	//Eventually initialize to save file data
 	public static int coins {get; set;} = 0;
 	public static List<string> Inventory {get; set;} = new List<string>();
-	public static bool MetAzucat{get; set;} = false;
-	public static bool MetCatssava{get; set;} = false;
-
-	public static bool FedToBunny {get; set;} = false;
-	public static bool FinishedSeaBunny{get; set;} = false;
-
-	public static bool GotSeaBoba{get; set;} = false;
+	
+	//set because maybe we can change name of quest based on player choices
+	public static List<string> MainQuests{get; set;} = new List<string> {
+		"Find a mechanic to fix your ship",
+		"Visit the boba shop and ask for brown sugar boba",
+		"Journey into the dangerous ocean to find boba",
+		"Escape from the sea bunny",
+		"Return the boba to Azucat and Catssava"
+	};
+	
+	public static int QuestNum{get; set;} = 0;
 
 
 	public static String savePath = "user://save_data.tres"; //not implemented yet (see GlobalSaveResource.cs)

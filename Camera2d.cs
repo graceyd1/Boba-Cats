@@ -24,6 +24,8 @@ public partial class Camera2d : Camera2D
 
 		SetLimit(Side.Left, 0);
 		SetLimit(Side.Top, 0);
+		
+		Zoom = new Vector2(1, 1);
 
 
 		if (player.GetParent().Name == "FirstRoom") {

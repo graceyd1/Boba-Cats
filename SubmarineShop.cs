@@ -38,7 +38,8 @@ public partial class SubmarineShop : Node2D
 	
 	public async void startDialogue(Node2D player) {
 		if (playerTextNode is TextBox pText && azucatTextNode is TextBox aText) {
-			if (!GlobalScript.MetAzucat) {
+			//Quest 0: find mechanic to fix ship
+			if (GlobalScript.QuestNum == 0) {
 				if (player is Player p)
 				{
 					p.SetDisableMovement(true);
@@ -66,7 +67,7 @@ public partial class SubmarineShop : Node2D
 				}
 
 				//make player go through entire dialogue if they exited the shop in the middle of it
-				GlobalScript.MetAzucat = true;
+				GlobalScript.QuestNum = 1; //next quest: 1. visit boba shop
 
 				if (player is Player p2)
 				{
