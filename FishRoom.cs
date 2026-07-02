@@ -196,5 +196,13 @@ public partial class FishRoom : Node2D
 			}
 			await GlobalScript.ChangeRoom(new Vector2(290, 135), "long_tube_coral_room", false);
 		}
+		else if (pos.X > 635)
+		{
+			transitioning = true;
+			if (FaderNode is Fader fader) {
+				await fader.FadeIn(.7f);
+			}
+			await GlobalScript.ChangeRoom(new Vector2(120, 863), "geyser_room", false);
+		}
 	}
 }

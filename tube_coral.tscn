@@ -1,7 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://bp4jat81a6c5d"]
+[gd_scene load_steps=30 format=3 uid="uid://bp4jat81a6c5d"]
 
 [ext_resource type="Script" path="res://TubeCoral.cs" id="1_r1ba7"]
-[ext_resource type="Texture2D" uid="uid://d4h8shgq2n71a" path="res://assets/objects/tube_coral_sprites/tube_coral.png" id="2_rirma"]
 [ext_resource type="Texture2D" uid="uid://cd4hwpj8ifk80" path="res://assets/objects/tube_coral_sprites/tube_coral00.png" id="3_7d6f8"]
 [ext_resource type="Texture2D" uid="uid://dv15ixkqupg8b" path="res://assets/objects/tube_coral_sprites/tube_coral01.png" id="4_eyqt6"]
 [ext_resource type="Texture2D" uid="uid://btaaktscw8nns" path="res://assets/objects/tube_coral_sprites/tube_coral02.png" id="5_mapk4"]
@@ -72,10 +71,7 @@ region = Rect2(176, 0, 16, 280)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w5l88"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_rirma")
-}],
+"frames": [],
 "loop": true,
 "name": &"off",
 "speed": 5.0
@@ -165,7 +161,6 @@ animations = [{
 
 [node name="TubeCoral" type="Node2D"]
 script = ExtResource("1_r1ba7")
-metadata/_edit_group_ = true
 
 [node name="AOE" type="Area2D" parent="."]
 collision_layer = 256
@@ -190,10 +185,9 @@ wait_time = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -45)
+position = Vector2(0, -135)
 sprite_frames = SubResource("SpriteFrames_w5l88")
-animation = &"on_long_ver"
-frame_progress = 0.835513
+animation = &"off"
 
 [connection signal="body_entered" from="AOE" to="." method="OnAOEBodyEntered"]
 [connection signal="body_exited" from="AOE" to="." method="OnAOEBodyExited"]

@@ -1,18 +1,23 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
-public partial class Geyser : Sprite2D
+public partial class Geyser : Node2D
 {
-	private String CurrentAnimation;
 	private AnimationPlayer Anim;
-	private Area2D PullDownAOE;
+	// private Area2D PullDownAOE;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Anim = GetNode<AnimationPlayer>("AnimationPlayer");
-		CurrentAnimation = "up";
-		Anim.Play(CurrentAnimation);
-		PullDownAOE = GetNode<Area2D>("PullDownAOE");
+		if (GetParent().GetNode<CharacterBody2D>("UnderwaterPlayer").Position.Y < 450)
+		{
+			Anim.Play("idle_top");
+		}
+		else{
+			Anim.Play("RESET");
+		}
+		// PullAOE = GetNode<Area2D>("PullAOE");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,24 +25,50 @@ public partial class Geyser : Sprite2D
 	{
 	}
 
-	private void OnAnimationFinished()
+	public void OnPullDownEntered(Node2D player)
 	{
-		if (CurrentAnimation == "up")
+		if (Anim.CurrentAnimation == "idle_top" || !Anim.IsPlaying())
 		{
-			if (PullDownAOE.GetOverlappingBodies().Count > 0)
-			{
-				CurrentAnimation = "down_with_player";
-			}
-			else
-			{
-				CurrentAnimation = "down";
-			}
+			Anim.Play("down_with_player");
 		}
-		else
-		{
-			CurrentAnimation = "up";
-		}
-
-		Anim.Play(CurrentAnimation);
 	}
+
+	public async void OnPullUpEntered(Node2D player)
+	{
+		if (!Anim.IsPlaying())
+		{
+			Anim.Play("up_with_player");
+			await ToSignal(Anim, AnimationPlayer.SignalName.AnimationFinished);
+			Anim.Play("idle_top");
+		}
+	}
+
+// 	public async Task OnAnimationFinished(StringName animationName)
+// 	{
+// 		String currentAnimation = animationName;
+// 		if (PullAOE.GetOverlappingBodies().Count > 0)
+// 		{
+// 			if (animationName == "up")
+// 			{
+// 				currentAnimation = "down_with_player";
+// 			}
+// 			else
+// 			{
+// 				currentAnimation = "up_with_player";
+// 			}
+// 		}
+// 		else
+// 		{
+// 			if (animationName == "up")
+// 			{
+// 				currentAnimation = "down";
+// 			}
+// 			else
+// 			{
+// 				currentAnimation = "up";
+// 			}
+// 		}
+
+// 		Anim.Play(currentAnimation);
+// 	}
 }
