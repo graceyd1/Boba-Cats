@@ -56,7 +56,7 @@ public partial class SeaBunnyRoom : Node2D
 		if (player is Player p)
 		{
 			p.invulnerable = true;
-			p.SetDisableMovement(true);
+			p.SetDisableControl(true);
 			if (SeaBunny is Seabunny sb)
 			{
 				GD.Print("Ending");///
@@ -64,7 +64,7 @@ public partial class SeaBunnyRoom : Node2D
 				await sb.EndFight();
 			}
 
-			p.SetDisableMovement(false);
+			p.SetDisableControl(false);
 			p.invulnerable = false;
 		}
 	}

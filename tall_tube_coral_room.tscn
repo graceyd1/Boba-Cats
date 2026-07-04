@@ -35,7 +35,7 @@ texture = ExtResource("3_g5kwh")
 centered = false
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("4_nyxsb")]
-position = Vector2(54, 558)
+position = Vector2(40, 558)
 metadata/_edit_group_ = true
 
 [node name="Middleground" type="Sprite2D" parent="."]

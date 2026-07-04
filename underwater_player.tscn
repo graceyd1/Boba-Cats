@@ -54,9 +54,6 @@ animations = [{
 position = Vector2(84, 36)
 script = ExtResource("2_psf2j")
 
-[node name="Controls" parent="Camera2D" index="1"]
-visible = false
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
 light_mask = 0
 texture_filter = 1

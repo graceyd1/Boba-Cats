@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cc3aglk6j3bag"]
+[gd_scene load_steps=13 format=3 uid="uid://cc3aglk6j3bag"]
 
 [ext_resource type="Texture2D" uid="uid://cysadwqvf1xw3" path="res://assets/backgrounds/jellyfish_room/jellyfish_room0.png" id="1_7lnxs"]
 [ext_resource type="Script" path="res://JellyfishRoom.cs" id="1_ycq3r"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dqnpmyax7glde" path="res://assets/npcs/blue.png" id="8_d1sey"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="8_f4wyu"]
 [ext_resource type="PackedScene" uid="uid://dewawah7lpsl6" path="res://bouncy_jellyfish.tscn" id="10_qfpiu"]
+[ext_resource type="PackedScene" uid="uid://c2paeopskk52q" path="res://big_jellyfish.tscn" id="12_ii7j0"]
 
 [node name="JellyfishRoom" type="Node2D"]
 script = ExtResource("1_ycq3r")
@@ -51,7 +52,7 @@ position = Vector2(536, 201)
 texture = ExtResource("8_d1sey")
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("6_bhlom")]
-position = Vector2(187, 138)
+position = Vector2(690, 139)
 
 [node name="Ground" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -64,7 +65,7 @@ texture = ExtResource("7_4i0kr")
 centered = false
 
 [node name="Wall" parent="BreakableRock" instance=ExtResource("8_f4wyu")]
-position = Vector2(63, -7)
+position = Vector2(63, -70)
 scale = Vector2(3.2, 1)
 
 [node name="BouncyJellyfish" parent="." instance=ExtResource("10_qfpiu")]
@@ -128,3 +129,12 @@ scale = Vector2(17, 2.1)
 [node name="RightGround2" parent="WallsFolder" instance=ExtResource("8_f4wyu")]
 position = Vector2(546, 189)
 scale = Vector2(10, 2.1)
+
+[node name="BigJellyfish" parent="." instance=ExtResource("12_ii7j0")]
+position = Vector2(621, 122)
+
+[node name="BigJellyfish2" parent="." instance=ExtResource("12_ii7j0")]
+position = Vector2(431, 58)
+
+[node name="BigJellyfish3" parent="." instance=ExtResource("12_ii7j0")]
+position = Vector2(287, 122)

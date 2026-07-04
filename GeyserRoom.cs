@@ -25,7 +25,7 @@ public partial class GeyserRoom : Node2D
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		Vector2 pos = player.Position;
-		if (pos.X < 95) {
+		if (pos.X < 5) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);

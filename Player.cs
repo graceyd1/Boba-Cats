@@ -128,6 +128,18 @@ public partial class Player : CharacterBody2D
 			{
 				respawnPoint = new Vector2(290, 135);
 			}
+			else if (room == "JellyfishRoom")
+			{
+				respawnPoint = new Vector2(690, 138);
+			}
+			else if (room == "VineRoom")
+			{
+				respawnPoint = new Vector2(163, 126);
+			}
+			else if (room == "TallTubeCoralRoom")
+			{
+				respawnPoint = new Vector2(160, 557);
+			}
 			else if (room == "CaveRoom")
 			{
 				respawnPoint = new Vector2(25, 90);
@@ -171,6 +183,13 @@ public partial class Player : CharacterBody2D
 		VelocityModifier = vel;
 	}
 
+	//removes player movement control without setting velocity to zero (for bouncing)
+	public void SetDisableControl(Boolean disable)
+	{
+		disableMovement = disable;
+	}
+
+	//removes player movement control and sets velocity to zero (for cutscenes)
 	public void SetDisableMovement(Boolean disable)
 	{
 		disableMovement = disable;

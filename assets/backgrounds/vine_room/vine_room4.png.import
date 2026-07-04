@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqap3eym6g2dk"
-path="res://.godot/imported/tube_coral06.png-31ac0e341f91144d006c6ad17e14f88c.ctex"
+uid="uid://v7mme846qn06"
+path="res://.godot/imported/vine_room4.png-ae2bfe06f46708b61279e355e0e6339d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/tube_coral_sprites/tube_coral06.png"
-dest_files=["res://.godot/imported/tube_coral06.png-31ac0e341f91144d006c6ad17e14f88c.ctex"]
+source_file="res://assets/backgrounds/vine_room/vine_room4.png"
+dest_files=["res://.godot/imported/vine_room4.png-ae2bfe06f46708b61279e355e0e6339d.ctex"]
 
 [params]
 

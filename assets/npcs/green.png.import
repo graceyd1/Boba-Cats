@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4jfxdfuya4s5"
-path="res://.godot/imported/tube_coral07.png-e20eafa5144da9dba6fb3073de002d3a.ctex"
+uid="uid://c3dgf2c0gmws2"
+path="res://.godot/imported/green.png-267e82f02be7f54698da4fc76dc42a9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/tube_coral_sprites/tube_coral07.png"
-dest_files=["res://.godot/imported/tube_coral07.png-e20eafa5144da9dba6fb3073de002d3a.ctex"]
+source_file="res://assets/npcs/green.png"
+dest_files=["res://.godot/imported/green.png-267e82f02be7f54698da4fc76dc42a9e.ctex"]
 
 [params]
 

@@ -284,8 +284,8 @@ offset = Vector2(160, 450)
 [node name="WallsFolder" type="Node" parent="."]
 
 [node name="Left" parent="WallsFolder" instance=ExtResource("3_moit1")]
-position = Vector2(0, 93)
-scale = Vector2(6.7, 37.15)
+position = Vector2(-150, 93)
+scale = Vector2(14.2, 37.15)
 
 [node name="Right" parent="WallsFolder" instance=ExtResource("3_moit1")]
 position = Vector2(186, 0)

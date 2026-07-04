@@ -75,6 +75,12 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 220);
 		}
 
+		else if (player.GetParent().Name == "VineRoom")
+		{
+			SetLimit(Side.Right, 500);
+			SetLimit(Side.Bottom, 180);
+		}
+
 		else if (player.GetParent().Name == "TallTubeCoralRoom")
 		{
 			SetLimit(Side.Right, 320);

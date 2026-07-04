@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class JellyfishEnemy : Node2D
+public partial class UnusedJellyfishEnemy : Node2D
 {
 	[Export]
 	public int Speed{get; set;} = 60;
