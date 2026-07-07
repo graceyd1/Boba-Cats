@@ -18,6 +18,18 @@ public partial class JellyfishRoom : Node2D
 		}
 	}
 	
+	private void OnBreakAOEEntered(Node2D player)
+	{
+		if (player is Player p)
+		{
+			if (p.MovementIsDisabled())
+			{
+				var rock = GetNode<Sprite2D>("BreakableRock");
+				rock.Position = new Vector2(rock.Position.X, rock.Position.Y - 100);
+			}
+		}	
+	}
+
 	private async Task NextRoomCheck() {
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		Vector2 pos = GetNode<CharacterBody2D>("UnderwaterPlayer").Position;

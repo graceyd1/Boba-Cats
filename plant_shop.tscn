@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsjn4esgmj7ut"]
+
+[ext_resource type="Texture2D" uid="uid://ckrmqkpolrh6f" path="res://assets/backgrounds/interior/plant_shop.png" id="1_q5n3t"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="2_oosj0"]
+[ext_resource type="Texture2D" uid="uid://d4b0awkjii5i4" path="res://assets/npcs/gardener.png" id="3_kkkae"]
+[ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://growable_vine.tscn" id="4_6dfnw"]
+[ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="4_to25d"]
+[ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="6_4f8ty"]
+
+[node name="PlantShop" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_q5n3t")
+centered = false
+
+[node name="Floor" parent="." instance=ExtResource("2_oosj0")]
+position = Vector2(-60, 140)
+scale = Vector2(22, 1)
+
+[node name="Olive" type="Sprite2D" parent="."]
+position = Vector2(76, 114)
+texture = ExtResource("3_kkkae")
+
+[node name="TextBox" parent="Olive" instance=ExtResource("4_to25d")]
+
+[node name="GrowableVine" parent="." instance=ExtResource("4_6dfnw")]
+position = Vector2(132.5, 57)
+
+[node name="GroundPlayer" parent="." instance=ExtResource("6_4f8ty")]
+position = Vector2(258, 132)
+
+[node name="TextBox" parent="GroundPlayer" instance=ExtResource("4_to25d")]

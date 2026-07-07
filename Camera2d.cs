@@ -25,7 +25,7 @@ public partial class Camera2d : Camera2D
 		SetLimit(Side.Left, 0);
 		SetLimit(Side.Top, 0);
 		
-		Zoom = new Vector2(1, 1);
+		//Zoom = new Vector2(1, 1);
 
 
 		if (player.GetParent().Name == "FirstRoom") {
@@ -109,14 +109,29 @@ public partial class Camera2d : Camera2D
 				//camera stays still when in boss arena
 				SetLimit(Side.Left, 320);
 			}
-			else
+			if (true) /// todo to-do change to only happen when quest is before getting treasure
 			{
-				}
+				SetLimit(Side.Top, 90);
+			}
 		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		Node2D player = (Node2D) GetParent();
+
+		if (player.GetParent().Name == "SeaBunnyRoom")
+		{
+			if (player.Position.X >= 320)
+			{
+				//camera stays still when in boss arena
+				SetLimit(Side.Left, 320);
+			}
+			else
+			{
+				SetLimit(Side.Left, 0);
+			}
+		}
 	}
 }

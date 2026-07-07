@@ -19,13 +19,14 @@ public partial class SeaBunnyRoom : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override async void _Process(double delta)
 	{
-		if (Player.Position.X <= 300)
-		{
-			if (SeaBunny is Seabunny sb)
-			{
-				sb.InFight = false;
-			}
-		}
+		///todo to-do fix this
+		// if (Player.Position.X <= 300)
+		// {
+		// 	if (SeaBunny is Seabunny sb)
+		// 	{
+		// 		sb.InFight = false;
+		// 	}
+		// }
 
 		if (!transitioning)
 		{
@@ -53,10 +54,10 @@ public partial class SeaBunnyRoom : Node2D
 	{
 		player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Stop();
 		
-		if (player is Player p)
+		if (player is GroundPlayer p)
 		{
 			p.invulnerable = true;
-			p.SetDisableControl(true);
+			p.SetDisableMovement(true);
 			if (SeaBunny is Seabunny sb)
 			{
 				GD.Print("Ending");///
@@ -64,8 +65,9 @@ public partial class SeaBunnyRoom : Node2D
 				await sb.EndFight();
 			}
 
-			p.SetDisableControl(false);
+			p.SetDisableMovement(false);
 			p.invulnerable = false;
+			player.Position = new Vector2(600, 145);
 		}
 	}
 

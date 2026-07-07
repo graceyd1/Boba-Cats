@@ -30,17 +30,17 @@ public partial class InteractArea : Area2D
 
 		//looks up to 3 parent levels up to find interact label
 		//there's probably a better way to do this
-		Node2D level = (Node2D) this;
+		Node level = (Node) this;
 		for (int i = 0; i < 3; i ++)
 		{
-			interactLabel = this.GetParent().GetNodeOrNull<Control>("InteractLabel");
+			interactLabel = level.GetParent().GetNodeOrNull<Control>("InteractLabel");
 			if (interactLabel != null)
 			{
 				break;
 			}
 			try
 			{
-				level = (Node2D) level.GetParent();
+				level = (Node) level.GetParent();
 			}
 			catch
 			{

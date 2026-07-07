@@ -14,7 +14,7 @@
 size = Vector2(10, 85)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqlvw"]
-size = Vector2(50, 32)
+size = Vector2(50, 23)
 
 [sub_resource type="Animation" id="Animation_11okb"]
 length = 0.001
@@ -136,8 +136,8 @@ centered = false
 [node name="WallsFolder" type="Node" parent="."]
 
 [node name="Ground" parent="WallsFolder" instance=ExtResource("7_26f6x")]
-position = Vector2(0, 240)
-scale = Vector2(35, 3)
+position = Vector2(-100, 240)
+scale = Vector2(38, 3)
 
 [node name="LeftCeiling" parent="WallsFolder" instance=ExtResource("7_26f6x")]
 scale = Vector2(21.5, 4)
@@ -156,7 +156,7 @@ scale = Vector2(5, 2.9)
 
 [node name="RightLedge" parent="WallsFolder" instance=ExtResource("7_26f6x")]
 position = Vector2(602, 153)
-scale = Vector2(2, 4.5)
+scale = Vector2(8, 4.5)
 
 [node name="RightLedge2" parent="WallsFolder" instance=ExtResource("7_26f6x")]
 position = Vector2(588, 153)
@@ -179,7 +179,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CutsceneTrigger"]
-position = Vector2(20, 1)
+position = Vector2(20, -3.5)
 shape = SubResource("RectangleShape2D_cqlvw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

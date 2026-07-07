@@ -62,9 +62,11 @@ public partial class Seabunny : CharacterBody2D
 	public async Task EndFight()
 	{
 		InFight = false;
-		GD.Print("Ending2");///
 
-		GetNode<CollisionShape2D>("Hitbox/CollisionShape2D").Disabled = true;
+		if (GetNode<Area2D>("Hitbox") is Hitbox h)
+		{
+			h.SetDisabled(true);
+		}
 		
 		var anim = GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
 

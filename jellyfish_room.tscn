@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cc3aglk6j3bag"]
+[gd_scene load_steps=14 format=3 uid="uid://cc3aglk6j3bag"]
 
 [ext_resource type="Texture2D" uid="uid://cysadwqvf1xw3" path="res://assets/backgrounds/jellyfish_room/jellyfish_room0.png" id="1_7lnxs"]
 [ext_resource type="Script" path="res://JellyfishRoom.cs" id="1_ycq3r"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="8_f4wyu"]
 [ext_resource type="PackedScene" uid="uid://dewawah7lpsl6" path="res://bouncy_jellyfish.tscn" id="10_qfpiu"]
 [ext_resource type="PackedScene" uid="uid://c2paeopskk52q" path="res://big_jellyfish.tscn" id="12_ii7j0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w8jo"]
+size = Vector2(64, 7)
 
 [node name="JellyfishRoom" type="Node2D"]
 script = ExtResource("1_ycq3r")
@@ -54,19 +57,36 @@ texture = ExtResource("8_d1sey")
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("6_bhlom")]
 position = Vector2(690, 139)
 
-[node name="Ground" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("5_we6vc")
-centered = false
-
 [node name="BreakableRock" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("7_4i0kr")
 centered = false
 
 [node name="Wall" parent="BreakableRock" instance=ExtResource("8_f4wyu")]
-position = Vector2(63, -70)
+position = Vector2(63, -7)
 scale = Vector2(3.2, 1)
+
+[node name="BreakAOE" type="Area2D" parent="BreakableRock"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreakableRock/BreakAOE"]
+position = Vector2(95, 23)
+shape = SubResource("RectangleShape2D_8w8jo")
+
+[node name="BigJellyfish" parent="." instance=ExtResource("12_ii7j0")]
+position = Vector2(621, 122)
+
+[node name="BigJellyfish2" parent="." instance=ExtResource("12_ii7j0")]
+position = Vector2(431, 58)
+
+[node name="BigJellyfish3" parent="." instance=ExtResource("12_ii7j0")]
+position = Vector2(287, 122)
+
+[node name="Ground" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("5_we6vc")
+centered = false
 
 [node name="BouncyJellyfish" parent="." instance=ExtResource("10_qfpiu")]
 position = Vector2(94, 156)
@@ -130,11 +150,4 @@ scale = Vector2(17, 2.1)
 position = Vector2(546, 189)
 scale = Vector2(10, 2.1)
 
-[node name="BigJellyfish" parent="." instance=ExtResource("12_ii7j0")]
-position = Vector2(621, 122)
-
-[node name="BigJellyfish2" parent="." instance=ExtResource("12_ii7j0")]
-position = Vector2(431, 58)
-
-[node name="BigJellyfish3" parent="." instance=ExtResource("12_ii7j0")]
-position = Vector2(287, 122)
+[connection signal="body_entered" from="BreakableRock/BreakAOE" to="." method="OnBreakAOEEntered"]

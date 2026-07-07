@@ -16,7 +16,10 @@ texture_filter = 1
 position = Vector2(300, 90)
 texture = ExtResource("1_u5hov")
 
-[node name="Background1" type="Sprite2D" parent="."]
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.7, 1)
+
+[node name="Background1" type="Sprite2D" parent="Parallax2D"]
 texture_filter = 1
 texture = ExtResource("2_v8dv8")
 centered = false
@@ -30,10 +33,10 @@ texture = ExtResource("3_f3kxf")
 centered = false
 
 [node name="OrangeFishEnemy" parent="." instance=ExtResource("5_50yi7")]
-position = Vector2(251, 68)
+position = Vector2(246, 68)
 
 [node name="PinkFishEnemy" parent="." instance=ExtResource("5_50yi7")]
-position = Vector2(219, 119)
+position = Vector2(214, 119)
 isOrange = false
 
 [node name="Floor" parent="." instance=ExtResource("6_pleqk")]
@@ -51,3 +54,29 @@ scale = Vector2(25, 1)
 [node name="LeftWall" parent="." instance=ExtResource("6_pleqk")]
 position = Vector2(-15, 0)
 scale = Vector2(1, 10)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 11.0
+offset_top = 85.0
+offset_right = 132.0
+offset_bottom = 101.333
+theme_override_font_sizes/font_size = 10
+text = "Use WASD or arrow keys to move"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 169.0
+offset_top = 85.0
+offset_right = 267.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 10
+text = "Avoid touching the fish!"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 292.0
+offset_top = 85.0
+offset_right = 397.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 10
+text = "Some actions require 
+using the mouse"
+horizontal_alignment = 1
