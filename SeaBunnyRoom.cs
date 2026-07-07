@@ -45,6 +45,7 @@ public partial class SeaBunnyRoom : Node2D
 	public void StartFight(Node2D Player)
 	{
 		GetNode<Godot.Timer>("VineTimer").Start();
+		GlobalScript.QuestNum++;
 		if (SeaBunny is Seabunny sb)
 		{
 			sb.StartFight();

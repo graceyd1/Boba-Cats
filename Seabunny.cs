@@ -40,7 +40,7 @@ public partial class Seabunny : CharacterBody2D
 
 		//prevent it from leaving the arena
 		Position = new Vector2(
-    		x: Mathf.Clamp(Position.X, 333, 600),
+			x: Mathf.Clamp(Position.X, 333, 600),
 			y: Position.Y
 		);
 

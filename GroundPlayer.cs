@@ -125,7 +125,7 @@ public partial class GroundPlayer : Player
 		MoveAndSlide();
 		//Sea bunny bounce
 		//Finished quest 3: escape from the sea bunny
-		if (GlobalScript.QuestNum > 3)
+		if (GlobalScript.CQ("short") == "Surface")
 		{
 			int count = GetSlideCollisionCount();
 			for (int i = 0; i < count; i++) {

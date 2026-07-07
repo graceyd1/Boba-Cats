@@ -143,7 +143,6 @@ libraries = {
 }
 
 [node name="GroundPlayer" parent="." instance=ExtResource("2_rt8xu")]
-visible = false
 position = Vector2(77, 132)
 
 [node name="TextBox" parent="GroundPlayer" instance=ExtResource("8_ou3kr")]
