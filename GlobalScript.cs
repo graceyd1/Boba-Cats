@@ -13,9 +13,10 @@ public partial class GlobalScript : Node2D
 		"Find a mechanic to fix your ship", //0
 		"Visit the boba shop and ask for brown sugar boba", //1
 		"Journey into the dangerous ocean to find boba", //2
-		"Escape from the sea bunny", //3
-		"Return the boba to Azucat and Catssava", //4
-		"Head up to the surface" //5
+		"Investigate the cave", //3 (after talking to parva)
+		"Escape from the sea bunny", //4
+		"Return the boba to Azucat and Catssava", //5
+		"Head up to the surface" //6
 	};
 	
 	public static int QuestNum{get; set;} = 0;

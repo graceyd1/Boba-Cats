@@ -7,6 +7,8 @@ public partial class SubmarineShop : Node2D
 	private bool transitioning = false;
 	Node2D playerTextNode;
 	Node2D azucatTextNode;
+
+	private bool Secret1 = false;
 	// Called when the node enters the scene tree for the first time.
 	public override async void _Ready()
 	{
@@ -80,6 +82,23 @@ public partial class SubmarineShop : Node2D
 		}
 	}
 
+	private void OnSecretButton1Pressed()
+	{
+		if (!Secret1)
+		{
+			GD.Print("1");///
+			Secret1 = true;
+		}
+	}
+
+	private void OnSecretButton2Pressed()
+	{
+		if (Secret1)
+		{
+			GD.Print("2");///
+		}
+	}
+
 	private async Task NextRoomCheck() {
 		var player = GetNode<CharacterBody2D>("GroundPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
@@ -103,7 +122,7 @@ public partial class SubmarineShop : Node2D
 		}
 	}
 	
-	public async void onExitRoom(string doorName) {
+	public async void OnExitRoom(string doorName) {
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		var GlobalScene = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		transitioning = true;

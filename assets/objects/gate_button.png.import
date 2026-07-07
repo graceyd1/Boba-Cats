@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0ukc7ddk4a6j"
-path="res://.godot/imported/geyser_room1.png-c382bf3ada4c0b626ec60a5d334f1ef8.ctex"
+uid="uid://5lyy7308yj6j"
+path="res://.godot/imported/gate_button.png-54e72da13b753e089c5722c0f1d34032.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/geyser_room/geyser_room1.png"
-dest_files=["res://.godot/imported/geyser_room1.png-c382bf3ada4c0b626ec60a5d334f1ef8.ctex"]
+source_file="res://assets/objects/gate_button.png"
+dest_files=["res://.godot/imported/gate_button.png-54e72da13b753e089c5722c0f1d34032.ctex"]
 
 [params]
 
