@@ -20,6 +20,11 @@ public partial class VineRoom : Node2D
 		}
 	}
 
+	private void OnGrowableVineAreaLit()
+	{
+		GetNode<Area2D>("Walls/SecretDoor").Position = new Vector2(360, -50);
+	}
+
 	private async Task NextRoomCheck() {
 		var player = GetNode<CharacterBody2D>("UnderwaterPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");

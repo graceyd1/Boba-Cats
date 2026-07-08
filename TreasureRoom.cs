@@ -32,7 +32,7 @@ public partial class TreasureRoom : Node2D
 		var azucatT = GetNode<TextBox>("Azucat/TextBox");
 
 		await dashT.ShowText("Phew... Thank goodness I escaped the sea bunny!");
-		await dashT.ShowText("Woah! That's a lot of boba.");
+		await dashT.ShowText("Holy tapioca pearls that's a lot of boba.");
 
 		player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = "sit_left";
 
@@ -42,8 +42,13 @@ public partial class TreasureRoom : Node2D
 
 		//todo: dialogue with catssava and azucat
 		//help idk how to write dialogue
-		await azucatT.ShowText("hi");
-		await catssavaT.ShowText("wow holy tapioca pearls thank goodness you found them ;lkj;lkj;lj;lkj;lkj!");
+		await azucatT.ShowText("There it is!");
+		await catssavaT.ShowText("Dash, you actually did it! You found the boba! Now my boba shop will have business again!");
+		await azucatT.ShowText("How dare that pesky cat steal our town's boba!!");
+		await azucatT.ShowText("Perfect timing! I've got a brand new boat waiting for you in the other room!");
+		await catssavaT.ShowText("Thank you so much, Dash!");
+
+		
 		
 
 		//wowee you found the boba blah blah blah azucat has a new ship for dash

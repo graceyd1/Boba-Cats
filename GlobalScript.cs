@@ -10,27 +10,29 @@ public partial class GlobalScript : Node2D
 	
 	//set because maybe we can change name of quest based on player choices
 	public static List<string> MainQuests{get; set;} = new List<string> {
-		"MeetAzucat", //0
-		"MeetCatssava", //1
-		"ExploreOcean", //2
-		"Trapdoor", //3
-		"ParvaCave", //4 (after talking to parva) "Cave"
-		"Seabunny", //5
-		"ReturnBoba", //6
-		"Surface" //7
+		"GoToTown", //0
+		"MeetAzucat", //1
+		"MeetCatssava", //2
+		"ExploreOcean", //3
+		"Trapdoor", //4
+		"ParvaCave", //5 (after talking to parva) "Cave"
+		"Seabunny", //6
+		"ReturnBoba", //7
+		"Surface" //8
 	};
 	
-	public static int QuestNum{get; set;} = 0;
+	public static int QuestNum{get; set;} = 1; //temp // todo: change to 0 later after fixing "that's my boat" cutscene
 	
 	public static Dictionary<string, string> QuestNames = new Dictionary<string, string> {
-		{"MeetAzucat", "Find a mechanic to fix your ship"}, //0
-		{"MeetCatssava", "Visit the boba shop and ask for brown sugar boba"}, //1
-		{"ExploreOcean", "Journey into the dangerous ocean to find boba"}, //2
-		{"Trapdoor", "Meet Parva in his secret chambers"}, //3
-		{"Cave", "Investigate the cave"}, //4 (after talking to parva)
-		{"Seabunny", "Escape from the sea bunny"}, //5
-		{"ReturnBoba", "Return the boba to Azucat and Catssava"}, //6
-		{"Surface", "Head up to the surface"} //7
+		{"GoToTown", "Explore the ocean"}, //0
+		{"MeetAzucat", "Investigate the shop"}, //1
+		{"MeetCatssava", "Visit the boba shop and ask for brown sugar boba"}, //2
+		{"ExploreOcean", "Journey into the dangerous ocean to find boba"}, //3
+		{"Trapdoor", "Meet Parva in his secret chambers"}, //4
+		{"Cave", "Investigate the cave"}, //5 (after talking to parva)
+		{"Seabunny", "Escape from the sea bunny"}, //6
+		{"ReturnBoba", "Return the boba to Azucat and Catssava"}, //7
+		{"Surface", "Head up to the surface"} //8
 	};
 
 

@@ -8,6 +8,15 @@ public partial class FirstRoom : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		var brokenBoat = GetNode<Sprite2D>("BrokenBoat");
+		if (GlobalScript.CQ("short") == "GoToTown")
+		{
+			brokenBoat.Show();
+		}
+		else
+		{
+			brokenBoat.Hide();
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

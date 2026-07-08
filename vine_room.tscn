@@ -186,9 +186,17 @@ scale = Vector2(1, 10)
 
 [node name="Top" parent="Walls" instance=ExtResource("7_4jsbx")]
 position = Vector2(0, -5)
-scale = Vector2(25, 1)
+scale = Vector2(18, 1)
 
 [node name="Top2" parent="Walls" instance=ExtResource("7_4jsbx")]
+position = Vector2(383, -5)
+scale = Vector2(6, 1)
+
+[node name="SecretDoor" parent="Walls" instance=ExtResource("7_4jsbx")]
+position = Vector2(360, -5)
+scale = Vector2(1.2, 1)
+
+[node name="Top3" parent="Walls" instance=ExtResource("7_4jsbx")]
 position = Vector2(398, 15)
 scale = Vector2(6, 0.75)
 
@@ -218,3 +226,5 @@ scale = Vector2(1.2, 1)
 
 [node name="BigJellyfish" parent="." instance=ExtResource("14_veyjg")]
 position = Vector2(240, 111)
+
+[connection signal="area_entered" from="Vines/GrowableVine" to="." method="OnGrowableVineAreaLit"]

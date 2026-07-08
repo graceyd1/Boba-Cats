@@ -21,7 +21,7 @@ public partial class BobaShop : Node2D
 	{
 	}
 	
-	public async void OnExitRoom() {
+	private async void OnExitRoom() {
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		var GlobalScene = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		if (FaderNode is Fader fader) {
@@ -44,11 +44,11 @@ public partial class BobaShop : Node2D
 			await catssavaT.ShowText("*[i]cries[/i]*");
 			await dashT.ShowText("What's the matter? Is it something I said?");
 			await catssavaT.ShowText("Well — this is embarrassing to say, since this is a boba shop…");
-			await catssavaT.ShowText("But I'm all out of tapioca!");
+			await catssavaT.ShowText("But I'm all out of tapioca pearls!");
 			await dashT.ShowText("Is there...a way to get more?");
 			await catssavaT.ShowText("I usually have to venture out into the open ocean to find ingredients, but they just keep disappearing!");
 			await catssavaT.ShowText("Oh, if only I could find more tapioca...");
-			await dashT.ShowText("Catssava, let me help you find the tapioca.");
+			await dashT.ShowText("Catssava, let me help you find the tapioca pearls.");
 			csAnimation.Animation = "sit";
 			await catssavaT.ShowText("Really? You'd do that for me? I'd be soo grateful- what's you're name?");
 			
@@ -63,7 +63,8 @@ public partial class BobaShop : Node2D
 			GlobalScript.QuestNum++;
 		}
 		//already finished quest 1: Visit the boba shop and ask for brown sugar boba
-		else if (GlobalScript.QuestNum > 1) {
+		else //if (GlobalScript.QuestNum > 2) //number (GlobalScript.MainQuests.IndexOf("MeetCatssava"))
+		{
 			//maybe we can have a list of dialogue and pick a random one
 			await catssavaT.ShowText("Oh, thank you so very much for helping me, Dash!");
 		}

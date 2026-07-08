@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwbctyyj4cviq"]
+[gd_scene load_steps=10 format=3 uid="uid://bwbctyyj4cviq"]
 
 [ext_resource type="Texture2D" uid="uid://c5aconv8x8617" path="res://assets/backgrounds/first_room/first_room_background.png" id="1_u5hov"]
 [ext_resource type="Script" path="res://FirstRoom.cs" id="1_whgh3"]
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="2_toxl5"]
 [ext_resource type="Texture2D" uid="uid://deuh6yxss78yy" path="res://assets/backgrounds/first_room/first_room_background1.png" id="2_v8dv8"]
 [ext_resource type="Texture2D" uid="uid://b6qt7sngx5gkb" path="res://assets/backgrounds/first_room/first_room_rocks.png" id="3_f3kxf"]
+[ext_resource type="Texture2D" uid="uid://cnwqjfpmekg7b" path="res://assets/background_items/broken_boat.png" id="4_rlr2y"]
 [ext_resource type="PackedScene" uid="uid://b6tcj5pauo27d" path="res://fish_enemy.tscn" id="5_50yi7"]
 [ext_resource type="PackedScene" uid="uid://dvktf2fkga18t" path="res://gate.tscn" id="5_hbhji"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="6_pleqk"]
@@ -25,7 +26,12 @@ texture_filter = 1
 texture = ExtResource("2_v8dv8")
 centered = false
 
+[node name="BrokenBoat" type="Sprite2D" parent="."]
+position = Vector2(143, 89)
+texture = ExtResource("4_rlr2y")
+
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("2_toxl5")]
+visible = false
 position = Vector2(10, 140)
 
 [node name="Gate" parent="." instance=ExtResource("5_hbhji")]
