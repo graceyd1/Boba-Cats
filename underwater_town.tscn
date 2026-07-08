@@ -134,7 +134,7 @@ labelHeight = 30
 position = Vector2(402, 525)
 labelHeight = 30
 
-[node name="GreenroomDoor" parent="." instance=ExtResource("14_48yht")]
+[node name="PlantShopDoor" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(41, 329)
 labelHeight = 30
 
@@ -146,5 +146,5 @@ labelHeight = 30
 
 [connection signal="EnterRoom" from="SubShopDoor" to="." method="OnEnterRoom"]
 [connection signal="EnterRoom" from="SubShopDoor2" to="." method="OnEnterRoom"]
-[connection signal="EnterRoom" from="GreenroomDoor" to="." method="OnEnterRoom"]
+[connection signal="EnterRoom" from="PlantShopDoor" to="." method="OnEnterRoom"]
 [connection signal="EnterRoom" from="BobaShopDoor" to="." method="OnEnterRoom"]

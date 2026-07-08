@@ -21,7 +21,7 @@ public partial class BobaShop : Node2D
 	{
 	}
 	
-	public async void onExitRoom(string doorName) {
+	public async void OnExitRoom() {
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		var GlobalScene = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		if (FaderNode is Fader fader) {

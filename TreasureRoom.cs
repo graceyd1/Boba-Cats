@@ -27,19 +27,23 @@ public partial class TreasureRoom : Node2D
 		azucat.FlipH = true;
 		var anim = GetNode<AnimationPlayer>("AnimationPlayer");
 
-		var dashTextNode = player.GetNode<Node2D>("TextBox");
-		if (dashTextNode is TextBox dText)
-		{
-			await dText.ShowText("Dialogue in progress :)");
-		}
+		var dashT = player.GetNode<TextBox>("TextBox");
+		var catssavaT = catssava.GetNode<TextBox>("TextBox");
+		var azucatT = GetNode<TextBox>("Azucat/TextBox");
+
+		await dashT.ShowText("Phew... Thank goodness I escaped the sea bunny!");
+		await dashT.ShowText("Woah! That's a lot of boba.");
+
+		player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = "sit_left";
 
 		anim.Play("cats_enter");
 		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
 		azucat.FlipH = false;
 
-		//animations: click on the AnimationPlayer in the editor and open the animation tab on the bottom
-
 		//todo: dialogue with catssava and azucat
+		//help idk how to write dialogue
+		await azucatT.ShowText("hi");
+		await catssavaT.ShowText("wow holy tapioca pearls thank goodness you found them ;lkj;lkj;lj;lkj;lkj!");
 		
 
 		//wowee you found the boba blah blah blah azucat has a new ship for dash

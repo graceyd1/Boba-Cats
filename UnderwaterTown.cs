@@ -55,12 +55,15 @@ public partial class UnderwaterTown : Node2D
 		{
 			await GlobalScene.ChangeRoom(new Vector2(66, 133), "submarine_shop", true);
 		}
-		if (roomName == "SubShopDoor2")
+		else if (roomName == "SubShopDoor2")
 		{
 			await GlobalScene.ChangeRoom(new Vector2(252, 133), "submarine_shop", false);
 		}
-		if (roomName == "BobaShopDoor") {
+		else if (roomName == "BobaShopDoor") {
 			await GlobalScene.ChangeRoom(new Vector2(65, 133), "boba_shop", true);
+		}
+		else if (roomName == "PlantShopDoor") {
+			await GlobalScene.ChangeRoom(new Vector2(300, 133), "plant_shop", false);
 		}
 	}
 }
