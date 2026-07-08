@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bmplc8jgsab81"]
+[gd_scene load_steps=20 format=3 uid="uid://bmplc8jgsab81"]
 
 [ext_resource type="Texture2D" uid="uid://5e5oyqd1mvim" path="res://assets/backgrounds/geyser_room/geyser_room0.png" id="1_qhlgr"]
 [ext_resource type="Script" path="res://GeyserRoom.cs" id="1_x6ts7"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b0ukc7ddk4a6j" path="res://assets/backgrounds/geyser_room/geyser_room1.png" id="2_ho7my"]
 [ext_resource type="Texture2D" uid="uid://dku6gj6x7106" path="res://assets/objects/geyser.png" id="3_fqqoe"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="3_moit1"]
+[ext_resource type="PackedScene" uid="uid://dvktf2fkga18t" path="res://gate.tscn" id="3_peheh"]
 [ext_resource type="Script" path="res://Geyser.cs" id="4_mqqq2"]
+[ext_resource type="Texture2D" uid="uid://b5fiih0wfemja" path="res://assets/objects/gate_half.png" id="4_wb0bg"]
 
 [sub_resource type="Animation" id="Animation_u0m5h"]
 length = 0.001
@@ -33,6 +35,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-26, 435)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomGate/Bottom:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 45)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomGate/Top:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -45)]
 }
 
 [sub_resource type="Animation" id="Animation_qj26a"]
@@ -205,12 +231,40 @@ tracks/2/keys = {
 "values": [Vector2(159, 848), Vector2(159, 848), Vector2(159, 505), Vector2(159, 249), Vector2(159, 156), Vector2(149, 64), Vector2(134, 58.996), Vector2(124, 85)]
 }
 
+[sub_resource type="Animation" id="Animation_hxjas"]
+resource_name = "open_bottom_gate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BottomGate/Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 45), Vector2(0, 135)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomGate/Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -45), Vector2(0, -135)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i1xsj"]
 _data = {
 "RESET": SubResource("Animation_u0m5h"),
 "down": SubResource("Animation_qj26a"),
 "down_with_player": SubResource("Animation_rhmwy"),
 "idle_top": SubResource("Animation_yji51"),
+"open_bottom_gate": SubResource("Animation_hxjas"),
 "up": SubResource("Animation_17203"),
 "up_with_player": SubResource("Animation_p5ec2")
 }
@@ -227,6 +281,32 @@ script = ExtResource("1_x6ts7")
 [node name="Background0" type="Sprite2D" parent="."]
 texture = ExtResource("1_qhlgr")
 offset = Vector2(160, 450)
+
+[node name="TopGate" parent="." instance=ExtResource("3_peheh")]
+position = Vector2(70, 62)
+
+[node name="BottomGate" type="Node2D" parent="."]
+position = Vector2(70, 855)
+metadata/_edit_group_ = true
+
+[node name="Bottom" type="Sprite2D" parent="BottomGate"]
+position = Vector2(0, 45)
+texture = ExtResource("4_wb0bg")
+metadata/_edit_group_ = true
+
+[node name="Wall" parent="BottomGate/Bottom" instance=ExtResource("3_moit1")]
+position = Vector2(-9, -45)
+scale = Vector2(0.9, 4.5)
+
+[node name="Top" type="Sprite2D" parent="BottomGate"]
+position = Vector2(0, -45)
+rotation = 3.14159
+texture = ExtResource("4_wb0bg")
+
+[node name="Wall" parent="BottomGate/Top" instance=ExtResource("3_moit1")]
+position = Vector2(9, 45)
+rotation = 3.14159
+scale = Vector2(0.9, 4.5)
 
 [node name="Geyser" type="Sprite2D" parent="."]
 position = Vector2(161, 421)
@@ -287,5 +367,6 @@ scale = Vector2(12, 1)
 position = Vector2(0, 871)
 scale = Vector2(10, 1)
 
+[connection signal="Open" from="TopGate" to="." method="OnTopGateOpened"]
 [connection signal="body_entered" from="Geyser/PullDownAOE" to="Geyser" method="OnPullDownEntered"]
 [connection signal="body_entered" from="Geyser/PullUpAOE" to="Geyser" method="OnPullUpEntered"]

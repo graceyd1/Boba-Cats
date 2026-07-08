@@ -71,10 +71,10 @@ scale = Vector2(5, 0.7)
 [node name="LeftWallTubeCoral" parent="TubeCoralFolder" instance=ExtResource("7_38iee")]
 position = Vector2(35, 250)
 rotation = 1.5708
-script = null
+PullDirection = 2
 
 [node name="LeftWallTubeCoral2" parent="TubeCoralFolder" instance=ExtResource("7_38iee")]
-position = Vector2(35, 450)
+position = Vector2(35, 449)
 rotation = 1.5708
 PullDirection = 2
 
@@ -88,6 +88,8 @@ position = Vector2(282, 350)
 rotation = -1.5708
 PullDirection = 3
 
+[connection signal="Pull" from="TubeCoralFolder/LeftWallTubeCoral" to="UnderwaterPlayer" method="OnTubeCoralPull"]
+[connection signal="Unpull" from="TubeCoralFolder/LeftWallTubeCoral" to="UnderwaterPlayer" method="OnTubeCoralUnpull"]
 [connection signal="Pull" from="TubeCoralFolder/LeftWallTubeCoral2" to="UnderwaterPlayer" method="OnTubeCoralPull"]
 [connection signal="Unpull" from="TubeCoralFolder/LeftWallTubeCoral2" to="UnderwaterPlayer" method="OnTubeCoralUnpull"]
 [connection signal="Pull" from="TubeCoralFolder/RightWallTubeCoral" to="UnderwaterPlayer" method="OnTubeCoralPull"]

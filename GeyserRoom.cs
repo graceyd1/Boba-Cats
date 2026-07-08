@@ -9,6 +9,12 @@ public partial class GeyserRoom : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		//move gates offscreen if already opened
+		if (GlobalScript.GeyserOpened)
+		{
+			GetNode<Node2D>("TopGate").Position = new Vector2(-100, 0);
+			GetNode<Node2D>("BottomGate").Position = new Vector2(-200, 0);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,6 +24,12 @@ public partial class GeyserRoom : Node2D
 		{
 			await NextRoomCheck();
 		}
+	}
+
+	private void OnTopGateOpened()
+	{
+		GetNode<AnimationPlayer>("Geyser/AnimationPlayer").Play("open_bottom_gate");
+		GlobalScript.GeyserOpened = true;
 	}
 
 	private async Task NextRoomCheck() {

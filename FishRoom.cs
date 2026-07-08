@@ -202,7 +202,7 @@ public partial class FishRoom : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(20, 863), "geyser_room", false);
+			await GlobalScript.ChangeRoom(new Vector2(20, 863), "geyser_room", true);
 		}
 	}
 }

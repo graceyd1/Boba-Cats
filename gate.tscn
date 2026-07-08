@@ -1,38 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://davrf0y245h67"]
+[gd_scene load_steps=8 format=3 uid="uid://dvktf2fkga18t"]
 
+[ext_resource type="Script" path="res://Gate.cs" id="1_jp7k6"]
 [ext_resource type="Texture2D" uid="uid://5lyy7308yj6j" path="res://assets/objects/gate_button.png" id="1_jqibk"]
 [ext_resource type="Texture2D" uid="uid://b5fiih0wfemja" path="res://assets/objects/gate_half.png" id="2_s1goc"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="3_e0na8"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r744g"]
-atlas = ExtResource("1_jqibk")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cnbq3"]
-atlas = ExtResource("1_jqibk")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_je3i5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r744g")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r744g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cnbq3")
-}],
-"loop": true,
-"name": &"press",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_454wq"]
 length = 0.001
@@ -106,10 +77,10 @@ tracks/2/path = NodePath("Button:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aew8w"]
@@ -119,6 +90,7 @@ _data = {
 }
 
 [node name="Gate" type="Node2D"]
+script = ExtResource("1_jp7k6")
 
 [node name="Bottom" type="Sprite2D" parent="."]
 position = Vector2(0, 45)
@@ -140,16 +112,22 @@ rotation = 3.14159
 scale = Vector2(0.9, 4.5)
 
 [node name="Button" type="Button" parent="."]
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -8.0
+offset_top = -9.0
+offset_right = 8.0
+offset_bottom = 8.0
 
-[node name="ButtonSprite" type="AnimatedSprite2D" parent="Button"]
-position = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_je3i5")
+[node name="ButtonSprite" type="Sprite2D" parent="Button"]
+position = Vector2(8, 9)
+texture = ExtResource("1_jqibk")
+hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_aew8w")
 }
+
+[connection signal="button_down" from="Button" to="." method="OnButtonDown"]
+[connection signal="button_up" from="Button" to="." method="OnButtonUp"]
+[connection signal="pressed" from="Button" to="." method="OnButtonPressed"]

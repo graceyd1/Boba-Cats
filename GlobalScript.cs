@@ -36,6 +36,8 @@ public partial class GlobalScript : Node2D
 
 	public static String savePath = "user://save_data.tres"; //not implemented yet (see GlobalSaveResource.cs)
 
+	public static bool GeyserOpened {get; set;} = false;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

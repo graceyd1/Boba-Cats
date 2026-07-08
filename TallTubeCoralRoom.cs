@@ -37,7 +37,7 @@ public partial class TallTubeCoralRoom : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(20, 84), "geyser_room", false);
+			await GlobalScript.ChangeRoom(new Vector2(20, 84), "geyser_room", true);
 		}
 		else if (pos.X < 5)
 		{
