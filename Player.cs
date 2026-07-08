@@ -53,6 +53,14 @@ public partial class Player : CharacterBody2D
 		//gravity = Gravity.Underwater; //todo - change to update based on the player's room
 	}
 	
+	/*public Vector2 GetScreenGlobalPos() {
+		return GetNode<Camera2D>("Camera2D").GetScreenCenterPosition();
+	}*/
+	
+	public void OnPromptUser(TextBox box) {
+		GetNode<TextEnterLabel>("Camera2D/TextEnterLabel").FadeIn(box);
+	}
+	
 	private void DevChangeHP(int newHP) {
 		hp = newHP;
 		GD.Print(hp);

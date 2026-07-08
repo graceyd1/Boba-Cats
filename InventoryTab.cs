@@ -17,8 +17,13 @@ public partial class InventoryTab : Button
 	
 	public void OnButtonPressed() {
 		text.Text = "\n";
-		if (GlobalScript.Inventory.Contains("flashlight")) {
-			text.Text += "Flashlight";
+		AddItem("flashlight", "Flashlight");
+		AddItem("Town ticket", "Town ticket");
+	}
+	
+	public void AddItem(string CodeName, string UIName) {
+		if (GlobalScript.Inventory.Contains(CodeName)) {
+			text.Text += UIName;
 		}
 	}
 }

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b6qt7sngx5gkb" path="res://assets/backgrounds/first_room/first_room_rocks.png" id="3_f3kxf"]
 [ext_resource type="Texture2D" uid="uid://cnwqjfpmekg7b" path="res://assets/background_items/broken_boat.png" id="4_rlr2y"]
 [ext_resource type="PackedScene" uid="uid://b6tcj5pauo27d" path="res://fish_enemy.tscn" id="5_50yi7"]
-[ext_resource type="PackedScene" uid="uid://dvktf2fkga18t" path="res://gate.tscn" id="5_hbhji"]
+[ext_resource type="PackedScene" uid="uid://davrf0y245h67" path="res://gate.tscn" id="5_hbhji"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="6_pleqk"]
 
 [node name="FirstRoom" type="Node2D"]
@@ -31,7 +31,6 @@ position = Vector2(143, 89)
 texture = ExtResource("4_rlr2y")
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("2_toxl5")]
-visible = false
 position = Vector2(10, 140)
 
 [node name="Gate" parent="." instance=ExtResource("5_hbhji")]

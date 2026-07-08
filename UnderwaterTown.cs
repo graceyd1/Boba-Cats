@@ -5,9 +5,14 @@ using System.Threading.Tasks;
 public partial class UnderwaterTown : Node2D
 {
 	private bool transitioning = false;
+	private TextBox carT;
+	private static int encounterNum = 0; 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		carT = GetNode<TextBox>("Carsava/TextBox");
+		GetNode<Walls>("RightExitWall").Enable();
+		GetNode<AnimatedSprite2D>("Carsava").Animation = "red";
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,6 +20,76 @@ public partial class UnderwaterTown : Node2D
 	{
 		if (!transitioning) {
 			await NextRoomCheck();
+		}
+	}
+	public void PlayerMeetCarsava(Node2D body) {
+		if (body is Player p) {
+			CarsavaDialogue();
+		}
+	}
+	
+	public async void CarsavaDialogue() {
+		if (GlobalScript.Inventory.Contains("Town ticket")) {
+			if (encounterNum == 1) {
+				await carT.ShowText("You again - I told you -");
+				await carT.ShowText("Wait, you got a key? That's my sister, Catssava's!");
+				await carT.ShowText("She must really have faith in you. The ocean's dangers are no joke!");
+				await carT.ShowText("Well, go ahead then. And good luck.");
+				encounterNum++;
+			}
+			else if (encounterNum == 0) {
+				await carT.ShowText("I'm Carsava, the town guard. And you must be the new stranger in town.");
+				await carT.ShowText("Gotten a key already, have you? I'm warning you, the waters beyond are dangerous.");
+				await carT.ShowText("I'm assuming you're trying to get boba for my sister.");
+				await carT.ShowText("Saying you miraculously succeed somehow...she would be very grateful.");
+				await carT.ShowText("She's been depressed ever since her boba supply vanished.");
+				encounterNum = 2;
+			}
+			else {
+				int path;
+				int max = (encounterNum > 6) ? 6 : encounterNum;
+				if (GlobalScript.Inventory.Contains("flashlight")) {
+					path = Rand(0, max);
+				}
+				else {
+					path = Rand(-1, max);
+				}
+				switch (path) {
+					//hint if you don't have flashlight
+					case -1: await carT.ShowText("Don't forget to check out the other shops in town! Our cats are itching for business.");
+							break;
+					case 0: await carT.ShowText("Catssava has been telling everyone around town about the cat that offered to find her boba.");
+							break;
+					case 1: await carT.ShowText("You've become a town legend.");
+							break;
+					case 2: await carT.ShowText("Just between you and me, you're the bravest cat I've met. Not counting myself, of course.");
+							break;
+					case 3: await carT.ShowText("I won't tell you I believe in you. What matters is that you believe in yourself.");
+							break;
+					case 4: await carT.ShowText("I'll admit, I've grown fond of you, adventurer.");
+							break;
+					case 5: await carT.ShowText("You're always welcome to visit our little town, no matter how far the waves take you in life.");
+							break;
+					case 6: await carT.ShowText("I know you can handle the toughest waves that come your way.");
+							break;
+				}
+				encounterNum++;
+			}
+			GetNode<AnimatedSprite2D>("Carsava").Animation = "blue";
+			GetNode<Walls>("RightExitWall").Disable();
+		}
+		else {
+			if (encounterNum == 0) {
+				await carT.ShowText("I'm Carsava, the town guard. And you must be the new stranger in town.");
+				await carT.ShowText("I can't let you leave town without a ticket.");
+				await carT.ShowText("It's too dangerous out there for a normal cat.");
+				await carT.ShowText("No reason to leave if you don't have to.");
+				encounterNum++;
+			}
+			else {
+				await carT.ShowText("Stranger, I don't know why you insist on leaving.");
+				await carT.ShowText("Our town will provide all you need.");
+			}
 		}
 	}
 
@@ -65,5 +140,11 @@ public partial class UnderwaterTown : Node2D
 		else if (roomName == "PlantShopDoor") {
 			await GlobalScene.ChangeRoom(new Vector2(300, 133), "plant_shop", false);
 		}
+	}
+	
+	private static int Rand(int low, int high) {
+		var randomizer = new RandomNumberGenerator();
+		randomizer.Randomize();
+		return randomizer.RandiRange(low, high);
 	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqw5pv6ifi7f0"]
+[gd_scene load_steps=16 format=3 uid="uid://cqw5pv6ifi7f0"]
 
 [ext_resource type="Script" path="res://SubmarineShop.cs" id="1_26v74"]
 [ext_resource type="Texture2D" uid="uid://d18mq7cjuo7pq" path="res://assets/backgrounds/interior/sub_workshop.png" id="1_uhx58"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="5_chh4g"]
 [ext_resource type="PackedScene" uid="uid://bmlobwxb1vvug" path="res://door.tscn" id="7_u403n"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="8_oqvgm"]
-[ext_resource type="PackedScene" uid="uid://dacucl1yyxuex" path="res://text_enter_label.tscn" id="9_rvp5p"]
 [ext_resource type="PackedScene" uid="uid://ygrr56bstc00" path="res://interact_label.tscn" id="10_crlcy"]
 [ext_resource type="Texture2D" uid="uid://bsaeo1x6edvmm" path="res://assets/npcs/blue_red_eyes.png" id="11_333yn"]
 [ext_resource type="Texture2D" uid="uid://d30xpakhy8wwp" path="res://assets/npcs/azucat_blue.png" id="11_kotw0"]
@@ -164,12 +163,6 @@ position = Vector2(10, 23)
 scale = Vector2(0.5, 0.5)
 labelHeight = 30
 
-[node name="EnterLabel" parent="." instance=ExtResource("9_rvp5p")]
-offset_left = 145.0
-offset_top = 170.0
-offset_right = 145.0
-offset_bottom = 170.0
-
 [node name="LeftWall" parent="." instance=ExtResource("2_avnv1")]
 position = Vector2(-20, 0)
 scale = Vector2(1, 10)
@@ -221,8 +214,8 @@ libraries = {
 "": SubResource("AnimationLibrary_3g16g")
 }
 
-[connection signal="PromptUser" from="GroundPlayer/TextBox" to="EnterLabel" method="FadeIn"]
-[connection signal="PromptUser" from="Azucat/TextBox" to="EnterLabel" method="FadeIn"]
+[connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
+[connection signal="PromptUser" from="Azucat/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="EnterRoom" from="Door/ShopExit" to="." method="onExitRoom"]
 [connection signal="pressed" from="Secret/Secret/SecretButton1" to="." method="OnSecretButton1Pressed"]
 [connection signal="pressed" from="Secret/Secret/SecretButton2" to="." method="OnSecretButton2Pressed"]

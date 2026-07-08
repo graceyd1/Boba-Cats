@@ -39,6 +39,15 @@ public partial class GlobalSceneChange : Node2D
 	public override void _Ready()
 	{
 		GetTree().NodeAdded += checkNode;
+		if (UnderwaterRooms.Contains(GetTree().CurrentScene.Name)) {
+			currPlayer = GetTree().CurrentScene.GetNode<Player>("UnderwaterPlayer");
+		}
+		else if (GroundRooms.Contains(GetTree().CurrentScene.Name)) {
+			currPlayer = GetTree().CurrentScene.GetNode<Player>("GroundPlayer");
+		}
+		else {
+			GD.Print("Room not found in list");
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
