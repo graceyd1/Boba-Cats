@@ -79,7 +79,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(208, 43)]
+"values": [Vector2(208, -17)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -91,7 +91,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -115,7 +115,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3g16g"]
@@ -140,7 +140,6 @@ position = Vector2(-60, 140)
 scale = Vector2(22, 1)
 
 [node name="GroundPlayer" parent="." instance=ExtResource("3_lavss")]
-visible = false
 position = Vector2(66, 131)
 
 [node name="TextBox" parent="GroundPlayer" instance=ExtResource("5_chh4g")]
@@ -163,6 +162,7 @@ offset_bottom = 140.0
 [node name="ShopExit" parent="Door" instance=ExtResource("8_oqvgm")]
 position = Vector2(10, 23)
 scale = Vector2(0.5, 0.5)
+labelHeight = 30
 
 [node name="EnterLabel" parent="." instance=ExtResource("9_rvp5p")]
 offset_left = 145.0
@@ -185,26 +185,32 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="SecretButton1" type="Button" parent="Secret/Secret"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 216.0
 offset_top = 58.0
 offset_right = 236.0
 offset_bottom = 95.0
 
 [node name="SecretButton2" type="Button" parent="Secret/Secret"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 111.0
 offset_top = 58.0
 offset_right = 148.0
 offset_bottom = 95.0
 
 [node name="Blue" type="Sprite2D" parent="Secret"]
-position = Vector2(208, 43)
+position = Vector2(208, -17)
 texture = ExtResource("11_333yn")
 
 [node name="Abluecat" type="Sprite2D" parent="Secret"]
+visible = false
 position = Vector2(210, 132)
 texture = ExtResource("11_kotw0")
 
 [node name="Laser" type="Sprite2D" parent="Secret"]
+visible = false
 position = Vector2(209, 204)
 rotation = 1.5708
 texture = ExtResource("12_82e1i")

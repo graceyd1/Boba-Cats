@@ -18,6 +18,8 @@ public partial class Player : CharacterBody2D
 
 	private int hp;
 
+	public bool respawning;
+
 	//if true, player can't get hit
 	public Boolean invulnerable;
 
@@ -38,6 +40,7 @@ public partial class Player : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		respawning = false;
 		//ScreenSize = GetViewportRect().Size;
 		VelocityModifier = Vector2.Zero;
 		hp = 2; //2;
@@ -93,6 +96,7 @@ public partial class Player : CharacterBody2D
 	
 	//we need to make a list
 	public async void Respawn() {
+		respawning = true;
 		var fader = GetNode<CanvasLayer>("/root/Fader");
 		if (fader is Fader transition) {
 			await ToSignal(GetTree().CreateTimer(1.0f), SceneTreeTimer.SignalName.Timeout);
@@ -158,7 +162,7 @@ public partial class Player : CharacterBody2D
 			await transition.FadeOut(1.0f);
 		}
 		invulnerable = false;
-		
+		respawning = false;
 	}
 
 	//when invulnerablility ends

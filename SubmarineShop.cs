@@ -8,10 +8,11 @@ public partial class SubmarineShop : Node2D
 	Node2D playerTextNode;
 	Node2D azucatTextNode;
 
-	private bool Secret1 = false;
+	private bool Secret1;
 	// Called when the node enters the scene tree for the first time.
 	public override async void _Ready()
 	{
+		Secret1 = false;
 		playerTextNode = GetNode<Node2D>("GroundPlayer/TextBox");
 		azucatTextNode = GetNode<Node2D>("Azucat/TextBox");
 		var player = GetNode<GroundPlayer>("GroundPlayer");
@@ -68,6 +69,8 @@ public partial class SubmarineShop : Node2D
 					await aText.ShowText("Pleasure doing business with you.");
 				}
 
+				GetNode<Control>("EnterLabel").Hide();
+
 				//make player go through entire dialogue if they exited the shop in the middle of it
 				GlobalScript.QuestNum++; //next quest: 1. visit boba shop
 
@@ -86,7 +89,6 @@ public partial class SubmarineShop : Node2D
 	{
 		if (!Secret1)
 		{
-			GD.Print("1");///
 			Secret1 = true;
 		}
 	}
@@ -95,7 +97,8 @@ public partial class SubmarineShop : Node2D
 	{
 		if (Secret1)
 		{
-			GD.Print("2");///
+			GetNode<AnimationPlayer>("Secret/AnimationPlayer").Play("laser");
+			Secret1 = false;
 		}
 	}
 

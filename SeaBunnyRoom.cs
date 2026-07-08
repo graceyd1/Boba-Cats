@@ -19,21 +19,24 @@ public partial class SeaBunnyRoom : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override async void _Process(double delta)
 	{
-		///todo to-do fix this
-		// if (Player.Position.X <= 300)
-		// {
-		// 	if (SeaBunny is Seabunny sb)
-		// 	{
-		// 		sb.InFight = false;
-		// 	}
-		// }
+		//reset position when player leaves or respawns
+		if (Player is Player p)
+		{
+			if (p.respawning)
+			{
+				if (SeaBunny is Seabunny sb)
+				{
+
+					sb.InFight = false;
+				}
+				SeaBunny.Position = new Vector2(485, 212);
+			}
+		}
 
 		if (!transitioning)
 		{
 			await NextRoomCheck();
 		}
-
-		///GD.Print(GetNode<Godot.Timer>("VineTimer").TimeLeft);///
 	}
 
 	private void OnVineTimerTimeout()
@@ -42,33 +45,47 @@ public partial class SeaBunnyRoom : Node2D
 		anim.Play("vine_appear");	
 	}
 
-	public void StartFight(Node2D Player)
+	public void OnBossTriggerEntered(Node2D Player)
 	{
 		GetNode<Godot.Timer>("VineTimer").Start();
-		GlobalScript.QuestNum++;
-		if (SeaBunny is Seabunny sb)
+
+		if (GlobalScript.CQ("short") == "ParvaCave")
 		{
-			sb.StartFight();
+			GlobalScript.QuestNum ++;
+			
+		}
+		if (GlobalScript.CQ("short") == "Seabunny")
+		{
+			if (SeaBunny is Seabunny sb)
+			{
+				sb.StartFight();
+			}
 		}
 	}
 	public async void EndFight(Node2D player)
 	{
-		player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Stop();
-		
-		if (player is GroundPlayer p)
+		if (GlobalScript.CQ("short") == "Seabunny")
 		{
-			p.invulnerable = true;
-			p.SetDisableMovement(true);
-			if (SeaBunny is Seabunny sb)
+			player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Stop();
+			
+			if (player is GroundPlayer p)
 			{
-				GD.Print("Ending");///
-				sb.InFight = false;
-				await sb.EndFight();
-			}
+				if (!p.respawning)
+				{
+					p.invulnerable = true;
+					p.SetDisableMovement(true);
+					if (SeaBunny is Seabunny sb)
+					{
+						sb.InFight = false;
+						await sb.EndFight();
+					}
 
-			p.SetDisableMovement(false);
-			p.invulnerable = false;
-			player.Position = new Vector2(600, 145);
+					p.SetDisableMovement(false);
+					p.invulnerable = false;
+					player.Position = new Vector2(600, 145);
+				}
+			}
+			GlobalScript.QuestNum ++;
 		}
 	}
 

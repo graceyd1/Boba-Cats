@@ -4,14 +4,14 @@ using System;
 
 public partial class GroundPlayer : Player
 {
-	public new float Speed = 70.0f;
-	public const float JumpVelocity = -230; //-330.0f;
+	//public new float Speed = 70.0f;
+	public const float JumpVelocity = -220; //-330.0f;
 	public bool Climbing{get; set;} = false;
 
 	private AnimatedSprite2D animatedSprite;
 	public override void _Ready() {
 		base._Ready();
-		base.Speed = 150;
+		base.Speed = 120;
 		base.Gravity = 0.001F;
 		InputEnabled = true;
 

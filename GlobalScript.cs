@@ -14,7 +14,7 @@ public partial class GlobalScript : Node2D
 		"MeetCatssava", //1
 		"ExploreOcean", //2
 		"Trapdoor", //3
-		"Cave", //4 (after talking to parva)
+		"ParvaCave", //4 (after talking to parva) "Cave"
 		"Seabunny", //5
 		"ReturnBoba", //6
 		"Surface" //7
@@ -46,6 +46,7 @@ public partial class GlobalScript : Node2D
 	{
 	}
 	
+	//get current quest
 	//type = long or short
 	public static String CQ(string type) {
 		if (type == "long") {
