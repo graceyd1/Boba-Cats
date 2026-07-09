@@ -1,12 +1,32 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Godot.Collections;
 
 public partial class GlobalScript : Node2D
 {
-	//Eventually initialize to save file data
-	public static int coins {get; set;} = 0;
-	public static List<string> Inventory {get; set;} = new List<string>();
+	public static GlobalSaveResource GameData{get; set;} = new GlobalSaveResource();
+	//so that it doesn't break code accessing from GlobalScript.variable
+	public static int coins {
+		get => GameData.numCoins;
+		set => GameData.numCoins = value;
+	}
+	public static Godot.Collections.Array<string> Inventory {
+		get => GameData.Inventory;
+		set => GameData.Inventory = value; //for changing entire list, .Add doesn't use set
+	}
+	public static int QuestNum { //temp // todo: change to 0 later after fixing "that's my boat" cutscene
+		get => GameData.QuestNum;
+		set => GameData.QuestNum = value;
+	}
+	public static bool GeyserOpened {
+		get => GameData.GeyserOpened;
+		set => GameData.GeyserOpened = value;
+	}
+	public static string CurrentRoom {
+		get => GameData.CurrentRoom;
+		set => GameData.CurrentRoom = value;
+	}
 	
 	//set because maybe we can change name of quest based on player choices
 	public static List<string> MainQuests{get; set;} = new List<string> {
@@ -21,9 +41,8 @@ public partial class GlobalScript : Node2D
 		"Surface" //8
 	};
 	
-	public static int QuestNum{get; set;} = 1; //temp // todo: change to 0 later after fixing "that's my boat" cutscene
 	
-	public static Dictionary<string, string> QuestNames = new Dictionary<string, string> {
+	public static System.Collections.Generic.Dictionary<string, string> QuestNames = new System.Collections.Generic.Dictionary<string, string> {
 		{"GoToTown", "Explore the ocean"}, //0
 		{"MeetAzucat", "Investigate the shop"}, //1
 		{"MeetCatssava", "Visit the boba shop and ask for brown sugar boba"}, //2
@@ -38,7 +57,7 @@ public partial class GlobalScript : Node2D
 
 	public static String savePath = "user://save_data.tres"; //not implemented yet (see GlobalSaveResource.cs)
 
-	public static bool GeyserOpened {get; set;} = false;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -48,6 +67,16 @@ public partial class GlobalScript : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+	
+	public static void LoadGame() {
+		if (ResourceLoader.Exists(savePath)) {
+			GameData = ResourceLoader.Load<GlobalSaveResource>(savePath);
+		}
+	}
+	
+	public static void SaveGame() {
+		ResourceSaver.Save(GameData, savePath);
 	}
 	
 	//get current quest

@@ -23,7 +23,8 @@ public partial class DevMode : CanvasLayer
 			{"add", AddToInventory},
 			{"sethp", SetHP},
 			{"setquest", SetQuest},
-			{"print", DebugPrint}
+			{"print", DebugPrint},
+			{"files", ManageFiles}
 		};
 	}
 
@@ -97,6 +98,16 @@ public partial class DevMode : CanvasLayer
 					GD.Print("Quest " + num + " does not exist.");
 				}
 			}
+		}
+	}
+	
+	private void ManageFiles(string input) {
+		if (input == "load") {
+			GlobalScript.LoadGame();
+			GetTree().ChangeSceneToFile("res://" + GlobalScript.CurrentRoom + ".tscn"); //needs to eventually be handled by another method
+		}
+		else {
+			GlobalScript.SaveGame();
 		}
 	}
 }

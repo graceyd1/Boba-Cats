@@ -4,23 +4,27 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Godot.Collections;
 
 [Tool]
 [GlobalClass]
-public partial class SaveResourceScript : Resource
+public partial class GlobalSaveResource : Resource
 {
-	/*[Export]
+	//configurations for a new game
+	[Export]
 	public int numCoins = 0;
 
 	[Export]
-	public List<String> Inventory {get; set;} = new List<String>(); 
+	public Godot.Collections.Array<String> Inventory {get; set;} = new Array<String>(); 
 
 	[Export]
-	public Boolean recievedAzucatOffer;
+	public int QuestNum{get; set;} = 0;
 
 	[Export]
-	public Boolean metParva;*/
-	// [Export]
+	public bool GeyserOpened{get; set;} = false;
+	
+	[Export]
+	public string CurrentRoom{get; set;} = "first_room";
 	// [Export]
 	// [Export]
 	// [Export]

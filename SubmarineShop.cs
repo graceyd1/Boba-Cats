@@ -79,7 +79,8 @@ public partial class SubmarineShop : Node2D
 					p2.SetDisableMovement(false);
 				}
 			}
-			else {
+			//should make method for this
+			else if (GlobalScript.Inventory.IndexOf(GlobalScript.CQ("short")) > GlobalScript.Inventory.IndexOf("MeetAzucat")) {
 				await aText.ShowText("I trust that you're working on getting that boba for me?");
 			}
 		}

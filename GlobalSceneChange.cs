@@ -68,6 +68,7 @@ public partial class GlobalSceneChange : Node2D
 	
 	public async Task ChangeRoom(Vector2 pos, String room, bool right) {
 		GetTree().ChangeSceneToFile("res://" + room + ".tscn");
+		GlobalScript.CurrentRoom = room;
 		await ToSignal(this, GlobalSceneChange.SignalName.SceneReady);
 		string roomName = GetTree().CurrentScene.Name;
 		if (UnderwaterRooms.Contains(roomName)) {

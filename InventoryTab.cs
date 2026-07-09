@@ -16,13 +16,14 @@ public partial class InventoryTab : Button
 	}
 	
 	public void OnButtonPressed() {
-		text.Text = "\n";
+		text.Text = "";
 		AddItem("flashlight", "Flashlight");
 		AddItem("Town ticket", "Town ticket");
 	}
 	
 	public void AddItem(string CodeName, string UIName) {
 		if (GlobalScript.Inventory.Contains(CodeName)) {
+			text.Text += "\n";
 			text.Text += UIName;
 		}
 	}
