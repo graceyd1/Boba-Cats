@@ -13,7 +13,7 @@ public partial class TextEnterLabel : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		GlobalPosition = GetNode<Camera2D>("..").GetScreenCenterPosition() + new Vector2(0, 80);
+		GlobalPosition = GetNode<Camera2D>("..").GetScreenCenterPosition() + new Vector2(0, 90);
 	}
 	
 	public async void FadeIn(TextBox box) {

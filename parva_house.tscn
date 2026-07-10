@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://s1bee1shdfl2"]
+[gd_scene load_steps=21 format=3 uid="uid://s1bee1shdfl2"]
 
 [ext_resource type="Script" path="res://ParvaHouse.cs" id="1_8ffew"]
 [ext_resource type="Texture2D" uid="uid://d2yeum0e887wi" path="res://assets/backgrounds/interior/parva_house.png" id="1_xd8vd"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bonv74n3d6s3y" path="res://assets/npcs/parva.png" id="6_6j6vd"]
 [ext_resource type="Texture2D" uid="uid://bujj7eiir4aio" path="res://assets/npcs/parva_mad.png" id="7_wd4c4"]
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="8_ou3kr"]
+[ext_resource type="PackedScene" uid="uid://bmlobwxb1vvug" path="res://door.tscn" id="9_8nfr4"]
+[ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="10_kgtfd"]
 
 [sub_resource type="Animation" id="Animation_pf4bv"]
 length = 0.001
@@ -133,6 +135,7 @@ size = Vector2(20, 146)
 script = ExtResource("1_8ffew")
 
 [node name="Background" type="Sprite2D" parent="."]
+z_index = -2
 texture_filter = 1
 texture = ExtResource("1_xd8vd")
 centered = false
@@ -183,4 +186,17 @@ collision_mask = 2
 position = Vector2(92, 67)
 shape = SubResource("RectangleShape2D_gc57o")
 
+[node name="Door" parent="." instance=ExtResource("9_8nfr4")]
+z_index = -1
+offset_left = 8.0
+offset_top = 109.0
+offset_bottom = 141.0
+
+[node name="InteractArea" parent="Door" instance=ExtResource("10_kgtfd")]
+position = Vector2(16, 31)
+scale = Vector2(0.6, 0.6)
+
+[connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
+[connection signal="PromptUser" from="Parva/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="body_entered" from="TriggerDialogue" to="." method="startDialogue"]
+[connection signal="Interact" from="Door/InteractArea" to="." method="OnExitRoom"]

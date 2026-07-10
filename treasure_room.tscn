@@ -262,4 +262,7 @@ libraries = {
 "": SubResource("AnimationLibrary_d08xj")
 }
 
+[connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
+[connection signal="PromptUser" from="Azucat/TextBox" to="GroundPlayer" method="OnPromptUser"]
+[connection signal="PromptUser" from="Catssava/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="body_entered" from="CutsceneTrigger" to="." method="GetBobaCutscene"]

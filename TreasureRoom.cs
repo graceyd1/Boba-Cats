@@ -44,8 +44,12 @@ public partial class TreasureRoom : Node2D
 		//help idk how to write dialogue
 		await azucatT.ShowText("There it is!");
 		await catssavaT.ShowText("Dash, you actually did it! You found the boba! Now my boba shop will have business again!");
+		await dashT.ShowText("Yes - huff - the cat that took me down here admitted to stealing it from your shop.");
 		await azucatT.ShowText("How dare that pesky cat steal our town's boba!!");
-		await azucatT.ShowText("Perfect timing! I've got a brand new boat waiting for you in the other room!");
+		await catssavaT.ShowText("What matters is that it's rightfully in our hands now.");
+		await dashT.ShowText("Can I buy some for Azucat to exchange for my boat?");
+		await catssavaT.ShowText("Are you kidding? I would've never gotten it back if not for you. Take as much as you'd like.");
+		await azucatT.ShowText("Perfect timing! I've got a brand new boat waiting for you in the other room, Dash!");
 		await catssavaT.ShowText("Thank you so much, Dash!");
 
 		

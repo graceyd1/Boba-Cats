@@ -25,6 +25,16 @@ public partial class ParvaHouse : Node2D
 		}
 	}
 	
+	private async void OnExitRoom() {
+		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
+		var GlobalScene = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		if (FaderNode is Fader fader) {
+			await fader.FadeIn(.7f);
+		}
+		
+		await GlobalScene.ChangeRoom(new Vector2(400, 100), "cave_room", true);
+	}
+	
 	public async void startDialogue(Node2D player) {
 		GD.Print(player.Name); ///
 		if (dashTextN is TextBox dT && parvaTextN is TextBox pT) {
