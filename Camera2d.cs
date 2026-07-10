@@ -10,6 +10,7 @@ public partial class Camera2d : Camera2D
 	{
 		"SubmarineShop",
 		"BobaShop",
+		"PlantShop",
 		"EnterCaveRoom",
 		"ParvaHouse",
 		"EnterSeaBunnyRoom",

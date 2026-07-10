@@ -27,7 +27,7 @@ public partial class SubmarineShop : Node2D
 			azucat.FlipH = false;
 			sprite.Animation = "sit_right";
 		}
-		startDialogue(player);
+		StartDialogue(player);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,7 +39,7 @@ public partial class SubmarineShop : Node2D
 		}
 	}
 	
-	public async void startDialogue(Node2D player) {
+	public async void StartDialogue(Node2D player) {
 		if (playerTextNode is TextBox pText && azucatTextNode is TextBox aText) {
 			//Quest 0: find mechanic to fix ship
 			if (GlobalScript.CQ("short") == "MeetAzucat") {
@@ -54,7 +54,8 @@ public partial class SubmarineShop : Node2D
 				await aText.ShowText("Oh sorry. I thought it looked cool, so I patched it up and put it there."); 
 				await aText.ShowText("Didn't know it was yours."); 
 				await pText.ShowText("How did you-- My ship just crashed! I need it to go back to the surface...");
-				await aText.ShowText("How ‘bout let’s make a deal. You get some tapioca boba milk tea for me, and I’ll see what I can do ‘bout getting you a new boat.");
+				await aText.ShowText("How ‘bout let’s make a deal. You get some boba milk tea for me, and I’ll see what I can do ‘bout getting you a new boat.");
+				await aText.ShowText("And make sure to get it with tapioca pearls! You can't go without the tapioca!");
 				await aText.ShowText("Don’t worry, it’s pretty easy to get. Best deal you’ll get ‘round here.");
 				
 				//Variant stores any data type (not used here anymore)
@@ -69,7 +70,7 @@ public partial class SubmarineShop : Node2D
 					await aText.ShowText("Pleasure doing business with you.");
 				}
 
-				GetNode<Control>("EnterLabel").Hide();
+				//GetNode<Control>("EnterLabel").Hide();
 
 				//make player go through entire dialogue if they exited the shop in the middle of it
 				GlobalScript.QuestNum++; //next quest: 1. visit boba shop

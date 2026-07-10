@@ -58,4 +58,4 @@ script = ExtResource("2_psf2j")
 light_mask = 0
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i8vcf")
-animation = &"swim-right"
+animation = &"sit-helmet"

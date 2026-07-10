@@ -216,6 +216,6 @@ libraries = {
 
 [connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="PromptUser" from="Azucat/TextBox" to="GroundPlayer" method="OnPromptUser"]
-[connection signal="EnterRoom" from="Door/ShopExit" to="." method="onExitRoom"]
+[connection signal="EnterRoom" from="Door/ShopExit" to="." method="OnExitRoom"]
 [connection signal="pressed" from="Secret/Secret/SecretButton1" to="." method="OnSecretButton1Pressed"]
 [connection signal="pressed" from="Secret/Secret/SecretButton2" to="." method="OnSecretButton2Pressed"]

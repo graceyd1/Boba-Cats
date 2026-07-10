@@ -18,7 +18,7 @@ public partial class InventoryTab : Button
 	public void OnButtonPressed() {
 		text.Text = "";
 		AddItem("flashlight", "Flashlight");
-		AddItem("Town ticket", "Town ticket");
+		AddItem("Town pass", "Town pass");
 	}
 	
 	public void AddItem(string CodeName, string UIName) {

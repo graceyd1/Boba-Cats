@@ -85,9 +85,10 @@ public partial class TextBox : Node2D
 		Show();
 		timer.Start();
 		var result =  await ToSignal(this, TextBox.SignalName.ChoiceMade);
-		if (result is [Variant choice]) {
-			return (string) choice;
-		}
+		GD.Print(result);///
+		// if (result is Variant choice) {
+		// 	return (string) choice;
+		// }
 		return null;
 	}
 	

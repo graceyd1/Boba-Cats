@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://s1bee1shdfl2"]
+[gd_scene load_steps=22 format=3 uid="uid://s1bee1shdfl2"]
 
 [ext_resource type="Script" path="res://ParvaHouse.cs" id="1_8ffew"]
 [ext_resource type="Texture2D" uid="uid://d2yeum0e887wi" path="res://assets/backgrounds/interior/parva_house.png" id="1_xd8vd"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="8_ou3kr"]
 [ext_resource type="PackedScene" uid="uid://bmlobwxb1vvug" path="res://door.tscn" id="9_8nfr4"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="10_kgtfd"]
+[ext_resource type="PackedScene" uid="uid://ygrr56bstc00" path="res://interact_label.tscn" id="11_2rh7x"]
 
 [sub_resource type="Animation" id="Animation_pf4bv"]
 length = 0.001
@@ -195,6 +196,9 @@ offset_bottom = 141.0
 [node name="InteractArea" parent="Door" instance=ExtResource("10_kgtfd")]
 position = Vector2(16, 31)
 scale = Vector2(0.6, 0.6)
+labelHeight = 30
+
+[node name="InteractLabel" parent="." instance=ExtResource("11_2rh7x")]
 
 [connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="PromptUser" from="Parva/TextBox" to="GroundPlayer" method="OnPromptUser"]

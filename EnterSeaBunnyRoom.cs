@@ -10,7 +10,7 @@ public partial class EnterSeaBunnyRoom : Node2D
 	//private static bool fedToBunny = false;
 
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public override async void _Ready()
 	{
 		dashT = GetNode<TextBox>("GroundPlayer/TextBox");
 		parvaT = GetNode<TextBox>("Parva/TextBox");
@@ -18,7 +18,7 @@ public partial class EnterSeaBunnyRoom : Node2D
 		//note: alternatively could do GlobalScript.MainQuests[QuestNum] == quest name
 		if (GlobalScript.CQ("short") == "Trapdoor") {
 			GetNode<AnimatedSprite2D>("Parva").Show();
-			StartDialogue();
+			await StartDialogue();
 		}
 		else {
 			GetNode<AnimatedSprite2D>("Parva").Hide();

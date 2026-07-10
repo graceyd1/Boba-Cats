@@ -59,7 +59,6 @@ debug_color = Color(0.579823, 0.546776, 0.218768, 0.42)
 position = Vector2(132.5, 57)
 
 [node name="GroundPlayer" parent="." instance=ExtResource("6_4f8ty")]
-visible = false
 position = Vector2(258, 132)
 
 [node name="TextBox" parent="GroundPlayer" instance=ExtResource("4_to25d")]

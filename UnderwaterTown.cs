@@ -6,11 +6,13 @@ public partial class UnderwaterTown : Node2D
 {
 	private bool transitioning = false;
 	private TextBox carT;
+	private TextBox dashT;
 	private static int encounterNum = 0; 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		carT = GetNode<TextBox>("Carsava/TextBox");
+		dashT = GetNode<TextBox>("UnderwaterPlayer/TextBox");
 		GetNode<Walls>("RightExitWall").Enable();
 		GetNode<AnimatedSprite2D>("Carsava").Animation = "red";
 	}
@@ -22,27 +24,61 @@ public partial class UnderwaterTown : Node2D
 			await NextRoomCheck();
 		}
 	}
-	public void PlayerMeetCarsava(Node2D body) {
+
+	private async void OnIsThatMyBoatTriggerBodyEntered(Node2D player)
+	{
+		if (GlobalScript.CQ("short") == "GoToTown")
+		{
+			if (player is Player p)
+			{
+				p.SetDisableMovement(true);
+				player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = "sit-helmet";
+				await dashT.ShowText("Hang on a minute...");
+		
+				var camera = GetNode<Camera2D>("UnderwaterPlayer/Camera2D");
+				var cameraOriginalPos = camera.GlobalPosition;
+				var textBoxOriginalPos = dashT.GlobalPosition;
+
+				camera.GlobalPosition = new Vector2(300, 340);
+				dashT.GlobalPosition = new Vector2(300, 360);
+				await dashT.ShowText("Is that my boat up there??");
+
+				camera.GlobalPosition = cameraOriginalPos;
+				dashT.GlobalPosition = textBoxOriginalPos;
+				await dashT.ShowText("How in the world did it get there??");
+				GlobalScript.QuestNum ++;
+				p.SetDisableMovement(false);
+			}
+		}
+	}
+
+	private async void PlayerMeetCarsava(Node2D body) {
 		if (body is Player p) {
-			CarsavaDialogue();
+			p.SetDisableMovement(true);
+			body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Stop();
+
+			await CarsavaDialogue();
+
+			p.SetDisableMovement(false);
+			body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play();
 		}
 	}
 	
-	public async void CarsavaDialogue() {
-		if (GlobalScript.Inventory.Contains("Town ticket")) {
+	private async Task CarsavaDialogue() {
+		if (GlobalScript.Inventory.Contains("Town pass")) {
 			if (encounterNum == 1) {
 				await carT.ShowText("You again - I told you -");
-				await carT.ShowText("Wait, you got a key? That's my sister, Catssava's!");
+				await carT.ShowText("Wait, you got a pass? That's my sister, Catssava's!");
 				await carT.ShowText("She must really have faith in you. The ocean's dangers are no joke!");
 				await carT.ShowText("Well, go ahead then. And good luck.");
 				encounterNum++;
 			}
 			else if (encounterNum == 0) {
 				await carT.ShowText("I'm Carsava, the town guard. And you must be the new stranger in town.");
-				await carT.ShowText("Gotten a key already, have you? I'm warning you, the waters beyond are dangerous.");
+				await carT.ShowText("Gotten a pass already, have you? I'm warning you, the waters beyond are dangerous.");
 				await carT.ShowText("I'm assuming you're trying to get boba for my sister.");
 				await carT.ShowText("Saying you miraculously succeed somehow...she would be very grateful.");
-				await carT.ShowText("She's been depressed ever since her boba supply vanished.");
+				await carT.ShowText("She's been down ever since her boba supply vanished.");
 				encounterNum = 2;
 			}
 			else {
@@ -81,9 +117,8 @@ public partial class UnderwaterTown : Node2D
 		else {
 			if (encounterNum == 0) {
 				await carT.ShowText("I'm Carsava, the town guard. And you must be the new stranger in town.");
-				await carT.ShowText("I can't let you leave town without a ticket.");
-				await carT.ShowText("It's too dangerous out there for a normal cat.");
-				await carT.ShowText("No reason to leave if you don't have to.");
+				await carT.ShowText("Unfortunately, I can't let you leave town without a pass.");
+				await carT.ShowText("It's too dangerous out there for a normal cat. No reason to leave if you don't have to.");
 				encounterNum++;
 			}
 			else {
@@ -116,7 +151,7 @@ public partial class UnderwaterTown : Node2D
 	}
 
 	//shop doors:
-	public async void OnEnterRoom(String roomName)
+	private async void OnEnterRoom(String roomName)
 	{
 		var player = GetNode<CharacterBody2D>("UnderwaterPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
