@@ -36,6 +36,8 @@ public partial class UnderwaterTown : Node2D
 				await dashT.ShowText("Hang on a minute...");
 		
 				var camera = GetNode<Camera2D>("UnderwaterPlayer/Camera2D");
+				camera.PositionSmoothingEnabled = true;
+				camera.PositionSmoothingSpeed = 5.0f;
 				var cameraOriginalPos = camera.GlobalPosition;
 				var textBoxOriginalPos = dashT.GlobalPosition;
 
@@ -45,7 +47,9 @@ public partial class UnderwaterTown : Node2D
 
 				camera.GlobalPosition = cameraOriginalPos;
 				dashT.GlobalPosition = textBoxOriginalPos;
+				
 				await dashT.ShowText("How in the world did it get there??");
+				camera.PositionSmoothingEnabled = false;
 				GlobalScript.QuestNum ++;
 				p.SetDisableMovement(false);
 			}
