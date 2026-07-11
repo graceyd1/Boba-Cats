@@ -24,7 +24,7 @@ public partial class Controls : Node2D
 	}
 	
 	public override void _Input(InputEvent @event) {
-		if (Input.IsActionPressed("toggle_controls_menu")) {
+		if (Input.IsActionJustPressed("toggle_controls_menu")) {
 			var expanded = GetNode<Panel>("Expanded");
 			if (expanded.Visible) {
 				expanded.Hide();
