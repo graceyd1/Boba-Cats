@@ -13,7 +13,6 @@ public partial class ParvaHouse : Node2D
 	{
 		dashTextN = GetNode<Node2D>("GroundPlayer/TextBox");
 		parvaTextN = GetNode<Node2D>("Parva/TextBox");
-		// startDialogue();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,6 +35,7 @@ public partial class ParvaHouse : Node2D
 	}
 	
 	public async void startDialogue(Node2D player) {
+		GD.Print("HELP");
 		GD.Print(player.Name); ///
 		if (dashTextN is TextBox dT && parvaTextN is TextBox pT) {
 			if (GlobalScript.CQ("short") == "ExploreOcean") {
@@ -89,6 +89,8 @@ public partial class ParvaHouse : Node2D
 				//parva is like "in that case..." something
 				//parva leaves and sea bunny fight starts
 				GlobalScript.QuestNum++;
+				GD.Print(GlobalScript.CQ("short"));
+				GD.Print("WHY");
 				if (dash is Player playerr)
 				{
 					playerr.SetDisableMovement(false);

@@ -16,6 +16,7 @@ public partial class TextEnterLabel : Control
 		GlobalPosition = GetNode<Camera2D>("..").GetScreenCenterPosition() + new Vector2(0, 90);
 	}
 	
+	
 	public async void FadeIn(TextBox box) {
 		Show();
 		var label = GetNode<Label>("Label");

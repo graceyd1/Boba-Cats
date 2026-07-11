@@ -48,7 +48,7 @@ public partial class GlobalScript : Node2D
 		{"MeetCatssava", "Visit the boba shop and ask for brown sugar boba"}, //2
 		{"ExploreOcean", "Journey into the dangerous ocean to find boba"}, //3
 		{"Trapdoor", "Meet Parva in his secret chambers"}, //4
-		{"Cave", "Investigate the cave"}, //5 (after talking to parva)
+		{"ParvaCave", "Investigate the cave"}, //5 (after talking to parva)
 		{"Seabunny", "Escape from the sea bunny"}, //6
 		{"ReturnBoba", "Return the boba to Azucat and Catssava"}, //7
 		{"Surface", "Head up to the surface"} //8
