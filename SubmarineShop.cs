@@ -59,7 +59,7 @@ public partial class SubmarineShop : Node2D
 				await aText.ShowText("Don’t worry, it’s pretty easy to get. Best deal you’ll get ‘round here.");
 				
 				//Variant stores any data type (not used here anymore)
-				var choice = await pText.Ask("Accept deal?\n1. Yes \n2. No");
+				string choice = await pText.Ask("Accept deal?\n1. Yes \n2. No");
 				if (choice == "2") {
 					await pText.ShowText("I don't know if I can trust you.");
 					await aText.ShowText("I’m the only one who can make boats around here, so it’s not like you have a choice.");

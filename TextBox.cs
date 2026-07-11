@@ -90,11 +90,11 @@ public partial class TextBox : Node2D
 		Show();
 		timer.Start();
 		var result =  await ToSignal(this, TextBox.SignalName.ChoiceMade);
-		GD.Print(result);///
-		// if (result is Variant choice) {
-		// 	return (string) choice;
-		// }
-		return null;
+		/*GD.Print(result);///
+		if (result is [Variant choice]) {
+		 	return (string) choice;
+		}*/
+		return (string)result[0];
 	}
 	
 	//so that pressing enter doesn't restart the conversation
