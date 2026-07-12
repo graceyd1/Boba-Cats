@@ -13,7 +13,7 @@ corner_radius_bottom_left = 4
 z_index = 4000
 layout_mode = 3
 anchors_preset = 0
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(60, 20)

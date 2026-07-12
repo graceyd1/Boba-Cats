@@ -3,11 +3,15 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public partial class InteractArea : Area2D
 {
 	[Export]
 	public int LabelHeight {get; set;} = 20;
+	
+	[Export]
+	public int DoorType {get; set;} //1 = enter, 0 = exit
 
 	[Signal]
 	public delegate void InteractEventHandler();
@@ -17,14 +21,26 @@ public partial class InteractArea : Area2D
 	//if door - name used to decide which room to enter
 
 	private bool playerNear;
+	
 	private bool allowInteraction;
 
 	private Control interactLabel;
+	
+	private List<string> ExitRooms = new List<string> {
+		"BobaShop",
+		"PlantShop",
+		"SubmarineShop",
+		"ParvaHouse"
+	};
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		allowInteraction = true;
+		//GD.Print(allowInteraction);
+		
+		//GD.Print(ExitRooms.Contains(GetNode<Node2D>("../..").Name));
+		
 
 		//interactLabel =  GetTree().Root.GetNode<Node2D>("*").GetNodeOrNull<Control>("InteractLabel");	
 
@@ -52,15 +68,23 @@ public partial class InteractArea : Area2D
 		{
 			interactLabel.Hide();
 		}
+		if (ExitRooms.Contains(Owner.Name)) {
+			interactLabel.Scale = new Vector2(0.5f, 0.5f);
+		}
+		else {
+			interactLabel.Scale = new Vector2(0.8f, 0.8f);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		//GD.Print(allowInteraction);
 		if (playerNear)
 		{
 			if (Input.IsActionJustPressed("enter") && allowInteraction)
 			{
+				GD.Print("interact");
 				//interact signals
 				EmitSignal(SignalName.Interact);
 				EmitSignal(SignalName.InteractReturnAreaName, Name);

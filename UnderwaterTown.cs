@@ -155,7 +155,7 @@ public partial class UnderwaterTown : Node2D
 	}
 
 	//shop doors:
-	private async void OnEnterRoom(String roomName)
+	public async void OnEnterRoom(String roomName)
 	{
 		var player = GetNode<CharacterBody2D>("UnderwaterPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
