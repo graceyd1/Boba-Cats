@@ -5,9 +5,11 @@ public partial class Controls : Node2D
 {
 	private ControlsTab cT;
 	private QuestsTab qT;
+	private Vector2 pos;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		pos = Position;
 		var expanded = GetNode<Panel>("Expanded");
 		expanded.Hide();
 		cT = GetNode<ControlsTab>("ControlsTab");
@@ -20,7 +22,7 @@ public partial class Controls : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		GlobalPosition = GetNode<Camera2D>("..").GetScreenCenterPosition() + new Vector2(120, -80);
+		GlobalPosition = GetNode<Camera2D>("..").GetScreenCenterPosition() + pos;
 	}
 	
 	public override void _Input(InputEvent @event) {

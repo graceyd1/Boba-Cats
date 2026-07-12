@@ -52,9 +52,6 @@ public partial class TreasureRoom : Node2D
 		await azucatT.ShowText("Perfect timing! I've got a brand new boat waiting for you in the other room, Dash!");
 		await catssavaT.ShowText("Thank you so much, Dash!");
 
-		
-		
-
 		//wowee you found the boba blah blah blah azucat has a new ship for dash
 		//azucat picks up the entire boba!!!!!!!
 		anim.Play("azucat_takes_the_boba");

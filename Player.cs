@@ -105,6 +105,7 @@ public partial class Player : CharacterBody2D
 	//we need to make a list
 	public async void Respawn() {
 		respawning = true;
+		invulnerable = true;
 		var fader = GetNode<CanvasLayer>("/root/Fader");
 		if (fader is Fader transition) {
 			await ToSignal(GetTree().CreateTimer(1.0f), SceneTreeTimer.SignalName.Timeout);

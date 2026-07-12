@@ -124,7 +124,7 @@ centered = false
 [node name="InteractArea" parent="IceCreamAreaSprite" instance=ExtResource("8_xnsu6")]
 position = Vector2(602, 180)
 scale = Vector2(1.5, 1)
-labelHeight = 55
+LabelHeight = 50
 
 [node name="TextBox" parent="IceCreamAreaSprite/InteractArea" instance=ExtResource("9_gclb7")]
 position = Vector2(-14.6667, -60)

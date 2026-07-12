@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ki4seq4eyq51"]
+[gd_scene load_steps=13 format=3 uid="uid://ki4seq4eyq51"]
 
 [ext_resource type="Texture2D" uid="uid://dax86qevqwj5h" path="res://assets/backgrounds/cave_room/cave_room0.png" id="1_o30sq"]
 [ext_resource type="Script" path="res://CaveRoom.cs" id="1_tuhh4"]
@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="5_ui5lu"]
 [ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://hitbox.tscn" id="6_1sl3n"]
 [ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://growable_vine.tscn" id="6_itp7c"]
-[ext_resource type="PackedScene" path="res://darkness.tscn" id="7_jnidm"]
+[ext_resource type="PackedScene" uid="uid://dhctxpw3i8rpf" path="res://darkness.tscn" id="7_jnidm"]
 [ext_resource type="Script" path="res://CaveRoomSpikes.cs" id="9_ujmbn"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="10_wdpay"]
+[ext_resource type="PackedScene" uid="uid://ygrr56bstc00" path="res://interact_label.tscn" id="12_fssa8"]
 
 [node name="CaveRoom" type="Node2D"]
 script = ExtResource("1_tuhh4")
@@ -35,7 +36,7 @@ centered = false
 
 [node name="GroundPlayer" parent="." instance=ExtResource("3_ds2fq")]
 material = null
-position = Vector2(400, 100)
+position = Vector2(42, 79)
 
 [node name="WallsFolder" type="Node2D" parent="."]
 position = Vector2(200, 290)
@@ -66,16 +67,19 @@ position = Vector2(-9.9, -298)
 scale = Vector2(1.25, 1)
 
 [node name="GrowableVine" parent="." instance=ExtResource("6_itp7c")]
-position = Vector2(160, 52)
+position = Vector2(155, 52)
 
 [node name="GrowableVine2" parent="." instance=ExtResource("6_itp7c")]
-position = Vector2(220, 52)
+position = Vector2(215, 52)
 
 [node name="GrowableVine3" parent="." instance=ExtResource("6_itp7c")]
-position = Vector2(280, 52)
+position = Vector2(275, 52)
 
 [node name="GrowableVine4" parent="." instance=ExtResource("6_itp7c")]
-position = Vector2(340, 52)
+position = Vector2(335, 52)
+
+[node name="GrowableVine5" parent="." instance=ExtResource("6_itp7c")]
+position = Vector2(395, 81)
 
 [node name="Spikes" parent="." instance=ExtResource("6_1sl3n")]
 position = Vector2(200, 259)
@@ -85,8 +89,17 @@ script = ExtResource("9_ujmbn")
 [node name="ParvaDoor" parent="." instance=ExtResource("10_wdpay")]
 position = Vector2(467, 205)
 scale = Vector2(1, 0.9)
+LabelHeight = 30
 
 [node name="Darkness" parent="." instance=ExtResource("7_jnidm")]
+visible = false
 position = Vector2(0, 27)
 
-[connection signal="EnterRoom" from="ParvaDoor" to="." method="OnEnterRoom"]
+[node name="Wall" parent="." instance=ExtResource("5_ui5lu")]
+position = Vector2(500, 0)
+scale = Vector2(1, 15)
+
+[node name="InteractLabel" parent="." instance=ExtResource("12_fssa8")]
+visible = false
+
+[connection signal="InteractReturnAreaName" from="ParvaDoor" to="." method="OnEnterRoom"]

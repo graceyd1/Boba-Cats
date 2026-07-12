@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class VineRoom : Node2D
+public partial class SecretRoom1 : Node2D
 {
 	private bool transitioning = false;
 
@@ -20,11 +20,6 @@ public partial class VineRoom : Node2D
 		}
 	}
 
-	private void OnGrowableVineAreaLit(Area2D flashlight)
-	{
-		GetNode<Node2D>("Walls/SecretDoor").Position = new Vector2(360, -50);
-	}
-
 	private async Task NextRoomCheck() {
 		var player = GetNode<CharacterBody2D>("UnderwaterPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
@@ -35,23 +30,7 @@ public partial class VineRoom : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(187, 138), "jellyfish_room", true);
-		}
-		else if (pos.X > 495) {
-			transitioning = true;
-			if (FaderNode is Fader fader) {
-				await fader.FadeIn(.7f);
-			}
-			await GlobalScript.ChangeRoom(new Vector2(40, 558), "tall_tube_coral_room", true);
-		
-		}
-		else if (pos.Y < 5)
-		{
-			transitioning = true;
-			if (FaderNode is Fader fader) {
-				await fader.FadeIn(.7f);
-			}
-			await GlobalScript.ChangeRoom(new Vector2(220, 132), "secret_room_1", true);
+			await GlobalScript.ChangeRoom(new Vector2(395, 127), "vine_room", true);
 		}
 	}
 }

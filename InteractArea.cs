@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 public partial class InteractArea : Area2D
 {
 	[Export]
-	public int labelHeight {get; set;} = 20;
+	public int LabelHeight {get; set;} = 20;
 
 	[Signal]
 	public delegate void InteractEventHandler();
 
 	[Signal]
-	public delegate void EnterRoomEventHandler(String areaName);
+	public delegate void InteractReturnAreaNameEventHandler(String areaName);
 	//if door - name used to decide which room to enter
 
-	private Boolean playerNear;
-	private Boolean allowInteraction;
+	private bool playerNear;
+	private bool allowInteraction;
 
 	private Control interactLabel;
 
@@ -63,7 +63,7 @@ public partial class InteractArea : Area2D
 			{
 				//interact signals
 				EmitSignal(SignalName.Interact);
-				EmitSignal(SignalName.EnterRoom, Name);
+				EmitSignal(SignalName.InteractReturnAreaName, Name);
 			}
 		}
 	}
@@ -81,7 +81,7 @@ public partial class InteractArea : Area2D
 	{
 		if (allowInteraction && interactLabel != null)
 		{
-			interactLabel.Position = new Vector2(GlobalPosition.X, GlobalPosition.Y - labelHeight);
+			interactLabel.Position = new Vector2(GlobalPosition.X, GlobalPosition.Y - LabelHeight);
 			interactLabel.Show();
 		}
 		playerNear = true;

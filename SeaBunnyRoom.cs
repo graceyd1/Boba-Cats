@@ -45,19 +45,24 @@ public partial class SeaBunnyRoom : Node2D
 		anim.Play("vine_appear");	
 	}
 
-	public void OnBossTriggerEntered(Node2D Player)
+	public void OnBossTriggerEntered(Node2D player)
 	{
 		GetNode<Godot.Timer>("VineTimer").Start();
 
 		if (GlobalScript.CQ("short") == "ParvaCave")
 		{
-			GlobalScript.QuestNum ++;
-			
+			GlobalScript.QuestNum ++;	
 		}
 		if (GlobalScript.CQ("short") == "Seabunny")
 		{
 			if (SeaBunny is Seabunny sb)
 			{
+				var camera = player.GetNode<Camera2D>("Camera2D");
+				camera.PositionSmoothingEnabled = true;
+				camera.PositionSmoothingSpeed = 5.0f;
+				camera.GlobalPosition = new Vector2(320, camera.GlobalPosition.Y);
+				while (camera.GlobalPosition.X < 320) {GD.Print("HI");}
+				camera.SetLimit(Side.Left, 320);
 				sb.StartFight();
 			}
 		}

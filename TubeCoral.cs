@@ -4,6 +4,9 @@ using System.Net;
 
 public partial class TubeCoral : Node2D
 {
+	[Export]
+	public bool RespawnToLeft {get; set;} = false;
+
 	//create a signal for when the player should get pulled
 	//with the velocity of the pull
 	[Signal]
@@ -74,6 +77,11 @@ public partial class TubeCoral : Node2D
 	{
 		//do we need to check if the body is the player? idk
 		EmitSignal(SignalName.Unpull);
+	}
+
+	private void OnHitboxBodyEntered(Node2D player)
+	{
+		
 	}
    
 	private void OnTimerEnd() {

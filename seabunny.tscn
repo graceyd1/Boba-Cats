@@ -208,8 +208,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytd7v"]
-size = Vector2(41, 47)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_884g2"]
+radius = 20.7222
+height = 65.5556
 
 [node name="Seabunny" type="CharacterBody2D"]
 position = Vector2(14, 10)
@@ -230,9 +231,9 @@ position = Vector2(20, 15)
 scale = Vector2(3.3, 1.725)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21.5, 11.5)
+position = Vector2(20.5556, 11.5)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_ytd7v")
+shape = SubResource("CapsuleShape2D_884g2")
 
 [node name="IdleTimer" type="Timer" parent="."]
 one_shot = true

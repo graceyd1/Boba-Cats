@@ -5,14 +5,14 @@ using System;
 public partial class GroundPlayer : Player
 {
 	//public new float Speed = 70.0f;
-	public const float JumpVelocity = -220; //-330.0f;
+	public const float JumpVelocity = -200; //-330.0f;
 	public bool Climbing{get; set;} = false;
 
 	private AnimatedSprite2D animatedSprite;
 	public override void _Ready() {
 		base._Ready();
-		base.Speed = 120;
-		base.Gravity = 0.001F;
+		base.Speed = 80;
+		base.Gravity = 0.0003F;
 		InputEnabled = true;
 
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -41,7 +41,16 @@ public partial class GroundPlayer : Player
 
 					// Get the input direction and handle the movement/deceleration.
 					// As good practice, you should replace UI actions with custom gameplay actions.
-					Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+					var direction = Vector2.Zero;
+					if (Input.IsActionPressed("move_right"))
+					{
+						direction.X = 1;
+					}
+					else if (Input.IsActionPressed("move_left"))
+					{
+						direction.X = -1;
+					}
+
 					if (direction != Vector2.Zero)
 					{
 						velocity.X = direction.X * Speed;
@@ -53,7 +62,7 @@ public partial class GroundPlayer : Player
 							animatedSprite.Animation = "walk_right";
 							FacingRight = true;
 						}
-						if (direction.Y != 0) {
+						if (velocity.Y != 0) {
 							if (FacingRight) {
 								animatedSprite.Animation = "jump_right";
 							}
@@ -63,7 +72,7 @@ public partial class GroundPlayer : Player
 						}
 						animatedSprite.Play();
 					}
-					else
+					else //if velocity == zero
 					{
 						velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 						if (FacingRight) {
@@ -79,7 +88,7 @@ public partial class GroundPlayer : Player
 				Velocity = velocity;
 				MoveAndSlide();
 			}
-			else {
+			else { //climbing
 				var dir = Vector2.Zero;
 				if (InputEnabled) {
 					if (Input.IsActionPressed("move_up")) {

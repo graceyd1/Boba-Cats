@@ -151,8 +151,12 @@ position = Vector2(77, 132)
 
 [node name="TextBox" parent="GroundPlayer" instance=ExtResource("8_ou3kr")]
 
+[node name="Left" parent="." instance=ExtResource("3_nw7ai")]
+position = Vector2(-20, 0)
+scale = Vector2(1, 100)
+
 [node name="Right" parent="." instance=ExtResource("3_nw7ai")]
-position = Vector2(342, 0)
+position = Vector2(320, 0)
 scale = Vector2(1, 10)
 
 [node name="LeftFloor" parent="." instance=ExtResource("3_nw7ai")]
@@ -196,7 +200,7 @@ offset_bottom = 141.0
 [node name="InteractArea" parent="Door" instance=ExtResource("10_kgtfd")]
 position = Vector2(16, 31)
 scale = Vector2(0.6, 0.6)
-labelHeight = 30
+LabelHeight = 30
 
 [node name="InteractLabel" parent="." instance=ExtResource("11_2rh7x")]
 

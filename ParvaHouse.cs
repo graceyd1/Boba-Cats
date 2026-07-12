@@ -105,14 +105,7 @@ public partial class ParvaHouse : Node2D
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		Vector2 pos = player.Position;
-		if (pos.X < 5) {
-			transitioning = true;
-			if (FaderNode is Fader fader) {
-				await fader.FadeIn(.7f);
-			}
-			await GlobalScript.ChangeRoom(new Vector2(467, 197), "cave_room", false);
-		}
-		else if (pos.Y > 175)
+		if (pos.Y > 175)
 		{
 			transitioning = true;
 			if (FaderNode is Fader fader) {

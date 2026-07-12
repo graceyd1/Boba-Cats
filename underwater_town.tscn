@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ckcnxn3ixjw0m" path="res://assets/npcs/carsava_blue.png" id="11_3h4m0"]
 [ext_resource type="Texture2D" uid="uid://b7muoisjewej2" path="res://assets/npcs/carsava.png" id="11_qdg2w"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="11_y5y2r"]
-[ext_resource type="PackedScene" path="res://up_wall.tscn" id="12_f8bqc"]
+[ext_resource type="PackedScene" uid="uid://bnpd4i7iptaot" path="res://up_wall.tscn" id="12_f8bqc"]
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="12_xkquh"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://interact_area.tscn" id="14_48yht"]
 [ext_resource type="PackedScene" uid="uid://ygrr56bstc00" path="res://interact_label.tscn" id="15_hl72r"]
@@ -159,19 +159,19 @@ scale = Vector2(9, 1)
 
 [node name="SubShopDoor" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(230, 525)
-labelHeight = 30
+LabelHeight = 30
 
 [node name="SubShopDoor2" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(326, 526)
-labelHeight = 30
+LabelHeight = 30
 
 [node name="PlantShopDoor" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(41, 329)
-labelHeight = 30
+LabelHeight = 30
 
 [node name="BobaShopDoor" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(456, 181)
-labelHeight = 30
+LabelHeight = 30
 
 [node name="InteractLabel" parent="." instance=ExtResource("15_hl72r")]
 
@@ -195,9 +195,9 @@ shape = SubResource("RectangleShape2D_5rjh8")
 
 [connection signal="PromptUser" from="UnderwaterPlayer/TextBox" to="UnderwaterPlayer" method="OnPromptUser"]
 [connection signal="PromptUser" from="Carsava/TextBox" to="UnderwaterPlayer" method="OnPromptUser"]
-[connection signal="EnterRoom" from="SubShopDoor" to="." method="OnEnterRoom"]
-[connection signal="EnterRoom" from="SubShopDoor2" to="." method="OnEnterRoom"]
-[connection signal="EnterRoom" from="PlantShopDoor" to="." method="OnEnterRoom"]
-[connection signal="EnterRoom" from="BobaShopDoor" to="." method="OnEnterRoom"]
+[connection signal="InteractReturnAreaName" from="SubShopDoor" to="." method="OnEnterRoom"]
+[connection signal="InteractReturnAreaName" from="SubShopDoor2" to="." method="OnEnterRoom"]
+[connection signal="InteractReturnAreaName" from="PlantShopDoor" to="." method="OnEnterRoom"]
+[connection signal="InteractReturnAreaName" from="BobaShopDoor" to="." method="OnEnterRoom"]
 [connection signal="body_entered" from="CarsavaInteract" to="." method="PlayerMeetCarsava"]
 [connection signal="body_entered" from="IsThatMyBoatTrigger" to="." method="OnIsThatMyBoatTriggerBodyEntered"]

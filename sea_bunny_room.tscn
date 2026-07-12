@@ -155,7 +155,7 @@ position = Vector2(550, 42)
 scale = Vector2(5, 2.9)
 
 [node name="RightLedge" parent="WallsFolder" instance=ExtResource("7_26f6x")]
-position = Vector2(602, 153)
+position = Vector2(603, 153)
 scale = Vector2(8, 4.5)
 
 [node name="RightLedge2" parent="WallsFolder" instance=ExtResource("7_26f6x")]

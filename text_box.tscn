@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b28lwwf0dhiu6"]
+[gd_scene load_steps=2 format=3 uid="uid://b28lwwf0dhiu6"]
 
 [ext_resource type="Script" path="res://TextBox.cs" id="1_l67vn"]
-[ext_resource type="FontFile" uid="uid://cpdnqe1jl0cys" path="res://assets/Geo_Font/Geo-Regular.ttf" id="2_xfw4f"]
-[ext_resource type="FontFile" uid="uid://bfuw1mrldnem1" path="res://assets/Geo_Font/Geo-Italic.ttf" id="3_pf6uk"]
 
 [node name="TextBox" type="Node2D"]
 z_index = 4000
@@ -30,8 +28,6 @@ theme_override_constants/margin_bottom = 2
 texture_filter = 1
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_xfw4f")
-theme_override_fonts/italics_font = ExtResource("3_pf6uk")
 bbcode_enabled = true
 text = " [font_size=10]This is a text box.[/font_size] "
 fit_content = true

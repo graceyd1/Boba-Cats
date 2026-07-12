@@ -13,9 +13,12 @@ public partial class FishEnemy : Node2D
 
 	private int idx;
 
+	private Vector2 StartPos;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		StartPos = Position;
 		Visible = true;
 		idx = 0;
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -87,6 +90,8 @@ public partial class FishEnemy : Node2D
 
 	public void Enable()
 	{
+		idx = 0;
+		Position = StartPos;
 		Visible = true;
 		GetNode<CollisionShape2D>("Hitbox/HitboxShape").Disabled = false;
 		var interactArea = GetNodeOrNull<Area2D>("InteractArea");

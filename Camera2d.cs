@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
+using System.Runtime.Intrinsics;
 
 
 public partial class Camera2d : Camera2D
@@ -11,6 +12,7 @@ public partial class Camera2d : Camera2D
 		"SubmarineShop",
 		"BobaShop",
 		"PlantShop",
+		"SecretRoom1",
 		"EnterCaveRoom",
 		"ParvaHouse",
 		"EnterSeaBunnyRoom",
@@ -100,20 +102,24 @@ public partial class Camera2d : Camera2D
 			SetLimit(Side.Bottom, 300);
 		}
 		
-		else if (player.GetParent().Name == "SeaBunnyRoom")
+		if (player.GetParent().Name == "SeaBunnyRoom")
 		{
 			SetLimit(Side.Right, 640);
 			SetLimit(Side.Bottom, 270);
-
-			if (player.Position.X >= 320)
-			{
-				//camera stays still when in boss arena
-				SetLimit(Side.Left, 320);
-			}
+			
+			// if (player.Position.X >= 320)
+			// {
+			// 	//camera stays still when in boss arena
+			// 	SetLimit(Side.Left, 320);
+			// }
 			if (true) /// todo to-do change to only happen when quest is before getting treasure
 			{
 				SetLimit(Side.Top, 90);
 			}
+		}
+		else
+		{
+			PositionSmoothingEnabled = false;
 		}
 	}
 
@@ -124,13 +130,9 @@ public partial class Camera2d : Camera2D
 
 		if (player.GetParent().Name == "SeaBunnyRoom")
 		{
-			if (player.Position.X >= 320)
+			if (player.Position.X < 310)
 			{
-				//camera stays still when in boss arena
-				SetLimit(Side.Left, 320);
-			}
-			else
-			{
+				//camera moves like normal when not in boss arena
 				SetLimit(Side.Left, 0);
 			}
 		}
