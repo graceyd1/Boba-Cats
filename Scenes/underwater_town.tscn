@@ -39,7 +39,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sf36o"]
-size = Vector2(43, 124.75)
+size = Vector2(74.5, 39.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rjh8"]
 size = Vector2(9, 532)
@@ -157,6 +157,36 @@ scale = Vector2(10, 1)
 position = Vector2(324, 181)
 scale = Vector2(9, 1)
 
+[node name="PlantShopRoof1" parent="Walls" instance=ExtResource("12_f8bqc")]
+position = Vector2(5, 222)
+rotation = 0.0855211
+scale = Vector2(3.7, 0.7)
+
+[node name="PlantShopRoof2" parent="Walls" instance=ExtResource("12_f8bqc")]
+position = Vector2(78, 186)
+rotation = 0.0855211
+scale = Vector2(5.4, 0.7)
+
+[node name="BobaShopRoof" parent="Walls" instance=ExtResource("12_f8bqc")]
+position = Vector2(360, 48)
+rotation = -0.0872665
+scale = Vector2(5.5, 0.7)
+
+[node name="SubShopRoof1" parent="Walls" instance=ExtResource("12_f8bqc")]
+position = Vector2(175, 388)
+rotation = -0.0872665
+scale = Vector2(5.8, 0.7)
+
+[node name="SubShopRoof2" parent="Walls" instance=ExtResource("12_f8bqc")]
+position = Vector2(275, 389)
+rotation = -0.0872665
+scale = Vector2(5.1, 0.7)
+
+[node name="SubShopRoof3" parent="Walls" instance=ExtResource("12_f8bqc")]
+position = Vector2(374, 421)
+rotation = -0.0872665
+scale = Vector2(4.3, 0.7)
+
 [node name="SubShopDoor" parent="." instance=ExtResource("14_48yht")]
 position = Vector2(230, 525)
 
@@ -176,7 +206,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarsavaInteract"]
-position = Vector2(475, 462.375)
+position = Vector2(459.25, 504.875)
 shape = SubResource("RectangleShape2D_sf36o")
 
 [node name="IsThatMyBoatTrigger" type="Area2D" parent="."]

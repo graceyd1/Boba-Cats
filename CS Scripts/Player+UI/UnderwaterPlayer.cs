@@ -25,20 +25,22 @@ public partial class UnderwaterPlayer : Player
 
 		if (!MovementIsDisabled())
 		{
-			if (CoralStatus != InCoral.VERTICAL) {
-				if (Input.IsActionPressed("move_right")) {
-					velocity.X += 1;
+			if (InputEnabled) {
+				if (CoralStatus != InCoral.VERTICAL) {
+					if (Input.IsActionPressed("move_right")) {
+						velocity.X += 1;
+					}
+					if (Input.IsActionPressed("move_left")) {
+						velocity.X -= 1;
+					}
 				}
-				if (Input.IsActionPressed("move_left")) {
-					velocity.X -= 1;
-				}
-			}
-			if (CoralStatus != InCoral.HORIZONTAL) {
-				if (Input.IsActionPressed("move_down")) {
-					velocity.Y += 1;
-				}
-				if (Input.IsActionPressed("move_up")) {
-					velocity.Y -= 1;
+				if (CoralStatus != InCoral.HORIZONTAL) {
+					if (Input.IsActionPressed("move_down")) {
+						velocity.Y += 1;
+					}
+					if (Input.IsActionPressed("move_up")) {
+						velocity.Y -= 1;
+					}
 				}
 			}
 
