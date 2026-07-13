@@ -20,10 +20,10 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Fader="*res://fader.tscn"
-GlobalSceneChange="*res://global_scene_change.tscn"
-GlobalScript="*res://global_script.tscn"
-DevMode="*res://dev_mode.tscn"
+Fader="*res://Scenes/fader.tscn"
+GlobalSceneChange="*res://Scenes/global_scene_change.tscn"
+GlobalScript="*res://Scenes/global_script.tscn"
+DevMode="*res://Scenes/dev_mode.tscn"
 
 [display]
 

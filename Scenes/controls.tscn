@@ -1,0 +1,126 @@
+[gd_scene load_steps=11 format=3 uid="uid://dif3m6ljwdlny"]
+
+[ext_resource type="Script" path="res://CS Scripts/Player+UI/Controls.cs" id="1_weoqj"]
+[ext_resource type="Script" path="res://CS Scripts/Player+UI/ControlsTab.cs" id="3_auoow"]
+[ext_resource type="Texture2D" uid="uid://csyir0wlb3anh" path="res://assets/player/menu_icon.png" id="3_l32e4"]
+[ext_resource type="Script" path="res://CS Scripts/Player+UI/InventoryTab.cs" id="4_cjqpt"]
+[ext_resource type="Script" path="res://CS Scripts/Player+UI/QuestsTab.cs" id="4_s05c4"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ah2n4"]
+light_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ss1"]
+bg_color = Color(0.984314, 0.964706, 0.894118, 0.839216)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpg6r"]
+bg_color = Color(0.776471, 0.670588, 0.568627, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.423986, 0.387577, 0.217136, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6f04i"]
+bg_color = Color(0.776365, 0.6709, 0.568389, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_017sx"]
+
+[node name="Controls" type="Node2D"]
+material = SubResource("CanvasItemMaterial_ah2n4")
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_weoqj")
+
+[node name="Icon" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, 13.3333)
+texture = ExtResource("3_l32e4")
+
+[node name="Expanded" type="Panel" parent="."]
+use_parent_material = true
+offset_left = -87.0
+offset_top = 30.0
+offset_right = 7.0
+offset_bottom = 113.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8ss1")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Expanded"]
+layout_mode = 2
+offset_right = 94.0
+offset_bottom = 83.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Expanded/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Expanded/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.643137, 0.45098, 0.172549, 1)
+theme_override_font_sizes/font_size = 8
+autowrap_mode = 3
+
+[node name="InventoryTab" type="Button" parent="."]
+use_parent_material = true
+offset_left = -50.0
+offset_top = 33.3333
+offset_right = -27.0
+offset_bottom = 41.3333
+theme_override_colors/font_color = Color(0.4696, 0.400508, 0.239824, 1)
+theme_override_font_sizes/font_size = 5
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lpg6r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6f04i")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_017sx")
+text = "Items"
+script = ExtResource("4_cjqpt")
+
+[node name="QuestsTab" type="Button" parent="."]
+use_parent_material = true
+offset_left = -20.0
+offset_top = 33.3333
+offset_right = 3.0
+offset_bottom = 41.3333
+theme_override_colors/font_color = Color(0.4696, 0.400508, 0.239824, 1)
+theme_override_font_sizes/font_size = 5
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lpg6r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6f04i")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_017sx")
+text = "Quests
+"
+script = ExtResource("4_s05c4")
+
+[node name="ControlsTab" type="Button" parent="."]
+use_parent_material = true
+offset_left = -80.0
+offset_top = 33.0
+offset_right = -57.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.470588, 0.4, 0.239216, 1)
+theme_override_font_sizes/font_size = 5
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lpg6r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6f04i")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_017sx")
+text = "Ctrls"
+script = ExtResource("3_auoow")
+
+[connection signal="pressed" from="InventoryTab" to="InventoryTab" method="OnButtonPressed"]
+[connection signal="pressed" from="QuestsTab" to="QuestsTab" method="OnButtonPressed"]
+[connection signal="pressed" from="ControlsTab" to="ControlsTab" method="OnButtonPressed"]

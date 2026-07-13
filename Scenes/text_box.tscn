@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://b28lwwf0dhiu6"]
+
+[ext_resource type="Script" path="res://CS Scripts/General/TextBox.cs" id="1_l67vn"]
+
+[node name="TextBox" type="Node2D"]
+z_index = 4000
+position = Vector2(0, -10)
+script = ExtResource("1_l67vn")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+texture_filter = 1
+offset_left = -60.0
+offset_top = -50.0
+offset_right = 60.0
+grow_vertical = 0
+size_flags_vertical = 8
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = " [font_size=10]This is a text box.[/font_size] "
+fit_content = true
+scroll_active = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

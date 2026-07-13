@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dacucl1yyxuex"]
+
+[ext_resource type="FontFile" uid="uid://cpdnqe1jl0cys" path="res://assets/Geo_Font/Geo-Regular.ttf" id="1_4f6lq"]
+[ext_resource type="Script" path="res://CS Scripts/General/TextEnterLabel.cs" id="1_v5fe5"]
+
+[node name="TextEnterLabel" type="Control"]
+z_index = 4000
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_v5fe5")
+
+[node name="Label" type="Label" parent="."]
+z_index = 4000
+layout_mode = 2
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(0.967754, 0.978675, 1, 1)
+theme_override_fonts/font = ExtResource("1_4f6lq")
+theme_override_font_sizes/font_size = 10
+text = "<<Enter/Space>>"
+horizontal_alignment = 1
+vertical_alignment = 1
