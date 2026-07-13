@@ -217,7 +217,6 @@ position = Vector2(14, 10)
 scale = Vector2(0.9, 0.9)
 motion_mode = 1
 script = ExtResource("1_lxr8e")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -231,7 +230,7 @@ position = Vector2(20, 15)
 scale = Vector2(3.3, 1.725)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20.5556, 11.5)
+position = Vector2(21.1111, 10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_884g2")
 

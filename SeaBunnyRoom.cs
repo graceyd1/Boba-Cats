@@ -24,12 +24,13 @@ public partial class SeaBunnyRoom : Node2D
 		{
 			if (p.respawning)
 			{
+				while (p.respawning) {}
 				if (SeaBunny is Seabunny sb)
 				{
 
 					sb.InFight = false;
 				}
-				SeaBunny.Position = new Vector2(485, 212);
+				SeaBunny.Position = new Vector2(485, 213);
 			}
 		}
 

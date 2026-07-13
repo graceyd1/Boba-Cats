@@ -254,6 +254,21 @@ height = 10.0
 radius = 4.0
 height = 94.0
 
+[sub_resource type="Animation" id="Animation_ggsac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -34)]
+}
+
 [sub_resource type="Animation" id="Animation_ti8fh"]
 resource_name = "grow"
 length = 1.8
@@ -268,21 +283,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -34), Vector2(0, 40)]
-}
-
-[sub_resource type="Animation" id="Animation_ggsac"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -34)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0hgt"]

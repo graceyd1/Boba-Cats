@@ -53,7 +53,7 @@ public partial class Seabunny : CharacterBody2D
 
 	public async void StartFight()
 	{
-		Position = new Vector2(485, 212);
+		Position = new Vector2(485, 213);
 
 		if (!InFight)
 		{
@@ -79,10 +79,14 @@ public partial class Seabunny : CharacterBody2D
 		var anim = GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
 
 		Velocity = Vector2.Zero;
-		facingLeft = false;
-		GD.Print(facingLeft);///
-		await Dash(1);
-		Position = new Vector2(550, 212);
+		
+		while (Position.X < 540)
+		{
+			facingLeft = false;
+			GD.Print(facingLeft);///
+			await Dash(1);
+		}
+		Position = new Vector2(550, 198);
 
 		animatedSprite.Animation = "start_climb";
 		animatedSprite.Play();
@@ -141,6 +145,7 @@ public partial class Seabunny : CharacterBody2D
 		animatedSprite.Animation = "dashing";
 		animatedSprite.Play();
 		
+		GD.Print(facingLeft);///
 		if (facingLeft)
 		{
 			Velocity = new Vector2(-dashSpeed, 0); //set velocity.x to -dashSpeed

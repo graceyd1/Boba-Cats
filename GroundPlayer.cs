@@ -62,14 +62,6 @@ public partial class GroundPlayer : Player
 							animatedSprite.Animation = "walk_right";
 							FacingRight = true;
 						}
-						if (velocity.Y != 0) {
-							if (FacingRight) {
-								animatedSprite.Animation = "jump_right";
-							}
-							else {
-								animatedSprite.Animation ="jump_left";
-							}
-						}
 						animatedSprite.Play();
 					}
 					else //if velocity == zero
@@ -82,6 +74,15 @@ public partial class GroundPlayer : Player
 							animatedSprite.Animation = "sit_left";
 						}
 						animatedSprite.Stop();
+					}
+
+					if (velocity.Y != 0) {
+						if (FacingRight) {
+							animatedSprite.Animation = "jump_right";
+						}
+						else {
+							animatedSprite.Animation ="jump_left";
+						}
 					}
 				}
 

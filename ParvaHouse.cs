@@ -46,7 +46,8 @@ public partial class ParvaHouse : Node2D
 				if (dash is Player p)
 				{
 					p.SetDisableMovement(true);
-				}	
+				}
+				player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = "sit_right";	
 				player.Position = new Vector2(78, 132);
 
 				await pT.ShowText("A [i]visitor[/i]. Well, I must say I'm surprised you got past the vines.");
