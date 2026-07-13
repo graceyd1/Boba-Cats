@@ -9,6 +9,10 @@ public partial class TreasureRoom : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (GlobalScript.CQ("short") == "ReturnBoba")
+		{
+			GetBobaCutscene(GetNode<Node2D>("GroundPlayer"));
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,10 +35,17 @@ public partial class TreasureRoom : Node2D
 		var catssavaT = catssava.GetNode<TextBox>("TextBox");
 		var azucatT = GetNode<TextBox>("Azucat/TextBox");
 
+		var playerAnim = player.GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		playerAnim.Animation = "walk_right";
+		playerAnim.Play();
+		anim.Play("dash_enters");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+		playerAnim.Animation = "sit_right";
+
 		await dashT.ShowText("Phew... Thank goodness I escaped the sea bunny!");
 		await dashT.ShowText("Holy tapioca pearls that's a lot of boba.");
 
-		player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = "sit_left";
+		playerAnim.Animation = "sit_left";
 
 		anim.Play("cats_enter");
 		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
@@ -57,11 +68,11 @@ public partial class TreasureRoom : Node2D
 		anim.Play("azucat_takes_the_boba");
 		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
 
-		//more dialogue if we want
-
 		//both cats leave
 		anim.Play("cats_leave");
 		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+		
+		GlobalScript.QuestNum ++;
 	}
 
 	private async Task NextRoomCheck() {

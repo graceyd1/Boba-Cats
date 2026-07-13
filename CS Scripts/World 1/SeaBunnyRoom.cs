@@ -14,13 +14,17 @@ public partial class SeaBunnyRoom : Node2D
 	{
 		Player =  GetNode<Player>("GroundPlayer");
 		SeaBunny = GetNode<Seabunny>("Seabunny");
+
+		if (GlobalScript.CQ("short") == "GetBoat")
+		{
+			GetBoatCutscene();	
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override async void _Process(double delta)
 	{
-		//reset position when player leaves or respawns
-
+		//reset position when player respawns
 		if (Player.respawning)
 		{
 			while (Player.respawning) {}
@@ -42,14 +46,13 @@ public partial class SeaBunnyRoom : Node2D
 
 	public void OnBossTriggerEntered(Node2D player)
 	{
-		GetNode<Godot.Timer>("VineTimer").Start();
-
 		if (GlobalScript.CQ("short") == "ParvaCave")
 		{
 			GlobalScript.QuestNum ++;	
 		}
 		if (GlobalScript.CQ("short") == "Seabunny")
 		{
+			GetNode<Godot.Timer>("VineTimer").Start();
 			var camera = player.GetNode<Camera2D>("Camera2D");
 			camera.PositionSmoothingEnabled = true;
 			camera.PositionSmoothingSpeed = 5.0f;
@@ -74,13 +77,34 @@ public partial class SeaBunnyRoom : Node2D
 				SeaBunny.InFight = false;
 				await SeaBunny.EndFight();
 
+				if (Player is GroundPlayer gp)
+				{
+					gp.Climbing = true;
+				}
 				Player.SetDisableMovement(false);
 				Player.invulnerable = false;
-				player.Position = new Vector2(600, 145);
 			}
 
 			GlobalScript.QuestNum ++;
 		}
+	}
+
+	private async void GetBoatCutscene()
+	{
+		var azucatBoba = GetNode<Sprite2D>("BOBA");
+		azucatBoba.Position = new Vector2(218, 75);
+		var aText = GetNode<TextBox>("BOBA/Azucat/TextBox");
+		var anim = GetNode<AnimationPlayer>("AnimationPlayer");
+		await aText.ShowText("Thanks for your help, Dash! Here's your new ship!");
+		
+		anim.Play("ship_deployed");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+
+		await GetNode<TextBox>("GroundPlayer/TextBox").ShowText("...");
+		await aText.ShowText("...Well, I better get going! See ya!");
+
+		anim.Play("azucat_leaves");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
 	}
 
 	private async Task NextRoomCheck() {
@@ -102,6 +126,14 @@ public partial class SeaBunnyRoom : Node2D
 				await fader.FadeIn(.7f);
 			}
 			await GlobalScript.ChangeRoom(new Vector2(20, 140), "treasure_room", true);
+		}
+		else if (pos.Y < 5)
+		{
+			transitioning = true;
+			if (FaderNode is Fader fader) {
+				await fader.FadeIn(.7f);
+			}
+			await GlobalScript.ChangeRoom(Vector2.Zero, "world_end_screen", true);
 		}
 
 	}

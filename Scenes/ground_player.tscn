@@ -112,4 +112,4 @@ script = ExtResource("2_dj4o3")
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_8k2q2")
 sprite_frames = SubResource("SpriteFrames_opiss")
-animation = &"climb"
+animation = &"sit_right"

@@ -57,7 +57,8 @@ public partial class GlobalScript : Node2D
 		{"ParvaCave", "Investigate the cave"}, //5 (after talking to parva)
 		{"Seabunny", "Escape from the sea bunny"}, //6
 		{"ReturnBoba", "Return the boba to Azucat and Catssava"}, //7
-		{"Surface", "Head up to the surface"} //8
+		{"GetBoat", "Get your new boat from Azucat"}, //8
+		{"Surface", "Head up to the surface"} //9
 	};
 
 

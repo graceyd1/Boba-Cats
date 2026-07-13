@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b4a2tpq26qeqg"]
+
+[node name="WorldEndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 320.0
+offset_bottom = 137.0
+text = "Boba Cats!
+World 1
+
+Thank you for playing!
+More worlds coming... eventually"
+horizontal_alignment = 1

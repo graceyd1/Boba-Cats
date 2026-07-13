@@ -58,11 +58,6 @@ debug_color = Color(0.579823, 0.546776, 0.218768, 0.42)
 [node name="GrowableVine" parent="." instance=ExtResource("4_6dfnw")]
 position = Vector2(132.5, 57)
 
-[node name="GroundPlayer" parent="." instance=ExtResource("6_4f8ty")]
-position = Vector2(258, 132)
-
-[node name="TextBox" parent="GroundPlayer" instance=ExtResource("4_to25d")]
-
 [node name="Door" parent="." instance=ExtResource("9_ee1pn")]
 offset_left = 299.0
 offset_top = 119.0
@@ -72,7 +67,11 @@ offset_bottom = 140.0
 [node name="ShopExit" parent="Door" instance=ExtResource("10_kf4ch")]
 position = Vector2(10, 23)
 scale = Vector2(0.5, 0.5)
-labelHeight = 30
+
+[node name="GroundPlayer" parent="." instance=ExtResource("6_4f8ty")]
+position = Vector2(258, 132)
+
+[node name="TextBox" parent="GroundPlayer" instance=ExtResource("4_to25d")]
 
 [node name="InteractLabel" parent="." instance=ExtResource("11_7yypv")]
 

@@ -10,6 +10,11 @@ public partial class GlobalSceneChange : Node2D
 	
 	[Signal]
 	public delegate void SceneReadyEventHandler();
+
+	public static List<string> NoPlayerRooms = new List<string>
+	{
+		"WorldEndScreen"
+	};
 	
 	public static List<string> UnderwaterRooms = new List<string> {
 		"FirstRoom",
@@ -72,25 +77,28 @@ public partial class GlobalSceneChange : Node2D
 		GlobalScript.CurrentRoom = room;
 		await ToSignal(this, GlobalSceneChange.SignalName.SceneReady);
 		string roomName = GetTree().CurrentScene.Name;
-		if (UnderwaterRooms.Contains(roomName)) {
-			currPlayer = GetTree().CurrentScene.GetNode<Player>("UnderwaterPlayer");
-		}
-		else if (GroundRooms.Contains(roomName)) {
-			currPlayer = GetTree().CurrentScene.GetNode<Player>("GroundPlayer");
-		}
-		else {
-			GD.Print("Room not found in list");
-		}
-		if (currPlayer == null) {
-			GD.Print("ERROR getting player at GlobalSceneChange");
-		}
-		
-		currPlayer.Position = pos;
-		if (right) {
-			currPlayer.FacingRight = true;
-		}
-		else {
-			currPlayer.FacingRight = false;
+		if (!NoPlayerRooms.Contains(roomName))
+		{
+			if (UnderwaterRooms.Contains(roomName)) {
+				currPlayer = GetTree().CurrentScene.GetNode<Player>("UnderwaterPlayer");
+			}
+			else if (GroundRooms.Contains(roomName)) {
+				currPlayer = GetTree().CurrentScene.GetNode<Player>("GroundPlayer");
+			}
+			else {
+				GD.Print("Room not found in list");
+			}
+			if (currPlayer == null) {
+				GD.Print("ERROR getting player at GlobalSceneChange");
+			}
+			
+			currPlayer.Position = pos;
+			if (right) {
+				currPlayer.FacingRight = true;
+			}
+			else {
+				currPlayer.FacingRight = false;
+			}
 		}
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		if (FaderNode is Fader fade) {

@@ -10,7 +10,7 @@ public partial class GroundPlayer : Player
 	private AnimatedSprite2D animatedSprite;
 	public override void _Ready() {
 		base._Ready();
-		base.Speed = 80;
+		base.Speed = 120;
 		base.Gravity = 0.0003F;
 		InputEnabled = true;
 
@@ -86,7 +86,7 @@ public partial class GroundPlayer : Player
 				}
 
 				Velocity = velocity;
-				MoveAndSlide();
+				//MoveAndSlide();
 			}
 			else { //climbing
 				var dir = Vector2.Zero;
@@ -111,7 +111,6 @@ public partial class GroundPlayer : Player
 				animatedSprite.Animation = "climb";
 				
 				Velocity = dir;
-				//MoveAndSlide();
 			}
 			//flashing when hurt
 			var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
@@ -129,9 +128,8 @@ public partial class GroundPlayer : Player
 				}
 			}
 		}
-		MoveAndSlide();
 		//Sea bunny bounce
-		//Finished quest 3: escape from the sea bunny
+		//Finished quest 7: get treasure
 		if (GlobalScript.CQ("short") == "Surface")
 		{
 			int count = GetSlideCollisionCount();
@@ -145,10 +143,11 @@ public partial class GroundPlayer : Player
 					//Position += new Vector2(0, -70);
 					SetDisableMovement(true);
 					TimeBounce();
+					break;
 				}
 			}
 		}
-
+		MoveAndSlide();
 		OOBCheck();
 	}
 	

@@ -7,9 +7,6 @@ public partial class Seabunny : CharacterBody2D
 	[Export]
 	public int dashSpeed {get; set;} = 200;
 
-	// [Export]
-	// public String animationOverride {get; set;} = null;
-
 	public bool InFight;
 
 	public Vector2 StartPos;
@@ -29,11 +26,27 @@ public partial class Seabunny : CharacterBody2D
 		GD.Randomize();
 		
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		animatedSprite.Animation = "idle";
-		animatedSprite.Play();
 
 		idleTimer = GetNode<Godot.Timer>("IdleTimer");
 		InFight = false;
+
+		if (GlobalScript.QuestNum >= GlobalScript.MainQuests.IndexOf("GetBoat"))
+		{
+			Position = new Vector2(460, 205);
+			GetNode<Hitbox>("Hitbox").SetDisabled(true);
+			animatedSprite.Animation = "sleep";
+			animatedSprite.Play();
+
+			//display bouncy icon
+			GetNode<Sprite2D>("BounceIcon").Show();
+			GetNode<AnimationPlayer>("AnimationPlayer").Play("arrow_move");
+		}
+		else
+		{
+			GetNode<Sprite2D>("BounceIcon").Hide();
+			animatedSprite.Animation = "idle";
+			animatedSprite.Play();
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,12 +59,6 @@ public partial class Seabunny : CharacterBody2D
 			x: Mathf.Clamp(Position.X, 333, 600),
 			y: Position.Y
 		);
-
-		// //animation override for cutscenes
-		// if (animationOverride != null)
-		// {
-		// 	GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = animationOverride;
-		// }
 	}
 
 	public async void StartFight()
@@ -73,21 +80,16 @@ public partial class Seabunny : CharacterBody2D
 	public async Task EndFight()
 	{
 		InFight = false;
-
-		if (GetNode<Area2D>("Hitbox") is Hitbox h)
-		{
-			h.SetDisabled(true);
-		}
-		
+		GetNode<Hitbox>("Hitbox").SetDisabled(true);
 		var anim = GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
-
 		Velocity = Vector2.Zero;
 		
 		while (Position.X < 540)
 		{
 			facingLeft = false;
+			animatedSprite.FlipH = true;
 			GD.Print(facingLeft);///
-			await Dash(1);
+			await Dash(3);
 		}
 		Position = new Vector2(550, 198);
 
@@ -162,6 +164,10 @@ public partial class Seabunny : CharacterBody2D
 		for (int i = 0; i < loops; i ++)
 		{
 			await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationLooped);
+			if (!facingLeft && Position.X > 555)
+			{
+				break;
+			}
 		}
 
 		Velocity = Vector2.Zero;
