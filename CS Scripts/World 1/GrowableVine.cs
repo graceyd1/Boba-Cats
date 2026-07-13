@@ -25,10 +25,12 @@ public partial class GrowableVine : Area2D
 
 			GetNode<AnimationPlayer>("AnimationPlayer").Play("grow");
 
-			await ToSignal(animatedSprite2D, AnimatedSprite2D.SignalName.AnimationFinished);
-			animatedSprite2D.Animation = "grown";
+			//the collision shape now enables before it fully grows (in case you want to speedrun)
 			GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
 			GetNode<CollisionShape2D>("GrownCollisionShape").SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
+
+			await ToSignal(animatedSprite2D, AnimatedSprite2D.SignalName.AnimationFinished);
+			animatedSprite2D.Animation = "grown";
 		}
 	}
 	public void OnBodyEntered(Node2D player) {

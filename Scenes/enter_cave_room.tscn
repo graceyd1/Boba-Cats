@@ -39,6 +39,10 @@ frame = 1
 frame_progress = 0.0783265
 centered = false
 
+[node name="GrowableVine" parent="." instance=ExtResource("7_pcuo8")]
+z_index = 4000
+position = Vector2(193, 57)
+
 [node name="GroundPlayer" parent="." instance=ExtResource("4_recxf")]
 position = Vector2(124, 119)
 metadata/_edit_group_ = true
@@ -67,10 +71,6 @@ scale = Vector2(1, 10)
 [node name="Left" parent="." instance=ExtResource("6_urne7")]
 position = Vector2(-20, 0)
 scale = Vector2(1, 10)
-
-[node name="GrowableVine" parent="." instance=ExtResource("7_pcuo8")]
-z_index = 4000
-position = Vector2(194, 52)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 49.0

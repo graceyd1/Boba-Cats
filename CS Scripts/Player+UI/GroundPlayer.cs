@@ -1,4 +1,3 @@
-//Most of this is the default CharacterBody2D code
 using Godot;
 using System;
 
@@ -105,14 +104,10 @@ public partial class GroundPlayer : Player
 						dir.X -= 1;
 					}
 				}
-				// if (dir.Length() > 0) {
-				// 	dir = dir.Normalized() * Speed;
-					
-				// 	animatedSprite.Play();
-				// }
-				// else {
-				// 	animatedSprite.Stop();
-				// }
+				if (dir.Length() > 0) {
+					dir *= Speed; //dir.Normalized() * Speed; ///wait why normalized
+				}
+
 				animatedSprite.Animation = "climb";
 				
 				Velocity = dir;

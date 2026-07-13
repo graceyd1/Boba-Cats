@@ -76,6 +76,25 @@ _data = {
 "sit_down": SubResource("Animation_a8e0l")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_pg3t3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6j6vd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wd4c4")
+}],
+"loop": true,
+"name": &"mad",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_daklm"]
 atlas = ExtResource("4_2lp8j")
 region = Rect2(0, 0, 20, 58)
@@ -110,25 +129,6 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_pg3t3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_6j6vd")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_wd4c4")
-}],
-"loop": true,
-"name": &"mad",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc57o"]
 size = Vector2(20, 146)
 
@@ -145,6 +145,12 @@ centered = false
 libraries = {
 "": SubResource("AnimationLibrary_jf6cr")
 }
+
+[node name="Parva" type="AnimatedSprite2D" parent="."]
+position = Vector2(200, 129)
+sprite_frames = SubResource("SpriteFrames_pg3t3")
+
+[node name="TextBox" parent="Parva" instance=ExtResource("8_ou3kr")]
 
 [node name="GroundPlayer" parent="." instance=ExtResource("2_rt8xu")]
 position = Vector2(77, 132)
@@ -177,12 +183,6 @@ centered = false
 [node name="Door" parent="Trapdoor" instance=ExtResource("3_nw7ai")]
 position = Vector2(0, 18)
 
-[node name="Parva" type="AnimatedSprite2D" parent="."]
-position = Vector2(200, 129)
-sprite_frames = SubResource("SpriteFrames_pg3t3")
-
-[node name="TextBox" parent="Parva" instance=ExtResource("8_ou3kr")]
-
 [node name="TriggerDialogue" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -203,7 +203,7 @@ scale = Vector2(0.6, 0.6)
 
 [node name="InteractLabel" parent="." instance=ExtResource("11_2rh7x")]
 
-[connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="PromptUser" from="Parva/TextBox" to="GroundPlayer" method="OnPromptUser"]
+[connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="body_entered" from="TriggerDialogue" to="." method="startDialogue"]
 [connection signal="Interact" from="Door/InteractArea" to="." method="OnExitRoom"]
