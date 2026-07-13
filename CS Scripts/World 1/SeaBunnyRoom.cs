@@ -7,6 +7,7 @@ public partial class SeaBunnyRoom : Node2D
 	private bool transitioning = false;
 	private Player Player;
 	private Seabunny SeaBunny;
+	private bool cameraGliding = false;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -32,6 +33,14 @@ public partial class SeaBunnyRoom : Node2D
 		{
 			await NextRoomCheck();
 		}
+		
+		if (cameraGliding) {
+			var camera = Player.GetNode<Camera2D>("Camera2D");
+			if (camera.GetTargetPosition() == camera.GetScreenCenterPosition()) {
+				camera.PositionSmoothingEnabled = false;
+				cameraGliding = false;
+			}
+		}
 	}
 
 	private void OnVineTimerTimeout()
@@ -53,9 +62,11 @@ public partial class SeaBunnyRoom : Node2D
 			var camera = player.GetNode<Camera2D>("Camera2D");
 			camera.PositionSmoothingEnabled = true;
 			camera.PositionSmoothingSpeed = 5.0f;
-			camera.GlobalPosition = new Vector2(320, camera.GlobalPosition.Y);
-			while (camera.GlobalPosition.X < 320) {GD.Print("HI");}
-			camera.SetLimit(Side.Left, 320);
+			cameraGliding = true;
+			camera.GlobalPosition = new Vector2(470, camera.GlobalPosition.Y);
+			
+			//camera.SetLimit(Side.Left, 320);
+			
 			SeaBunny.StartFight();
 
 		}
