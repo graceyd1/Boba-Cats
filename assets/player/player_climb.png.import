@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djs3ggdxjckxa"
-path="res://.godot/imported/seabunny_climb10.png-63594d693440579f2746a73ec948ad43.ctex"
+uid="uid://bwqrcy66xl8j"
+path="res://.godot/imported/player_climb.png-a56fd0e1dbc6242db0730a9ed2dadf40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy_sprites/seabunny/seabunny_climb/seabunny_climb10.png"
-dest_files=["res://.godot/imported/seabunny_climb10.png-63594d693440579f2746a73ec948ad43.ctex"]
+source_file="res://assets/player/player_climb.png"
+dest_files=["res://.godot/imported/player_climb.png-a56fd0e1dbc6242db0730a9ed2dadf40.ctex"]
 
 [params]
 

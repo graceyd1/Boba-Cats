@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://djy0cxmipcbm6"]
 
-[ext_resource type="Script" path="res://Player.cs" id="1_vr4g2"]
+[ext_resource type="Script" path="res://CS Scripts/Player.cs" id="1_vr4g2"]
 [ext_resource type="PackedScene" uid="uid://dif3m6ljwdlny" path="res://controls.tscn" id="4_o0s2x"]
 [ext_resource type="PackedScene" uid="uid://qgqaega0h2io" path="res://flashlight.tscn" id="4_u4d4c"]
 [ext_resource type="PackedScene" uid="uid://dacucl1yyxuex" path="res://text_enter_label.tscn" id="5_sg0de"]
-[ext_resource type="Script" path="res://Camera2d.cs" id="8_6m7sy"]
+[ext_resource type="Script" path="res://CS Scripts/Camera2d.cs" id="8_6m7sy"]
 [ext_resource type="PackedScene" uid="uid://7106o3opoex1" path="res://player_health.tscn" id="8_pkvse"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_peka7"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b28lwwf0dhiu6"]
 
-[ext_resource type="Script" path="res://TextBox.cs" id="1_l67vn"]
+[ext_resource type="Script" path="res://CS Scripts/TextBox.cs" id="1_l67vn"]
 
 [node name="TextBox" type="Node2D"]
 z_index = 4000

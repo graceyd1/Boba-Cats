@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://b2eu1rt08rowb"]
 
 [ext_resource type="PackedScene" uid="uid://djy0cxmipcbm6" path="res://player.tscn" id="1_sasn5"]
-[ext_resource type="Script" path="res://GroundPlayer.cs" id="2_dj4o3"]
+[ext_resource type="Script" path="res://CS Scripts/GroundPlayer.cs" id="2_dj4o3"]
 [ext_resource type="Texture2D" uid="uid://cb66mimobnyh8" path="res://assets/player/ground player/jump_left0.png" id="3_flul6"]
 [ext_resource type="Texture2D" uid="uid://bag03x0mlqtfh" path="res://assets/player/ground player/jump_left1.png" id="4_kr7fd"]
 [ext_resource type="Texture2D" uid="uid://bk7trmlqcca3x" path="res://assets/player/ground player/jump_right0.png" id="5_4lwnc"]

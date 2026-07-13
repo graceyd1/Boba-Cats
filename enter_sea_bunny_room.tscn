@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://nhjfauiekh88"]
 
-[ext_resource type="Script" path="res://EnterSeaBunnyRoom.cs" id="1_38abd"]
+[ext_resource type="Script" path="res://CS Scripts/EnterSeaBunnyRoom.cs" id="1_38abd"]
 [ext_resource type="Texture2D" uid="uid://d27wgritwnl2q" path="res://assets/backgrounds/enter_sea_bunny_room/enter_sea_bunny_room0.png" id="1_uv7qk"]
 [ext_resource type="Texture2D" uid="uid://c5reqgi5dblg6" path="res://assets/backgrounds/enter_sea_bunny_room/enter_sea_bunny_room1.png" id="2_8vugk"]
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_7qjwg"]

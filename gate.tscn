@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://davrf0y245h67"]
 
-[ext_resource type="Script" path="res://Gate.cs" id="1_jp7k6"]
+[ext_resource type="Script" path="res://CS Scripts/Gate.cs" id="1_jp7k6"]
 [ext_resource type="Texture2D" uid="uid://5lyy7308yj6j" path="res://assets/objects/gate_button.png" id="1_jqibk"]
 [ext_resource type="Texture2D" uid="uid://b5fiih0wfemja" path="res://assets/objects/gate_half.png" id="2_s1goc"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="3_e0na8"]

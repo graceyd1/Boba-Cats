@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bajmr1yncc2h"
-path="res://.godot/imported/seabunny_spin11.png-8f94e9a6cd1d884290f497219025b45b.ctex"
+uid="uid://c715yvcvxnfvb"
+path="res://.godot/imported/seabunny_idle_sleep.png-dfb7f3b50d65b0733cd0e35465eac106.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy_sprites/seabunny/seabunny_spin/seabunny_spin11.png"
-dest_files=["res://.godot/imported/seabunny_spin11.png-8f94e9a6cd1d884290f497219025b45b.ctex"]
+source_file="res://assets/enemy_sprites/seabunny/seabunny_idle_sleep.png"
+dest_files=["res://.godot/imported/seabunny_idle_sleep.png-dfb7f3b50d65b0733cd0e35465eac106.ctex"]
 
 [params]
 

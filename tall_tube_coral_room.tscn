@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://uohoeh0qhd8u"]
 
-[ext_resource type="Script" path="res://TallTubeCoralRoom.cs" id="1_8u050"]
+[ext_resource type="Script" path="res://CS Scripts/TallTubeCoralRoom.cs" id="1_8u050"]
 [ext_resource type="Texture2D" uid="uid://bigp75om7gk0r" path="res://assets/backgrounds/tall_tube_coral_room/tall_tube_coral_room0.png" id="1_bh2g0"]
 [ext_resource type="Texture2D" uid="uid://ctf104x1u28yl" path="res://assets/backgrounds/tall_tube_coral_room/tall_tube_coral_room1.png" id="2_l4ftt"]
 [ext_resource type="Texture2D" uid="uid://bok5shsdta8wu" path="res://assets/backgrounds/tall_tube_coral_room/tall_tube_coral_room2.png" id="3_g5kwh"]

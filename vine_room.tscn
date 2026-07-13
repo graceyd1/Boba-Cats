@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://cxqenrqvkst2p"]
 
-[ext_resource type="Script" path="res://VineRoom.cs" id="1_kati2"]
+[ext_resource type="Script" path="res://CS Scripts/VineRoom.cs" id="1_kati2"]
 [ext_resource type="Texture2D" uid="uid://bssf1t6h00vgc" path="res://assets/backgrounds/vine_room/vine_room0.png" id="1_u4t6g"]
 [ext_resource type="Texture2D" uid="uid://bbwdb6a0fq2l3" path="res://assets/backgrounds/vine_room/vine_room1.png" id="2_tgunx"]
 [ext_resource type="Texture2D" uid="uid://p517i2ejxmlc" path="res://assets/backgrounds/vine_room/vine_room2.png" id="3_7q7yd"]

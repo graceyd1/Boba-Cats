@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b80srp1p4d8sr"]
 
-[ext_resource type="Script" path="res://EnterCaveRoom.cs" id="1_348vi"]
+[ext_resource type="Script" path="res://CS Scripts/EnterCaveRoom.cs" id="1_348vi"]
 [ext_resource type="Texture2D" uid="uid://dy3c3o2uql7to" path="res://assets/backgrounds/enter_cave_room/enter_cave_background.png" id="1_l1657"]
 [ext_resource type="Texture2D" uid="uid://t1cyin18px4o" path="res://assets/backgrounds/enter_cave_room/enter_cave_water1.png" id="2_8hl4k"]
 [ext_resource type="Texture2D" uid="uid://bxqhx7psdxcfe" path="res://assets/backgrounds/enter_cave_room/enter_cave_water2.png" id="3_ydmdq"]

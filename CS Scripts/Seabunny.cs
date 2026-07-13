@@ -12,6 +12,8 @@ public partial class Seabunny : CharacterBody2D
 
 	public bool InFight;
 
+	public Vector2 StartPos;
+
 	private AnimatedSprite2D animatedSprite;
 	private Godot.Timer idleTimer;
 	private Boolean facingLeft;
@@ -20,6 +22,7 @@ public partial class Seabunny : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		StartPos = new Vector2(485, 205);
 		facingLeft = true;
 		Velocity = Vector2.Zero;
 		bullet = GD.Load<PackedScene>("res://seabunnybullet.tscn");
@@ -53,7 +56,7 @@ public partial class Seabunny : CharacterBody2D
 
 	public async void StartFight()
 	{
-		Position = new Vector2(485, 213);
+		Position = StartPos;
 
 		if (!InFight)
 		{

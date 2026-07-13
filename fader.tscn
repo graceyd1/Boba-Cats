@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgr1kakcbwlfx"]
 
-[ext_resource type="Script" path="res://Fader.cs" id="1_aa506"]
+[ext_resource type="Script" path="res://CS Scripts/Fader.cs" id="1_aa506"]
 
 [node name="Fader" type="CanvasLayer"]
 script = ExtResource("1_aa506")

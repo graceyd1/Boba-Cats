@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dacucl1yyxuex"]
 
 [ext_resource type="FontFile" uid="uid://cpdnqe1jl0cys" path="res://assets/Geo_Font/Geo-Regular.ttf" id="1_4f6lq"]
-[ext_resource type="Script" path="res://TextEnterLabel.cs" id="1_v5fe5"]
+[ext_resource type="Script" path="res://CS Scripts/TextEnterLabel.cs" id="1_v5fe5"]
 
 [node name="TextEnterLabel" type="Control"]
 z_index = 4000

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4n48ysxl12j0"]
 
-[ext_resource type="Script" path="res://DevMode.cs" id="1_4gh8d"]
+[ext_resource type="Script" path="res://CS Scripts/DevMode.cs" id="1_4gh8d"]
 
 [node name="DevMode" type="CanvasLayer"]
 script = ExtResource("1_4gh8d")

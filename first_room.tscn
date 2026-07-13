@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bwbctyyj4cviq"]
 
 [ext_resource type="Texture2D" uid="uid://c5aconv8x8617" path="res://assets/backgrounds/first_room/first_room_background.png" id="1_u5hov"]
-[ext_resource type="Script" path="res://FirstRoom.cs" id="1_whgh3"]
+[ext_resource type="Script" path="res://CS Scripts/FirstRoom.cs" id="1_whgh3"]
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="2_toxl5"]
 [ext_resource type="Texture2D" uid="uid://deuh6yxss78yy" path="res://assets/backgrounds/first_room/first_room_background1.png" id="2_v8dv8"]
 [ext_resource type="Texture2D" uid="uid://b6qt7sngx5gkb" path="res://assets/backgrounds/first_room/first_room_rocks.png" id="3_f3kxf"]

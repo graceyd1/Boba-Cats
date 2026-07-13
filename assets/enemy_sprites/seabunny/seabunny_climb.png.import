@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dto6lnurvd168"
-path="res://.godot/imported/seabunny_dash5.png-a8397701b7f5bb9bb8967365ca5bf2ec.ctex"
+uid="uid://ce156lj6x7xs7"
+path="res://.godot/imported/seabunny_climb.png-f558884b9d7f287bcff7b7d59313c3b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy_sprites/seabunny/seabunny_dash/seabunny_dash5.png"
-dest_files=["res://.godot/imported/seabunny_dash5.png-a8397701b7f5bb9bb8967365ca5bf2ec.ctex"]
+source_file="res://assets/enemy_sprites/seabunny/seabunny_climb.png"
+dest_files=["res://.godot/imported/seabunny_climb.png-f558884b9d7f287bcff7b7d59313c3b9.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxgrd8fkvpx6l"]
 
-[ext_resource type="Script" path="res://Hitbox.cs" id="1_ug2wc"]
+[ext_resource type="Script" path="res://CS Scripts/Hitbox.cs" id="1_ug2wc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrojb"]
 

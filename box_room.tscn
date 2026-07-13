@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://dflvchrpqg7qo"]
 
 [ext_resource type="Texture2D" uid="uid://bu1s2q5m3aj17" path="res://assets/backgrounds/box_room/box_room0.png" id="1_qieuq"]
-[ext_resource type="Script" path="res://BoxRoom.cs" id="1_tli8b"]
+[ext_resource type="Script" path="res://CS Scripts/BoxRoom.cs" id="1_tli8b"]
 [ext_resource type="Texture2D" uid="uid://qog2naajank2" path="res://assets/backgrounds/box_room/box_room1.png" id="2_brwye"]
 [ext_resource type="Texture2D" uid="uid://kv1s5jsmg3bm" path="res://assets/backgrounds/box_room/box_room2.png" id="3_vtj6r"]
 [ext_resource type="Texture2D" uid="uid://dqkf7nggx4syl" path="res://assets/backgrounds/box_room/box_room3.png" id="4_t31jp"]
@@ -15,13 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://5txp0r25uqf7" path="res://assets/backgrounds/box_room/box_room6.png" id="10_cx3xf"]
 [ext_resource type="Texture2D" uid="uid://b8ytxur36hotg" path="res://assets/objects/bigbox.png" id="10_i0pin"]
 [ext_resource type="Texture2D" uid="uid://h71edpmrf1mi" path="res://assets/background_items/bg_medbox.png" id="10_uwxra"]
-[ext_resource type="PackedScene" uid="uid://chtjp7w4wy6nq" path="res://walls.tscn" id="11_wj8lh"]
+[ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="11_wj8lh"]
 [ext_resource type="Texture2D" uid="uid://6f02ja61limd" path="res://assets/objects/medbox.png" id="12_mx3pw"]
 [ext_resource type="Texture2D" uid="uid://feaaex1jlf6i" path="res://assets/objects/smallbox.png" id="13_3atr8"]
 [ext_resource type="Texture2D" uid="uid://vxeeag75b113" path="res://assets/objects/bomb.png" id="14_5en38"]
 [ext_resource type="PackedScene" uid="uid://dreu42hj60gc6" path="res://lantern.tscn" id="16_3s04o"]
 [ext_resource type="Texture2D" uid="uid://bekphjfbgb21g" path="res://assets/background_items/pure_vine.png" id="17_15pkn"]
-[ext_resource type="Script" path="res://RollingBomb.cs" id="20_p8tmg"]
+[ext_resource type="Script" path="res://CS Scripts/RollingBomb.cs" id="20_p8tmg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i07pw"]
 animations = [{

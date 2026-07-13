@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bkgkxl73kwvrd"]
 
 [ext_resource type="Texture2D" uid="uid://bfj7qacu8hneg" path="res://assets/backgrounds/long_tube_coral_room/long_tube_coral_room0.png" id="1_1pun0"]
-[ext_resource type="Script" path="res://LongTubeCoralRoom.cs" id="1_r2joo"]
+[ext_resource type="Script" path="res://CS Scripts/LongTubeCoralRoom.cs" id="1_r2joo"]
 [ext_resource type="Texture2D" uid="uid://5ftg5ckcuhx2" path="res://assets/backgrounds/long_tube_coral_room/long_tube_coral_room1.png" id="2_jrsbr"]
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://underwater_player.tscn" id="3_cwq0k"]
 [ext_resource type="Texture2D" uid="uid://bntdsoopj31wc" path="res://assets/backgrounds/long_tube_coral_room/long_tube_coral_room2.png" id="4_3w2wq"]

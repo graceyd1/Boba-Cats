@@ -5,33 +5,27 @@ using System.Threading.Tasks;
 public partial class SeaBunnyRoom : Node2D
 {
 	private bool transitioning = false;
-	private Node2D Player;
-	private Node2D SeaBunny;
+	private Player Player;
+	private Seabunny SeaBunny;
 
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Player =  GetNode<CharacterBody2D>("GroundPlayer");
-		SeaBunny = GetNode<CharacterBody2D>("Seabunny");
+		Player =  GetNode<Player>("GroundPlayer");
+		SeaBunny = GetNode<Seabunny>("Seabunny");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override async void _Process(double delta)
 	{
 		//reset position when player leaves or respawns
-		if (Player is Player p)
-		{
-			if (p.respawning)
-			{
-				while (p.respawning) {}
-				if (SeaBunny is Seabunny sb)
-				{
 
-					sb.InFight = false;
-				}
-				SeaBunny.Position = new Vector2(485, 213);
-			}
+		if (Player.respawning)
+		{
+			while (Player.respawning) {}
+			SeaBunny.InFight = false;
+			SeaBunny.Position = SeaBunny.StartPos;
 		}
 
 		if (!transitioning)
@@ -56,16 +50,14 @@ public partial class SeaBunnyRoom : Node2D
 		}
 		if (GlobalScript.CQ("short") == "Seabunny")
 		{
-			if (SeaBunny is Seabunny sb)
-			{
-				var camera = player.GetNode<Camera2D>("Camera2D");
-				camera.PositionSmoothingEnabled = true;
-				camera.PositionSmoothingSpeed = 5.0f;
-				camera.GlobalPosition = new Vector2(320, camera.GlobalPosition.Y);
-				while (camera.GlobalPosition.X < 320) {GD.Print("HI");}
-				camera.SetLimit(Side.Left, 320);
-				sb.StartFight();
-			}
+			var camera = player.GetNode<Camera2D>("Camera2D");
+			camera.PositionSmoothingEnabled = true;
+			camera.PositionSmoothingSpeed = 5.0f;
+			camera.GlobalPosition = new Vector2(320, camera.GlobalPosition.Y);
+			while (camera.GlobalPosition.X < 320) {GD.Print("HI");}
+			camera.SetLimit(Side.Left, 320);
+			SeaBunny.StartFight();
+
 		}
 	}
 	public async void EndFight(Node2D player)
@@ -73,24 +65,20 @@ public partial class SeaBunnyRoom : Node2D
 		if (GlobalScript.CQ("short") == "Seabunny")
 		{
 			player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Stop();
-			
-			if (player is GroundPlayer p)
-			{
-				if (!p.respawning)
-				{
-					p.invulnerable = true;
-					p.SetDisableMovement(true);
-					if (SeaBunny is Seabunny sb)
-					{
-						sb.InFight = false;
-						await sb.EndFight();
-					}
 
-					p.SetDisableMovement(false);
-					p.invulnerable = false;
-					player.Position = new Vector2(600, 145);
-				}
+			if (!Player.respawning)
+			{
+				Player.invulnerable = true;
+				Player.SetDisableMovement(true);
+
+				SeaBunny.InFight = false;
+				await SeaBunny.EndFight();
+
+				Player.SetDisableMovement(false);
+				Player.invulnerable = false;
+				player.Position = new Vector2(600, 145);
 			}
+
 			GlobalScript.QuestNum ++;
 		}
 	}

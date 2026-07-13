@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://bp4jat81a6c5d"]
 
-[ext_resource type="Script" path="res://TubeCoral.cs" id="1_r1ba7"]
+[ext_resource type="Script" path="res://CS Scripts/TubeCoral.cs" id="1_r1ba7"]
 [ext_resource type="Texture2D" uid="uid://b4dckhsgl4257" path="res://assets/objects/tube_coral_sprites/tube_coral_off.png" id="2_5s7io"]
 [ext_resource type="Texture2D" uid="uid://cqgkvgcx2lifd" path="res://assets/objects/tube_coral_sprites/tube_coral_short.png" id="3_xe07y"]
 [ext_resource type="Texture2D" uid="uid://c72fvykbilbkx" path="res://assets/objects/tube_coral_sprites/tube_coral.png" id="15_cy3vi"]

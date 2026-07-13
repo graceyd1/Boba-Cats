@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bo6n5dubhn4cc"]
 
 [ext_resource type="Texture2D" uid="uid://bnycy4bv6va2v" path="res://assets/backgrounds/interior/boba_room.png" id="1_0haum"]
-[ext_resource type="Script" path="res://BobaShop.cs" id="1_euq4v"]
+[ext_resource type="Script" path="res://CS Scripts/BobaShop.cs" id="1_euq4v"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://walls.tscn" id="2_j6akr"]
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://ground_player.tscn" id="3_rwi30"]
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://text_box.tscn" id="4_yaba5"]

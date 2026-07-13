@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://dif3m6ljwdlny"]
 
-[ext_resource type="Script" path="res://Controls.cs" id="1_weoqj"]
-[ext_resource type="Script" path="res://ControlsTab.cs" id="3_auoow"]
+[ext_resource type="Script" path="res://CS Scripts/Controls.cs" id="1_weoqj"]
+[ext_resource type="Script" path="res://CS Scripts/ControlsTab.cs" id="3_auoow"]
 [ext_resource type="Texture2D" uid="uid://csyir0wlb3anh" path="res://assets/player/menu_icon.png" id="3_l32e4"]
-[ext_resource type="Script" path="res://InventoryTab.cs" id="4_cjqpt"]
-[ext_resource type="Script" path="res://QuestsTab.cs" id="4_s05c4"]
+[ext_resource type="Script" path="res://CS Scripts/InventoryTab.cs" id="4_cjqpt"]
+[ext_resource type="Script" path="res://CS Scripts/QuestsTab.cs" id="4_s05c4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ah2n4"]
 light_mode = 1

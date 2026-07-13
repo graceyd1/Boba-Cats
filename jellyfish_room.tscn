@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cc3aglk6j3bag"]
 
 [ext_resource type="Texture2D" uid="uid://cysadwqvf1xw3" path="res://assets/backgrounds/jellyfish_room/jellyfish_room0.png" id="1_7lnxs"]
-[ext_resource type="Script" path="res://JellyfishRoom.cs" id="1_ycq3r"]
+[ext_resource type="Script" path="res://CS Scripts/JellyfishRoom.cs" id="1_ycq3r"]
 [ext_resource type="Texture2D" uid="uid://dxoik5vb5ive3" path="res://assets/backgrounds/jellyfish_room/jellyfish_room1.png" id="2_jq32d"]
 [ext_resource type="Texture2D" uid="uid://cjjrwo4fwt4hp" path="res://assets/backgrounds/jellyfish_room/jellyfish_room2.png" id="3_jts5g"]
 [ext_resource type="Texture2D" uid="uid://v1adb3yc3dot" path="res://assets/backgrounds/jellyfish_room/jellyfish_room3.png" id="4_8kxbq"]
