@@ -38,6 +38,13 @@ public partial class DevMode : CanvasLayer
 				window.Show();
 			}
 		}
+		// if (window.Visible == true)
+		// {
+		// 	if (Input.IsActionPressed("enter"))
+		// 	{
+		// 		OnConfirmed();
+		// 	}
+		// }
 	}
 	
 	

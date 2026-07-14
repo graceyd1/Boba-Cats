@@ -3,8 +3,8 @@ using System;
 
 public partial class GrowableVine : Area2D
 {
-	[Export]
-	public bool GrownByDefault {get; set;} = false;
+	/// [Export]
+	/// public bool GrownByDefault {get; set;} = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -17,6 +17,14 @@ public partial class GrowableVine : Area2D
 	public override void _Process(double delta)
 	{
 	}
+
+	public void Eaten()
+	{
+		GetNode<CollisionShape2D>("GrownCollisionShape").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+		GetNode<PointLight2D>("PointLight2D").Hide();
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = "eaten";
+	}
+
 	public async void OnAreaEntered(Area2D flashlight) {
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		if (animatedSprite2D.Animation == "ungrown") {

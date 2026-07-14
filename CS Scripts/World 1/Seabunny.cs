@@ -6,8 +6,9 @@ public partial class Seabunny : CharacterBody2D
 {
 	[Export]
 	public int dashSpeed {get; set;} = 200;
-
 	public bool InFight;
+	public bool InCutscene; //used so that startboss trigger doesn't trigger during the left vine cutscene
+	public int Hp;
 
 	public Vector2 StartPos;
 
@@ -19,6 +20,7 @@ public partial class Seabunny : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Hp = 2;
 		StartPos = new Vector2(485, 205);
 		facingLeft = true;
 		Velocity = Vector2.Zero;
@@ -29,6 +31,7 @@ public partial class Seabunny : CharacterBody2D
 
 		idleTimer = GetNode<Godot.Timer>("IdleTimer");
 		InFight = false;
+		InCutscene = false;
 
 		if (GlobalScript.QuestNum >= GlobalScript.MainQuests.IndexOf("GetBoat")) //number
 		{
@@ -77,9 +80,50 @@ public partial class Seabunny : CharacterBody2D
 		}
 	}
 
-	public async Task EndFight()
+	public async Task EatLeftVine()
 	{
 		InFight = false;
+		InCutscene = true;
+		Velocity = Vector2.Zero;
+		GetNode<Hitbox>("Hitbox").SetDisabled(true);
+		var anim = GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
+		Velocity = Vector2.Zero;
+		
+		while (Position.X > 370)
+		{
+			facingLeft = true;
+			animatedSprite.FlipH = false;
+			await Dash(3);
+		}
+		Position = new Vector2(366, 205);
+		animatedSprite.FlipH = false;
+		animatedSprite.Animation = "start_climb";
+		animatedSprite.Play();
+		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+
+		animatedSprite.Animation = "climbing";
+		animatedSprite.Play();
+		anim.Play("climb_left_vine");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+
+		GetParent().GetNode<GrowableVine>("GrowableVineLeft").Eaten();
+
+		animatedSprite.Animation = "end_climb";
+		animatedSprite.Play();
+		anim.Play("fall_left_vine");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+
+		Hp --;
+		GetNode<Hitbox>("Hitbox").SetDisabled(false);
+		InFight = true;
+		InCutscene = false;
+		OnIdleTimerTimeout();
+	}
+	public async Task EndFight()
+	{
+		Hp --;
+		InFight = false;
+		InCutscene = true;
 		GetNode<Hitbox>("Hitbox").SetDisabled(true);
 		var anim = GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
 		Velocity = Vector2.Zero;
@@ -91,7 +135,7 @@ public partial class Seabunny : CharacterBody2D
 			//GD.Print(facingLeft);///
 			await Dash(3);
 		}
-		Position = new Vector2(550, 205);
+		Position = new Vector2(555, 205);
 		animatedSprite.FlipH = false;
 		animatedSprite.Animation = "start_climb";
 		animatedSprite.Play();
@@ -109,6 +153,7 @@ public partial class Seabunny : CharacterBody2D
 
 		animatedSprite.Animation = "sleep";
 		animatedSprite.Play();
+		InCutscene = false;
 	}
 
 	//every time it is done waiting, do another attack

@@ -71,15 +71,13 @@ public partial class SeaBunnyRoom : Node2D
 
 	public void OnBossTriggerEntered(Node2D player)
 	{
-		GD.Print(SeaBunny.InFight);
 		if (GlobalScript.CQ("short") == "ParvaCave")
 		{
 			GlobalScript.QuestNum ++;	
 		}
 		if (GlobalScript.CQ("short") == "Seabunny")
 		{
-			if (!SeaBunny.InFight) {
-				GetNode<Godot.Timer>("VineTimer").Start();
+			if (!SeaBunny.InFight && !SeaBunny.InCutscene) {
 				var camera = player.GetNode<Camera2D>("Camera2D");
 				camera.PositionSmoothingEnabled = true;
 				camera.PositionSmoothingSpeed = 5.0f;
@@ -95,9 +93,17 @@ public partial class SeaBunnyRoom : Node2D
 				camera.Position = Vector2.Zero;
 				SeaBunny.InFight = false;
 			}*/
-
 		}
 
+	}
+
+	public async void OnLeftVineTriggerEntered(Node2D player)
+	{
+		if (SeaBunny.Hp == 2)
+		{
+			await SeaBunny.EatLeftVine();
+			GetNode<Godot.Timer>("VineTimer").Start();
+		}
 	}
 	public async void EndFight(Node2D player)
 	{

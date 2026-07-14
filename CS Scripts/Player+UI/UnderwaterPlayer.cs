@@ -101,15 +101,15 @@ public partial class UnderwaterPlayer : Player
 		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
 		if (Flash)
 		{
-			var modulate = animatedSprite.Modulate;
+			var modulate = animatedSprite.SelfModulate;
 			var originalR = modulate.R;
 			if (hurtTimer.TimeLeft % 0.2 < 0.1)
 			{
-				animatedSprite.Modulate = new Color(1, 1, 1, 1);
+				animatedSprite.SelfModulate = new Color(1, 1, 1, 1);
 			}
 			else
 			{
-				animatedSprite.Modulate = new Color(100, 1, 1, (float) 0.5);
+				animatedSprite.SelfModulate = new Color(100, 1, 1, 1);
 			}
 		}
 
