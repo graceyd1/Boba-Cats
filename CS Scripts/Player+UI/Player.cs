@@ -171,6 +171,7 @@ public partial class Player : CharacterBody2D
 
 			GlobalPosition = respawnPoint;
 			respawnFadingIn = false;
+			FacingRight = true;
 			await transition.FadeOut(1.0f);
 		}
 		invulnerable = false;

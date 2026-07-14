@@ -63,11 +63,7 @@ public partial class GlobalSceneChange : Node2D
 	}
 	
 	public void checkNode(Node n) {
-		if (n == GetTree().CurrentScene) {
-			GD.Print("root found");
-			//EmitSignal(SignalName.SceneReady);
-		}
-		else if (n is Player) {
+		if (n is Player) {
 			EmitSignal(SignalName.SceneReady);
 		}
 	}

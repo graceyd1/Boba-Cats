@@ -55,8 +55,7 @@ public partial class SeaBunnyRoom : Node2D
 			if (IsInstanceValid(Player)) //trying to fix the "Cannot access a disposed object" exception
 			{
 				var camera = Player.GetNode<Camera2D>("Camera2D");
-				if (camera.GetScreenCenterPosition() == new Vector2(480, 180)) {
-					GD.Print("3");
+				if (camera.GetScreenCenterPosition().X >= 470) {
 					camera.PositionSmoothingEnabled = false;
 					cameraGliding = false;
 				}
@@ -91,11 +90,11 @@ public partial class SeaBunnyRoom : Node2D
 					
 				SeaBunny.StartFight();
 			}
-			else {
+			/*else {
 				var camera = player.GetNode<Camera2D>("Camera2D");
 				camera.Position = Vector2.Zero;
 				SeaBunny.InFight = false;
-			}
+			}*/
 
 		}
 	}
