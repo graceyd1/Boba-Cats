@@ -51,7 +51,8 @@ public partial class GlobalSceneChange : Node2D
 		else if (GroundRooms.Contains(GetTree().CurrentScene.Name)) {
 			currPlayer = GetTree().CurrentScene.GetNode<Player>("GroundPlayer");
 		}
-		else {
+		else if (!NoPlayerRooms.Contains(GetTree().CurrentScene.Name))
+		{
 			GD.Print("Room not found in list");
 		}
 	}
@@ -77,6 +78,7 @@ public partial class GlobalSceneChange : Node2D
 		GlobalScript.CurrentRoom = room;
 		await ToSignal(this, GlobalSceneChange.SignalName.SceneReady);
 		string roomName = GetTree().CurrentScene.Name;
+		
 		if (!NoPlayerRooms.Contains(roomName))
 		{
 			if (UnderwaterRooms.Contains(roomName)) {

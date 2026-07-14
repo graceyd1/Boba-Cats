@@ -35,6 +35,11 @@ public partial class TreasureRoom : Node2D
 		var catssavaT = catssava.GetNode<TextBox>("TextBox");
 		var azucatT = GetNode<TextBox>("Azucat/TextBox");
 
+		if (player is Player p)
+		{
+			p.SetDisableMovement(true);	
+		}
+
 		var playerAnim = player.GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		playerAnim.Animation = "walk_right";
 		playerAnim.Play();
@@ -71,6 +76,11 @@ public partial class TreasureRoom : Node2D
 		//both cats leave
 		anim.Play("cats_leave");
 		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+
+		if (player is Player p2)
+		{
+			p2.SetDisableMovement(false);	
+		}
 		
 		GlobalScript.QuestNum ++;
 	}
@@ -85,7 +95,7 @@ public partial class TreasureRoom : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(620, 170), "sea_bunny_room", false);
+			await GlobalScript.ChangeRoom(new Vector2(620, 126), "sea_bunny_room", false);
 		}
 
 	}

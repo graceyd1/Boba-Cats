@@ -4,7 +4,7 @@ using System;
 public partial class GroundPlayer : Player
 {
 	//public new float Speed = 70.0f;
-	public const float JumpVelocity = -200; //-330.0f;
+	public const float JumpVelocity = -300; //-330.0f;
 	public bool Climbing{get; set;} = false;
 
 	private AnimatedSprite2D animatedSprite;
@@ -130,7 +130,7 @@ public partial class GroundPlayer : Player
 		}
 		//Sea bunny bounce
 		//Finished quest 7: get treasure
-		if (GlobalScript.CQ("short") == "Surface")
+		if (GlobalScript.QuestNum >= GlobalScript.MainQuests.IndexOf("GetBoat")) //number
 		{
 			int count = GetSlideCollisionCount();
 			for (int i = 0; i < count; i++) {
@@ -141,7 +141,7 @@ public partial class GroundPlayer : Player
 					Velocity = new Vector2(0, -400);
 					//how high up it can go
 					//Position += new Vector2(0, -70);
-					SetDisableMovement(true);
+					SetDisableControl(true);
 					TimeBounce();
 					break;
 				}

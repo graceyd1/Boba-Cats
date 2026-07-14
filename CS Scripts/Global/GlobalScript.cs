@@ -44,7 +44,8 @@ public partial class GlobalScript : Node2D
 		"ParvaCave", //5 (after talking to parva) "Cave"
 		"Seabunny", //6
 		"ReturnBoba", //7
-		"Surface" //8
+		"GetBoat", //8
+		"Surface" //9
 	};
 	
 	

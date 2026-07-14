@@ -26,9 +26,11 @@ public partial class SeaBunnyRoom : Node2D
 	public override async void _Process(double delta)
 	{
 		//reset position when player respawns
-		if (Player.respawning)
+		if (Player.respawning && SeaBunny.InFight)
 		{
-			while (Player.respawning) {}
+			//somehow wait for player to finish respawning before resetting
+			//while (Player.respawning) {} //breaks the game
+
 			SeaBunny.InFight = false;
 			SeaBunny.Position = SeaBunny.StartPos;
 		}
@@ -39,10 +41,13 @@ public partial class SeaBunnyRoom : Node2D
 		}
 		
 		if (cameraGliding) {
-			var camera = Player.GetNode<Camera2D>("Camera2D");
-			if (camera.GetTargetPosition() == camera.GetScreenCenterPosition()) {
-				camera.PositionSmoothingEnabled = false;
-				cameraGliding = false;
+			if (IsInstanceValid(Player)) //trying to fix the "Cannot access a disposed object" exception
+			{
+				var camera = Player.GetNode<Camera2D>("Camera2D");
+				if (camera.GetTargetPosition() == camera.GetScreenCenterPosition()) {
+					camera.PositionSmoothingEnabled = false;
+					cameraGliding = false;
+				}
 			}
 		}
 	}
@@ -94,9 +99,9 @@ public partial class SeaBunnyRoom : Node2D
 				}
 				Player.SetDisableMovement(false);
 				Player.invulnerable = false;
-			}
 
-			GlobalScript.QuestNum ++;
+				GlobalScript.QuestNum ++;
+			}
 		}
 	}
 
@@ -106,6 +111,9 @@ public partial class SeaBunnyRoom : Node2D
 		azucatBoba.Position = new Vector2(218, 75);
 		var aText = GetNode<TextBox>("BOBA/Azucat/TextBox");
 		var anim = GetNode<AnimationPlayer>("AnimationPlayer");
+		Player.Position = new Vector2(573, 232);
+		Player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = "sit_left";
+		Player.SetDisableMovement(true);
 		await aText.ShowText("Thanks for your help, Dash! Here's your new ship!");
 		
 		anim.Play("ship_deployed");
@@ -116,6 +124,7 @@ public partial class SeaBunnyRoom : Node2D
 
 		anim.Play("azucat_leaves");
 		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+		Player.SetDisableMovement(false);
 	}
 
 	private async Task NextRoomCheck() {

@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b28lwwf0dhiu6"]
+[gd_scene load_steps=3 format=3 uid="uid://b28lwwf0dhiu6"]
 
 [ext_resource type="Script" path="res://CS Scripts/General/TextBox.cs" id="1_l67vn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u124"]
+bg_color = Color(0.2, 0.2, 0.2, 0.901961)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="TextBox" type="Node2D"]
 z_index = 4000
@@ -8,12 +15,14 @@ position = Vector2(0, -10)
 script = ExtResource("1_l67vn")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(0.2, 0.2, 0.2, 0.784314)
 texture_filter = 1
 offset_left = -60.0
 offset_top = -50.0
 offset_right = 60.0
 grow_vertical = 0
 size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u124")
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]

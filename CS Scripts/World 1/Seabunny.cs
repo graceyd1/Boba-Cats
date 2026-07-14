@@ -30,7 +30,7 @@ public partial class Seabunny : CharacterBody2D
 		idleTimer = GetNode<Godot.Timer>("IdleTimer");
 		InFight = false;
 
-		if (GlobalScript.QuestNum >= GlobalScript.MainQuests.IndexOf("GetBoat"))
+		if (GlobalScript.QuestNum >= GlobalScript.MainQuests.IndexOf("GetBoat")) //number
 		{
 			Position = new Vector2(460, 205);
 			GetNode<Hitbox>("Hitbox").SetDisabled(true);
@@ -88,11 +88,11 @@ public partial class Seabunny : CharacterBody2D
 		{
 			facingLeft = false;
 			animatedSprite.FlipH = true;
-			GD.Print(facingLeft);///
+			//GD.Print(facingLeft);///
 			await Dash(3);
 		}
-		Position = new Vector2(550, 198);
-
+		Position = new Vector2(550, 205);
+		animatedSprite.FlipH = false;
 		animatedSprite.Animation = "start_climb";
 		animatedSprite.Play();
 		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
@@ -150,7 +150,7 @@ public partial class Seabunny : CharacterBody2D
 		animatedSprite.Animation = "dashing";
 		animatedSprite.Play();
 		
-		GD.Print(facingLeft);///
+		//GD.Print(facingLeft);///
 		if (facingLeft)
 		{
 			Velocity = new Vector2(-dashSpeed, 0); //set velocity.x to -dashSpeed

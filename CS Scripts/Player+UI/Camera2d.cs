@@ -112,7 +112,7 @@ public partial class Camera2d : Camera2D
 			// 	//camera stays still when in boss arena
 			// 	SetLimit(Side.Left, 320);
 			// }
-			if (true) /// todo to-do change to only happen when quest is before getting treasure
+			if (GlobalScript.CQ("short") == "ParvaCave" || GlobalScript.CQ("short") == "Seabunny") //only during boss
 			{
 				SetLimit(Side.Top, 90);
 			}

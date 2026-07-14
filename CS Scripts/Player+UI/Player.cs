@@ -21,16 +21,16 @@ public partial class Player : CharacterBody2D
 	public bool respawning;
 
 	//if true, player can't get hit
-	public Boolean invulnerable;
+	public bool invulnerable;
 
 	//used in cutscenes (implemented in the GroundPlayer and UnderwaterPlayer classes)
-	private Boolean disableMovement;
+	private bool disableMovement;
 
 	//player flashing animation (when hit)
-	public Boolean Flash{get; set;}
+	public bool Flash{get; set;}
 	
 	//determines player sitting position
-	public Boolean FacingRight{get; set;}
+	public bool FacingRight{get; set;}
 
 	//stores velocity modifiers such as wind/tube coral pull
 	public Vector2 VelocityModifier{get; set;}
