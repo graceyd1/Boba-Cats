@@ -50,17 +50,17 @@ scale = Vector2(1, 9)
 position = Vector2(0, 140)
 scale = Vector2(17, 1)
 
-[node name="GroundPlayer" parent="." instance=ExtResource("3_rwi30")]
-position = Vector2(60, 133)
-
-[node name="TextBox" parent="GroundPlayer" instance=ExtResource("4_yaba5")]
-
 [node name="Catssava" type="AnimatedSprite2D" parent="."]
 position = Vector2(209, 132)
 sprite_frames = SubResource("SpriteFrames_5ccxq")
 animation = &"sit"
 
 [node name="TextBox" parent="Catssava" instance=ExtResource("4_yaba5")]
+
+[node name="GroundPlayer" parent="." instance=ExtResource("3_rwi30")]
+position = Vector2(60, 133)
+
+[node name="TextBox" parent="GroundPlayer" instance=ExtResource("4_yaba5")]
 
 [node name="BobaExit" parent="." instance=ExtResource("8_pqxkn")]
 z_index = -1
@@ -75,6 +75,6 @@ scale = Vector2(0.5, 0.5)
 
 [node name="InteractLabel" parent="." instance=ExtResource("11_ha6rx")]
 
-[connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="PromptUser" from="Catssava/TextBox" to="GroundPlayer" method="OnPromptUser"]
+[connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="Interact" from="BobaExit/InteractArea" to="." method="OnExitRoom"]

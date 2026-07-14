@@ -57,7 +57,7 @@ using the mouse"
 horizontal_alignment = 1
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("2_toxl5")]
-position = Vector2(10, 140)
+position = Vector2(35, 138)
 
 [node name="Gate" parent="." instance=ExtResource("5_hbhji")]
 position = Vector2(422, 91)

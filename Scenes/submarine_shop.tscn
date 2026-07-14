@@ -138,11 +138,6 @@ centered = false
 position = Vector2(-60, 140)
 scale = Vector2(22, 1)
 
-[node name="GroundPlayer" parent="." instance=ExtResource("3_lavss")]
-position = Vector2(66, 131)
-
-[node name="TextBox" parent="GroundPlayer" instance=ExtResource("5_chh4g")]
-
 [node name="Azucat" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(210, 132)
@@ -150,6 +145,11 @@ texture = ExtResource("4_ud6u5")
 
 [node name="TextBox" parent="Azucat" instance=ExtResource("5_chh4g")]
 visible = false
+
+[node name="GroundPlayer" parent="." instance=ExtResource("3_lavss")]
+position = Vector2(66, 131)
+
+[node name="TextBox" parent="GroundPlayer" instance=ExtResource("5_chh4g")]
 
 [node name="Door" parent="." instance=ExtResource("7_u403n")]
 z_index = -1
@@ -213,8 +213,8 @@ libraries = {
 "": SubResource("AnimationLibrary_3g16g")
 }
 
-[connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="PromptUser" from="Azucat/TextBox" to="GroundPlayer" method="OnPromptUser"]
+[connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="InteractReturnAreaName" from="Door/ShopExit" to="." method="OnExitRoom"]
 [connection signal="pressed" from="Secret/Secret/SecretButton1" to="." method="OnSecretButton1Pressed"]
 [connection signal="pressed" from="Secret/Secret/SecretButton2" to="." method="OnSecretButton2Pressed"]

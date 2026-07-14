@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://cpdnqe1jl0cys" path="res://assets/Geo_Font/Geo-Regular.ttf" id="1_4f6lq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60dgh"]
-bg_color = Color(1, 0.964706, 0.894118, 0.839216)
+bg_color = Color(1, 0.964706, 0.894118, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
