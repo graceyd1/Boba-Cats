@@ -6,7 +6,6 @@ public partial class BobaShop : Node2D
 	private TextBox dashT;
 	private TextBox catssavaT;
 	private AnimatedSprite2D csAnimation;
-	private static bool MetCatssava = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -63,11 +62,10 @@ public partial class BobaShop : Node2D
 			}
 			await catssavaT.ShowText("In that case, you'll need a pass to leave town. I'll give you mine.");
 			GlobalScript.Inventory.Add("Town pass");
-			MetCatssava = true;
 			GlobalScript.QuestNum++;
 		}
 		//already finished quest 1: Visit the boba shop and ask for brown sugar boba
-		else if (MetCatssava)//if (GlobalScript.QuestNum > 2) //number (GlobalScript.MainQuests.IndexOf("MeetCatssava"))
+		else if (GlobalScript.IsAfterQuest("MeetCatssava"))
 		{
 			//maybe we can have a list of dialogue and pick a random one
 			await catssavaT.ShowText("Oh, thank you so very much for helping me, Dash!");

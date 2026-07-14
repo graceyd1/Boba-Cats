@@ -97,6 +97,7 @@ public partial class SeaBunnyRoom : Node2D
 			}*/
 
 		}
+
 	}
 	public async void EndFight(Node2D player)
 	{

@@ -87,6 +87,12 @@ public partial class GlobalScript : Node2D
 		ResourceSaver.Save(GameData, savePath);
 	}
 	
+	public static bool IsAfterQuest(string shortName) {
+		return MainQuests.IndexOf(CQ("short")) > MainQuests.IndexOf(shortName);
+	}
+	public static bool IsBeforeQuest(string shortName) {
+		return MainQuests.IndexOf(CQ("short")) < MainQuests.IndexOf(shortName);
+	}
 	//get current quest
 	//type = long or short
 	public static String CQ(string type) {
