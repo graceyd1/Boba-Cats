@@ -8,6 +8,8 @@ public partial class SeaBunnyRoom : Node2D
 	private Player Player;
 	private Seabunny SeaBunny;
 	private bool cameraGliding = false;
+	private bool waitingForRespawn = false;
+	private AnimationPlayer AnimationP;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -15,6 +17,8 @@ public partial class SeaBunnyRoom : Node2D
 	{
 		Player =  GetNode<Player>("GroundPlayer");
 		SeaBunny = GetNode<Seabunny>("Seabunny");
+		AnimationP = GetNode<AnimationPlayer>("AnimationPlayer");
+		AnimationP.Play("gate_open");
 
 		if (GlobalScript.CQ("short") == "GetBoat")
 		{
@@ -26,13 +30,20 @@ public partial class SeaBunnyRoom : Node2D
 	public override async void _Process(double delta)
 	{
 		//reset position when player respawns
-		if (Player.respawning && SeaBunny.InFight)
+		if (Player.respawnFadingIn && SeaBunny.InFight)
 		{
-			//somehow wait for player to finish respawning before resetting
-			//while (Player.respawning) {} //breaks the game
-
+			if (!waitingForRespawn) {
+				waitingForRespawn = true;
+			}
+			
+		}
+		if (!Player.respawnFadingIn && waitingForRespawn) {
+			waitingForRespawn = false;
 			SeaBunny.InFight = false;
 			SeaBunny.Position = SeaBunny.StartPos;
+			var camera1 = Player.GetNode<Camera2D>("Camera2D");
+			camera1.Position = Vector2.Zero;
+			AnimationP.Play("gate_open");
 		}
 
 		if (!transitioning)
@@ -44,7 +55,8 @@ public partial class SeaBunnyRoom : Node2D
 			if (IsInstanceValid(Player)) //trying to fix the "Cannot access a disposed object" exception
 			{
 				var camera = Player.GetNode<Camera2D>("Camera2D");
-				if (camera.GetTargetPosition() == camera.GetScreenCenterPosition()) {
+				if (camera.GetScreenCenterPosition() == new Vector2(480, 180)) {
+					GD.Print("3");
 					camera.PositionSmoothingEnabled = false;
 					cameraGliding = false;
 				}
@@ -60,22 +72,30 @@ public partial class SeaBunnyRoom : Node2D
 
 	public void OnBossTriggerEntered(Node2D player)
 	{
+		GD.Print(SeaBunny.InFight);
 		if (GlobalScript.CQ("short") == "ParvaCave")
 		{
 			GlobalScript.QuestNum ++;	
 		}
 		if (GlobalScript.CQ("short") == "Seabunny")
 		{
-			GetNode<Godot.Timer>("VineTimer").Start();
-			var camera = player.GetNode<Camera2D>("Camera2D");
-			camera.PositionSmoothingEnabled = true;
-			camera.PositionSmoothingSpeed = 5.0f;
-			cameraGliding = true;
-			camera.GlobalPosition = new Vector2(470, camera.GlobalPosition.Y);
-			
-			//camera.SetLimit(Side.Left, 320);
-			
-			SeaBunny.StartFight();
+			if (!SeaBunny.InFight) {
+				GetNode<Godot.Timer>("VineTimer").Start();
+				var camera = player.GetNode<Camera2D>("Camera2D");
+				camera.PositionSmoothingEnabled = true;
+				camera.PositionSmoothingSpeed = 5.0f;
+				cameraGliding = true;
+				camera.GlobalPosition = new Vector2(470, camera.GlobalPosition.Y);
+				AnimationP.Play("gate_close");
+				//camera.SetLimit(Side.Left, 320);
+					
+				SeaBunny.StartFight();
+			}
+			else {
+				var camera = player.GetNode<Camera2D>("Camera2D");
+				camera.Position = Vector2.Zero;
+				SeaBunny.InFight = false;
+			}
 
 		}
 	}

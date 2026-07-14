@@ -19,6 +19,8 @@ public partial class Player : CharacterBody2D
 	private int hp;
 
 	public bool respawning;
+	
+	public bool respawnFadingIn;
 
 	//if true, player can't get hit
 	public bool invulnerable;
@@ -105,6 +107,7 @@ public partial class Player : CharacterBody2D
 	//we need to make a list
 	public async void Respawn() {
 		respawning = true;
+		respawnFadingIn = true;
 		invulnerable = true;
 		var fader = GetNode<CanvasLayer>("/root/Fader");
 		if (fader is Fader transition) {
@@ -167,7 +170,7 @@ public partial class Player : CharacterBody2D
 			}
 
 			GlobalPosition = respawnPoint;
-			
+			respawnFadingIn = false;
 			await transition.FadeOut(1.0f);
 		}
 		invulnerable = false;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bx12bef1m2n45"]
+[gd_scene load_steps=26 format=3 uid="uid://bx12bef1m2n45"]
 
 [ext_resource type="Script" path="res://CS Scripts/World 1/SeaBunnyRoom.cs" id="1_blskm"]
 [ext_resource type="Texture2D" uid="uid://dxsfcqpbs5qpv" path="res://assets/backgrounds/sea_bunny_room/sea_bunny_room0.png" id="1_f8pvm"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://Scenes/text_box.tscn" id="8_ocr7s"]
 [ext_resource type="Texture2D" uid="uid://tmjmnsrn2br" path="res://assets/player/new_boat.png" id="9_2atkd"]
 [ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://Scenes/growable_vine.tscn" id="9_ilcv2"]
+[ext_resource type="Texture2D" uid="uid://b5fiih0wfemja" path="res://assets/objects/gate_half.png" id="14_px5ju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bs0lb"]
 size = Vector2(10, 85)
@@ -81,6 +82,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ArenaGate/Bottom:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 45)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ArenaGate/Top:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -45)]
 }
 
 [sub_resource type="Animation" id="Animation_y6rrj"]
@@ -177,12 +202,70 @@ tracks/0/keys = {
 "values": [Vector2(572, 0), Vector2(572, 100), Vector2(572, 143)]
 }
 
+[sub_resource type="Animation" id="Animation_tkjxl"]
+resource_name = "gate_open"
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArenaGate/Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 45), Vector2(0, 75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArenaGate/Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -45), Vector2(0, -70)]
+}
+
+[sub_resource type="Animation" id="Animation_apliu"]
+resource_name = "gate_close"
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArenaGate/Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 75), Vector2(0, 45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArenaGate/Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -70), Vector2(0, -45)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v2uxj"]
 _data = {
 "RESET": SubResource("Animation_11okb"),
 "azucat_leaves": SubResource("Animation_y6rrj"),
 "climb_vine": SubResource("Animation_xe6ti"),
 "fall": SubResource("Animation_lao03"),
+"gate_close": SubResource("Animation_apliu"),
+"gate_open": SubResource("Animation_tkjxl"),
 "ship_deployed": SubResource("Animation_iqc5x"),
 "vine_appear": SubResource("Animation_fxg7h")
 }
@@ -236,11 +319,12 @@ texture = ExtResource("9_2atkd")
 position = Vector2(485, 205)
 
 [node name="GroundPlayer" parent="." instance=ExtResource("4_ahs72")]
-position = Vector2(265, 230)
+position = Vector2(107, 225)
 
 [node name="TextBox" parent="GroundPlayer" instance=ExtResource("8_ocr7s")]
 
 [node name="Frontground" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("4_erb2g")
 centered = false
 
@@ -299,6 +383,29 @@ libraries = {
 
 [node name="VineTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ArenaGate" type="Node2D" parent="."]
+position = Vector2(325, 211)
+metadata/_edit_group_ = true
+
+[node name="Bottom" type="Sprite2D" parent="ArenaGate"]
+position = Vector2(0, 45)
+texture = ExtResource("14_px5ju")
+metadata/_edit_group_ = true
+
+[node name="Wall" parent="ArenaGate/Bottom" instance=ExtResource("7_26f6x")]
+position = Vector2(-9, -45)
+scale = Vector2(0.9, 4.5)
+
+[node name="Top" type="Sprite2D" parent="ArenaGate"]
+position = Vector2(0, -45)
+rotation = 3.14159
+texture = ExtResource("14_px5ju")
+
+[node name="Wall" parent="ArenaGate/Top" instance=ExtResource("7_26f6x")]
+position = Vector2(9, 45)
+rotation = 3.14159
+scale = Vector2(0.9, 4.5)
 
 [connection signal="body_entered" from="BossTrigger" to="." method="OnBossTriggerEntered"]
 [connection signal="body_entered" from="CutsceneTrigger" to="." method="EndFight"]
