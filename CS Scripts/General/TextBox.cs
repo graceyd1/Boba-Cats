@@ -55,6 +55,11 @@ public partial class TextBox : Node2D
 			Hide();
 			EmitSignal(SignalName.ChoiceMade, "2");
 		}
+		else if (asking && Input.IsActionPressed("option_3") && timer.IsStopped()) {
+			asking = false;
+			Hide();
+			EmitSignal(SignalName.ChoiceMade, "3");
+		}
 	}
 
 	//show text

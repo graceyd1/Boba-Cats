@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://CS Scripts/General/TextBox.cs" id="1_l67vn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u124"]
-bg_color = Color(0.2, 0.2, 0.2, 0.901961)
+bg_color = Color(0.1, 0.1, 0.1, 0.980392)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -15,7 +15,6 @@ position = Vector2(0, -10)
 script = ExtResource("1_l67vn")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-self_modulate = Color(0.2, 0.2, 0.2, 0.784314)
 texture_filter = 1
 offset_left = -60.0
 offset_top = -50.0

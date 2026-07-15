@@ -12,7 +12,7 @@ public partial class GlobalSaveResource : Resource
 {
 	//configurations for a new game
 	[Export]
-	public int numCoins = 0;
+	public int numCoins = 10;
 
 	[Export]
 	public Godot.Collections.Array<String> Inventory {get; set;} = new Array<String>(); 
@@ -21,14 +21,15 @@ public partial class GlobalSaveResource : Resource
 	public int QuestNum{get; set;} = 0; //0;
 
 	[Export]
-	public bool GeyserOpened{get; set;} = false;
-	
-	[Export]
 	public string CurrentRoom{get; set;} = "first_room";
 
 	[Export]
 	public int WorldNum{get; set;} = 1;
-	
+
+	[Export]
+	public bool OliveShopOpened{get; set;} = false;
+	[Export]
+	public bool GeyserOpened{get; set;} = false;
 	[Export]
 	public string DateSaved{get; set;}
 	// [Export]

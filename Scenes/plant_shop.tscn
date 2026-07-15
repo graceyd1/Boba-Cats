@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsjn4esgmj7ut"]
+[gd_scene load_steps=23 format=3 uid="uid://bsjn4esgmj7ut"]
 
 [ext_resource type="Texture2D" uid="uid://ckrmqkpolrh6f" path="res://assets/backgrounds/interior/plant_shop.png" id="1_q5n3t"]
 [ext_resource type="Script" path="res://CS Scripts/World 1/PlantShop.cs" id="1_xuphg"]
@@ -9,11 +9,81 @@
 [ext_resource type="Texture2D" uid="uid://cxpd4iiksamsx" path="res://assets/lights/flashlight.png" id="5_byer3"]
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://Scenes/ground_player.tscn" id="6_4f8ty"]
 [ext_resource type="PackedScene" uid="uid://bmlobwxb1vvug" path="res://Scenes/door.tscn" id="9_ee1pn"]
+[ext_resource type="Texture2D" uid="uid://kxxpmiwm88ua" path="res://assets/enemy_sprites/laser_beam.png" id="9_vgxel"]
+[ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://Scenes/hitbox.tscn" id="10_616w5"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://Scenes/interact_area.tscn" id="10_kf4ch"]
 [ext_resource type="PackedScene" uid="uid://ygrr56bstc00" path="res://Scenes/interact_label.tscn" id="11_7yypv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxqno"]
 size = Vector2(131, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vo2u"]
+atlas = ExtResource("9_vgxel")
+region = Rect2(0, 160, 320, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufvgu"]
+atlas = ExtResource("9_vgxel")
+region = Rect2(0, 192, 320, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuepi"]
+atlas = ExtResource("9_vgxel")
+region = Rect2(0, 0, 320, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvnkt"]
+atlas = ExtResource("9_vgxel")
+region = Rect2(0, 32, 320, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bl4p"]
+atlas = ExtResource("9_vgxel")
+region = Rect2(0, 64, 320, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmkg2"]
+atlas = ExtResource("9_vgxel")
+region = Rect2(0, 96, 320, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3oao"]
+atlas = ExtResource("9_vgxel")
+region = Rect2(0, 128, 320, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mj7jb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vo2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufvgu")
+}],
+"loop": true,
+"name": &"laser",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuepi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvnkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bl4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmkg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3oao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vo2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufvgu")
+}],
+"loop": false,
+"name": &"start_laser",
+"speed": 10.0
+}]
 
 [node name="PlantShop" type="Node2D"]
 script = ExtResource("1_xuphg")
@@ -34,6 +104,16 @@ scale = Vector2(1, 9)
 position = Vector2(-60, 140)
 scale = Vector2(22, 1)
 
+[node name="Door" parent="." instance=ExtResource("9_ee1pn")]
+offset_left = 299.0
+offset_top = 119.0
+offset_right = 320.0
+offset_bottom = 140.0
+
+[node name="ShopExit" parent="Door" instance=ExtResource("10_kf4ch")]
+position = Vector2(10, 23)
+scale = Vector2(0.5, 0.5)
+
 [node name="Olive" type="Sprite2D" parent="."]
 position = Vector2(76, 114)
 texture = ExtResource("3_kkkae")
@@ -47,26 +127,28 @@ rotation = -1.02974
 texture = ExtResource("5_byer3")
 
 [node name="Area2D" type="Area2D" parent="Olive/Flashlight"]
+visible = false
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Olive/Flashlight/Area2D"]
+visible = false
 position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_pxqno")
 debug_color = Color(0.579823, 0.546776, 0.218768, 0.42)
 
+[node name="Laser" type="AnimatedSprite2D" parent="Olive"]
+visible = false
+z_index = 1
+position = Vector2(157, 4)
+sprite_frames = SubResource("SpriteFrames_mj7jb")
+animation = &"laser"
+
+[node name="Hitbox" parent="Olive/Laser" instance=ExtResource("10_616w5")]
+scale = Vector2(15, 1.5)
+
 [node name="GrowableVine" parent="." instance=ExtResource("4_6dfnw")]
-position = Vector2(132.5, 57)
-
-[node name="Door" parent="." instance=ExtResource("9_ee1pn")]
-offset_left = 299.0
-offset_top = 119.0
-offset_right = 320.0
-offset_bottom = 140.0
-
-[node name="ShopExit" parent="Door" instance=ExtResource("10_kf4ch")]
-position = Vector2(10, 23)
-scale = Vector2(0.5, 0.5)
+position = Vector2(132.5, 61.97)
 
 [node name="GroundPlayer" parent="." instance=ExtResource("6_4f8ty")]
 position = Vector2(258, 132)

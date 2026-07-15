@@ -7,7 +7,7 @@ public partial class GlobalScript : Node2D
 {
 	public static GlobalSaveResource GameData{get; set;} = new GlobalSaveResource();
 	//so that it doesn't break code accessing from GlobalScript.variable
-	public static int coins {
+	public static int Coins {
 		get => GameData.numCoins;
 		set => GameData.numCoins = value;
 	}
@@ -19,19 +19,26 @@ public partial class GlobalScript : Node2D
 		get => GameData.QuestNum;
 		set => GameData.QuestNum = value;
 	}
-	public static bool GeyserOpened {
-		get => GameData.GeyserOpened;
-		set => GameData.GeyserOpened = value;
-	}
+
 	public static string CurrentRoom {
 		get => GameData.CurrentRoom;
 		set => GameData.CurrentRoom = value;
 	}
-	
+
 	public static int WorldNum
 	{
 		get => GameData.WorldNum;
 		set => GameData.WorldNum = value;
+	}
+
+	public static bool OliveShopOpened
+	{
+		get => GameData.OliveShopOpened;
+		set => GameData.OliveShopOpened = value;
+	}
+	public static bool GeyserOpened {
+		get => GameData.GeyserOpened;
+		set => GameData.GeyserOpened = value;
 	}
 	
 	//set because maybe we can change name of quest based on player choices
@@ -63,7 +70,7 @@ public partial class GlobalScript : Node2D
 	};
 
 
-	public static String savePath{get; set;} 
+	public static String savePath{get; set;} //= "user://save_data/tres";
 
 
 

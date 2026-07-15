@@ -106,7 +106,7 @@ public partial class FishRoom : Node2D
 			await iText.ShowText("you get: " + fishCollected + " coins");
 			GetNode<Label>("UnderwaterPlayer/MinigameTime").Hide();
 			
-			GlobalScript.coins = GlobalScript.coins + fishCollected;
+			GlobalScript.Coins += fishCollected;
 
 			iText.EnableInteractArea();
 		}

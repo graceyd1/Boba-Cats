@@ -103,6 +103,23 @@ public partial class Player : CharacterBody2D
 		EmitSignal(SignalName.Hit, hp);
 
 	}
+		//when invulnerablility ends
+	//I don't know why but this method doesn't ever run for me
+
+	private void OnHurtTimerTimeout()
+	{
+		GD.Print("Timeout");///
+		invulnerable = false;
+		Flash = false;
+
+		var insideHurtbox =  GetNode<Area2D>("Hurtbox").GetOverlappingBodies();
+
+		//if player is in hitbox when invulnerability ends
+		if (insideHurtbox.Count > 0)
+		{
+			GetHit();
+		}
+	}
 	
 	//we need to make a list
 	public async void Respawn() {
@@ -177,24 +194,6 @@ public partial class Player : CharacterBody2D
 		invulnerable = false;
 		respawning = false;
 	}
-
-	//when invulnerablility ends
-	//I don't know why but this method doesn't ever run for me
-
-	private void OnHurtTimerTimeout()
-	{
-		invulnerable = false;
-		Flash = false;
-
-		var insideHurtbox =  GetNode<Area2D>("Hurtbox").GetOverlappingBodies();
-
-		//if player is in hitbox when invulnerability ends
-		if (insideHurtbox.Count > 0)
-		{
-			GetHit();
-		}
-	}
-
 	public void SetVelocityModifier(Vector2 vel)
 	{
 		VelocityModifier = vel;
