@@ -6,20 +6,20 @@ public partial class TitleScreen : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		GetNode<SaveSlot>("FilePicker/SaveSlot").SlotNum = 1;
+		GetNode<SaveSlot>("FilePicker/SaveSlot2").SlotNum = 2;
+		GetNode<SaveSlot>("FilePicker/SaveSlot3").SlotNum = 3;
+		GetNode<CanvasLayer>("FilePicker").Hide();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
 
 	public async void OnPlayButtonPressed()
 	{
-		
-		if (GlobalScript.QuestNum == 0) //todo - change condition? (it's probably fine)
-		{
-			//play opening animation cutscene
-			GetNode<Control>("Buttons").Hide();
+		GetNode<CanvasLayer>("FilePicker").Show();
+	}
+	public async void ShipCrashCutscene() {
+		GetNode<Control>("Buttons").Hide();
+		GetNode<CanvasLayer>("FilePicker").Hide();
 			var animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 			animatedSprite.Animation = "opening";
 			animatedSprite.Play();
@@ -31,11 +31,8 @@ public partial class TitleScreen : Node2D
 				await fader.FadeIn(.7f);
 			}
 			await GlobalScript.ChangeRoom(new Vector2(35, 138), "first_room", true);
-		}
-		else
-		{
-			//todo - load the save data
-		}
-
+	}
+	public void OnExitFilePicker() {
+		GetNode<CanvasLayer>("FilePicker").Hide();
 	}
 }

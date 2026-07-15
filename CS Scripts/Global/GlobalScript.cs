@@ -63,7 +63,7 @@ public partial class GlobalScript : Node2D
 	};
 
 
-	public static String savePath = "user://save_data.tres"; //not implemented yet (see GlobalSaveResource.cs)
+	public static String savePath{get; set;} 
 
 
 

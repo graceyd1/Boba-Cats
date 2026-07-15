@@ -1,8 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://sg3tnmogere2"]
+[gd_scene load_steps=45 format=3 uid="uid://d3lmqv54tdb7j"]
 
 [ext_resource type="Texture2D" uid="uid://c50wlu6jdj7cf" path="res://assets/backgrounds/title_screen.png" id="1_3ewcg"]
 [ext_resource type="Texture2D" uid="uid://5v36jpj544bp" path="res://assets/backgrounds/opening_animation.png" id="1_gy0nm"]
 [ext_resource type="Script" path="res://TitleScreen.cs" id="1_vix8s"]
+[ext_resource type="PackedScene" uid="uid://cxi6ns37sogiw" path="res://save_slot.tscn" id="4_33ky6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j3ned"]
 atlas = ExtResource("1_gy0nm")
@@ -276,6 +277,22 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4krqg"]
+bg_color = Color(0.948832, 0.92714, 0.894015, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.313726)
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0s1a"]
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_vix8s")
 
@@ -294,6 +311,7 @@ offset_right = 287.0
 offset_bottom = 180.0
 
 [node name="PlayButton" type="Button" parent="Buttons"]
+layout_mode = 0
 offset_left = 39.0
 offset_top = 11.0
 offset_right = 99.0
@@ -304,4 +322,38 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ua1qk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1y4fl")
 text = "Play"
 
+[node name="FilePicker" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="FilePicker"]
+offset_left = 52.0
+offset_top = 2.0
+offset_right = 265.0
+offset_bottom = 172.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4krqg")
+
+[node name="SaveSlot" parent="FilePicker" instance=ExtResource("4_33ky6")]
+position = Vector2(69, 17)
+scale = Vector2(0.8, 0.8)
+SlotNum = 1
+
+[node name="SaveSlot2" parent="FilePicker" instance=ExtResource("4_33ky6")]
+position = Vector2(70, 67)
+scale = Vector2(0.8, 0.8)
+SlotNum = 2
+
+[node name="SaveSlot3" parent="FilePicker" instance=ExtResource("4_33ky6")]
+position = Vector2(69, 119)
+scale = Vector2(0.8, 0.8)
+SlotNum = 3
+
+[node name="X" type="Button" parent="FilePicker"]
+offset_left = 252.0
+offset_top = 5.0
+offset_right = 268.0
+offset_bottom = 22.0
+scale = Vector2(0.6, 0.6)
+theme_override_styles/normal = SubResource("StyleBoxFlat_b0s1a")
+text = "X"
+
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="OnPlayButtonPressed"]
+[connection signal="pressed" from="FilePicker/X" to="." method="OnExitFilePicker"]

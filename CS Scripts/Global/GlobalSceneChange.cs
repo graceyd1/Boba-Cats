@@ -89,8 +89,10 @@ public partial class GlobalSceneChange : Node2D
 			if (currPlayer == null) {
 				GD.Print("ERROR getting player at GlobalSceneChange");
 			}
-			
-			currPlayer.Position = pos;
+			//there's probably a better fix, but if you put (0, 0) in parameter it spawns player in defualt pos
+			if (pos != Vector2.Zero) {
+				currPlayer.Position = pos;
+			}
 			if (right) {
 				currPlayer.FacingRight = true;
 			}
@@ -98,6 +100,7 @@ public partial class GlobalSceneChange : Node2D
 				currPlayer.FacingRight = false;
 			}
 		}
+		GlobalScript.SaveGame();
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		if (FaderNode is Fader fade) {
 			await fade.FadeOut(1.5f);

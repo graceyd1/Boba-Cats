@@ -28,7 +28,9 @@ public partial class GlobalSaveResource : Resource
 
 	[Export]
 	public int WorldNum{get; set;} = 1;
-	// [Export]
+	
+	[Export]
+	public string DateSaved{get; set;}
 	// [Export]
 	// [Export]
 	// [Export]
