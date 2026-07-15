@@ -86,7 +86,7 @@ public partial class UnderwaterTown : Node2D
 				encounterNum = 2;
 			}
 			else {
-				int path;
+				int path; 
 				int max = (encounterNum > 6) ? 6 : encounterNum;
 				if (GlobalScript.Inventory.Contains("flashlight")) {
 					path = Rand(0, max);
@@ -100,7 +100,8 @@ public partial class UnderwaterTown : Node2D
 							break;
 					case 0: await carT.ShowText("Catssava has been telling everyone around town about the cat that offered to find her boba.");
 							break;
-					case 1: await carT.ShowText("You've become a town legend.");
+					case 1: if (GlobalScript.IsAfterQuest("GetBoat")) {await carT.ShowText("You've become a town legend.");}
+							else {await carT.ShowText("Everyone is asking for updates on how your hunt for boba is going.");}
 							break;
 					case 2: await carT.ShowText("Just between you and me, you're the bravest cat I've met. Not counting myself, of course.");
 							break;
@@ -177,7 +178,7 @@ public partial class UnderwaterTown : Node2D
 			await GlobalScene.ChangeRoom(new Vector2(65, 133), "boba_shop", true);
 		}
 		else if (roomName == "PlantShopDoor") {
-			await GlobalScene.ChangeRoom(new Vector2(300, 133), "plant_shop", false);
+			await GlobalScene.ChangeRoom(new Vector2(258, 133), "plant_shop", false);
 		}
 	}
 	
