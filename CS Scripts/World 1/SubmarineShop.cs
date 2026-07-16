@@ -38,6 +38,16 @@ public partial class SubmarineShop : Node2D
 			await NextRoomCheck();
 		}
 	}
+	public async void OnEnterWorkLedge(Node2D body) {
+		if (body is Player dash) {
+			if (playerTextNode is TextBox pText && azucatTextNode is TextBox aText) {
+				dash.SetDisableMovement(true);
+				await aText.ShowText("HEY! Get down from there! Mechanics only!");
+				dash.Position = new Vector2(dash.Position.X, 132);
+				dash.SetDisableMovement(false);
+			}
+		}
+	}
 	
 	public async void StartDialogue(Node2D player) {
 		if (playerTextNode is TextBox pText && azucatTextNode is TextBox aText) {

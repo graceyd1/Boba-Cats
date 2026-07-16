@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqw5pv6ifi7f0"]
+[gd_scene load_steps=18 format=3 uid="uid://cqw5pv6ifi7f0"]
 
 [ext_resource type="Script" path="res://CS Scripts/World 1/SubmarineShop.cs" id="1_26v74"]
 [ext_resource type="Texture2D" uid="uid://d18mq7cjuo7pq" path="res://assets/backgrounds/interior/sub_workshop.png" id="1_uhx58"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bsaeo1x6edvmm" path="res://assets/npcs/blue_red_eyes.png" id="11_333yn"]
 [ext_resource type="Texture2D" uid="uid://d30xpakhy8wwp" path="res://assets/npcs/azucat_blue.png" id="11_kotw0"]
 [ext_resource type="Texture2D" uid="uid://kxxpmiwm88ua" path="res://assets/enemy_sprites/laser_beam.png" id="12_82e1i"]
+[ext_resource type="PackedScene" uid="uid://bnpd4i7iptaot" path="res://Scenes/up_wall.tscn" id="13_yuore"]
 
 [sub_resource type="Animation" id="Animation_5kw2c"]
 length = 0.001
@@ -62,6 +63,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../GroundPlayer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(231, 103)]
 }
 
 [sub_resource type="Animation" id="Animation_rl5ej"]
@@ -123,6 +136,9 @@ _data = {
 "laser": SubResource("Animation_rl5ej")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wknpn"]
+size = Vector2(20, 4)
+
 [node name="SubmarineShop" type="Node2D"]
 script = ExtResource("1_26v74")
 
@@ -147,7 +163,7 @@ texture = ExtResource("4_ud6u5")
 visible = false
 
 [node name="GroundPlayer" parent="." instance=ExtResource("3_lavss")]
-position = Vector2(66, 131)
+position = Vector2(231, 103)
 
 [node name="TextBox" parent="GroundPlayer" instance=ExtResource("5_chh4g")]
 
@@ -213,8 +229,21 @@ libraries = {
 "": SubResource("AnimationLibrary_3g16g")
 }
 
+[node name="WorkLedge" parent="." instance=ExtResource("13_yuore")]
+position = Vector2(0, 110)
+scale = Vector2(16, 0.5)
+
+[node name="Area2D" type="Area2D" parent="WorkLedge"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorkLedge/Area2D"]
+position = Vector2(10.0625, -2)
+shape = SubResource("RectangleShape2D_wknpn")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
 [connection signal="PromptUser" from="Azucat/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="PromptUser" from="GroundPlayer/TextBox" to="GroundPlayer" method="OnPromptUser"]
 [connection signal="InteractReturnAreaName" from="Door/ShopExit" to="." method="OnExitRoom"]
 [connection signal="pressed" from="Secret/Secret/SecretButton1" to="." method="OnSecretButton1Pressed"]
 [connection signal="pressed" from="Secret/Secret/SecretButton2" to="." method="OnSecretButton2Pressed"]
+[connection signal="body_entered" from="WorkLedge/Area2D" to="." method="OnEnterWorkLedge"]
