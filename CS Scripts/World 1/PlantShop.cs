@@ -6,12 +6,12 @@ public partial class PlantShop : Node2D
 {
 	private TextBox dText;
 	private TextBox oText;
-	private GroundPlayer player;
+	private GroundPlayer classPlayer;
 	public override void _Ready()
 	{
 		dText = GetNode<TextBox>("GroundPlayer/TextBox");
 		oText = GetNode<TextBox>("Olive/TextBox");
-		player = GetNode<GroundPlayer>("GroundPlayer");
+		classPlayer = GetNode<GroundPlayer>("GroundPlayer");
 		
 		if (!GlobalScript.OliveShopOpened)
 		{
@@ -36,7 +36,7 @@ public partial class PlantShop : Node2D
 	}
 	
 	private async void FirstShopDialogue() {
-		player.InputEnabled = false;
+		classPlayer.InputEnabled = false;
 		//delete the placeholder stuff and write the dialogue
 		//who are you? you're new here? welcome to my shop?
 		await oText.ShowText("My oh my, a visitor. The last one tried to return their succulents after they withered.");
@@ -108,7 +108,7 @@ public partial class PlantShop : Node2D
 				laser.Show();
 				laser.Animation = "start_laser";
 				laser.Play();
-				player.InputEnabled = true;
+				classPlayer.InputEnabled = true;
 				await ToSignal(laser, AnimatedSprite2D.SignalName.AnimationFinished);
 
 				laser.Animation = "laser";
@@ -122,7 +122,7 @@ public partial class PlantShop : Node2D
 				// laserHitbox.SetDisabled(true);
 			}
 		}
-		player.InputEnabled = true;
+		classPlayer.InputEnabled = true;
 	}
 
 
