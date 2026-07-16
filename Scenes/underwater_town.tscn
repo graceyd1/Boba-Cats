@@ -109,7 +109,7 @@ texture = ExtResource("8_wu3mq")
 centered = false
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("9_1c834")]
-position = Vector2(145, 516)
+position = Vector2(100, 517)
 collision_mask = 5
 
 [node name="TextBox" parent="UnderwaterPlayer" instance=ExtResource("12_xkquh")]

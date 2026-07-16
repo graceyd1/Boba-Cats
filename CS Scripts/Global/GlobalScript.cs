@@ -91,7 +91,9 @@ public partial class GlobalScript : Node2D
 	}
 	
 	public static void SaveGame() {
-		ResourceSaver.Save(GameData, savePath);
+		if (savePath != null) {
+			ResourceSaver.Save(GameData, savePath);
+		}
 	}
 	
 	public static bool IsAfterQuest(string shortName) {

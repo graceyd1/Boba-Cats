@@ -7,6 +7,7 @@ public partial class SubmarineShop : Node2D
 	private bool transitioning = false;
 	Node2D playerTextNode;
 	Node2D azucatTextNode;
+	private int EnterNum; //since upwall, enters Area2D twice when jump
 
 	private bool Secret1;
 	// Called when the node enters the scene tree for the first time.
@@ -41,10 +42,18 @@ public partial class SubmarineShop : Node2D
 	public async void OnEnterWorkLedge(Node2D body) {
 		if (body is Player dash) {
 			if (playerTextNode is TextBox pText && azucatTextNode is TextBox aText) {
-				dash.SetDisableMovement(true);
-				await aText.ShowText("HEY! Get down from there! Mechanics only!");
-				dash.Position = new Vector2(dash.Position.X, 132);
-				dash.SetDisableMovement(false);
+				if (dash.Position.Y < 120) { //prevents glitch where it triggers when entering room
+					if (EnterNum == 0) {
+						EnterNum++;
+					}
+					else {
+						dash.InputEnabled = false;
+						await aText.ShowText("HEY! Get down from there! Mechanics only!");
+						dash.Position = new Vector2(dash.Position.X, 132);
+						dash.InputEnabled = true;
+						EnterNum = 0;
+					}
+				}
 			}
 		}
 	}
@@ -133,7 +142,7 @@ public partial class SubmarineShop : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(402, 525), "underwater_town", true);
+			await GlobalScript.ChangeRoom(new Vector2(330, 525), "underwater_town", true);
 		}
 	}
 	
@@ -147,7 +156,7 @@ public partial class SubmarineShop : Node2D
 		
 		if (doorName == "ShopExit")
 		{
-			await GlobalScene.ChangeRoom(new Vector2(326, 517), "underwater_town", true);
+			await GlobalScene.ChangeRoom(new Vector2(231, 517), "underwater_town", true);
 		}
 	}
 }
