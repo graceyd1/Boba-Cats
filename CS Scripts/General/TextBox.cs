@@ -11,6 +11,9 @@ public partial class TextBox : Node2D
 	public delegate void ChoiceMadeEventHandler(String choice);
 	
 	[Signal]
+	public delegate void HidePromptEventHandler();
+	
+	[Signal]
 	public delegate void PromptUserEventHandler(TextBox box);
 
 	private Boolean showingText;
@@ -30,11 +33,6 @@ public partial class TextBox : Node2D
 		Hide();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
 	public override void _Input(InputEvent @event)
 	{
 		if (showingText && Input.IsActionPressed("enter") && timer.IsStopped())
@@ -44,21 +42,28 @@ public partial class TextBox : Node2D
 			Hide();
 			dialogueNum++;
 			EmitSignal(SignalName.ContinueDialogue);
+			EmitSignal(SignalName.HidePrompt);
 		}
 		else if (asking && Input.IsActionPressed("option_1") && timer.IsStopped()) {
 			asking = false;
+			dialogueNum++;
 			Hide();
 			EmitSignal(SignalName.ChoiceMade, "1");
+			EmitSignal(SignalName.HidePrompt); //to hide <<Number Keys>>
 		}
 		else if (asking && Input.IsActionPressed("option_2") && timer.IsStopped()) {
 			asking = false;
+			dialogueNum++;
 			Hide();
 			EmitSignal(SignalName.ChoiceMade, "2");
+			EmitSignal(SignalName.HidePrompt);
 		}
 		else if (asking && Input.IsActionPressed("option_3") && timer.IsStopped()) {
 			asking = false;
+			dialogueNum++;
 			Hide();
 			EmitSignal(SignalName.ChoiceMade, "3");
+			EmitSignal(SignalName.HidePrompt);
 		}
 	}
 
@@ -73,18 +78,16 @@ public partial class TextBox : Node2D
 		Show();
 		
 		inactive = true;
-		InactiveCountdown(dialogueNum);
+		InactiveCountdown(dialogueNum, "Enter/Space");
 		timer.Start();
 		await ToSignal(this, TextBox.SignalName.ContinueDialogue);
 	}
 	
 	//it's broken because idk how to get it to stop if player continues before timeout
-	private async void InactiveCountdown(int curNum) {
-		/*var timer2 = GetNode<Godot.Timer>("../../Timer2");
-		timer2.Start(4.0f);*/
+	private async void InactiveCountdown(int curNum, string text) {
 		await ToSignal(GetTree().CreateTimer(2f), SceneTreeTimer.SignalName.Timeout);
 		if (curNum == dialogueNum) {
-			EmitSignal(SignalName.PromptUser, this);
+			EmitSignal(SignalName.PromptUser, this, text);
 		}
 	}
 	
@@ -93,12 +96,9 @@ public partial class TextBox : Node2D
 		label.AppendText("[font_size=10]" + text + "[/font_size]");
 		asking = true;
 		Show();
+		InactiveCountdown(dialogueNum, "Number Keys");
 		timer.Start();
 		var result =  await ToSignal(this, TextBox.SignalName.ChoiceMade);
-		/*GD.Print(result);///
-		if (result is [Variant choice]) {
-		 	return (string) choice;
-		}*/
 		return (string)result[0];
 	}
 	

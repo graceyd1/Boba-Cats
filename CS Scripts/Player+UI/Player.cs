@@ -59,8 +59,8 @@ public partial class Player : CharacterBody2D
 		return GetNode<Camera2D>("Camera2D").GetScreenCenterPosition();
 	}*/
 	
-	public void OnPromptUser(TextBox box) {
-		GetNode<TextEnterLabel>("Camera2D/TextEnterLabel").FadeIn(box);
+	public void OnPromptUser(TextBox box, string prompt) {
+		GetNode<TextEnterLabel>("Camera2D/TextEnterLabel").FadeIn(box, prompt);
 	}
 	
 	private void DevChangeHP(int newHP) {

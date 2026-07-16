@@ -17,14 +17,15 @@ public partial class TextEnterLabel : Control
 	}
 	
 	
-	public async void FadeIn(TextBox box) {
+	public async void FadeIn(TextBox box, string LabelText) {
 		Show();
 		var label = GetNode<Label>("Label");
+		label.Text = "<<" + LabelText + ">>";
 		label.Modulate = new Color(label.Modulate, 0.0f);
 		var tween = GetTree().CreateTween();
 		tween.TweenProperty(label, "modulate:a", 1.0, 0.5f);
 		//await ToSignal(GetTree().CreateTimer(0.2f), SceneTreeTimer.SignalName.Timeout);
-		await ToSignal(box, TextBox.SignalName.ContinueDialogue);
+		await ToSignal(box, TextBox.SignalName.HidePrompt);
 		Hide();
 	}
 }
