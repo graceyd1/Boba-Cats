@@ -53,7 +53,7 @@ public partial class GlobalSceneChange : Node2D
 		}
 		else if (!NoPlayerRooms.Contains(GetTree().CurrentScene.Name))
 		{
-			GD.Print("Room not found in list");
+			GD.Print("Room not found in list: " + GetTree().CurrentScene.Name);
 		}
 	}
 

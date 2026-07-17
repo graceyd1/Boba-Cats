@@ -37,6 +37,7 @@ public partial class PlantShop : Node2D
 	
 	private async void FirstShopDialogue() {
 		classPlayer.InputEnabled = false;
+		classPlayer.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = "sit_left";
 		//delete the placeholder stuff and write the dialogue
 		//who are you? you're new here? welcome to my shop?
 		await oText.ShowText("My oh my, a visitor. The last one tried to return their succulents after they withered.");
@@ -58,6 +59,7 @@ public partial class PlantShop : Node2D
 		GetNode<Node2D>("Olive/Flashlight").Hide();
 
 		await oText.ShowText("You'd better not be pot-headed enough to mess that up.");
+		GlobalScript.OliveShopOpened = true;
 		FlashlightShop();
 	}
 
