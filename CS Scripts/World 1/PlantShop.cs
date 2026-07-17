@@ -71,7 +71,7 @@ public partial class PlantShop : Node2D
 			{
 				//eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 				///edit this dialogue?
-				GlobalScript.Inventory.Add("flashlight"); ///save?
+				GlobalScript.Inventory.Add("Flashlight"); ///save?
 				GlobalScript.Coins -= 10;
 				await oText.ShowText("Here's your flashlight. I've given you the most basic one. It only has one mode.");
 				await oText.ShowText("Press F to toggle the flashlight and use the mouse to change it's direction.");
@@ -95,7 +95,7 @@ public partial class PlantShop : Node2D
 			int success = GD.RandRange(0, 100); ///idk if I did this right
 			if (success >= 99)
 			{
-				GlobalScript.Inventory.Add("flashlight"); ///save?
+				GlobalScript.Inventory.Add("Flashlight"); ///save?
 				await dText.ShowText("I stole a flashlight.");
 			}
 			else

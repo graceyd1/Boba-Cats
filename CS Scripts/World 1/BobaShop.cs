@@ -64,7 +64,7 @@ public partial class BobaShop : Node2D
 				await dashT.ShowText("My name is Dash. Azucat won't give me a new boat until I get him tapioca, so it's only right for me to do this.");
 			}
 			await catssavaT.ShowText("In that case, you'll need a pass to leave town. I'll give you mine.");
-			GlobalScript.Inventory.Add("Town pass");
+			GlobalScript.Inventory.Add("Town Pass");
 			GlobalScript.QuestNum++;
 			player.InputEnabled = true;
 		}

@@ -16,6 +16,8 @@ public partial class ControlsTab : Button
 	}
 	
 	public void OnButtonPressed() {
+		GetNode<MarginContainer>("%MarginContainer").Show();
+		GetNode<Node2D>("%ItemsUI").Hide();
 		text.Text = "\nWASD & arrows - movement\n\nEnter & space - continue dialogue, enter room/house";
 		if (GlobalScript.Inventory.Contains("flashlight")) {
 			text.Text += "\n\nF - toggle flashlight";

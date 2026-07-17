@@ -13,21 +13,23 @@ public partial class Flashlight : PointLight2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("toggle_flashlight"))
-		{
-			Enabled = !Enabled;
-			toggleCollision();
-		}
+		if (GlobalScript.Inventory.Contains("Flashlight")) {
+			if (Input.IsActionJustPressed("toggle_flashlight"))
+			{
+				Enabled = !Enabled;
+				toggleCollision();
+			}
 
-		if (Enabled)
-		{
-			var mousePos = GetGlobalMousePosition();
-			var characterPos = GlobalPosition;
+			if (Enabled)
+			{
+				var mousePos = GetGlobalMousePosition();
+				var characterPos = GlobalPosition;
 
-			//get the angle from the character to the mouse
-			var angle = Math.Atan2(mousePos.Y - characterPos.Y, mousePos.X - characterPos.X);
+				//get the angle from the character to the mouse
+				var angle = Math.Atan2(mousePos.Y - characterPos.Y, mousePos.X - characterPos.X);
 
-			Rotation = (float) angle;
+				Rotation = (float) angle;
+			}
 		}
 	}
 

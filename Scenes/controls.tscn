@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dif3m6ljwdlny"]
+[gd_scene load_steps=14 format=3 uid="uid://dif3m6ljwdlny"]
 
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/Controls.cs" id="1_weoqj"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/ControlsTab.cs" id="3_auoow"]
+[ext_resource type="PackedScene" uid="uid://cyigelmg4bvtj" path="res://item_icons.tscn" id="3_h2a03"]
 [ext_resource type="Texture2D" uid="uid://csyir0wlb3anh" path="res://assets/player/menu_icon.png" id="3_l32e4"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/InventoryTab.cs" id="4_cjqpt"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/QuestsTab.cs" id="4_s05c4"]
@@ -15,6 +16,30 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_db6rr"]
+bg_color = Color(0.81772, 0.756597, 0.685495, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.715193, 0.623781, 0.417995, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrpdj"]
+bg_color = Color(0.81772, 0.756597, 0.685495, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.713726, 0.623529, 0.419608, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpg6r"]
 bg_color = Color(0.776471, 0.670588, 0.568627, 1)
@@ -57,6 +82,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_a8ss1")
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Expanded"]
+unique_name_in_owner = true
 layout_mode = 2
 offset_right = 94.0
 offset_bottom = 83.0
@@ -74,6 +100,60 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.643137, 0.45098, 0.172549, 1)
 theme_override_font_sizes/font_size = 8
 autowrap_mode = 3
+
+[node name="ItemsUI" type="Node2D" parent="Expanded"]
+unique_name_in_owner = true
+
+[node name="ItemNamePanel" type="Panel" parent="Expanded/ItemsUI"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 105.0
+offset_bottom = 26.0
+scale = Vector2(0.7, 0.7)
+theme_override_styles/panel = SubResource("StyleBoxFlat_db6rr")
+
+[node name="ItemName" type="Label" parent="Expanded/ItemsUI/ItemNamePanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 20.0
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(0.470588, 0.4, 0.239216, 1)
+text = "Select Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionPanel" type="Panel" parent="Expanded/ItemsUI"]
+offset_left = 7.0
+offset_top = 25.0
+offset_right = 121.0
+offset_bottom = 46.0
+scale = Vector2(0.7, 0.7)
+theme_override_styles/panel = SubResource("StyleBoxFlat_jrpdj")
+
+[node name="Description" type="Label" parent="Expanded/ItemsUI/DescriptionPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 381.0
+offset_bottom = 71.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0.470588, 0.4, 0.239216, 1)
+text = "Description appears here"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ItemIcons1" parent="Expanded/ItemsUI" instance=ExtResource("3_h2a03")]
+offset_left = 6.33334
+offset_top = 41.6667
+offset_right = 26.3333
+offset_bottom = 56.6667
+
+[node name="ItemIcons2" parent="Expanded/ItemsUI" instance=ExtResource("3_h2a03")]
+offset_left = 20.0
+offset_top = 41.667
+offset_right = 40.0
+offset_bottom = 56.667
 
 [node name="InventoryTab" type="Button" parent="."]
 use_parent_material = true

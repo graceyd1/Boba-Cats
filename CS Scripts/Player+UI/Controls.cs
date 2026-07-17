@@ -6,6 +6,7 @@ public partial class Controls : Node2D
 	private ControlsTab cT;
 	private QuestsTab qT;
 	private Vector2 pos;
+	private bool MenuOpen = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -28,7 +29,7 @@ public partial class Controls : Node2D
 	public override void _Input(InputEvent @event) {
 		if (Input.IsActionJustPressed("toggle_controls_menu")) {
 			var expanded = GetNode<Panel>("Expanded");
-			if (expanded.Visible) {
+			if (MenuOpen) {
 				expanded.Hide();
 				cT.Hide();
 				qT.Hide();
@@ -43,6 +44,7 @@ public partial class Controls : Node2D
 				cT.ButtonPressed = true;
 				cT.OnButtonPressed();
 			}
+			MenuOpen = !MenuOpen;
 		}
 	}
 }
