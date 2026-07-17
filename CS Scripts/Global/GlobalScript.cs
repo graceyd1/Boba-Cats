@@ -9,36 +9,57 @@ public partial class GlobalScript : Node2D
 	//so that it doesn't break code accessing from GlobalScript.variable
 	public static int Coins {
 		get => GameData.numCoins;
-		set => GameData.numCoins = value;
+		set {
+			GameData.numCoins = value;
+			SaveGame();
+		}
 	}
 	public static Godot.Collections.Array<string> Inventory {
 		get => GameData.Inventory;
-		set => GameData.Inventory = value; //for changing entire list, .Add doesn't use set
+		set {
+			GameData.Inventory = value; //for changing entire list, .Add doesn't use set
+			SaveGame();
+		}
 	}
 	public static int QuestNum { //temp // todo: change to 0 later after fixing "that's my boat" cutscene
 		get => GameData.QuestNum;
-		set => GameData.QuestNum = value;
+		set {
+			GameData.QuestNum = value;
+			SaveGame();
+		}
 	}
 
 	public static string CurrentRoom {
 		get => GameData.CurrentRoom;
-		set => GameData.CurrentRoom = value;
+		set {
+			GameData.CurrentRoom = value;
+			SaveGame();
+		}
 	}
 
 	public static int WorldNum
 	{
 		get => GameData.WorldNum;
-		set => GameData.WorldNum = value;
+		set {
+			GameData.WorldNum = value;
+			SaveGame();
+		}
 	}
 
 	public static bool OliveShopOpened
 	{
 		get => GameData.OliveShopOpened;
-		set => GameData.OliveShopOpened = value;
+		set { 
+			GameData.OliveShopOpened = value;
+			SaveGame();
+		}
 	}
 	public static bool GeyserOpened {
 		get => GameData.GeyserOpened;
-		set => GameData.GeyserOpened = value;
+		set {
+			GameData.GeyserOpened = value;
+			SaveGame();
+		}
 	}
 	
 	//set because maybe we can change name of quest based on player choices

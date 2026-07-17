@@ -134,9 +134,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jrpdj")
 [node name="Description" type="Label" parent="Expanded/ItemsUI/DescriptionPanel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 381.0
-offset_bottom = 71.0
-scale = Vector2(0.3, 0.3)
+offset_right = 286.0
+offset_bottom = 54.0
+scale = Vector2(0.4, 0.4)
 theme_override_colors/font_color = Color(0.470588, 0.4, 0.239216, 1)
 text = "Description appears here"
 horizontal_alignment = 1

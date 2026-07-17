@@ -9,7 +9,7 @@ public partial class InventoryTab : Button
 	private int IconNum = 1;
 	
 	public static Dictionary<string, string> Descriptions = new Dictionary<string, string> {
-		{"Flashlight", "Press F to toggle, Use mouse to point"},
+		{"Flashlight", "Useful for seeing in the dark and growing vines! Press F to toggle, Use mouse to point"},
 		{"Town Pass", "Lets you exit the town"}
 	};
 	// Called when the node enters the scene tree for the first time.
@@ -43,7 +43,7 @@ public partial class InventoryTab : Button
 			}
 			
 		}
-		IconNum = 0;
+		IconNum = 1;
 	}
 	
 	public void OnIconPressed(ItemIcons icon) {

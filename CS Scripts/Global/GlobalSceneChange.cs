@@ -100,7 +100,7 @@ public partial class GlobalSceneChange : Node2D
 				currPlayer.FacingRight = false;
 			}
 		}
-		GlobalScript.SaveGame();
+		
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		if (FaderNode is Fader fade) {
 			await fade.FadeOut(1.5f);
