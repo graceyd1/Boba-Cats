@@ -13,6 +13,8 @@ public partial class FishEnemy : Node2D
 
 	private int idx;
 
+	private InteractArea InteractArea;
+
 	private Vector2 StartPos;
 
 	// Called when the node enters the scene tree for the first time.
@@ -21,6 +23,7 @@ public partial class FishEnemy : Node2D
 		StartPos = Position;
 		Visible = true;
 		idx = 0;
+		InteractArea = GetNodeOrNull<InteractArea>("InteractArea");
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animatedSprite2D.Play();
 	}
@@ -62,6 +65,11 @@ public partial class FishEnemy : Node2D
 				animatedSprite2D.Stop();
 				//animatedSprite2D.FlipH = !animatedSprite2D.FlipH;
 			}
+		}
+
+		if (InteractArea != null)
+		{
+			InteractArea.ResetLabelPos();
 		}
 	}
 

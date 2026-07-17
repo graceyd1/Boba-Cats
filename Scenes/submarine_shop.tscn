@@ -55,7 +55,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Abluecat:visible")
+tracks/3/path = NodePath("Azulcat:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -120,7 +120,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Abluecat:visible")
+tracks/3/path = NodePath("Azulcat:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -212,7 +212,7 @@ offset_bottom = 95.0
 position = Vector2(208, -17)
 texture = ExtResource("11_333yn")
 
-[node name="Abluecat" type="Sprite2D" parent="Secret"]
+[node name="Azulcat" type="Sprite2D" parent="Secret"]
 visible = false
 position = Vector2(210, 132)
 texture = ExtResource("11_kotw0")

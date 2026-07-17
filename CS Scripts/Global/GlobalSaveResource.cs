@@ -10,9 +10,13 @@ using Godot.Collections;
 [GlobalClass]
 public partial class GlobalSaveResource : Resource
 {
+	
+	[Export]
+	public string DateSaved{get; set;}
+
 	//configurations for a new game
 	[Export]
-	public int numCoins = 10;
+	public int numCoins = 0;
 
 	[Export]
 	public Godot.Collections.Array<String> Inventory {get; set;} = new Array<String>(); 
@@ -30,8 +34,9 @@ public partial class GlobalSaveResource : Resource
 	public bool OliveShopOpened{get; set;} = false;
 	[Export]
 	public bool GeyserOpened{get; set;} = false;
+
 	[Export]
-	public string DateSaved{get; set;}
+	public bool Azulcat{get; set;} = false;
 	// [Export]
 	// [Export]
 	// [Export]

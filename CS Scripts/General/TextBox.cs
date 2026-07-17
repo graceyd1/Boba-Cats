@@ -102,16 +102,24 @@ public partial class TextBox : Node2D
 		return (string)result[0];
 	}
 	
-	//so that pressing enter doesn't restart the conversation
+	/// <summary>
+	/// If this textbox's parent is an InteractArea, disable that parent
+	/// so that pressing enter doesn't restart the conversation
+	/// </summary>
 	public void DisableInteractArea()
 	{
 		var parent = GetParent();
 		if (parent is InteractArea area)
 		{
+			GD.Print("disable");///
 			area.Interactable(false);
 		}
 	}
 
+	/// <summary>
+	/// If this textbox's parent is an InteractArea, enable that parent
+	/// so that pressing enter doesn't restart the conversation
+	/// </summary>
 	public void EnableInteractArea()
 	{
 		var parent = GetParent();

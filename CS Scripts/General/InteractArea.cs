@@ -20,7 +20,7 @@ public partial class InteractArea : Area2D
 	public delegate void InteractReturnAreaNameEventHandler(String areaName);
 	//if door - name used to decide which room to enter
 
-	private bool playerNear;
+	public bool playerNear;
 	
 	private bool allowInteraction;
 
@@ -46,33 +46,30 @@ public partial class InteractArea : Area2D
 
 		//looks up to 3 parent levels up to find interact label
 		//there's probably a better way to do this
-		Node level = (Node) this;
-		for (int i = 0; i < 3; i ++)
+
+		interactLabel = GetParent().GetNodeOrNull<Control>("InteractLabel");
+		try
 		{
-			interactLabel = level.GetParent().GetNodeOrNull<Control>("InteractLabel");
 			if (interactLabel != null)
 			{
-				break;
+				interactLabel = GetParent().GetParent().GetNodeOrNull<Control>("InteractLabel");
 			}
-			try
+			if (interactLabel != null)
 			{
-				level = (Node) level.GetParent();
-			}
-			catch
-			{
-				break;
+				interactLabel = GetParent().GetParent().GetParent().GetNodeOrNull<Control>("InteractLabel");
 			}
 		}
+		catch {}
 
 		if (interactLabel != null)
 		{
 			interactLabel.Hide();
-		}
-		if (ExitRooms.Contains(Owner.Name)) {
-			interactLabel.Scale = new Vector2(0.5f, 0.5f);
-		}
-		else {
-			interactLabel.Scale = new Vector2(0.8f, 0.8f);
+			if (ExitRooms.Contains(Owner.Name)) {
+				interactLabel.Scale = new Vector2(0.5f, 0.5f);
+			}
+			else {
+				interactLabel.Scale = new Vector2(0.8f, 0.8f);
+			}
 		}
 	}
 
@@ -92,12 +89,24 @@ public partial class InteractArea : Area2D
 		}
 	}
 
+	/// <summary>
+	/// Enables/disables the interact area and hides the interact label if set to false
+	/// </summary>
+	/// <param name="allowInteract"></param>
 	public void Interactable(Boolean allowInteract)
 	{
 		allowInteraction = allowInteract;
-		if (interactLabel != null)
+		if (!allowInteract && interactLabel != null)
 		{
 			interactLabel.Hide();
+		}
+	}
+
+	public void ResetLabelPos()
+	{
+		if (interactLabel != null)
+		{
+			interactLabel.Position = new Vector2(GlobalPosition.X, GlobalPosition.Y - LabelHeight);
 		}
 	}
 

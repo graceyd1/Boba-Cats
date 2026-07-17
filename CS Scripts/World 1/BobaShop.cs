@@ -49,7 +49,7 @@ public partial class BobaShop : Node2D
 			await catssavaT.ShowText("Well — this is embarrassing to say, since this is a boba shop…");
 			await catssavaT.ShowText("But I'm all out of tapioca pearls!");
 			await dashT.ShowText("Is there...a way to get more?");
-			await catssavaT.ShowText("I get monthly shipments from the surface, but it's only the beginning of the month and it's all vanished!");
+			await catssavaT.ShowText("I get monthly shipments from the surface, but it's only the second of the month and it's all vanished!");
 			await catssavaT.ShowText("Oh, if only I knew where it all went...");
 			await dashT.ShowText("Catssava, let me help you find the tapioca pearls.");
 			csAnimation.Animation = "sit";

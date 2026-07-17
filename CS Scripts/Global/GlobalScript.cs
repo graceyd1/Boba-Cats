@@ -61,6 +61,14 @@ public partial class GlobalScript : Node2D
 			SaveGame();
 		}
 	}
+
+	public static bool Azulcat {
+		get => GameData.Azulcat;
+		set {
+			GameData.Azulcat = value;
+			SaveGame();
+		}
+	}
 	
 	//set because maybe we can change name of quest based on player choices
 	public static List<string> MainQuests{get; set;} = new List<string> {
