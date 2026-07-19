@@ -13,13 +13,9 @@ public partial class PlantShop : Node2D
 		oText = GetNode<TextBox>("Olive/TextBox");
 		classPlayer = GetNode<GroundPlayer>("GroundPlayer");
 		
-		if (!GlobalScript.OliveShopOpened)
+		if (!GlobalScript.Inventory.Contains("flashlight"))
 		{
-			FirstShopDialogue();
-		}
-		else if (!GlobalScript.Inventory.Contains("flashlight"))
-		{
-			FlashlightShop();
+			FirstShopDialogue(GlobalScript.OliveVisitNum);
 		}
 		else
 		{
@@ -35,32 +31,59 @@ public partial class PlantShop : Node2D
 	{
 	}
 	
-	private async void FirstShopDialogue() {
+	
+	private async void FirstShopDialogue(int VisitNum) {
 		classPlayer.InputEnabled = false;
 		classPlayer.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = "sit_left";
 		//delete the placeholder stuff and write the dialogue
 		//who are you? you're new here? welcome to my shop?
-		await oText.ShowText("My oh my, a visitor. The last one tried to return their succulents after they withered.");
-		await oText.ShowText("SUCCULENTS! No one ever appreciates the careful art of growing plants.");
-		await oText.ShowText("They don't ever have the patience, and I doubt you'll be any different.");
-		await oText.ShowText("So I won't be selling you any plants.");
-		await oText.ShowText("Oh, I've forgotten to introduce myself. My name is 100% italian organic extra virgin olive oil.");
-		await oText.ShowText("You may call me Olive.");
-		await dText.ShowText("What can I buy then, if you won't sell me plants?");
-		await oText.ShowText("I've got just the thing for you. A flashlight!");
-		await dText.ShowText("How do I use it?");
-		await oText.ShowText("You can control a flashlight with the mouse.");
-		await oText.ShowText("It can also grow vines. Now I am going to demonstrate.");
+		if (VisitNum == 0) {
+			await oText.ShowText("My oh my, a visitor. The last one tried to return their succulents after they withered.");
+			await oText.ShowText("SUCCULENTS! No one ever appreciates the careful art of growing plants.");
+			await oText.ShowText("They don't ever have the patience, and I doubt you'll be any different.");
+			await oText.ShowText("So I won't be selling you any plants.");
+			await oText.ShowText("Oh, I've forgotten to introduce myself. My name is 100% italian organic extra virgin olive oil.");
+			await oText.ShowText("You may call me Olive.");
+			await dText.ShowText("What can I buy then, if you won't sell me plants?");
+			await oText.ShowText("I've got just the thing for you. A flashlight!");
+			await dText.ShowText("How do I use it?");
+			await oText.ShowText("You can control a flashlight with the mouse.");
+			await oText.ShowText("It can also grow vines. Now I am going to demonstrate.");
 
-		GetNode<Node2D>("Olive/Flashlight").Show();
-		GetNode<CollisionShape2D>("Olive/Flashlight/Area2D/CollisionShape2D").Disabled = false;
-		AnimatedSprite2D vineAnim = GetNode<AnimatedSprite2D>("GrowableVine/AnimatedSprite2D");
-		await ToSignal(vineAnim, AnimatedSprite2D.SignalName.AnimationFinished);
-		GetNode<Node2D>("Olive/Flashlight").Hide();
+			GetNode<Node2D>("Olive/Flashlight").Show();
+			GetNode<CollisionShape2D>("Olive/Flashlight/Area2D/CollisionShape2D").Disabled = false;
+			AnimatedSprite2D vineAnim = GetNode<AnimatedSprite2D>("GrowableVine/AnimatedSprite2D");
+			await ToSignal(vineAnim, AnimatedSprite2D.SignalName.AnimationFinished);
+			GetNode<Node2D>("Olive/Flashlight").Hide();
 
-		await oText.ShowText("You'd better not be pot-headed enough to mess that up.");
-		GlobalScript.OliveShopOpened = true;
-		FlashlightShop();
+			await oText.ShowText("You'd better not be pot-headed enough to mess that up.");
+			FlashlightShop();
+		}
+		else if (VisitNum == 1) {
+			await oText.ShowText("Well, well, well. Look who decided to come back.");
+			await oText.ShowText("Since you've already wasted my time, I won't bother giving you a second demonstration.");
+			await oText.ShowText("If you didn't pay attention the first time, that's on you!");
+			FlashlightShop();
+		}
+		else {
+			switch (VisitNum) {
+				case 2: await oText.ShowText("Come again to gaze at the plants I won't let you buy?");
+						break;
+				case 3: await oText.ShowText("I can't see why you choose to bother me when there are so many other cats you could bother.");
+						break;
+				case 4: await oText.ShowText("You must be the most indecisive cat I've met before.");
+						break;
+				case 5: await oText.ShowText("I don't know why I put up with you.");
+						await oText.ShowText("I should put a sign banning all cats with the name of - what's your name?");
+						break;
+				case 6: await oText.ShowText("How very rude of you to ignore me that last encounter. Now I can't put up that sign.");
+						break;
+				default: await oText.ShowText("It's your " + VisitNum + "th time here! Jeez, what do you want?!");
+						break;
+			}
+			FlashlightShop();
+		}
+		GlobalScript.OliveVisitNum++;
 	}
 
 	private async void FlashlightShop()
@@ -73,7 +96,7 @@ public partial class PlantShop : Node2D
 			{
 				//eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 				///edit this dialogue?
-				GlobalScript.Inventory.Add("Flashlight"); ///save?
+				GlobalScript.AddItem("Flashlight"); ///save?
 				GlobalScript.Coins -= 10;
 				await oText.ShowText("Here's your flashlight. I've given you the most basic one. It only has one mode.");
 				await oText.ShowText("Press F to toggle the flashlight and use the mouse to change it's direction.");
@@ -90,14 +113,16 @@ public partial class PlantShop : Node2D
 			}
 		}
 		else if (choice == "2") {
-			await oText.ShowText("Tut-tut, wasting my time I see. What an awful customer, just like the rest of them.");
+			if (GlobalScript.OliveVisitNum == 1) {
+				await oText.ShowText("Tut-tut, wasting my time I see. What an awful customer, just like the rest of them.");
+			}
 		}
 		else if (choice == "3") 
 		{
 			int success = GD.RandRange(0, 100); ///idk if I did this right
 			if (success >= 99)
 			{
-				GlobalScript.Inventory.Add("Flashlight"); ///save?
+				GlobalScript.AddItem("Flashlight"); ///save?
 				await dText.ShowText("I stole a flashlight.");
 			}
 			else

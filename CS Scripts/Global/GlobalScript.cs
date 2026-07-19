@@ -46,11 +46,11 @@ public partial class GlobalScript : Node2D
 		}
 	}
 
-	public static bool OliveShopOpened
+	public static int OliveVisitNum
 	{
-		get => GameData.OliveShopOpened;
+		get => GameData.OliveVisitNum;
 		set { 
-			GameData.OliveShopOpened = value;
+			GameData.OliveVisitNum = value;
 			SaveGame();
 		}
 	}
@@ -150,5 +150,9 @@ public partial class GlobalScript : Node2D
 			GD.Print("Parameter does not match short or long (GlobalScript.CQ(string))");
 			return null;
 		}
+	}
+	public static void AddItem(string item) {
+		Inventory.Add(item);
+		SaveGame();
 	}
 }

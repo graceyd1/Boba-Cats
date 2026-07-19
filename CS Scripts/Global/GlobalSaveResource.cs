@@ -31,7 +31,7 @@ public partial class GlobalSaveResource : Resource
 	public int WorldNum{get; set;} = 1;
 
 	[Export]
-	public bool OliveShopOpened{get; set;} = false;
+	public int OliveVisitNum{get; set;} = 0;
 	[Export]
 	public bool GeyserOpened{get; set;} = false;
 
