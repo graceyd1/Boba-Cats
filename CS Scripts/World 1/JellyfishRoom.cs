@@ -17,6 +17,16 @@ public partial class JellyfishRoom : Node2D
 			await NextRoomCheck();
 		}
 	}
+
+	private async void OnBlueCatInteract()
+	{
+		var bArea = GetNode<Node2D>("BlueCat/InteractArea");
+		var bText = bArea.GetNode<TextBox>("TextBox");
+		bText.DisableInteractArea();
+		await bText.ShowText("I'm blue cat");
+		bText.EnableInteractArea();
+
+	}
 	
 	private void OnBreakAOEEntered(Node2D player)
 	{

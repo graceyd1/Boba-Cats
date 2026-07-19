@@ -13,7 +13,7 @@ public partial class UnderwaterPlayer : Player
 	
 	public override void _Ready() {
 		base._Ready();
-		base.Speed = 100;
+		base.Speed = 120;
 		base.Gravity = 0.001F;
 
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -101,8 +101,6 @@ public partial class UnderwaterPlayer : Player
 		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
 		if (Flash)
 		{
-			var modulate = animatedSprite.SelfModulate;
-			var originalR = modulate.R;
 			if (hurtTimer.TimeLeft % 0.2 < 0.1)
 			{
 				animatedSprite.SelfModulate = new Color(1, 1, 1, 1);

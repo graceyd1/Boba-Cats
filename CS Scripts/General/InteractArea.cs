@@ -37,24 +37,17 @@ public partial class InteractArea : Area2D
 	public override void _Ready()
 	{
 		allowInteraction = true;
-		//GD.Print(allowInteraction);
-		
-		//GD.Print(ExitRooms.Contains(GetNode<Node2D>("../..").Name));
-		
-
-		//interactLabel =  GetTree().Root.GetNode<Node2D>("*").GetNodeOrNull<Control>("InteractLabel");	
 
 		//looks up to 3 parent levels up to find interact label
 		//there's probably a better way to do this
-
 		interactLabel = GetParent().GetNodeOrNull<Control>("InteractLabel");
 		try
 		{
-			if (interactLabel != null)
+			if (interactLabel == null)
 			{
 				interactLabel = GetParent().GetParent().GetNodeOrNull<Control>("InteractLabel");
 			}
-			if (interactLabel != null)
+			if (interactLabel == null)
 			{
 				interactLabel = GetParent().GetParent().GetParent().GetNodeOrNull<Control>("InteractLabel");
 			}
@@ -76,12 +69,10 @@ public partial class InteractArea : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		//GD.Print(allowInteraction);
-		if (playerNear)
+		if (playerNear && allowInteraction)
 		{
-			if (Input.IsActionJustPressed("enter") && allowInteraction)
+			if (Input.IsActionJustPressed("enter"))
 			{
-				GD.Print("interact");
 				//interact signals
 				EmitSignal(SignalName.Interact);
 				EmitSignal(SignalName.InteractReturnAreaName, Name);
@@ -99,6 +90,22 @@ public partial class InteractArea : Area2D
 		if (!allowInteract && interactLabel != null)
 		{
 			interactLabel.Hide();
+		}
+	}
+
+	/// <summary>
+	/// Enables the interact area after 0.1 seconds to avoid infinite looping
+	/// </summary>
+	public async void DelayEnable()
+	{
+		var timer = GetNode<Godot.Timer>("Timer");
+		timer.Start();
+		await ToSignal(timer, Godot.Timer.SignalName.Timeout);
+
+		allowInteraction = true;
+		if (interactLabel != null && GetOverlappingBodies().Count() > 0)
+		{
+			interactLabel.Show();
 		}
 	}
 

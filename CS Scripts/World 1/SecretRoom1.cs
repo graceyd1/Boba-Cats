@@ -12,23 +12,22 @@ public partial class SecretRoom1 : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		anim = GetNode<AnimationPlayer>("AnimationPlayer");
+		gText = GetNode<TextBox>("Green2/RightInteractArea/TextBox");
+		textIdx = 0;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override async void _Process(double delta)
 	{
-		anim = GetNode<AnimationPlayer>("AnimationPlayer");
-		gText = GetNode<TextBox>("Green2/RightInteractArea/TextBox");
-		textIdx = 0;
-
 		if (!transitioning)
 		{
 			await NextRoomCheck();
 		}
 	}
 
-	private void OnLeftInteract()
-	{
+	private async void OnLeftInteract()
+{
 		var area = GetNode<InteractArea>("Green/LeftInteractArea");
 		area.Interactable(false);
 		int random = GD.RandRange(0, 5);
@@ -41,7 +40,10 @@ public partial class SecretRoom1 : Node2D
 			case 4: anim.Play("fly"); break;
 			case 5: anim.Play("skew"); break;
 		}
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+
 		area.Interactable(true);
+		area.ResetLabelPos();
 		if (area.playerNear)
 		{
 			GetNode<Control>("InteractLabel").Show();
@@ -50,14 +52,11 @@ public partial class SecretRoom1 : Node2D
 
 	private async void OnRightInteract()
 	{
-		GD.Print("INTERACT");///
-
 		gText.DisableInteractArea();
 		switch (textIdx)
 		{
 			case 0: 
 				await gText.ShowText("This is a secret room! Welcome!"); 
-				GD.Print("DONE!");///
 				if (GlobalScript.Azulcat)
 				{
 					await gText.ShowText("I heard a laser go off earlier. Was that you?");
@@ -79,7 +78,7 @@ public partial class SecretRoom1 : Node2D
 				}
 				break;
 			case 3: 
-				if (GlobalScript.QuestNum <= GlobalScript.MainQuests.IndexOf("ExploreCave")) { //number
+				if (GlobalScript.QuestNum <= GlobalScript.MainQuests.IndexOf("ExploreOcean")) { //number
 					await gText.ShowText("Have you met Azucat? What an interesting cat!");
 					await gText.ShowText("He used to be friends with another cat named Parva, but not anymore. I wonder what happened...");
 				}

@@ -35,7 +35,7 @@ public partial class TextBox : Node2D
 
 	public override void _Input(InputEvent @event)
 	{
-		if (showingText && Input.IsActionPressed("enter") && timer.IsStopped())
+		if (showingText && Input.IsActionJustPressed("enter") && timer.IsStopped())
 		{
 			showingText = false;
 			inactive = false;
@@ -44,21 +44,21 @@ public partial class TextBox : Node2D
 			EmitSignal(SignalName.ContinueDialogue);
 			EmitSignal(SignalName.HidePrompt);
 		}
-		else if (asking && Input.IsActionPressed("option_1") && timer.IsStopped()) {
+		else if (asking && Input.IsActionJustPressed("option_1") && timer.IsStopped()) {
 			asking = false;
 			dialogueNum++;
 			Hide();
 			EmitSignal(SignalName.ChoiceMade, "1");
 			EmitSignal(SignalName.HidePrompt); //to hide <<Number Keys>>
 		}
-		else if (asking && Input.IsActionPressed("option_2") && timer.IsStopped()) {
+		else if (asking && Input.IsActionJustPressed("option_2") && timer.IsStopped()) {
 			asking = false;
 			dialogueNum++;
 			Hide();
 			EmitSignal(SignalName.ChoiceMade, "2");
 			EmitSignal(SignalName.HidePrompt);
 		}
-		else if (asking && Input.IsActionPressed("option_3") && timer.IsStopped()) {
+		else if (asking && Input.IsActionJustPressed("option_3") && timer.IsStopped()) {
 			asking = false;
 			dialogueNum++;
 			Hide();
@@ -74,7 +74,6 @@ public partial class TextBox : Node2D
 		label.AppendText("[font_size=10]" + text + "[/font_size]");
 	
 		showingText = true;
-		//GD.Print(Position); ///
 		Show();
 		
 		inactive = true;
@@ -83,7 +82,7 @@ public partial class TextBox : Node2D
 		await ToSignal(this, TextBox.SignalName.ContinueDialogue);
 	}
 	
-	//it's broken because idk how to get it to stop if player continues before timeout
+	//todo - it's broken because idk how to get it to stop if player continues before timeout
 	private async void InactiveCountdown(int curNum, string text) {
 		await ToSignal(GetTree().CreateTimer(2f), SceneTreeTimer.SignalName.Timeout);
 		if (curNum == dialogueNum) {
@@ -111,7 +110,6 @@ public partial class TextBox : Node2D
 		var parent = GetParent();
 		if (parent is InteractArea area)
 		{
-			GD.Print("disable");///
 			area.Interactable(false);
 		}
 	}
@@ -125,7 +123,7 @@ public partial class TextBox : Node2D
 		var parent = GetParent();
 		if (parent is InteractArea area)
 		{
-			area.Interactable(true);
+			area.DelayEnable();
 		}
 	}
 }

@@ -14,5 +14,9 @@ position = Vector2(0, -30)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_ri4u2")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="OnBodyExited"]

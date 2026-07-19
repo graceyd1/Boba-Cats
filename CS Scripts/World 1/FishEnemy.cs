@@ -67,7 +67,7 @@ public partial class FishEnemy : Node2D
 			}
 		}
 
-		if (InteractArea != null)
+		if (InteractArea != null && InteractArea.GetOverlappingBodies().Count > 0)
 		{
 			InteractArea.ResetLabelPos();
 		}
