@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/Controls.cs" id="1_weoqj"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/ControlsTab.cs" id="3_auoow"]
-[ext_resource type="PackedScene" uid="uid://cyigelmg4bvtj" path="res://item_icons.tscn" id="3_h2a03"]
+[ext_resource type="PackedScene" path="res://item_icons.tscn" id="3_h2a03"]
 [ext_resource type="Texture2D" uid="uid://csyir0wlb3anh" path="res://assets/player/menu_icon.png" id="3_l32e4"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/InventoryTab.cs" id="4_cjqpt"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/QuestsTab.cs" id="4_s05c4"]
@@ -73,6 +73,7 @@ position = Vector2(0, 13.3333)
 texture = ExtResource("3_l32e4")
 
 [node name="Expanded" type="Panel" parent="."]
+visible = false
 use_parent_material = true
 offset_left = -87.0
 offset_top = 30.0
@@ -156,6 +157,7 @@ offset_right = 40.0
 offset_bottom = 56.667
 
 [node name="InventoryTab" type="Button" parent="."]
+visible = false
 use_parent_material = true
 offset_left = -50.0
 offset_top = 33.3333
@@ -171,6 +173,7 @@ text = "Items"
 script = ExtResource("4_cjqpt")
 
 [node name="QuestsTab" type="Button" parent="."]
+visible = false
 use_parent_material = true
 offset_left = -20.0
 offset_top = 33.3333
@@ -187,6 +190,7 @@ text = "Quests
 script = ExtResource("4_s05c4")
 
 [node name="ControlsTab" type="Button" parent="."]
+visible = false
 use_parent_material = true
 offset_left = -80.0
 offset_top = 33.0

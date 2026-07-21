@@ -28,21 +28,21 @@ public partial class VineRoom : Node2D
 	private async Task NextRoomCheck() {
 		var player = GetNode<CharacterBody2D>("UnderwaterPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
-		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		var GlobalSceneChange = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		Vector2 pos = player.Position;
 		if (pos.Y > 175) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(187, 138), "jellyfish_room", true);
+			await GlobalSceneChange.ChangeRoom(new Vector2(187, 138), "jellyfish_room", true);
 		}
 		else if (pos.X > 495) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(40, 558), "tall_tube_coral_room", true);
+			await GlobalSceneChange.ChangeRoom(new Vector2(40, 558), "tall_tube_coral_room", true);
 		
 		}
 		else if (pos.Y < 5)
@@ -51,7 +51,7 @@ public partial class VineRoom : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(220, 132), "secret_room_1", true);
+			await GlobalSceneChange.ChangeRoom(new Vector2(220, 132), "secret_room_1", true);
 		}
 	}
 }

@@ -43,20 +43,20 @@ public partial class JellyfishRoom : Node2D
 	private async Task NextRoomCheck() {
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		Vector2 pos = GetNode<CharacterBody2D>("UnderwaterPlayer").Position;
-		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		var GlobalSceneChange = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		if (pos.X > 735) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(20, 135), "long_tube_coral_room", true);
+			await GlobalSceneChange.ChangeRoom(new Vector2(20, 135), "long_tube_coral_room", true);
 		}
 		else if (pos.Y < 5) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(163, 126), "vine_room", true);
+			await GlobalSceneChange.ChangeRoom(new Vector2(163, 126), "vine_room", true);
 		}
 	}
 }

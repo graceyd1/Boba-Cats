@@ -180,13 +180,13 @@ public partial class FishRoom : Node2D
 	private async Task NextRoomCheck() {
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
 		Vector2 pos = GetNode<CharacterBody2D>("UnderwaterPlayer").Position;
-		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		var GlobalSceneChange = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		if (pos.X < 5) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(480, 140), "box_room", false);
+			await GlobalSceneChange.ChangeRoom(new Vector2(480, 140), "box_room", false);
 		}
 		else if (pos.Y < 5)
 		{
@@ -194,7 +194,7 @@ public partial class FishRoom : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(290, 135), "long_tube_coral_room", false);
+			await GlobalSceneChange.ChangeRoom(new Vector2(290, 135), "long_tube_coral_room", false);
 		}
 		else if (pos.X > 635)
 		{
@@ -202,7 +202,7 @@ public partial class FishRoom : Node2D
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(20, 863), "geyser_room", true);
+			await GlobalSceneChange.ChangeRoom(new Vector2(20, 863), "geyser_room", true);
 		}
 	}
 }

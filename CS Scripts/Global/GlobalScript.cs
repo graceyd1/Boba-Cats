@@ -62,6 +62,15 @@ public partial class GlobalScript : Node2D
 		}
 	}
 
+	public static bool ViewedDarnCutscene
+	{
+		get => GameData.ViewedDarnCutscene;
+		set {
+			GameData.GeyserOpened = value;
+			SaveGame();
+		}
+	}
+
 	public static bool Azulcat {
 		get => GameData.Azulcat;
 		set {

@@ -35,7 +35,7 @@ public partial class GeyserRoom : Node2D
 	private async Task NextRoomCheck() {
 		var player = GetNode<CharacterBody2D>("UnderwaterPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
-		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		var GlobalSceneChange = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		Vector2 pos = player.Position;
 		if (pos.X < 5) {
 			transitioning = true;
@@ -45,11 +45,11 @@ public partial class GeyserRoom : Node2D
 
 			if (pos.Y < 100)
 			{
-				await GlobalScript.ChangeRoom(new Vector2(300, 72), "tall_tube_coral_room", false);
+				await GlobalSceneChange.ChangeRoom(new Vector2(300, 72), "tall_tube_coral_room", false);
 			}
 			else
 			{
-				await GlobalScript.ChangeRoom(new Vector2(620, 171), "fish_room", false);
+				await GlobalSceneChange.ChangeRoom(new Vector2(620, 171), "fish_room", false);
 			}
 		}
 	}

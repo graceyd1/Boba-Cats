@@ -23,6 +23,11 @@ public partial class EnterSeaBunnyRoom : Node2D
 		else {
 			GetNode<AnimatedSprite2D>("Parva").Hide();
 		}
+
+		if (GlobalScript.QuestNum <= GlobalScript.MainQuests.IndexOf("ReturnBoba")) //number
+		{
+			GetNode<Sprite2D>("Ladder").Position = new Vector2(0, 250); //offscreen
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -76,24 +81,31 @@ public partial class EnterSeaBunnyRoom : Node2D
 	private async Task NextRoomCheck() {
 		var player = GetNode<CharacterBody2D>("GroundPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
-		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		var GlobalSceneChange = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		Vector2 pos = player.Position;
-		if (pos.X < 150 && pos.Y < 70) {
-			/*transitioning = true;
-			if (FaderNode is Fader fader) {
-				await fader.FadeIn(.7f);
-			}
-			await GlobalScript.ChangeRoom(new Vector2(201, 140), "parva_house", false);*/
+		
+		
+		if ((GlobalScript.CQ("short") == "ParvaCave" || GlobalScript.CQ("short") == "Seabunny") && pos.Y < 100) 
+		{
 			var dashT = GetNode<TextBox>("GroundPlayer/TextBox");
 			await dashT.ShowText("It's too high up! I can't escape!");
 		}
-		else if (pos.X > 315)
+		else if (pos.Y < 5)
 		{
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(20, 231), "sea_bunny_room", true);
+			await GlobalSceneChange.ChangeRoom(new Vector2(270, 140), "parva_house", false);
+		}
+		
+		if (pos.X > 315)
+		{
+			transitioning = true;
+			if (FaderNode is Fader fader) {
+				await fader.FadeIn(.7f);
+			}
+			await GlobalSceneChange.ChangeRoom(new Vector2(20, 231), "sea_bunny_room", true);
 		}
 
 	}

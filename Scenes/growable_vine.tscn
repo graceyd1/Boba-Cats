@@ -331,8 +331,7 @@ texture_filter = 1
 position = Vector2(0, 2.5)
 scale = Vector2(1, 0.949438)
 sprite_frames = SubResource("SpriteFrames_i804w")
-animation = &"eaten"
-frame_progress = 0.347093
+animation = &"grown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -37)

@@ -32,21 +32,21 @@ public partial class EnterCaveRoom : Node2D
 	private async Task NextRoomCheck() {
 		var player = GetNode<CharacterBody2D>("GroundPlayer");
 		var FaderNode = GetNode<CanvasLayer>("/root/Fader");
-		var GlobalScript = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		var GlobalSceneChange = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 		Vector2 pos = player.Position;
 		if (pos.X > 315) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(10, 90), "cave_room", true);
+			await GlobalSceneChange.ChangeRoom(new Vector2(10, 90), "cave_room", true);
 		}
 		else if (pos.Y > 175) {
 			transitioning = true;
 			if (FaderNode is Fader fader) {
 				await fader.FadeIn(.7f);
 			}
-			await GlobalScript.ChangeRoom(new Vector2(160, 20), "tall_tube_coral_room", false);
+			await GlobalSceneChange.ChangeRoom(new Vector2(160, 20), "tall_tube_coral_room", false);
 		}
 	}
 }

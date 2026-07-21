@@ -3,14 +3,17 @@ using System;
 
 public partial class GrowableVine : Area2D
 {
-	/// [Export]
-	/// public bool GrownByDefault {get; set;} = false;
+	[Export]
+	public bool GrownByDefault {get; set;} = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		animatedSprite2D.Animation = "ungrown";
-		GetNode<CollisionShape2D>("GrownCollisionShape").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+		if (!GrownByDefault)
+		{
+			animatedSprite2D.Animation = "ungrown";
+			GetNode<CollisionShape2D>("GrownCollisionShape").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
