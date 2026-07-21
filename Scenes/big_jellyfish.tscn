@@ -136,4 +136,4 @@ position = Vector2(-10, -21)
 scale = Vector2(0.8, 0.8)
 
 [node name="Hitbox" parent="." instance=ExtResource("6_6lmg7")]
-scale = Vector2(1.1, 2.2)
+scale = Vector2(1.1, 2)

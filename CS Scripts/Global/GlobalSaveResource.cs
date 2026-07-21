@@ -22,13 +22,16 @@ public partial class GlobalSaveResource : Resource
 	public Godot.Collections.Array<String> Inventory {get; set;} = new Array<String>(); 
 
 	[Export]
-	public int QuestNum{get; set;} = 9; //0;
+	public int QuestNum{get; set;} = 0; //0;
 
 	[Export]
 	public string CurrentRoom{get; set;} = "first_room";
 
 	[Export]
 	public int WorldNum{get; set;} = 1;
+
+	[Export]
+	public Godot.Collections.Array<bool> CoinsCollected {get; set;} = new Array<bool>(); //true if collected
 
 	[Export]
 	public int OliveVisitNum{get; set;} = 0;

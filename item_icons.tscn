@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyigelmg4bvtj"]
+[gd_scene load_steps=6 format=3 uid="uid://dlmh7jpc3ln7j"]
 
 [ext_resource type="Script" path="res://ItemIcons.cs" id="1_7bvsw"]
 [ext_resource type="Texture2D" uid="uid://hn2tiy74qia0" path="res://assets/icons/flashlight.png" id="1_atoiq"]
@@ -31,16 +31,15 @@ animations = [{
 }]
 
 [node name="ItemIcons" type="Button"]
-offset_left = -7.0
-offset_top = -5.0
-offset_right = 13.0
+offset_left = -10.0
+offset_top = -8.0
+offset_right = 10.0
 offset_bottom = 10.0
-scale = Vector2(0.5, 0.5)
 theme_override_styles/normal = SubResource("StyleBoxFlat_tyrmj")
 script = ExtResource("1_7bvsw")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(11, 7)
-scale = Vector2(0.84375, 0.75)
+position = Vector2(10, 9)
 sprite_frames = SubResource("SpriteFrames_um4kn")
 animation = &"Flashlight"

@@ -46,6 +46,18 @@ public partial class GlobalScript : Node2D
 		}
 	}
 
+	/// <summary>
+	/// Stores whether each coin has been collected. True if collected.
+	/// </summary>
+	public static Godot.Collections.Array<bool> CoinsCollected
+	{
+		get => GameData.CoinsCollected;
+		set {
+			GameData.CoinsCollected = value;
+			SaveGame();
+		}
+	}
+
 	public static int OliveVisitNum
 	{
 		get => GameData.OliveVisitNum;
@@ -115,6 +127,10 @@ public partial class GlobalScript : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		//todo - change size?
+		//did I do this in the right spot
+		CoinsCollected.Resize(100);
+		CoinsCollected.Fill(false);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

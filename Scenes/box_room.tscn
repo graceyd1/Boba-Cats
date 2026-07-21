@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dflvchrpqg7qo"]
+[gd_scene load_steps=26 format=3 uid="uid://dflvchrpqg7qo"]
 
 [ext_resource type="Texture2D" uid="uid://bu1s2q5m3aj17" path="res://assets/backgrounds/box_room/box_room0.png" id="1_qieuq"]
 [ext_resource type="Script" path="res://CS Scripts/World 1/BoxRoom.cs" id="1_tli8b"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dreu42hj60gc6" path="res://Scenes/lantern.tscn" id="16_3s04o"]
 [ext_resource type="Texture2D" uid="uid://bekphjfbgb21g" path="res://assets/background_items/pure_vine.png" id="17_15pkn"]
 [ext_resource type="Script" path="res://CS Scripts/World 1/RollingBomb.cs" id="20_p8tmg"]
+[ext_resource type="PackedScene" uid="uid://i5wpk3ynqacf" path="res://coin.tscn" id="23_dfl8a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i07pw"]
 animations = [{
@@ -258,3 +259,23 @@ texture = ExtResource("14_5en38")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RollingBomb"]
 position = Vector2(205, 121)
 shape = SubResource("CircleShape2D_twqg6")
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin1" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(126, 108)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(141, 92)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(339, 82)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(353, 82)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(367, 82)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(380, 82)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/Controls.cs" id="1_weoqj"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/ControlsTab.cs" id="3_auoow"]
-[ext_resource type="PackedScene" path="res://item_icons.tscn" id="3_h2a03"]
+[ext_resource type="PackedScene" uid="uid://dlmh7jpc3ln7j" path="res://item_icons.tscn" id="3_h2a03"]
 [ext_resource type="Texture2D" uid="uid://csyir0wlb3anh" path="res://assets/player/menu_icon.png" id="3_l32e4"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/InventoryTab.cs" id="4_cjqpt"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/QuestsTab.cs" id="4_s05c4"]
@@ -73,20 +73,18 @@ position = Vector2(0, 13.3333)
 texture = ExtResource("3_l32e4")
 
 [node name="Expanded" type="Panel" parent="."]
-visible = false
 use_parent_material = true
 offset_left = -87.0
 offset_top = 30.0
 offset_right = 7.0
-offset_bottom = 113.0
+offset_bottom = 120.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_a8ss1")
-metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Expanded"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_right = 94.0
-offset_bottom = 83.0
+offset_right = 87.0
+offset_bottom = 90.0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -145,16 +143,16 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ItemIcons1" parent="Expanded/ItemsUI" instance=ExtResource("3_h2a03")]
-offset_left = 6.33334
-offset_top = 41.6667
-offset_right = 26.3333
-offset_bottom = 56.6667
+offset_left = 10.3333
+offset_top = 43.3333
+offset_right = 30.3333
+offset_bottom = 61.3333
 
 [node name="ItemIcons2" parent="Expanded/ItemsUI" instance=ExtResource("3_h2a03")]
-offset_left = 20.0
-offset_top = 41.667
-offset_right = 40.0
-offset_bottom = 56.667
+offset_left = 37.0
+offset_top = 43.3333
+offset_right = 57.0
+offset_bottom = 61.3333
 
 [node name="InventoryTab" type="Button" parent="."]
 visible = false
