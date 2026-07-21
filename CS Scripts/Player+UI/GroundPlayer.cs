@@ -8,12 +8,14 @@ public partial class GroundPlayer : Player
 	public bool Climbing{get; set;} = false;
 
 	private AnimatedSprite2D animatedSprite;
+	private Godot.Timer hurtTimer;
 	public override void _Ready() {
 		base._Ready();
 		base.Speed = 120;
 		base.Gravity = 0.0003F;
 		InputEnabled = true;
 
+		hurtTimer = GetNode<Godot.Timer>("HurtTimer");
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animatedSprite.Animation = "sit_right";
 	}
@@ -112,22 +114,21 @@ public partial class GroundPlayer : Player
 				
 				Velocity = dir;
 			}
-			//flashing when hurt
-			var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
-			if (Flash)
-			{
-				var modulate = animatedSprite.SelfModulate;
+		} //end of if movement disabled
 
-				if (hurtTimer.TimeLeft % 0.2 < 0.1)
-				{
-					animatedSprite.SelfModulate = new Color(1, 1, 1, 1);
-				}
-				else
-				{
-					animatedSprite.SelfModulate = new Color(100, 1, 1, 1);
-				}
+		//flashing when hurt
+		if (Flash)
+		{
+			if (hurtTimer.TimeLeft % 0.2 < 0.1)
+			{
+				animatedSprite.SelfModulate = new Color(1, 1, 1, 1);
+			}
+			else
+			{
+				animatedSprite.SelfModulate = new Color(100, 1, 1, 1);
 			}
 		}
+
 		//Sea bunny bounce
 		//Finished quest 7: get treasure
 		if (GlobalScript.QuestNum >= GlobalScript.MainQuests.IndexOf("GetBoat")) //number
@@ -157,9 +158,14 @@ public partial class GroundPlayer : Player
 	}
 
 	//change player back to normal after flashing animation
-	public void OnHurtTimerTimeout()
+	private void OnHurtTimerTimeout()
 	{
 		animatedSprite.Modulate = new Color(1, 1, 1, 1);
+	}
+
+	private void OnPlayerDied()
+	{
+		animatedSprite.Animation = "died";
 	}
 
 	//can change the code to go to different room instead

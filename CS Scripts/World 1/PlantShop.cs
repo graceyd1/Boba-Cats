@@ -13,7 +13,7 @@ public partial class PlantShop : Node2D
 		oText = GetNode<TextBox>("Olive/TextBox");
 		classPlayer = GetNode<GroundPlayer>("GroundPlayer");
 		
-		if (!GlobalScript.Inventory.Contains("flashlight"))
+		if (!GlobalScript.Inventory.Contains("Flashlight"))
 		{
 			FirstShopDialogue(GlobalScript.OliveVisitNum);
 		}
@@ -122,7 +122,7 @@ public partial class PlantShop : Node2D
 			int success = GD.RandRange(0, 100); ///idk if I did this right
 			if (success >= 99)
 			{
-				GlobalScript.AddItem("Flashlight"); ///save?
+				GlobalScript.AddItem("Flashlight"); //=todo save?
 				await dText.ShowText("I stole a flashlight.");
 			}
 			else
@@ -142,7 +142,7 @@ public partial class PlantShop : Node2D
 				laser.Play();
 
 				var player = GetNode<Player>("GroundPlayer");
-				await ToSignal(player, Player.SignalName.Died);
+				await ToSignal(player, Player.SignalName.Respawned);
 				var GlobalScene = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
 				await GlobalScene.ChangeRoom(new Vector2(40, 321), "underwater_town", true);
 				// laser.Hide();

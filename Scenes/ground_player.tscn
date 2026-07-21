@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://b2eu1rt08rowb"]
+[gd_scene load_steps=21 format=3 uid="uid://b2eu1rt08rowb"]
 
 [ext_resource type="PackedScene" uid="uid://djy0cxmipcbm6" path="res://Scenes/player.tscn" id="1_sasn5"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/GroundPlayer.cs" id="2_dj4o3"]
 [ext_resource type="Texture2D" uid="uid://bwqrcy66xl8j" path="res://assets/player/player_climb.png" id="3_7jppb"]
 [ext_resource type="Texture2D" uid="uid://cb66mimobnyh8" path="res://assets/player/ground player/jump_left0.png" id="3_flul6"]
+[ext_resource type="Texture2D" uid="uid://dlw6yq4ynmybn" path="res://assets/player/player_dead.png" id="4_jcfbu"]
 [ext_resource type="Texture2D" uid="uid://bag03x0mlqtfh" path="res://assets/player/ground player/jump_left1.png" id="4_kr7fd"]
 [ext_resource type="Texture2D" uid="uid://bk7trmlqcca3x" path="res://assets/player/ground player/jump_right0.png" id="5_4lwnc"]
 [ext_resource type="Texture2D" uid="uid://bgvj71gvaesqq" path="res://assets/player/ground player/jump_right1.png" id="6_ratr5"]
@@ -29,6 +30,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"climb",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jcfbu")
+}],
+"loop": true,
+"name": &"died",
 "speed": 1.0
 }, {
 "frames": [{
@@ -112,4 +121,6 @@ script = ExtResource("2_dj4o3")
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_8k2q2")
 sprite_frames = SubResource("SpriteFrames_opiss")
-animation = &"sit_right"
+animation = &"died"
+
+[connection signal="Died" from="." to="." method="OnPlayerDied"]

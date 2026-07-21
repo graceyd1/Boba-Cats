@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://d3lmqv54tdb7j"]
+[gd_scene load_steps=45 format=3 uid="uid://d3lmqv54tdb7j"]
 
 [ext_resource type="Texture2D" uid="uid://c50wlu6jdj7cf" path="res://assets/backgrounds/title_screen.png" id="1_3ewcg"]
 [ext_resource type="Texture2D" uid="uid://5v36jpj544bp" path="res://assets/backgrounds/opening_animation.png" id="1_gy0nm"]
@@ -21,10 +21,6 @@ region = Rect2(1280, 0, 320, 180)
 atlas = ExtResource("1_gy0nm")
 region = Rect2(1600, 0, 320, 180)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxk6c"]
-atlas = ExtResource("1_gy0nm")
-region = Rect2(0, 180, 320, 180)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtwj7"]
 atlas = ExtResource("1_gy0nm")
 region = Rect2(320, 180, 320, 180)
@@ -45,13 +41,13 @@ region = Rect2(1280, 180, 320, 180)
 atlas = ExtResource("1_gy0nm")
 region = Rect2(1600, 180, 320, 180)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_57cx0"]
-atlas = ExtResource("1_gy0nm")
-region = Rect2(0, 360, 320, 180)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_27puh"]
 atlas = ExtResource("1_gy0nm")
 region = Rect2(320, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57cx0"]
+atlas = ExtResource("1_gy0nm")
+region = Rect2(0, 360, 320, 180)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fx2s1"]
 atlas = ExtResource("1_gy0nm")
@@ -161,9 +157,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_psa2n")
 }, {
 "duration": 10.0,
-"texture": SubResource("AtlasTexture_mxk6c")
-}, {
-"duration": 10.0,
 "texture": SubResource("AtlasTexture_rtwj7")
 }, {
 "duration": 10.0,
@@ -179,6 +172,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_vjgq5")
 }, {
 "duration": 10.0,
+"texture": SubResource("AtlasTexture_27puh")
+}, {
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_57cx0")
 }, {
 "duration": 10.0,
@@ -189,6 +185,12 @@ animations = [{
 }, {
 "duration": 10.0,
 "texture": SubResource("AtlasTexture_e2ddm")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_6t8ap")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_csoju")
 }, {
 "duration": 10.0,
 "texture": SubResource("AtlasTexture_6t8ap")
@@ -330,6 +332,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1y4fl")
 text = "Play"
 
 [node name="FilePicker" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="FilePicker"]
 offset_left = 52.0

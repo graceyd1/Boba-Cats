@@ -378,8 +378,8 @@ sprite_frames = SubResource("SpriteFrames_8usnm")
 animation = &"start_climb"
 
 [node name="Hitbox" parent="." instance=ExtResource("36_pik4a")]
-position = Vector2(20, 21.1111)
-scale = Vector2(3.3, 1.725)
+position = Vector2(19, 21.111)
+scale = Vector2(3.4, 1.725)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(18.8889, 20)

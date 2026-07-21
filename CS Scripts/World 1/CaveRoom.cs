@@ -9,6 +9,11 @@ public partial class CaveRoom : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		var bridge = GetNode<Sprite2D>("Bridge");
+		if (GlobalScript.CQ("short") == "ExploreOcean")
+		{
+			bridge.Position = new Vector2(0, 300);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

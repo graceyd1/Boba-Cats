@@ -10,6 +10,9 @@ public partial class Player : CharacterBody2D
 	[Signal]
 	public delegate void DiedEventHandler();
 
+	[Signal]
+	public delegate void RespawnedEventHandler();
+
 	public int Speed{get; set;}
 	
 	public float Gravity{get; set;}
@@ -86,24 +89,24 @@ public partial class Player : CharacterBody2D
 	private void GetHit()
 	{
 		hp --;
+		Flash = true;
+		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
+		hurtTimer.Start();
+
 		if (hp <= 0 || GetParent().Name == "CaveRoom") // making you respawn after hit in cave room
 		{
-			// GD.Print("You died!"); 
-			Respawn();
+			respawning = true;
 			EmitSignal(SignalName.Died);
+			Respawn();
 			hp = 2;
 		}
 
-		//i-frames
-		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
+		//i-frames	
 		invulnerable = true;
-		Flash = true;
-		hurtTimer.Start();
-
 		EmitSignal(SignalName.Hit, hp);
-
 	}
-		//when invulnerablility ends
+	
+	//when invulnerablility ends
 	//I don't know why but this method doesn't ever run for me
 
 	private void OnHurtTimerTimeout()
@@ -126,6 +129,7 @@ public partial class Player : CharacterBody2D
 		respawning = true;
 		respawnFadingIn = true;
 		invulnerable = true;
+		SetDisableMovement(true);
 		var fader = GetNode<CanvasLayer>("/root/Fader");
 		if (fader is Fader transition) {
 			await ToSignal(GetTree().CreateTimer(1.0f), SceneTreeTimer.SignalName.Timeout);
@@ -193,6 +197,8 @@ public partial class Player : CharacterBody2D
 		}
 		invulnerable = false;
 		respawning = false;
+		disableMovement = false;
+		EmitSignal(SignalName.Respawned);
 	}
 	public void SetVelocityModifier(Vector2 vel)
 	{

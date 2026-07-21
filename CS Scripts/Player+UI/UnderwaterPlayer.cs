@@ -9,7 +9,8 @@ public partial class UnderwaterPlayer : Player
 	}
 	
 	public InCoral CoralStatus = InCoral.NONE;
-	AnimatedSprite2D animatedSprite;
+	private AnimatedSprite2D animatedSprite;
+	private Godot.Timer hurtTimer;
 	
 	public override void _Ready() {
 		base._Ready();
@@ -18,6 +19,7 @@ public partial class UnderwaterPlayer : Player
 
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animatedSprite.Animation = "sit-helmet";
+		hurtTimer = GetNode<Godot.Timer>("HurtTimer");
 	}
 	
 	public override void _PhysicsProcess(double delta) {
@@ -98,7 +100,6 @@ public partial class UnderwaterPlayer : Player
 		
 		MoveAndSlide();
 		//flashing when hurt
-		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
 		if (Flash)
 		{
 			if (hurtTimer.TimeLeft % 0.2 < 0.1)
@@ -157,6 +158,11 @@ public partial class UnderwaterPlayer : Player
 	{
 		animatedSprite.Modulate = new Color(1, 1, 1, 1);
 
+	}
+
+	private void OnPlayerDied()
+	{
+		animatedSprite.Animation = "died";
 	}
 	
 	public void OnTubeCoralPull(Vector2 tubeVelocity)
