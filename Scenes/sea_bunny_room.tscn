@@ -500,6 +500,8 @@ libraries = {
 "": SubResource("AnimationLibrary_v2uxj")
 }
 
+[connection signal="Died" from="GroundPlayer" to="." method="OnPlayerDied"]
+[connection signal="Respawned" from="GroundPlayer" to="." method="OnPlayerRespawn"]
 [connection signal="body_entered" from="LeftVineTrigger" to="." method="OnLeftVineTriggerEntered"]
 [connection signal="body_entered" from="CutsceneTrigger" to="." method="EndFight"]
 [connection signal="body_entered" from="BossTrigger" to="." method="OnBossTriggerEntered"]

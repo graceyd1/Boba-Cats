@@ -13,43 +13,46 @@
 [node name="LongTubeCoralRoom" type="Node2D"]
 script = ExtResource("1_r2joo")
 
-[node name="Background0" type="Sprite2D" parent="."]
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 1)
+
+[node name="Background0" type="Sprite2D" parent="Parallax2D"]
 texture_filter = 1
 texture = ExtResource("1_1pun0")
 centered = false
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="Parallax2D2" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.7, 1)
 
-[node name="Background1" type="Sprite2D" parent="Parallax2D"]
+[node name="Background1" type="Sprite2D" parent="Parallax2D2"]
 texture_filter = 1
 texture = ExtResource("2_jrsbr")
 centered = false
 
-[node name="BakgroundVines" type="Node2D" parent="Parallax2D"]
+[node name="BakgroundVines" type="Node2D" parent="Parallax2D2"]
 
-[node name="BackgroundVine" type="Sprite2D" parent="Parallax2D/BakgroundVines"]
+[node name="BackgroundVine" type="Sprite2D" parent="Parallax2D2/BakgroundVines"]
 position = Vector2(298, 40)
 texture = ExtResource("4_4eqc7")
 
-[node name="BackgroundVine2" type="Sprite2D" parent="Parallax2D/BakgroundVines"]
+[node name="BackgroundVine2" type="Sprite2D" parent="Parallax2D2/BakgroundVines"]
 position = Vector2(280, 54)
 texture = ExtResource("4_4eqc7")
 
-[node name="BackgroundVine3" type="Sprite2D" parent="Parallax2D/BakgroundVines"]
+[node name="BackgroundVine3" type="Sprite2D" parent="Parallax2D2/BakgroundVines"]
 position = Vector2(241, 51)
 texture = ExtResource("4_4eqc7")
 
-[node name="BackgroundVine4" type="Sprite2D" parent="Parallax2D/BakgroundVines"]
+[node name="BackgroundVine4" type="Sprite2D" parent="Parallax2D2/BakgroundVines"]
 position = Vector2(136, 59)
 texture = ExtResource("4_4eqc7")
 
-[node name="BackgroundVine5" type="Sprite2D" parent="Parallax2D/BakgroundVines"]
+[node name="BackgroundVine5" type="Sprite2D" parent="Parallax2D2/BakgroundVines"]
 position = Vector2(36, 30)
 texture = ExtResource("4_4eqc7")
 
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("3_cwq0k")]
-position = Vector2(290, 138)
+position = Vector2(276, 138)
 metadata/_edit_group_ = true
 
 [node name="Vines" type="Node2D" parent="."]

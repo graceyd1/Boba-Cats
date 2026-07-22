@@ -99,7 +99,7 @@ position = Vector2(392, 22)
 texture = ExtResource("7_rx2ad")
 
 [node name="BackgroundVine14" type="Sprite2D" parent="Backgrounds/Parallax2D1/BackgroundVines"]
-position = Vector2(506, 28)
+position = Vector2(505, 25)
 texture = ExtResource("7_rx2ad")
 
 [node name="BackgroundVine15" type="Sprite2D" parent="Backgrounds/Parallax2D1/BackgroundVines"]

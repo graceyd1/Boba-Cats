@@ -30,7 +30,6 @@ public partial class Camera2d : Camera2D
 		
 		//Zoom = new Vector2(1, 1);
 
-
 		if (player.GetParent().Name == "FirstRoom") {
 			SetLimit(Side.Right, 500);
 			SetLimit(Side.Bottom, 180);
@@ -75,7 +74,7 @@ public partial class Camera2d : Camera2D
 		else if (player.GetParent().Name == "JellyfishRoom")
 		{
 			SetLimit(Side.Right, 740);
-			SetLimit(Side.Bottom, 220);
+			SetLimit(Side.Bottom, 180);
 		}
 
 		else if (player.GetParent().Name == "VineRoom")
@@ -116,10 +115,6 @@ public partial class Camera2d : Camera2D
 			{
 				SetLimit(Side.Top, 90);
 			}
-		}
-		else
-		{
-			PositionSmoothingEnabled = false;
 		}
 	}
 

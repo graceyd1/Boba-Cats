@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cqgkvgcx2lifd" path="res://assets/objects/tube_coral_sprites/tube_coral_short.png" id="4_tqchx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsuqx"]
-size = Vector2(14, 270.5)
+size = Vector2(10, 270.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1ba7"]
 size = Vector2(14, 12)

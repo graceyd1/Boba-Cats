@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 public partial class JellyfishRoom : Node2D
 {
 	private bool transitioning = false;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
-	{
+	{	
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +27,27 @@ public partial class JellyfishRoom : Node2D
 		await bText.ShowText("I'm blue cat");
 		bText.EnableInteractArea();
 
+	}
+
+	private void OnCaveCameraTriggerEntered(Node2D player)
+	{
+		var camera = player.GetNode<Camera2D>("Camera2D");
+		camera.PositionSmoothingEnabled = true;
+		camera.PositionSmoothingSpeed = 5.0f;
+		if (camera.LimitBottom == 180)
+		{
+			camera.SetLimit(Side.Bottom, 220);
+			camera.GlobalPosition = new Vector2(camera.GlobalPosition.X, 130);
+		}
+	}
+
+	private void OnCaveCameraTrigger2Entered(Node2D player)
+	{
+		var camera = player.GetNode<Camera2D>("Camera2D");
+		if (camera.LimitBottom == 220)
+		{
+			camera.SetLimit(Side.Bottom, 180);
+		}
 	}
 	
 	private void OnBreakAOEEntered(Node2D player)

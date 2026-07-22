@@ -93,7 +93,10 @@ public partial class Player : CharacterBody2D
 		var hurtTimer = GetNode<Godot.Timer>("HurtTimer");
 		hurtTimer.Start();
 
-		if (hp <= 0 || GetParent().Name == "CaveRoom") // making you respawn after hit in cave room
+		if (hp <= 0 || 
+		GetParent().Name == "CaveRoom" ||
+		GetParent().Name == "LongTubeCoralRoom" ||
+		GetParent().Name == "TallTubeCoralRoom") // making you respawn after hit in cave room
 		{
 			respawning = true;
 			EmitSignal(SignalName.Died);
@@ -163,7 +166,7 @@ public partial class Player : CharacterBody2D
 			}
 			else if (room == "LongTubeCoralRoom")
 			{
-				respawnPoint = new Vector2(290, 135);
+				respawnPoint = new Vector2(276, 138);
 			}
 			else if (room == "JellyfishRoom")
 			{
@@ -183,7 +186,7 @@ public partial class Player : CharacterBody2D
 			}
 			else if (room == "SeaBunnyRoom")
 			{
-				respawnPoint = new Vector2(83, 232);
+				respawnPoint = new Vector2(50, 232);
 			}
 			else
 			{

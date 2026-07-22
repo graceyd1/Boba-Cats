@@ -21,6 +21,7 @@ public partial class Coin : Node2D
 		if (GlobalScript.CoinsCollected[CoinIdx])
 		{
 			Disabled = true;
+			Hide();
 		}
 		else
 		{
@@ -42,14 +43,14 @@ public partial class Coin : Node2D
 			anim.Play();
 			GlobalScript.Coins ++;
 			GlobalScript.CoinsCollected[CoinIdx] = true;
-			Disable();
+			Disabled = true;
 		}
 	}
 
-	private void Disable()
-	{
-		// var shape = GetNode<CollisionShape2D>("AnimatedCoin/Area2D/CollisionShape2D");
-		// shape.SetDeferred("Disabled", true);
-		Disabled = true;
-	}
+	// private void Disable()
+	// {
+	// 	// var sh	ape = GetNode<CollisionShape2D>("AnimatedCoin/Area2D/CollisionShape2D");
+	// 	// shape.SetDeferred("Disabled", true);
+	// 	Disabled = true;
+	// }
 }

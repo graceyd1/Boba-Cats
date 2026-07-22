@@ -193,6 +193,26 @@ scale = Vector2(0.8, 0.8)
 [node name="Lantern" parent="BackgroundStuff" instance=ExtResource("16_3s04o")]
 position = Vector2(341, 28)
 
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin1" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(126, 108)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(141, 92)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(339, 82)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(353, 82)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(367, 82)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("23_dfl8a")]
+position = Vector2(380, 82)
+
 [node name="UnderwaterPlayer" parent="." instance=ExtResource("8_pihmt")]
 position = Vector2(10, 140)
 
@@ -259,23 +279,3 @@ texture = ExtResource("14_5en38")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RollingBomb"]
 position = Vector2(205, 121)
 shape = SubResource("CircleShape2D_twqg6")
-
-[node name="Coins" type="Node" parent="."]
-
-[node name="Coin1" parent="Coins" instance=ExtResource("23_dfl8a")]
-position = Vector2(126, 108)
-
-[node name="Coin2" parent="Coins" instance=ExtResource("23_dfl8a")]
-position = Vector2(141, 92)
-
-[node name="Coin3" parent="Coins" instance=ExtResource("23_dfl8a")]
-position = Vector2(339, 82)
-
-[node name="Coin4" parent="Coins" instance=ExtResource("23_dfl8a")]
-position = Vector2(353, 82)
-
-[node name="Coin5" parent="Coins" instance=ExtResource("23_dfl8a")]
-position = Vector2(367, 82)
-
-[node name="Coin6" parent="Coins" instance=ExtResource("23_dfl8a")]
-position = Vector2(380, 82)

@@ -29,22 +29,24 @@ public partial class SeaBunnyRoom : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override async void _Process(double delta)
 	{
-		//reset position when player respawns
-		if (Player.respawnFadingIn && SeaBunny.InFight)
-		{
-			if (!waitingForRespawn) {
-				waitingForRespawn = true;
-			}
+
+		//MOVED: see OnPlayerRespawn()
+		// //reset position when player respawns
+		// if (Player.respawnFadingIn && SeaBunny.InFight)
+		// {
+		// 	if (!waitingForRespawn) {
+		// 		waitingForRespawn = true;
+		// 	}
 			
-		}
-		if (!Player.respawnFadingIn && waitingForRespawn) {
-			waitingForRespawn = false;
-			SeaBunny.InFight = false;
-			SeaBunny.Position = SeaBunny.StartPos;
-			var camera1 = Player.GetNode<Camera2D>("Camera2D");
-			camera1.Position = Vector2.Zero;
-			AnimationP.Play("gate_open");
-		}
+		// }
+		// if (!Player.respawnFadingIn && waitingForRespawn) {
+		// 	waitingForRespawn = false;
+		// 	SeaBunny.InFight = false;
+		// 	SeaBunny.Position = SeaBunny.StartPos;
+		// 	var camera1 = Player.GetNode<Camera2D>("Camera2D");
+		// 	camera1.Position = Vector2.Zero;
+		// 	AnimationP.Play("gate_open");
+		// }
 
 		if (!transitioning)
 		{
@@ -95,6 +97,18 @@ public partial class SeaBunnyRoom : Node2D
 			}*/
 		}
 
+	}
+
+	private void OnPlayerDied()
+	{
+		SeaBunny.InFight = false;
+	}
+	private void OnPlayerRespawn()
+	{
+		SeaBunny.Position = SeaBunny.StartPos;
+		var camera1 = Player.GetNode<Camera2D>("Camera2D");
+		camera1.Position = Vector2.Zero;
+		AnimationP.Play("gate_open");
 	}
 
 	public async void OnLeftVineTriggerEntered(Node2D player)

@@ -156,6 +156,11 @@ public partial class Seabunny : CharacterBody2D
 		InCutscene = false;
 	}
 
+	private void OnPlayerRespawn()
+	{
+		Position = StartPos;
+	}
+
 	//every time it is done waiting, do another attack
 	private async void OnIdleTimerTimeout()
 	{
