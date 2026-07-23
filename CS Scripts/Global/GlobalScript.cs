@@ -5,6 +5,9 @@ using Godot.Collections;
 
 public partial class GlobalScript : Node2D
 {
+	[Signal]
+	public delegate void OnCoinUpdateEventHandler();
+	
 	public static GlobalSaveResource GameData{get; set;} = new GlobalSaveResource();
 	//so that it doesn't break code accessing from GlobalScript.variable
 	public static int Coins {

@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://djy0cxmipcbm6"]
+[gd_scene load_steps=16 format=3 uid="uid://djy0cxmipcbm6"]
 
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/Player.cs" id="1_vr4g2"]
 [ext_resource type="PackedScene" uid="uid://dif3m6ljwdlny" path="res://Scenes/controls.tscn" id="4_o0s2x"]
 [ext_resource type="PackedScene" uid="uid://qgqaega0h2io" path="res://Scenes/flashlight.tscn" id="4_u4d4c"]
 [ext_resource type="PackedScene" uid="uid://dacucl1yyxuex" path="res://Scenes/text_enter_label.tscn" id="5_sg0de"]
+[ext_resource type="Texture2D" uid="uid://c0shhnmr1e0ql" path="res://assets/objects/coin/coin.png" id="6_armfy"]
+[ext_resource type="Script" path="res://Scenes/CoinDisplayNode.cs" id="6_vqqmd"]
 [ext_resource type="Script" path="res://CS Scripts/Player+UI/Camera2d.cs" id="8_6m7sy"]
 [ext_resource type="PackedScene" uid="uid://7106o3opoex1" path="res://Scenes/player_health.tscn" id="8_pkvse"]
 
@@ -21,6 +23,20 @@ size = Vector2(12, 13)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_riri1"]
 light_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3rue"]
+bg_color = Color(0.679911, 0.620564, 0.223553, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_agoso"]
+bg_color = Color(0.858824, 0.792157, 0.34902, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Player" type="CharacterBody2D"]
 material = SubResource("CanvasItemMaterial_peka7")
@@ -70,6 +86,42 @@ position = Vector2(140, -85)
 scale = Vector2(1, 1)
 
 [node name="TextEnterLabel" parent="Camera2D" instance=ExtResource("5_sg0de")]
+
+[node name="CoinDisplayNode" type="Node2D" parent="Camera2D"]
+unique_name_in_owner = true
+z_index = 4096
+position = Vector2(10, -2)
+script = ExtResource("6_vqqmd")
+
+[node name="CoinDisplay" type="Panel" parent="Camera2D/CoinDisplayNode"]
+offset_left = -130.0
+offset_top = -75.0
+offset_right = -38.0
+offset_bottom = -35.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/panel = SubResource("StyleBoxFlat_o3rue")
+
+[node name="Coin" type="Sprite2D" parent="Camera2D/CoinDisplayNode/CoinDisplay"]
+position = Vector2(0, 15)
+scale = Vector2(4, 4)
+texture = ExtResource("6_armfy")
+
+[node name="InnerPanel" type="Panel" parent="Camera2D/CoinDisplayNode/CoinDisplay"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 7.0
+offset_right = 56.0
+offset_bottom = 23.3333
+scale = Vector2(1.6, 1.6)
+theme_override_styles/panel = SubResource("StyleBoxFlat_agoso")
+
+[node name="CoinCount" type="Label" parent="Camera2D/CoinDisplayNode/CoinDisplay/InnerPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 16.3333
+theme_override_colors/font_color = Color(0.501114, 0.440111, 0.233039, 1)
+horizontal_alignment = 1
 
 [node name="Flashlight" parent="." instance=ExtResource("4_u4d4c")]
 

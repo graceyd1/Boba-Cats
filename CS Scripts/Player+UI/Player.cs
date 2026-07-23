@@ -66,6 +66,7 @@ public partial class Player : CharacterBody2D
 		GetNode<TextEnterLabel>("Camera2D/TextEnterLabel").FadeIn(box, prompt);
 	}
 	
+	
 	private void DevChangeHP(int newHP) {
 		hp = newHP;
 		GD.Print(hp);

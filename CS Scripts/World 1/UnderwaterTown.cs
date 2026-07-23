@@ -69,7 +69,7 @@ public partial class UnderwaterTown : Node2D
 	}
 	
 	private async Task CarsavaDialogue() {
-		if (GlobalScript.Inventory.Contains("Town pass")) {
+		if (GlobalScript.Inventory.Contains("Town Pass")) {
 			if (encounterNum == 1) {
 				await carT.ShowText("You again - I told you -");
 				await carT.ShowText("Wait, you got a pass? That's my sister, Catssava's!");
