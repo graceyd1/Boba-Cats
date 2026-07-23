@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dreu42hj60gc6" path="res://Scenes/lantern.tscn" id="16_3s04o"]
 [ext_resource type="Texture2D" uid="uid://bekphjfbgb21g" path="res://assets/background_items/pure_vine.png" id="17_15pkn"]
 [ext_resource type="Script" path="res://CS Scripts/World 1/RollingBomb.cs" id="20_p8tmg"]
-[ext_resource type="PackedScene" uid="uid://i5wpk3ynqacf" path="res://coin.tscn" id="23_dfl8a"]
+[ext_resource type="PackedScene" path="res://coin.tscn" id="23_dfl8a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i07pw"]
 animations = [{
